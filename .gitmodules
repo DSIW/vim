@@ -52,3 +52,6 @@
 [submodule "bundle/vim-latexsuite"]
 	path = bundle/vim-latexsuite
 	url = https://github.com/vim-scripts/LaTeX-Suite-aka-Vim-LaTeX.git
+[submodule "bundle/vim-vimshell"]
+	path = bundle/vim-vimshell
+	url = https://github.com/vim-scripts/vimshell-ssh.git
