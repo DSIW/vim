@@ -164,7 +164,8 @@ set formatprg=par\ -re
 set nolist
 " Shortcut to rapidly toggle `set list`
 nmap <leader>l :set list!<CR>
-set listchars=tab:▸\ ,eog:$"¬
+set listchars=tab:▸\
+" set listchars+=eog:$ "¬
 "Invisible character colors 
 highlight NonText guifg=#4a4a59
 highlight SpecialKey guifg=#4a4a59
