@@ -25,3 +25,6 @@
 [submodule "bundle/vim-showmarks"]
 	path = bundle/vim-showmarks
 	url = https://github.com/garbas/vim-showmarks.git
+[submodule "bundle/vim-sudoedit"]
+	path = bundle/vim-sudoedit
+	url = https://github.com/chrisbra/SudoEdit.vim.git
