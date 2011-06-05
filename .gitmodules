@@ -13,3 +13,6 @@
 [submodule "bundle/vim-protodef"]
 	path = bundle/vim-protodef
 	url = https://github.com/ewiplayer/vim-protodef.git
+[submodule "bundle/vim-nerdcommenter"]
+	path = bundle/vim-nerdcommenter
+	url = https://github.com/scrooloose/nerdcommenter.git
