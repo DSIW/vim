@@ -15,13 +15,9 @@ if has("vms")
 else
   set backup    " keep a backup file
 endif
-set history=50    " keep 50 lines of command line history
 set ruler   " show the cursor position all the time
 set showcmd   " display incomplete commands
 set incsearch   " do incremental searching
-
-" For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
-" let &guioptions = substitute(&guioptions, "t", "", "g")
 
 " Don't use Ex mode, use Q for formatting
 map Q gq
@@ -44,17 +40,6 @@ endif
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
-
-  " Enable file type detection.
-  " Use the default filetype settings, so that mail gets 'tw' set to 72,
-  " 'cindent' is on in C files, etc.
-  " Also load indent files, to automatically do language-dependent indenting.
-  filetype plugin indent on
-
-  " Put these in an autocmd group, so that we can delete them easily.
-  augroup vimrcEx
-    au!
-
     " For all text files set 'textwidth' to 78 characters.
     autocmd FileType text setlocal textwidth=78
 
@@ -69,11 +54,8 @@ if has("autocmd")
           \ endif
 
   augroup END
-
 else
-
   set autoindent    " always set autoindenting on
-
 endif " has("autocmd")
 
 " Convenient command to see the difference between the current buffer and the
@@ -84,78 +66,55 @@ if !exists(":DiffOrig")
         \ | wincmd p | diffthis
 endif
 
-" REQUIRED. This makes vim invoke Latex-Suite when you open a tex file.
-filetype plugin on
-" " IMPORTANT: win32 users will need to have 'shellslash' set so that latex
-" " can be called correctly.
-" set shellslash
-"
-" IMPORTANT: grep will sometimes skip displaying the file name if you
-" search in a singe file. This will confuse Latex-Suite. Set your grep
-" program to always generate a file-name.
-set grepprg=grep\ -nH\ $*
-"
-" " OPTIONAL: This enables automatic indentation as you type.
-" filetype indent on
-"
-" " OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults
-" to
-" " 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
-" " The following changes the default filetype back to 'tex':
-" let g:tex_flavor='latex'
-"---------------------------------------------
-"LaTeX - GUI
-"---------------------------------------------
-if has('gui_running')
-  set grepprg=grep\ -nH\ $*
-  filetype indent on
-  let g:tex_flavor='latex'
-endif
-
-au BufEnter *.tex set autowrite
-let g:Tex_DefaultTargetFormat = 'pdf'
-let g:Tex_MultipleCompileFormats = 'pdf'
-let g:Tex_CompileRule_pdf = 'pdflatex -interaction=nonstopmode $*'
-let g:Tex_GotoError = 0
-let g:Tex_ViewRule_pdf = 'evince'
-let g:Tex_ViewRule_dvi = 'xdvi -editor "gvim --servername xdvi --remote +\%l \%f" $* &'
-let g:Tex_ViewRuleComplete_dvi = 'xdvi -editor "gvim --servername xdvi --remote +\%l \%f" $* &'
 
 " Set linenumbers
 set nu
-set nocp
-"source ~/.vim/plugin/matchit.vim
 
 let Tlist_Ctags_Cmd = "/usr/bin/ctags"
 let Tlist_GainFocus_On_ToggleOpen = 1
 let Tlist_Close_On_Select = 1
-"
-""--------------------------------------------------------------------------------
-" plugin taglist.vim : toggle the taglist window
-" "-------------------------------------------------------------------------------
-if exists(":TlistToggle")
-  noremap <silent> <F6> :TlistToggle<CR>
-  inoremap <silent> <F6> <C-C>:TlistToggle<CR>
+
+" console vim has usually a dark background,
+" while in gvim I usually use a light background
+if has("gui_running")
+" set bg=light
+ set bg=dark
+"else
+" set bg=dark
 endif
 
-" Disable Arrow-Keys
-" noremap  <Up> ""
-" noremap! <Up> <Esc>
-" noremap  <Down> ""
-" noremap! <Down> <Esc>
-" noremap  <Left> ""
-" noremap! <Left> <Esc>
-" noremap  <Right> ""
-" noremap! <Right> <Esc>
+" set Unicode if possible
+" --------------------
+" First, check that the necessary capabilities are compiled-in
+if has("multi_byte")
+" (optional) remember the locale set by the OS
+        let g:locale_encoding = &encoding
+" if already Unicode, no need to change it
+" we assume that an encoding name is a Unicode one
+" iff its name starts with u or U
+        if &encoding !~? '^u'
+" avoid clobbering the keyboard's charset
+                if &termencoding == ""
+                        let &termencoding = &encoding
+                endif
+" now we're ready to set UTF-8
+                set encoding=utf-8
+        endif
+" heuristics for use at file-open
+" how are different fileencodings determined?
+" This is a list. The first that succeeds, will be used
+" default is 'ucs-bom,utf-8,default,latin1'
+        set fileencodings=ucs-bom,utf-8,latin9
+endif
+
+" Tweak timeouts, because the default is too conservative
+" This setting is taken from :h 'ttimeoutlen'
+set timeout timeoutlen=3000 ttimeoutlen=100
 
 set t_Co=256
 colo xoria256
 " map <F3> :setlocal spell spelllang=de<cr>
 "iunmap ll
-let mapleader=","
-" Copy & Paste
-vmap <C-c> "+y
-nmap <C-p> "+p
 " Softwrap
 set linebreak
 set wrap
@@ -165,123 +124,46 @@ set nolist
 " Shortcut to rapidly toggle `set list`
 nmap <leader>l :set list!<CR>
 set listchars=tab:▸\
+if &encoding == "utf-8"
+" set listchars=eol:$,trail:·,tab:>>·,extends:>,precedes:<
+"set listchars=eol:$,trail:-,tab:>-,extends:>,precedes:<,conceal:+
+     exec "set listchars=nbsp:\u2423,conceal:\u22ef,tab:\u2595\u2014,trail:\u02d1,precedes:\u2026,extends:\u2026"
+else
+" Special characters that will be shown, when set list is on
+    set listchars=eol:$,trail:-,tab:>-,extends:>,precedes:<,conceal:+
+endif
 " set listchars+=eog:$ "¬
 "Invisible character colors 
 highlight NonText guifg=#4a4a59
 highlight SpecialKey guifg=#4a4a59
 set showbreak=
 
-" Motions"
-nmap <C-j> gj
-nmap <C-k> gk
-nmap <C-0> g0
-nmap <C-4> g$
-vmap <C-j> gj
-vmap <C-k> gk
-vmap <C-0> g0
-vmap <C-4> g$
+" Set shell
+set sh=bash
+
+" Numberformat to use, unsetting bascially only allows decimal
+" octal and hex may make trouble if tried to increment/decrement
+" certain numberformats
+" (e.g. 007 will be incremented to 010, because vim thinks its octal)
+set nrformats=
+
+" Matching of IP-Addresses Highlight in yellow
+highlight ipaddr term=bold ctermfg=yellow guifg=yellow
+" highlight ipaddr ctermbg=green guibg=green
+match ipaddr /\(\(25\_[0-5]\|2\_[0-4]\_[0-9]\|\_[01]\?\_[0-9]\_[0-9]\?\)\.\)\{3\}\(25\_[0-5]\|2\_[0-4]\_[0-9]\|\_[01]\?\_[0-9]\_[0-9]\?\)/
+
+
+" highlight matching parens:
+" Default for matchpairs: (:),[:],{:},<:>
+     set matchpairs+=<:>
+     highlight MatchParen term=reverse ctermbg=7 guibg=cornsilk
 
 " Hardwrap
 set textwidth=0
 set wrapmargin=5
 set formatoptions= "ta
 
-" delete whitespaces in the end of a line
-" Only do this part when compiles with support for autocommands"
-if(has("autocmd"))
-  autocmd BufWritePre *.py *.js :call <SID>StripTrailingWhitespaces()
-endif
-function! Preserve(command)
-  " Preparation: save last search, and cursor position.
-  let _s=@/
-  let l = line(".")
-  let c = col(".")
-  " Do the business:
-  execute a:command
-  " Clean up: restore previous search history, and cursor position
-  let @/=_s
-  call cursor(l, c)
-endfunction
-nmap _$ :call Preserve("%s/\\s\\+$//e")<CR>
-nmap _= :call Preserve("normal gg=G")<CR>
-
 set expandtab "tabs to sapces (alternativly: set noexpandtab: spaces to tabs, :retab
-
-"-----------------------------------------------------------------------------
-" xptemplate
-"-----------------------------------------------------------------------------
-" let g:xptemplate_key = '<Tab>'
-let g:xptemplate_always_show_pum = 1
-":command -range=% SendDB :<line1>,<line2>w !mysql -udb11sa23 -pz51f8f4ca p001 -t
-"map <Tab> :Tabnext<cr>
-
-"-----------------------------------------------------------------------------
-" pathogen
-"-----------------------------------------------------------------------------
-silent! call pathogen#runtime_append_all_bundles()
-silent! call pathogen#helptags()
-
-"-----------------------------------------------------------------------------
-" tabular
-"-----------------------------------------------------------------------------
-if exists(":Tabularize")
-  nmap <Leader>a= :Tabularize /=<CR>
-  vmap <Leader>a= :Tabularize /=<CR>
-  nmap <Leader>a: :Tabularize /:\zs<CR>
-  vmap <Leader>a: :Tabularize /:\zs<CR>
-endif
-
-inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
-
-function! s:align()
-  let p = '^\s*|\s.*\s|\s*$'
-  if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
-    let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
-    let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
-    Tabularize/|/l1
-    normal! 0
-    call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
-  endif
-endfunction
-
-"-----------------------------------------------------------------------------
-" OmniCppComplete
-"-----------------------------------------------------------------------------
-" configure tags - add additional tags here or comment out not-used ones
-set tags+=~/.vim/tags/cpp
-set tags+=~/.vim/tags/gl
-set tags+=~/.vim/tags/sdl
-set tags+=~/.vim/tags/qt4
-" build tags of your own project with Ctrl-F12
-map <F8> :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
-
-" OmniCppComplete
-let OmniCpp_NamespaceSearch = 1
-let OmniCpp_GlobalScopeSearch = 1
-let OmniCpp_ShowAccess = 1
-let OmniCpp_ShowPrototypeInAbbr = 1 " show function parameters
-let OmniCpp_MayCompleteDot = 1 " autocomplete after .
-let OmniCpp_MayCompleteArrow = 1 " autocomplete after ->
-let OmniCpp_MayCompleteScope = 1 " autocomplete after ::
-let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
-" automatically open and close the popup menu / preview window
-au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
-set completeopt=menuone,menu,longest,preview
-
-"-----------------------------------------------------------------------------
-" checkist
-"-----------------------------------------------------------------------------
-au BufNewFile,BufRead *.chklst setf chklst
-
-"-----------------------------------------------------------------------------
-" gundo
-"-----------------------------------------------------------------------------
-nnoremap <F5> :GundoToggle<CR>
-
-"-----------------------------------------------------------------------------
-" ragtag
-"-----------------------------------------------------------------------------
-let g:ragtag_global_maps = 1 
 
 "-----------------------------------------------------------------------------
 " Global Stuff from Derek
@@ -329,6 +211,24 @@ set cpoptions=ces$
 " Set the status line the way i like it
 set stl=%f\ %m\ %r\ Line:%l/%L[%p%%]\ Col:%c\ Buf:%n\ [%b][0x%B]
 
+" STATUSBAR
+" --------------------
+" if has("statusline")
+"     set statusline=
+"     set statusline+=%-3.3n\ " buffer number
+"     set statusline+=%f\ " file name
+"     set statusline+=%h%m%r%w " flags
+"     set statusline+=\[%{strlen(&ft)?&ft:'none'}, " filetype
+" " set statusline+=%{&encoding}, " encoding
+"     set statusline+=%{(&fenc==\"\"?&enc:&fenc)},
+"     set statusline+=%{&fileformat} " file format
+"     set statusline+=%{(&bomb?\",BOM\":\"\")}] " BOM
+"     set statusline+=%= " right align
+" "set statusline+=0x%-8B\ " current char
+"     set statusline+=%-10.(%l,%c%V%)\ %p%% " offset
+" "set statusline=%<%f\ %h%m%r%=%k[%{(&fenc\ ==\ \"\"?&enc:&fenc).(&bomb?\",BOM\":\"\")}]\ %-12.(%l,%c%V%)\ %P
+" endif
+
 " tell VIM to always put a status line in, even if there is only one window
 set laststatus=2
 
@@ -340,6 +240,9 @@ set showcmd
 
 " Show the current mode
 set showmode
+
+" Turn on: showmatching brackets
+set showmatch 
 
 " Switch on syntax highlighting.
 syntax on
@@ -430,118 +333,6 @@ set tags=./tags,tags
 " Let the syntax highlighting for Java files allow cpp keywords
 let java_allow_cpp_keywords = 1
 
-" Toggle paste mode
-nmap <silent> ,p :set invpaste<CR>:set paste?<CR>
-
-" cd to the directory containing the file in the buffer
-nmap <silent> ,cd :lcd %:h<CR>
-nmap <silent> ,md :!mkdir -p %:p:h<CR>
-
-" Turn off that stupid highlight search
-nmap <silent> ,n :set invhls<CR>:set hls?<CR>
-
-" put the vim directives for my file editing settings in
-nmap <silent> ,vi
-      \ ovim:set ts=4 sts=4 sw=4:<CR>vim600:fdm=marker fdl=1 fdc=0:<ESC>
-
-" Show all available VIM servers
-nmap <silent> ,ss :echo serverlist()<CR>
-
-" The following beast is something i didn't write... it will return the
-" syntax highlighting group that the current "thing" under the cursor
-" belongs to -- very useful for figuring out what to change as far as
-" syntax highlighting goes.
-nmap <silent> <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name")
-      \ . '> trans<' . synIDattr(synID(line("."),col("."),0),"name")
-      \ . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name")
-      \ . ">"<CR>
-
-" set text wrapping toggles
-nmap <silent> ,w :set invwrap<CR>:set wrap?<CR>
-
-" Run the command that was just yanked
-nmap <silent> ,rc :@"<cr>
-
-" allow command line editing like emacs
-" cnoremap <C-A>      <Home>
-" cnoremap <C-B>      <Left>
-" cnoremap <C-E>      <End>
-" cnoremap <C-F>      <Right>
-" cnoremap <C-N>      <End>
-" cnoremap <C-P>      <Up>
-" cnoremap <ESC>b     <S-Left>
-" cnoremap <ESC><C-B> <S-Left>
-" cnoremap <ESC>f     <S-Right>
-" cnoremap <ESC><C-F> <S-Right>
-" cnoremap <ESC><C-H> <C-W>
-
-" Maps to make handling windows a bit easier
-noremap <silent> ,h :wincmd h<CR>
-noremap <silent> ,j :wincmd j<CR>
-noremap <silent> ,k :wincmd k<CR>
-noremap <silent> ,l :wincmd l<CR>
-noremap <silent> ,= :wincmd =<CR>
-noremap <silent> ,sb :wincmd p<CR>
-noremap <silent> <C-F9>  :vertical resize -10<CR>
-noremap <silent> <C-F10> :resize +10<CR>
-noremap <silent> <C-F11> :resize -10<CR>
-noremap <silent> <C-F12> :vertical resize +10<CR>
-noremap <silent> ,s8 :vertical resize 83<CR>
-noremap <silent> ,cj :wincmd j<CR>:close<CR>
-noremap <silent> ,ck :wincmd k<CR>:close<CR>
-noremap <silent> ,ch :wincmd h<CR>:close<CR>
-noremap <silent> ,cl :wincmd l<CR>:close<CR>
-noremap <silent> ,cc :close<CR>
-noremap <silent> ,cw :cclose<CR>
-noremap <silent> ,ml <C-W>L
-noremap <silent> ,mk <C-W>K
-noremap <silent> ,mh <C-W>H
-noremap <silent> ,mj <C-W>J
-noremap <silent> <C-7> <C-W>>
-noremap <silent> <C-8> <C-W>+
-noremap <silent> <C-9> <C-W>+
-noremap <silent> <C-0> <C-W>>
-
-" Map CTRL-E to do what ',' used to do
-nnoremap <c-e> ,
-vnoremap <c-e> ,
-
-" Buffer commands
-noremap <silent> ,bd :bd<CR>
-
-" Edit the vimrc file
-nmap <silent> ,ev :e $MYVIMRC<CR>
-nmap <silent> ,sv :so $MYVIMRC<CR>
-
-" Make horizontal scrolling easier
-nmap <silent> <C-o> 10zl
-nmap <silent> <C-i> 10zh
-
-" Highlight all instances of the current word under the cursor
-nmap <silent> ^ :setl hls<CR>:let @/="<C-r><C-w>"<CR>
-
-" Search the current file for what's currently in the search
-" register and display matches
-nmap <silent> ,gs
-      \ :vimgrep /<C-r>// %<CR>:ccl<CR>:cwin<CR><C-W>J:set nohls<CR>
-
-" Search the current file for the word under the cursor and display matches
-nmap <silent> ,gw
-      \ :vimgrep /<C-r><C-w>/ %<CR>:ccl<CR>:cwin<CR><C-W>J:set nohls<CR>
-
-" Search the current file for the WORD under the cursor and display matches
-nmap <silent> ,gW
-      \ :vimgrep /<C-r><C-a>/ %<CR>:ccl<CR>:cwin<CR><C-W>J:set nohls<CR>
-
-" Swap two words
-nmap <silent> gw :s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR>`'
-
-" Underline the current line with '='
-nmap <silent> ,ul :t.\|s/./=/g\|set nohls<cr>
-
-" Delete all buffers
-nmap <silent> ,da :exec "1," . bufnr('$') . "bd"<cr>
-
 " Syntax coloring lines that are too long just slows down the world
 set synmaxcol=2048
 
@@ -549,151 +340,8 @@ set synmaxcol=2048
 let loaded_matchparen = 1
 
 "-----------------------------------------------------------------------------
-" MiniBufExplorer Plugin Settings
-"-----------------------------------------------------------------------------
-" Yup, I don't like this one either
-let loaded_minibufexplorer = 1
-
-"-----------------------------------------------------------------------------
-" ShowMarks Plugin Stuff
-"-----------------------------------------------------------------------------
-" I don't think I like this
-let g:loaded_showmarks = 1
-
-"-----------------------------------------------------------------------------
-" Source Explorer Plugin Settings
-"-----------------------------------------------------------------------------
-" The switch of the Source Explorer
-" nmap <silent> <F8> :SrcExplToggle<CR>
-
-" Set the height of Source Explorer window
-let g:SrcExpl_winHeight = 16
-
-" Set 10 ms for refreshing the Source Explorer
-let g:SrcExpl_refreshTime = 10
-
-" In order to Avoid conflicts, the Source Explorer should know what plugins
-" are using buffers. And you need add their bufname into the list below
-" according to the command ":buffers!"
-let g:SrcExpl_pluginList = [
-      \ "_NERD_tree_",
-      \ "Source_Explorer"
-      \ ]
-" Enable/Disable the local definition searching, and note that this is not
-" guaranteed to work, the Source Explorer doesn't check the syntax for now.
-" It only searches for a match with the keyword according to command 'gd'
-let g:SrcExpl_searchLocalDef = 1
-
-" Do not let the Source Explorer update the tags file when opening
-let g:SrcExpl_isUpdateTags = 0
-
-" Use program 'ctags' with argument '--sort=foldcase -R' to create or
-" update a tags file
-let g:SrcExpl_updateTagsCmd = "retag.ksh"
-
-" Set "<F9>" key for updating the tags file artificially
-let g:SrcExpl_updateTagsKey = "<F9>"
-
-"-----------------------------------------------------------------------------
-" NERD Tree Plugin Settings
-"-----------------------------------------------------------------------------
-" Toggle the NERD Tree on an off with F7
-nmap <F7> :NERDTreeToggle<CR>
-
-" Close the NERD Tree with Shift-F7
-nmap <S-F7> :NERDTreeClose<CR>
-
-" Store the bookmarks file in perforce
-let NERDTreeBookmarksFile="~/.vim/NERDTreeBookmarks"
-
-" Show the bookmarks table on startup
-let NERDTreeShowBookmarks=1
-
-" Don't display these kinds of files
-let NERDTreeIgnore=[ '\.ncb$', '\.suo$', '\.vcproj\.RIMNET', '\.obj$',
-      \ '\.ilk$', '^BuildLog.htm$', '\.pdb$', '\.idb$',
-      \ '\.embed\.manifest$', '\.embed\.manifest.res$',
-      \ '\.intermediate\.manifest$', '^mt.dep$' ]
-
-"-----------------------------------------------------------------------------
-" FSwitch Settings
-"-----------------------------------------------------------------------------
-nmap <silent> ,of :FSHere<CR>
-nmap <silent> ,ol :FSRight<CR>
-nmap <silent> ,oL :FSSplitRight<CR>
-nmap <silent> ,oh :FSLeft<CR>
-nmap <silent> ,oH :FSSplitLeft<CR>
-nmap <silent> ,ok :FSAbove<CR>
-nmap <silent> ,oK :FSSplitAbove<CR>
-nmap <silent> ,oj :FSBelow<CR>
-nmap <silent> ,oJ :FSSplitBelow<CR>
-
-"-----------------------------------------------------------------------------
-" SnipMate Settings
-"-----------------------------------------------------------------------------
-"source ~/.vim/snippets/support_functions.vim
-"source ~/.vim/snippets/support_functions_derek.vim
-
-function! ListKnownSnippetLanguageTypes(A, L, P)
-  let filesanddirs = split(globpath(g:snippets_dir, a:A . "*"), "\n")
-  let dirsonly = []
-  for f in filesanddirs
-    if isdirectory(f)
-      let each = split(f, '/')
-      let dirsonly = add(dirsonly, each[-1])
-    end
-  endfor
-  return dirsonly
-endfunction
-
-function! ReloadSnippets(type)
-  call ResetSnippets()
-  if a:type != ""
-    call ExtractSnips(g:snippets_dir . a:type, a:type)
-  else
-    let alltypes = ListKnownSnippetLanguageTypes("", "", "")
-    for type in alltypes
-      call ExtractSnips(g:snippets_dir . type, type)
-    endfor
-  endif
-endfunction
-
-command! -complete=customlist,ListKnownSnippetLanguageTypes
-      \ -nargs=? RS call ReloadSnippets("<args>")
-
-"-----------------------------------------------------------------------------
-" FuzzyFinder Settings
-"-----------------------------------------------------------------------------
-nmap ,fb :FuzzyFinderBuffer<CR>
-nmap ,ff :FuzzyFinderFile<CR>
-nmap ,ft :FuzzyFinderTag<CR>
-
-"-----------------------------------------------------------------------------
-" UltiSnips Settings
-"-----------------------------------------------------------------------------
-set runtimepath+=~/.vim/ultisnips
-let g:UltiSnipsExpandTrigger="<c-9>"
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
-let g:UltiSnipsJumpBackwardTrigger="<c-k>"
-
-"-----------------------------------------------------------------------------
-" Functions
-"-----------------------------------------------------------------------------
-
-function! RunSystemCall(systemcall)
-  let output = system(a:systemcall)
-  let output = substitute(output, "\n", '', 'g')
-  return output
-endfunction
-
-"-----------------------------------------------------------------------------
 " Auto commands
 "-----------------------------------------------------------------------------
-augroup derek_scons
-  au!
-  au BufNewFile,BufRead SCons* setf scons
-augroup END
-
 augroup derek_xsd
   au!
   au BufEnter *.xsd,*.wsdl,*.xml setl tabstop=4 | setl shiftwidth=4
@@ -710,39 +358,6 @@ augroup Binary
   au BufWritePost *.bin if &bin | %!xxd
   au BufWritePost *.bin set nomod | endif
 augroup END
-
-"-----------------------------------------------------------------------------
-" Fix constant spelling mistakes
-"-----------------------------------------------------------------------------
-
-iab teh       the
-iab Teh       The
-iab taht      that
-iab Taht      That
-iab alos      also
-iab Alos      Also
-iab aslo      also
-iab Aslo      Also
-iab becuase   because
-iab Becuase   Because
-iab bianry    binary
-iab Bianry    Binary
-iab bianries  binaries
-iab Bianries  Binaries
-iab charcter  character
-iab Charcter  Character
-iab charcters characters
-iab Charcters Characters
-iab exmaple   example
-iab Exmaple   Example
-iab exmaples  examples
-iab Exmaples  Examples
-iab shoudl    should
-iab Shoudl    Should
-iab seperate  separate
-iab Seperate  Separate
-iab fone      phone
-iab Fone      Phone
 
 "-----------------------------------------------------------------------------
 " Set up the window colors and size
@@ -763,10 +378,11 @@ if has("gui_running")
 endif
 :nohls
 
-"-----------------------------------------------------------------------------
-" better undo
-"-----------------------------------------------------------------------------
-inoremap <C-U> <C-G>u<C-U>
-inoremap <C-W> <C-G>u<C-W>
-inoremap <BS> <C-G>u<BS>
-inoremap <Del> <C-G>u<Del>
+"---------------------------------------------
+" Insert external vim sources
+"---------------------------------------------
+source ~/.vim/mapping.vim
+source ~/.vim/plugin.vim
+source ~/.vim/functions.vim
+" vimspell: http://www.vim.org/scripts/script.php?script_id=465
+source ~/.vim/abbrev.vim

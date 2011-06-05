@@ -1,0 +1,246 @@
+"-----------------------------------------------------------------------------
+" xptemplate
+"-----------------------------------------------------------------------------
+" let g:xptemplate_key = '<Tab>'
+let g:xptemplate_always_show_pum = 1
+":command -range=% SendDB :<line1>,<line2>w !mysql -udb11sa23 -pz51f8f4ca p001 -t
+"map <Tab> :Tabnext<cr>
+
+"-----------------------------------------------------------------------------
+" pathogen
+"-----------------------------------------------------------------------------
+silent! call pathogen#runtime_append_all_bundles()
+silent! call pathogen#helptags()
+
+"-----------------------------------------------------------------------------
+" latex-suite
+"-----------------------------------------------------------------------------
+" REQUIRED. This makes vim invoke Latex-Suite when you open a tex file.
+filetype plugin on
+" IMPORTANT: grep will sometimes skip displaying the file name if you
+" search in a singe file. This will confuse Latex-Suite. Set your grep
+" program to always generate a file-name.
+set grepprg=grep\ -nH\ $*
+
+"---------------------------------------------
+" LaTeX - GUI
+"---------------------------------------------
+if has('gui_running')
+  set grepprg=grep\ -nH\ $*
+  filetype indent on
+  let g:tex_flavor='latex'
+endif
+
+au BufEnter *.tex set autowrite
+let g:Tex_DefaultTargetFormat = 'pdf'
+let g:Tex_MultipleCompileFormats = 'pdf'
+let g:Tex_CompileRule_pdf = 'pdflatex -interaction=nonstopmode $*'
+let g:Tex_GotoError = 0
+let g:Tex_ViewRule_pdf = 'evince'
+let g:Tex_ViewRule_dvi = 'xdvi -editor "gvim --servername xdvi --remote +\%l \%f" $* &'
+let g:Tex_ViewRuleComplete_dvi = 'xdvi -editor "gvim --servername xdvi --remote +\%l \%f" $* &'
+
+
+
+
+
+
+"-----------------------------------------------------------------------------
+" tabular
+"-----------------------------------------------------------------------------
+if exists(":Tabularize")
+  nmap <Leader>a= :Tabularize /=<CR>
+  vmap <Leader>a= :Tabularize /=<CR>
+  nmap <Leader>a: :Tabularize /:\zs<CR>
+  vmap <Leader>a: :Tabularize /:\zs<CR>
+endif
+
+inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
+
+function! s:align()
+  let p = '^\s*|\s.*\s|\s*$'
+  if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
+    let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
+    let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
+    Tabularize/|/l1
+    normal! 0
+    call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
+  endif
+endfunction
+
+"-----------------------------------------------------------------------------
+" OmniCppComplete
+"-----------------------------------------------------------------------------
+" configure tags - add additional tags here or comment out not-used ones
+set tags+=~/.vim/tags/cpp
+set tags+=~/.vim/tags/gl
+set tags+=~/.vim/tags/sdl
+set tags+=~/.vim/tags/qt4
+" build tags of your own project with Ctrl-F12
+map <F8> :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+
+" OmniCppComplete
+let OmniCpp_NamespaceSearch = 1
+let OmniCpp_GlobalScopeSearch = 1
+let OmniCpp_ShowAccess = 1
+let OmniCpp_ShowPrototypeInAbbr = 1 " show function parameters
+let OmniCpp_MayCompleteDot = 1 " autocomplete after .
+let OmniCpp_MayCompleteArrow = 1 " autocomplete after ->
+let OmniCpp_MayCompleteScope = 1 " autocomplete after ::
+let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
+" automatically open and close the popup menu / preview window
+au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
+set completeopt=menuone,menu,longest,preview
+
+"-----------------------------------------------------------------------------
+" checkist
+"-----------------------------------------------------------------------------
+au BufNewFile,BufRead *.chklst setf chklst
+
+"-----------------------------------------------------------------------------
+" gundo
+"-----------------------------------------------------------------------------
+nnoremap <F5> :GundoToggle<CR>
+
+"-----------------------------------------------------------------------------
+" ragtag
+"-----------------------------------------------------------------------------
+let g:ragtag_global_maps = 1 
+
+"-----------------------------------------------------------------------------
+" plugin taglist.vim : toggle the taglist window
+" "-----------------------------------------------------------------------------
+if exists(":TlistToggle")
+  noremap <silent> <F6> :TlistToggle<CR>
+  inoremap <silent> <F6> <C-C>:TlistToggle<CR>
+endif
+
+"-----------------------------------------------------------------------------
+" FSwitch Settings
+"-----------------------------------------------------------------------------
+nmap <silent> ,of :FSHere<CR>
+nmap <silent> ,ol :FSRight<CR>
+nmap <silent> ,oL :FSSplitRight<CR>
+nmap <silent> ,oh :FSLeft<CR>
+nmap <silent> ,oH :FSSplitLeft<CR>
+nmap <silent> ,ok :FSAbove<CR>
+nmap <silent> ,oK :FSSplitAbove<CR>
+nmap <silent> ,oj :FSBelow<CR>
+nmap <silent> ,oJ :FSSplitBelow<CR>
+
+"-----------------------------------------------------------------------------
+" NERD Tree Plugin Settings
+"-----------------------------------------------------------------------------
+" Toggle the NERD Tree on an off with F7
+nmap <F7> :NERDTreeToggle<CR>
+
+" Close the NERD Tree with Shift-F7
+nmap <S-F7> :NERDTreeClose<CR>
+
+" Store the bookmarks file in perforce
+let NERDTreeBookmarksFile="~/.vim/NERDTreeBookmarks"
+
+" Show the bookmarks table on startup
+let NERDTreeShowBookmarks=1
+
+" Don't display these kinds of files
+let NERDTreeIgnore=[ '\.ncb$', '\.suo$', '\.vcproj\.RIMNET', '\.obj$',
+      \ '\.ilk$', '^BuildLog.htm$', '\.pdb$', '\.idb$',
+      \ '\.embed\.manifest$', '\.embed\.manifest.res$',
+      \ '\.intermediate\.manifest$', '^mt.dep$' ]
+
+" Allows to comment lines in different languages
+" Comment current line
+nmap ,co ,cc
+" uncoment current line
+nmap ,uco ,cu
+" toggle comment current line
+nmap ,tco ,c<space>
+" Do not yiel about unknown filetypes.
+let NERDShutUp=1
+
+"-----------------------------------------------------------------------------
+" MiniBufExplorer Plugin Settings
+"-----------------------------------------------------------------------------
+" Yup, I don't like this one either
+let loaded_minibufexplorer = 1
+
+"-----------------------------------------------------------------------------
+" ShowMarks Plugin Stuff
+"-----------------------------------------------------------------------------
+" I don't think I like this
+let g:loaded_showmarks = 1
+
+"-----------------------------------------------------------------------------
+" Source Explorer Plugin Settings
+"-----------------------------------------------------------------------------
+" The switch of the Source Explorer
+" nmap <silent> <F8> :SrcExplToggle<CR>
+
+" Set the height of Source Explorer window
+let g:SrcExpl_winHeight = 16
+
+" Set 10 ms for refreshing the Source Explorer
+let g:SrcExpl_refreshTime = 10
+
+" In order to Avoid conflicts, the Source Explorer should know what plugins
+" are using buffers. And you need add their bufname into the list below
+" according to the command ":buffers!"
+let g:SrcExpl_pluginList = [
+      \ "_NERD_tree_",
+      \ "Source_Explorer"
+      \ ]
+" Enable/Disable the local definition searching, and note that this is not
+" guaranteed to work, the Source Explorer doesn't check the syntax for now.
+" It only searches for a match with the keyword according to command 'gd'
+let g:SrcExpl_searchLocalDef = 1
+
+" Do not let the Source Explorer update the tags file when opening
+let g:SrcExpl_isUpdateTags = 0
+
+" Use program 'ctags' with argument '--sort=foldcase -R' to create or
+" update a tags file
+let g:SrcExpl_updateTagsCmd = "retag.ksh"
+
+" Set "<F9>" key for updating the tags file artificially
+let g:SrcExpl_updateTagsKey = "<F9>"
+
+"-----------------------------------------------------------------------------
+" SnipMate Settings
+"-----------------------------------------------------------------------------
+"source ~/.vim/snippets/support_functions.vim
+"source ~/.vim/snippets/support_functions_derek.vim
+
+function! ListKnownSnippetLanguageTypes(A, L, P)
+  let filesanddirs = split(globpath(g:snippets_dir, a:A . "*"), "\n")
+  let dirsonly = []
+  for f in filesanddirs
+    if isdirectory(f)
+      let each = split(f, '/')
+      let dirsonly = add(dirsonly, each[-1])
+    end
+  endfor
+  return dirsonly
+endfunction
+
+function! ReloadSnippets(type)
+  call ResetSnippets()
+  if a:type != ""
+    call ExtractSnips(g:snippets_dir . a:type, a:type)
+  else
+    let alltypes = ListKnownSnippetLanguageTypes("", "", "")
+    for type in alltypes
+      call ExtractSnips(g:snippets_dir . type, type)
+    endfor
+  endif
+endfunction
+
+command! -complete=customlist,ListKnownSnippetLanguageTypes
+      \ -nargs=? RS call ReloadSnippets("<args>")
+
+"-----------------------------------------------------------------------------
+" FuzzyFinder Settings
+"-----------------------------------------------------------------------------
+nmap ,fb :FuzzyFinderBuffer<CR>
+nmap ,ff :FuzzyFinderFile<CR>
+nmap ,ft :FuzzyFinderTag<CR>
