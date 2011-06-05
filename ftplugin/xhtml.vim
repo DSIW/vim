@@ -1,1 +1,0 @@
-/home/max/.vim/ftplugin/xml.vim
