@@ -37,3 +37,6 @@
 [submodule "bundle/vim-c"]
 	path = bundle/vim-c
 	url = https://github.com/vim-scripts/c.vim.git
+[submodule "bundle/vim-unicode"]
+	path = bundle/vim-unicode
+	url = https://github.com/chrisbra/unicode.vim.git
