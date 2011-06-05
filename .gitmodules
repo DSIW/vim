@@ -28,3 +28,6 @@
 [submodule "bundle/vim-sudoedit"]
 	path = bundle/vim-sudoedit
 	url = https://github.com/chrisbra/SudoEdit.vim.git
+[submodule "bundle/vim-csv"]
+	path = bundle/vim-csv
+	url = https://github.com/chrisbra/csv.vim.git
