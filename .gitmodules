@@ -22,3 +22,6 @@
 [submodule "bundle/vim-nerdtree"]
 	path = bundle/vim-nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
+[submodule "bundle/vim-showmarks"]
+	path = bundle/vim-showmarks
+	url = https://github.com/garbas/vim-showmarks.git
