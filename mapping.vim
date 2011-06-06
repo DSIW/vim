@@ -17,8 +17,6 @@ map \\ <C-]>
 " don't mess up vim, when inserting with the mouse
 set pastetoggle=<F10>
 
-" Insert last buffer with ^E in insert mode
-imap  pa
 " You are too fast and keep pressing `shift' if you type :w, try following
 ":command! -bang W w<bang>
 command! -bang -bar -nargs=? -complete=file -range=% W <line1>,<line2>w<bang> <args>
