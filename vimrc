@@ -359,6 +359,14 @@ augroup Binary
   au BufWritePost *.bin set nomod | endif
 augroup END
 
+" Source the vimrc file after saving it
+if has("autocmd")
+  autocmd bufwritepost vimrc source $MYVIMRC
+  autocmd bufwritepost mapping source $MYVIMRC
+  autocmd bufwritepost plugin source $MYVIMRC
+  autocmd bufwritepost abrev source $MYVIMRC
+endif
+
 "-----------------------------------------------------------------------------
 " Set up the window colors and size
 "-----------------------------------------------------------------------------
