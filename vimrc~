@@ -113,7 +113,6 @@ set timeout timeoutlen=3000 ttimeoutlen=100
 
 set t_Co=256
 colo xoria256
-colo desert
 " map <F3> :setlocal spell spelllang=de<cr>
 "iunmap ll
 " Softwrap
@@ -366,6 +365,18 @@ if has("autocmd")
   autocmd bufwritepost mapping source $MYVIMRC
   autocmd bufwritepost plugin source $MYVIMRC
   autocmd bufwritepost abrev source $MYVIMRC
+
+  " Syntax of these languages is fussy over tabs Vs spaces
+  autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
+  autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+  
+  " Customisations based on house-style (arbitrary)
+  autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
+  autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
+  autocmd FileType javascript setlocal ts=4 sts=4 sw=4 noexpandtab
+  
+  " Treat .rss files as XML
+  autocmd BufNewFile,BufRead *.rss,*.atom setfiletype xml
 endif
 
 "-----------------------------------------------------------------------------

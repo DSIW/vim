@@ -1,3 +1,13 @@
+if has("autocmd")
+  autocmd bufwritepost plugin source $MYVIMRC
+endif
+
+"-----------------------------------------------------------------------------
+" pathogen
+"-----------------------------------------------------------------------------
+silent! call pathogen#runtime_append_all_bundles()
+silent! call pathogen#helptags()
+
 "-----------------------------------------------------------------------------
 " xptemplate
 "-----------------------------------------------------------------------------
@@ -7,27 +17,15 @@ let g:xptemplate_always_show_pum = 1
 "map <Tab> :Tabnext<cr>
 
 "-----------------------------------------------------------------------------
-" pathogen
-"-----------------------------------------------------------------------------
-silent! call pathogen#runtime_append_all_bundles()
-silent! call pathogen#helptags()
-
-"-----------------------------------------------------------------------------
 " latex-suite
 "-----------------------------------------------------------------------------
-" REQUIRED. This makes vim invoke Latex-Suite when you open a tex file.
-filetype plugin on
 " IMPORTANT: grep will sometimes skip displaying the file name if you
 " search in a singe file. This will confuse Latex-Suite. Set your grep
 " program to always generate a file-name.
 set grepprg=grep\ -nH\ $*
 
-"---------------------------------------------
-" LaTeX - GUI
-"---------------------------------------------
 if has('gui_running')
   set grepprg=grep\ -nH\ $*
-  filetype indent on
   let g:tex_flavor='latex'
 endif
 
@@ -40,10 +38,11 @@ let g:Tex_ViewRule_pdf = 'evince'
 let g:Tex_ViewRule_dvi = 'xdvi -editor "gvim --servername xdvi --remote +\%l \%f" $* &'
 let g:Tex_ViewRuleComplete_dvi = 'xdvi -editor "gvim --servername xdvi --remote +\%l \%f" $* &'
 
-
-
-
-
+let g:Tex_AutoFolding = 1
+let g:Imap_DeleteEmptyPlaceHolders = 1
+"let g:Tex_Leader = ','
+let g:Tex_HotKeyMappings = 'eqnarray*,eqnarray,bmatrix,lstlisting' "<S-F1> through <S-F4>
+"let g:Tex_IgnoredWarnings
 
 "-----------------------------------------------------------------------------
 " tabular
@@ -105,7 +104,7 @@ nnoremap <F5> :GundoToggle<CR>
 "-----------------------------------------------------------------------------
 " ragtag
 "-----------------------------------------------------------------------------
-let g:ragtag_global_maps = 1 
+let g:ragtag_global_maps = 1
 
 "-----------------------------------------------------------------------------
 " plugin taglist.vim : toggle the taglist window
@@ -206,41 +205,18 @@ let g:SrcExpl_updateTagsCmd = "retag.ksh"
 let g:SrcExpl_updateTagsKey = "<F9>"
 
 "-----------------------------------------------------------------------------
-" SnipMate Settings
-"-----------------------------------------------------------------------------
-"source ~/.vim/snippets/support_functions.vim
-"source ~/.vim/snippets/support_functions_derek.vim
-
-function! ListKnownSnippetLanguageTypes(A, L, P)
-  let filesanddirs = split(globpath(g:snippets_dir, a:A . "*"), "\n")
-  let dirsonly = []
-  for f in filesanddirs
-    if isdirectory(f)
-      let each = split(f, '/')
-      let dirsonly = add(dirsonly, each[-1])
-    end
-  endfor
-  return dirsonly
-endfunction
-
-function! ReloadSnippets(type)
-  call ResetSnippets()
-  if a:type != ""
-    call ExtractSnips(g:snippets_dir . a:type, a:type)
-  else
-    let alltypes = ListKnownSnippetLanguageTypes("", "", "")
-    for type in alltypes
-      call ExtractSnips(g:snippets_dir . type, type)
-    endfor
-  endif
-endfunction
-
-command! -complete=customlist,ListKnownSnippetLanguageTypes
-      \ -nargs=? RS call ReloadSnippets("<args>")
-
-"-----------------------------------------------------------------------------
 " FuzzyFinder Settings
 "-----------------------------------------------------------------------------
 nmap ,fb :FuzzyFinderBuffer<CR>
 nmap ,ff :FuzzyFinderFile<CR>
 nmap ,ft :FuzzyFinderTag<CR>
+
+"-----------------------------------------------------------------------------
+" unimpaired
+"-----------------------------------------------------------------------------
+" Bubble single lines
+nmap <C-Up> [e
+nmap <C-Down> ]e
+" Bubble multiple lines
+vmap <C-Up> [egv
+vmap <C-Down> ]egv

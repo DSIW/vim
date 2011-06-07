@@ -122,7 +122,7 @@ set wrap
 set formatprg=par\ -re
 set nolist
 " Shortcut to rapidly toggle `set list`
-nmap <leader>l :set list!<CR>
+"nmap <leader>l :set list!<CR>
 set listchars=tab:▸\
 if &encoding == "utf-8"
 " set listchars=eol:$,trail:·,tab:>>·,extends:>,precedes:<
@@ -359,12 +359,21 @@ augroup Binary
   au BufWritePost *.bin set nomod | endif
 augroup END
 
-" Source the vimrc file after saving it
 if has("autocmd")
+  " Source the vimrc file after saving it
   autocmd bufwritepost vimrc source $MYVIMRC
-  autocmd bufwritepost mapping source $MYVIMRC
-  autocmd bufwritepost plugin source $MYVIMRC
-  autocmd bufwritepost abrev source $MYVIMRC
+
+  " Syntax of these languages is fussy over tabs Vs spaces
+  autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
+  autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+  
+  " Customisations based on house-style (arbitrary)
+  autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
+  autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
+  autocmd FileType javascript setlocal ts=4 sts=4 sw=4 noexpandtab
+  
+  " Treat .rss files as XML
+  autocmd BufNewFile,BufRead *.rss,*.atom setfiletype xml
 endif
 
 "-----------------------------------------------------------------------------

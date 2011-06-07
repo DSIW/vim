@@ -1,3 +1,7 @@
+if has("autocmd")
+  autocmd bufwritepost mapping source $MYVIMRC
+endif
+
 "---------------------------------------------------------
 " Set Mapleader
 "---------------------------------------------------------
@@ -230,3 +234,9 @@ inoremap <C-U> <C-G>u<C-U>
 inoremap <C-W> <C-G>u<C-W>
 inoremap <BS> <C-G>u<BS>
 inoremap <Del> <C-G>u<Del>
+
+"---------------------------------------------------------
+" MY MAPPINGS
+"---------------------------------------------------------
+" Visually select the text that was last edited/pasted
+nmap gV `[v`]

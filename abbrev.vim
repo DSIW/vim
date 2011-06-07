@@ -1,3 +1,7 @@
+if has("autocmd")
+  autocmd bufwritepost abbrev source $MYVIMRC
+endif
+
 "-----------------------------------------------------------------------------
 " Fix constant spelling mistakes
 "-----------------------------------------------------------------------------
