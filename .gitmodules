@@ -64,3 +64,6 @@
 [submodule "bundle/vim-vjde"]
 	path = bundle/vim-vjde
 	url = git://github.com/cespare/vjde.git
+[submodule "bundle/vim-javacomplete"]
+	path = bundle/vim-javacomplete
+	url = git://github.com/vim-scripts/javacomplete.git
