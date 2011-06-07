@@ -220,3 +220,16 @@ nmap <C-Down> ]e
 " Bubble multiple lines
 vmap <C-Up> [egv
 vmap <C-Down> ]egv
+
+"-----------------------------------------------------------------------------
+" Tlist
+"-----------------------------------------------------------------------------
+let Tlist_Ctags_Cmd = "/usr/bin/ctags"
+let Tlist_GainFocus_On_ToggleOpen = 1
+let Tlist_Close_On_Select = 1
+
+"-----------------------------------------------------------------------------
+" jcommenter
+"-----------------------------------------------------------------------------
+autocmd FileType java source $VIM/macros/jcommenter.vim
+autocmd FileType java map <M-c> :call JCommentWriter()<CR>  " Alt-C

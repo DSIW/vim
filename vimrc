@@ -66,13 +66,8 @@ if !exists(":DiffOrig")
         \ | wincmd p | diffthis
 endif
 
-
 " Set linenumbers
 set nu
-
-let Tlist_Ctags_Cmd = "/usr/bin/ctags"
-let Tlist_GainFocus_On_ToggleOpen = 1
-let Tlist_Close_On_Select = 1
 
 " console vim has usually a dark background,
 " while in gvim I usually use a light background
@@ -122,20 +117,12 @@ set wrap
 set formatprg=par\ -re
 set nolist
 " Shortcut to rapidly toggle `set list`
-"nmap <leader>l :set list!<CR>
-set listchars=tab:▸\
-if &encoding == "utf-8"
-" set listchars=eol:$,trail:·,tab:>>·,extends:>,precedes:<
-"set listchars=eol:$,trail:-,tab:>-,extends:>,precedes:<,conceal:+
-     exec "set listchars=nbsp:\u2423,conceal:\u22ef,tab:\u2595\u2014,trail:\u02d1,precedes:\u2026,extends:\u2026"
-else
-" Special characters that will be shown, when set list is on
-    set listchars=eol:$,trail:-,tab:>-,extends:>,precedes:<,conceal:+
-endif
-" set listchars+=eog:$ "¬
-"Invisible character colors 
-highlight NonText guifg=#4a4a59
-highlight SpecialKey guifg=#4a4a59
+nmap _l :set list!<CR>
+set listchars=tab:▸\   "eol:¬
+"Invisible character colors
+"highlight SpecialKey ctermfg=5
+"highlight NonText guifg=#4a4a59
+"highlight SpecialKey guifg=#4a4a59
 set showbreak=
 
 " Set shell
@@ -242,7 +229,7 @@ set showcmd
 set showmode
 
 " Turn on: showmatching brackets
-set showmatch 
+set showmatch
 
 " Switch on syntax highlighting.
 syntax on
@@ -366,12 +353,12 @@ if has("autocmd")
   " Syntax of these languages is fussy over tabs Vs spaces
   autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
   autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
-  
+
   " Customisations based on house-style (arbitrary)
   autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
   autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
   autocmd FileType javascript setlocal ts=4 sts=4 sw=4 noexpandtab
-  
+
   " Treat .rss files as XML
   autocmd BufNewFile,BufRead *.rss,*.atom setfiletype xml
 endif
@@ -403,3 +390,4 @@ source ~/.vim/plugin.vim
 source ~/.vim/functions.vim
 " vimspell: http://www.vim.org/scripts/script.php?script_id=465
 source ~/.vim/abbrev.vim
+source ~/.vim/private.vim " Private Daten
