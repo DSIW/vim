@@ -34,3 +34,5 @@ iab seperate  separate
 iab Seperate  Separate
 iab fone      phone
 iab Fone      Phone
+
+iab Plugin    Plug-in
