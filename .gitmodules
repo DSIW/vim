@@ -67,3 +67,6 @@
 [submodule "bundle/vim-javacomplete"]
 	path = bundle/vim-javacomplete
 	url = git://github.com/vim-scripts/javacomplete.git
+[submodule "bundle/vim-showpairs"]
+	path = bundle/vim-showpairs
+	url = git://github.com/vim-scripts/ShowPairs.git
