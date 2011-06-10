@@ -70,3 +70,9 @@
 [submodule "bundle/vim-showpairs"]
 	path = bundle/vim-showpairs
 	url = git://github.com/vim-scripts/ShowPairs.git
+[submodule "bundle/vim-xmlfolding"]
+	path = bundle/vim-xmlfolding
+	url = git://github.com/fifigyuri/vim-xmlfolding.git
+[submodule "bundle/vim-taskpaper"]
+	path = bundle/vim-taskpaper
+	url = git://github.com/davidoc/taskpaper.vim.git

@@ -28,3 +28,24 @@ function! RunSystemCall(systemcall)
   let output = substitute(output, "\n", '', 'g')
   return output
 endfunction
+
+"-----------------------------------------------------------------------------
+" Set up spell function
+"-----------------------------------------------------------------------------
+
+let g:myLang = 0
+let g:myLangList = [ "Off", "german", "english", "german & english" ]
+function! ChangeSpellLang()
+  if g:myLang == 0 | set nospell | endif
+  if g:myLang == 1 | setlocal spell spelllang=de | endif
+  if g:myLang == 2 | setlocal spell spelllang=en_us | endif
+  if g:myLang == 3 | setlocal spell spelllang=de,en_us | endif
+  echo "language:" g:myLangList[g:myLang]
+  let g:myLang = g:myLang + 1
+  if g:myLang >= len(g:myLangList) | let g:myLang = 0 | endif
+endfunction
+map <F12> :call ChangeSpellLang()<CR>
+"format the bad spelled words
+hi SpellBad ctermbg=52 ctermfg=9
+"set spell suggestion to 8
+set spellsuggest=8

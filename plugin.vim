@@ -233,3 +233,13 @@ let Tlist_Close_On_Select = 1
 "-----------------------------------------------------------------------------
 autocmd FileType java source $VIM/macros/jcommenter.vim
 autocmd FileType java map <M-c> :call JCommentWriter()<CR>  " Alt-C
+
+"-----------------------------------------------------------------------------
+" ShowPairs
+"-----------------------------------------------------------------------------
+highlight ShowPairsHLp ctermfg=black ctermbg=white
+
+"-----------------------------------------------------------------------------
+" XMLFolding
+"-----------------------------------------------------------------------------
+au BufNewFile,BufRead *.xml,*.htm,*.html so ~/.vim/bundle/vim-xmlfolding/plugin/XMLFolding.vim

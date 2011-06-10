@@ -76,7 +76,7 @@ set formatprg=par\ -re
 set nolist
 " Shortcut to rapidly toggle `set list`
 nmap _l :set list!<CR>
-set listchars=tab:▸\,trail:' "eol:¬
+set listchars=tab:▸\  ",trail:' "eol:¬
 "Invisible character colors
 "highlight SpecialKey ctermfg=5
 "highlight NonText guifg=#4a4a59
@@ -85,7 +85,7 @@ set showbreak=
 :highlight EOLWhitespace ctermbg=darkgray
 :match EOLWhitespace /\s\+$/
 
-"match @Author oder @author
+"match @Author oder @author   
 :highlight author ctermbg=black ctermfg=blue
 :match author /\(@[aA]uth\?or: \?\)\@<=[^ ].\+/
 
@@ -102,7 +102,7 @@ highlight MatchParen term=reverse ctermbg=7 guibg=cornsilk
 " Hardwrap
 set textwidth=0
 set wrapmargin=5
-set formatoptions= "ta
+set formatoptions=ta
 
 "-----------------------------------------------------------------------------
 " Global Stuff from Derek
@@ -335,27 +335,6 @@ if has("gui_running")
   endif
 endif
 :nohls
-
-"-----------------------------------------------------------------------------
-" Set up spell function
-"-----------------------------------------------------------------------------
-
-let g:myLang = 0
-let g:myLangList = [ "Off", "german", "english", "german & english" ]
-function! ChangeSpellLang()
-  if g:myLang == 0 | set nospell | endif
-  if g:myLang == 1 | setlocal spell spelllang=de | endif
-  if g:myLang == 2 | setlocal spell spelllang=en_us | endif
-  if g:myLang == 3 | setlocal spell spelllang=de,en_us | endif
-  echo "language:" g:myLangList[g:myLang]
-  let g:myLang = g:myLang + 1
-  if g:myLang >= len(g:myLangList) | let g:myLang = 0 | endif
-endfunction
-map <F9> :call ChangeSpellLang()<CR>
-"format the bad spelled words
-hi SpellBad ctermbg=52 ctermfg=9
-"set spell suggestion to 8
-set spellsuggest=8
 
 "-----------------------------------------------------------------------------
 " Insert external vim sources

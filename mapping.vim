@@ -240,3 +240,7 @@ inoremap <Del> <C-G>u<Del>
 "---------------------------------------------------------
 " Visually select the text that was last edited/pasted
 nmap gV `[v`]
+"fold a method/function
+nmap ,zm /}<CR>zf%<ESC>:nohlsearch<CR>
+"change text in "" to the copied text
+nmap ,c" vi"d"+P
