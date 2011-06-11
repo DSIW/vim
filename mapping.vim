@@ -244,3 +244,7 @@ nmap gV `[v`]
 nmap ,zm /}<CR>zf%<ESC>:nohlsearch<CR>
 "change text in "" to the copied text
 nmap ,c" vi"d"+P
+"set hardwrapping
+nmap ,wh set fo=at
+"set softwrapping
+nmap ,ws set fo=

@@ -102,7 +102,7 @@ highlight MatchParen term=reverse ctermbg=7 guibg=cornsilk
 " Hardwrap
 set textwidth=0
 set wrapmargin=5
-set formatoptions=ta
+set formatoptions= "ta
 
 "-----------------------------------------------------------------------------
 " Global Stuff from Derek

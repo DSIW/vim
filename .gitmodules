@@ -76,3 +76,6 @@
 [submodule "bundle/vim-taskpaper"]
 	path = bundle/vim-taskpaper
 	url = git://github.com/davidoc/taskpaper.vim.git
+[submodule "bundle/eclim"]
+	path = bundle/eclim
+	url = git://github.com/ervandew/eclim.git
