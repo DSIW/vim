@@ -7,6 +7,7 @@
 XPTemplate priority=personal
 
 
-XPTvar $author       Maximilian Luz
-XPTvar $email        studium@mluz.de
+XPTvar $author       author
+XPTvar $email        author@domain.com
 
+XPTvar $SParg      ''

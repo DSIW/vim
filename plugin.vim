@@ -16,33 +16,72 @@ let g:xptemplate_always_show_pum = 1
 ":command -range=% SendDB :<line1>,<line2>w !mysql -udb11sa23 -pz51f8f4ca p001 -t
 "map <Tab> :Tabnext<cr>
 
+" Set personal snippet folder location:
+let g:xptemplate_snippet_folders=['$HOME/.vim/bundle/vim-xpt/personal']
+"
+" Turn off automatic closing of quotes and braces:
+let g:xptemplate_brace_complete = 0
+"
+" Snippet triggering key:
+"let g:xptemplate_key = '<F1>'
+"
+" Open the pop-up menu:
+let g:xptemplate_key_pum_only = '<Leader><Tab>'
+"
+" Clear current placeholder and jump to the next:
+imap <C-d> <Tab>
+let g:xptemplate_nav_cancel = '<C-d>'
+"
+" Move to the next placeholder in a snippet:
+let g:xptemplate_nav_next = '<Tab>'
+"
+" Go to the end of the current placeholder and in to insert mode:
+"
+" <C-_> is actually CONTROL-/ on my keyboard.
+"let g:xptemplate_to_right = '<C-\>'
+"
+" Move cursor back to last placeholder:
+let g:xptemplate_goback = '<C-g>'
+"
+" Use TAB/S-TAB to navigate through the pop-up menu:
+let g:xptemplate_pum_tab_nav = 1
+"
+" Reload xptemplate snippets without quitting vim.
+"nmap <A-F1> :XPTreload<CR>
+
 "-----------------------------------------------------------------------------
 " latex-suite
 "-----------------------------------------------------------------------------
-" IMPORTANT: grep will sometimes skip displaying the file name if you
-" search in a singe file. This will confuse Latex-Suite. Set your grep
-" program to always generate a file-name.
-set grepprg=grep\ -nH\ $*
+"" IMPORTANT: grep will sometimes skip displaying the file name if you
+"" search in a singe file. This will confuse Latex-Suite. Set your grep
+"" program to always generate a file-name.
+"set grepprg=grep\ -nH\ $*
 
-if has('gui_running')
-  set grepprg=grep\ -nH\ $*
-  let g:tex_flavor='latex'
-endif
+"if has('gui_running')
+  "set grepprg=grep\ -nH\ $*
+  "let g:tex_flavor='latex'
+"endif
 
-au BufEnter *.tex set autowrite
-let g:Tex_DefaultTargetFormat = 'pdf'
-let g:Tex_MultipleCompileFormats = 'pdf'
-let g:Tex_CompileRule_pdf = 'pdflatex -interaction=nonstopmode $*'
-let g:Tex_GotoError = 0
-let g:Tex_ViewRule_pdf = 'evince'
-let g:Tex_ViewRule_dvi = 'xdvi -editor "gvim --servername xdvi --remote +\%l \%f" $* &'
-let g:Tex_ViewRuleComplete_dvi = 'xdvi -editor "gvim --servername xdvi --remote +\%l \%f" $* &'
+"au BufEnter *.tex set autowrite
+"let g:Tex_DefaultTargetFormat = 'pdf'
+"let g:Tex_MultipleCompileFormats = 'pdf'
+"let g:Tex_CompileRule_pdf = 'pdflatex -interaction=nonstopmode $*'
+"let g:Tex_GotoError = 0
+"let g:Tex_ViewRule_pdf = 'evince'
+"let g:Tex_ViewRule_dvi = 'xdvi -editor "gvim --servername xdvi --remote +\%l \%f" $* &'
+"let g:Tex_ViewRuleComplete_dvi = 'xdvi -editor "gvim --servername xdvi --remote +\%l \%f" $* &'
 
-let g:Tex_AutoFolding = 1
-let g:Imap_DeleteEmptyPlaceHolders = 1
-"let g:Tex_Leader = ','
-let g:Tex_HotKeyMappings = 'eqnarray*,eqnarray,bmatrix,lstlisting' "<S-F1> through <S-F4>
-"let g:Tex_IgnoredWarnings
+"let g:Tex_AutoFolding = 1
+"let g:Imap_DeleteEmptyPlaceHolders = 1
+""let g:Tex_Leader = ','
+"let g:Tex_HotKeyMappings = 'eqnarray*,eqnarray,bmatrix,lstlisting' "<S-F1> through <S-F4>
+""let g:Tex_IgnoredWarnings
+
+"-----------------------------------------------------------------------------
+" ATP
+"-----------------------------------------------------------------------------
+nmap :makelatex :MakeLatex
+nmap :viewoutput :ViewOutput
 
 "-----------------------------------------------------------------------------
 " tabular
@@ -72,9 +111,9 @@ endfunction
 "-----------------------------------------------------------------------------
 " configure tags - add additional tags here or comment out not-used ones
 set tags+=~/.vim/tags/cpp
-set tags+=~/.vim/tags/gl
-set tags+=~/.vim/tags/sdl
-set tags+=~/.vim/tags/qt4
+"set tags+=~/.vim/tags/gl
+"set tags+=~/.vim/tags/sdl
+"set tags+=~/.vim/tags/qt4
 " build tags of your own project with Ctrl-F12
 map <F8> :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 
@@ -99,7 +138,7 @@ au BufNewFile,BufRead *.chklst setf chklst
 "-----------------------------------------------------------------------------
 " gundo
 "-----------------------------------------------------------------------------
-nnoremap <F5> :GundoToggle<CR>
+nnoremap ,g :GundoToggle<CR>
 
 "-----------------------------------------------------------------------------
 " ragtag
@@ -108,11 +147,17 @@ let g:ragtag_global_maps = 1
 
 "-----------------------------------------------------------------------------
 " plugin taglist.vim : toggle the taglist window
-" "-----------------------------------------------------------------------------
+"-----------------------------------------------------------------------------
 if exists(":TlistToggle")
   noremap <silent> <F6> :TlistToggle<CR>
   inoremap <silent> <F6> <C-C>:TlistToggle<CR>
 endif
+
+"-----------------------------------------------------------------------------
+" lusty-juggler
+" http://www.vim.org/scripts/script.php?script_id=2050
+"-----------------------------------------------------------------------------
+"nmap <silent> <Leader>b :LustyJuggler<CR>
 
 "-----------------------------------------------------------------------------
 " FSwitch Settings
@@ -149,12 +194,12 @@ let NERDTreeIgnore=[ '\.ncb$', '\.suo$', '\.vcproj\.RIMNET', '\.obj$',
       \ '\.intermediate\.manifest$', '^mt.dep$' ]
 
 " Allows to comment lines in different languages
-" Comment current line
-nmap ,co ,cc
-" uncoment current line
-nmap ,uco ,cu
-" toggle comment current line
-nmap ,tco ,c<space>
+""Comment current line
+"nmap ,co ,cc
+""uncoment current line
+"nmap ,uco ,cu
+""toggle comment current line
+"nmap ,tco ,c<space>
 " Do not yiel about unknown filetypes.
 let NERDShutUp=1
 
@@ -162,13 +207,18 @@ let NERDShutUp=1
 " MiniBufExplorer Plugin Settings
 "-----------------------------------------------------------------------------
 " Yup, I don't like this one either
-let loaded_minibufexplorer = 1
+"let loaded_minibufexplorer = 1
+let g:miniBufExplMapWindowNavVim = 1
+let g:miniBufExplMapCTabSwitchBufs = 1
+let g:miniBufExplModSelTarget = 1 
+let g:miniBufExplMapWindowNavArrows = 1
 
 "-----------------------------------------------------------------------------
 " ShowMarks Plugin Stuff
 "-----------------------------------------------------------------------------
 " I don't think I like this
-let g:loaded_showmarks = 1
+"let g:loaded_showmarks = 1
+let g:showmarks_enable = 0
 
 "-----------------------------------------------------------------------------
 " Source Explorer Plugin Settings
@@ -207,9 +257,9 @@ let g:SrcExpl_updateTagsKey = "<F9>"
 "-----------------------------------------------------------------------------
 " FuzzyFinder Settings
 "-----------------------------------------------------------------------------
-nmap ,fb :FuzzyFinderBuffer<CR>
-nmap ,ff :FuzzyFinderFile<CR>
-nmap ,ft :FuzzyFinderTag<CR>
+"nmap ,fb :FuzzyFinderBuffer<CR>
+"nmap ,ff :FuzzyFinderFile<CR>
+"nmap ,ft :FuzzyFinderTag<CR>
 
 "-----------------------------------------------------------------------------
 " unimpaired
@@ -224,22 +274,34 @@ vmap <C-Down> ]egv
 "-----------------------------------------------------------------------------
 " Tlist
 "-----------------------------------------------------------------------------
-let Tlist_Ctags_Cmd = "/usr/bin/ctags"
+let Tlist_Ctags_Cmd = "/usr/bin/ctags" " The packge 'ctags' have to be installed!
 let Tlist_GainFocus_On_ToggleOpen = 1
 let Tlist_Close_On_Select = 1
 
 "-----------------------------------------------------------------------------
 " jcommenter
 "-----------------------------------------------------------------------------
-autocmd FileType java source $VIM/macros/jcommenter.vim
+"autocmd FileType java source $VIM/macros/jcommenter.vim
 autocmd FileType java map <M-c> :call JCommentWriter()<CR>  " Alt-C
 
 "-----------------------------------------------------------------------------
 " ShowPairs
 "-----------------------------------------------------------------------------
 highlight ShowPairsHLp ctermfg=black ctermbg=white
+let g:showpairs_enable = 1
+let g:showpairs_pairs = "(:),{:},[:]"
 
 "-----------------------------------------------------------------------------
 " XMLFolding
 "-----------------------------------------------------------------------------
 au BufNewFile,BufRead *.xml,*.htm,*.html so ~/.vim/bundle/vim-xmlfolding/plugin/XMLFolding.vim
+
+"-----------------------------------------------------------------------------
+" py-flakes
+"-----------------------------------------------------------------------------
+let g:pyflakes_use_quickfix = 0 " No quickfix window
+
+"-----------------------------------------------------------------------------
+" SuperTab
+"-----------------------------------------------------------------------------
+let g:SuperTabDefaultCompletionType = "context"

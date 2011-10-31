@@ -21,8 +21,11 @@ if has("multi_byte")
   set fileencodings=ucs-bom,utf-8,latin9
 endif
 
+" sets line end to UNIX
+set ff=unix " ff=dos
+
 " Set shell
-set sh=bash
+set sh=zsh
 
 " This must be first, because it changes other options as a side effect.
 set nocompatible
@@ -67,6 +70,14 @@ endif
 set t_Co=256
 colo xoria256
 
+set autowrite    " e.g. before :make
+
+"set autochdir    " auto change dir of file
+
+set cin         " C code ident
+
+set autoread
+
 " Softwrap
 set linebreak
 set wrap
@@ -74,8 +85,6 @@ set wrap
 " Format text width the external programm "par". Use "gq" for the external program; or use "gw" for internal program of vim
 set formatprg=par\ -re
 set nolist
-" Shortcut to rapidly toggle `set list`
-nmap _l :set list!<CR>
 set listchars=tab:▸\  ",trail:' "eol:¬
 "Invisible character colors
 "highlight SpecialKey ctermfg=5
@@ -90,9 +99,9 @@ set showbreak=
 :match author /\(@[aA]uth\?or: \?\)\@<=[^ ].\+/
 
 " Matching of IP-Addresses Highlight in yellow
-highlight ipaddr term=bold ctermfg=yellow guifg=yellow
+"highlight ipaddr term=bold ctermfg=yellow guifg=yellow
 " highlight ipaddr ctermbg=green guibg=green
-match ipaddr /\(\(25\_[0-5]\|2\_[0-4]\_[0-9]\|\_[01]\?\_[0-9]\_[0-9]\?\)\.\)\{3\}\(25\_[0-5]\|2\_[0-4]\_[0-9]\|\_[01]\?\_[0-9]\_[0-9]\?\)/
+"match ipaddr /\(\(25\_[0-5]\|2\_[0-4]\_[0-9]\|\_[01]\?\_[0-9]\_[0-9]\?\)\.\)\{3\}\(25\_[0-5]\|2\_[0-4]\_[0-9]\|\_[01]\?\_[0-9]\_[0-9]\?\)/
 
 " highlight matching parens:
 " Default for matchpairs: (:),[:],{:},<:>
@@ -188,16 +197,6 @@ syntax on
 " Hide the mouse pointer while typing
 set mousehide
 
-" Set up the gui cursor to look nice
-set guicursor=n-v-c:block-Cursor-blinkon0
-set guicursor+=ve:ver35-Cursor
-set guicursor+=o:hor50-Cursor
-set guicursor+=i-ci:ver25-Cursor
-set guicursor+=r-cr:hor20-Cursor
-set guicursor+=sm:block-Cursor-blinkwait175-blinkoff150-blinkon175
-
-" set the gui options the way I like
-set guioptions=ac
 
 " This is the timeout used while waiting for user input on a multi-keyed macro
 " or while just sitting and waiting for another key to be pressed measured
@@ -210,7 +209,7 @@ set guioptions=ac
 "set timeoutlen=500
 " Tweak timeouts, because the default is too conservative
 " This setting is taken from :h 'ttimeoutlen'
-set timeout timeoutlen=3000 ttimeoutlen=100
+set timeout timeoutlen=1000 ttimeoutlen=100
 
 " Keep some stuff in the history
 set history=100
@@ -220,7 +219,7 @@ set foldopen=block,insert,jump,mark,percent,quickfix,search,tag,undo
 "set foldmethod=syntax " folding by syntax
 set foldclose=all " if curser out of fold, then close
 set foldcolumn=2 " set the column of the left side
-set foldenable " folding is enabled
+set nofoldenable " folding isn't enabled
 
 " When the page starts to scroll, keep the cursor 8 lines from the top and 8
 " lines from the bottom
@@ -266,7 +265,7 @@ set incsearch
 set path=
 set path+=/usr/local/include/**
 set path+=/usr/include/**
-set path+=~/code/**
+set path+=~/sys/bin/**
 
 " Set the tags files to be the following
 set tags=./tags,tags
@@ -300,6 +299,11 @@ augroup Binary
   au BufWritePost *.bin set nomod | endif
 augroup END
 
+augroup Python
+  au!
+  au FileType python set omnifunc=pythoncomplete#Complete
+augroup END
+
 if has("autocmd")
   " Source the vimrc file after saving it
   autocmd bufwritepost vimrc source $MYVIMRC
@@ -312,9 +316,14 @@ if has("autocmd")
   autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
   autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
   autocmd FileType javascript setlocal ts=4 sts=4 sw=4 noexpandtab
+  autocmd FileType python setlocal ts=2 sts=2 sw=2 expandtab
 
   " Treat .rss files as XML
-  autocmd BufNewFile,BufRead *.rss,*.atom setfiletype xml
+  autocmd BufNewFile,BufRead *.rss,*.atom set filetype=xml
+  autocmd BufNewFile,BufRead *.wrl,*.WRL source $VIM/syntax/vrml.vim
+	autocmd BufNewFile,BufRead *.asm,*.ASM,*.s,*.S source $VIM/syntax/gasm.vim
+  "autocmd BufNewFile,BufRead *.asm,*.ASM,*.s,*.S set filetype=gasm
+  "autocmd BufNewFile,BufRead *.asm,*.ASM,*.s,*.S source $VIM/syntax/asmx86.VIM
 endif
 
 "-----------------------------------------------------------------------------

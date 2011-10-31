@@ -8,6 +8,13 @@ endif
 let mapleader=","
 
 "---------------------------------------------------------
+" Deactivate the help dialoge
+"---------------------------------------------------------
+inoremap <F1> <ESC>
+nnoremap <F1> <ESC>
+vnoremap <F1> <ESC>
+
+"---------------------------------------------------------
 " Useful mappings
 "---------------------------------------------------------
 " Fold all regions except the visually selected one:
@@ -103,6 +110,10 @@ noremap <silent> ,h :wincmd h<CR>
 noremap <silent> ,j :wincmd j<CR>
 noremap <silent> ,k :wincmd k<CR>
 noremap <silent> ,l :wincmd l<CR>
+noremap <silent> <M-h> :wincmd h<CR>
+noremap <silent> <M-j> :wincmd j<CR>
+noremap <silent> <M-k> :wincmd k<CR>
+noremap <silent> <M-l> :wincmd l<CR>
 noremap <silent> ,= :wincmd =<CR>
 noremap <silent> ,sb :wincmd p<CR>
 noremap <silent> <C-F9>  :vertical resize -10<CR>
@@ -143,8 +154,8 @@ vmap <C-0> g0
 vmap <C-4> g$
 
 " Copy & Paste
-vmap <C-c> "+y
-nmap <C-p> "+p
+"vmap <C-c> "+y
+"nmap <C-p> "+p
 
 " Disable Arrow-Keys
 " noremap  <Up> ""
@@ -202,6 +213,9 @@ noremap <silent> ,bd :bd<CR>
 nmap <silent> <C-o> 10zl
 nmap <silent> <C-i> 10zh
 
+" Shortcut to rapidly toggle `set list`
+nmap _l :set list!<CR>
+
 " Highlight all instances of the current word under the cursor
 nmap <silent> ^ :setl hls<CR>:let @/="<C-r><C-w>"<CR>
 
@@ -248,3 +262,14 @@ nmap ,c" vi"d"+P
 nmap ,wh set fo=at
 "set softwrapping
 nmap ,ws set fo=
+
+"---------------------------------------------------------
+" Python
+"---------------------------------------------------------
+let g:pep8_map='<leader>8'
+autocmd FileType python map <F5> :w<CR>:!python "%"<CR>
+
+"---------------------------------------------------------
+" C/C++
+"---------------------------------------------------------
+nmap ,m :make<CR>

@@ -4,24 +4,23 @@ endif
 
 " delete whitespaces in the end of a line
 " Only do this part when compiles with support for autocommands"
-if(has("autocmd"))
-  autocmd BufWritePre *.py *.js :call <SID>StripTrailingWhitespaces()
-endif
+"if(has("autocmd"))
+  "autocmd BufWritePre *.py *.js :call <SID>StripTrailingWhitespaces()
+"endif
 
 
-function! <SID>StripTrailingWhitespaces()
-  " Preparation: save last search, and cursor position.
-  let _s=@/
-  let l = line(".")
-  let c = col(".")
-  " Do the business:
-  %s/\s\+$//e
-  " Clean up: restore previous search history, and cursor position
-  let @/=_s
-  call cursor(l, c)
-endfunction
-nmap _$ :call <SID>StripTrailingWhitespaces()<CR>
-
+" Clean all end of line extra whitespace with ,S
+" Credit: voyeg3r https://github.com/mitechie/pyvim/issues/#issue/1
+" deletes excess space but maintains the list of jumps unchanged
+" for more details see: h keepjumps
+fun! CleanExtraSpaces()
+    let save_cursor = getpos(".")
+    let old_query = getreg('/')
+    :%s/\s\+$//e
+    call setpos('.', save_cursor)
+    call setreg('/', old_query)
+endfun
+nmap <silent> <leader>S <esc>:keepjumps call CleanExtraSpaces()<cr>
 
 function! RunSystemCall(systemcall)
   let output = system(a:systemcall)
@@ -49,3 +48,19 @@ map <F12> :call ChangeSpellLang()<CR>
 hi SpellBad ctermbg=52 ctermfg=9
 "set spell suggestion to 8
 set spellsuggest=8
+
+"-----------------------------------------------------------------------------
+" Periodically save of the current buffer
+"-----------------------------------------------------------------------------
+"au BufRead,BufNewFile * let b:start_time=localtime()
+"au BufWrite * let b:start_time=localtime()
+"au CursorHold * call UpdateFile()
+"" only write if needed and update the start time after the save
+"function! UpdateFile()
+  "if ((localtime() - b:start_time) >= 60)
+    "update
+    "let b:start_time=localtime()
+  "else
+    "echo "Only " . (localtime() - b:start_time) . " seconds have elapsed so far."
+  "endif
+"endfunction
