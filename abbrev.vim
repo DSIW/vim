@@ -36,9 +36,6 @@ iab fone      phone
 iab Fone      Phone
 
 iab Plugin    Plug-in
-iab vim       VIM
-iab Vim       VIM
-
 
 "-----------------------------------------------------------------------------
 " python support

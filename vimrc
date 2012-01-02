@@ -320,8 +320,14 @@ if has("autocmd")
 
   " Treat .rss files as XML
   autocmd BufNewFile,BufRead *.rss,*.atom set filetype=xml
-  autocmd BufNewFile,BufRead *.wrl,*.WRL source $VIM/syntax/vrml.vim
+  "autocmd BufNewFile,BufRead *.wrl,*.WRL source $VIM/syntax/vrml.vim
 	autocmd BufNewFile,BufRead *.asm,*.ASM,*.s,*.S source $VIM/syntax/gasm.vim
+	autocmd BufNewFile,BufRead *.mail set filetype=mail
+	autocmd BufNewFile,BufRead *.coffee set filetype=coffee
+	autocmd BufNewFile,BufRead ~/.mutt/* set filetype=muttrc
+	autocmd BufNewFile,BufRead *msmtp* set filetype=msmtp
+	autocmd BufNewFile,BufRead *.ldif set filetype=ldif
+	autocmd BufWritePost *.c :make
   "autocmd BufNewFile,BufRead *.asm,*.ASM,*.s,*.S set filetype=gasm
   "autocmd BufNewFile,BufRead *.asm,*.ASM,*.s,*.S source $VIM/syntax/asmx86.VIM
 endif

@@ -50,6 +50,13 @@ let g:xptemplate_pum_tab_nav = 1
 "nmap <A-F1> :XPTreload<CR>
 
 "-----------------------------------------------------------------------------
+" EasyGrep
+"-----------------------------------------------------------------------------
+
+let g:EasyGrepMode=1
+let g:EasyGrepWindow=1
+
+"-----------------------------------------------------------------------------
 " latex-suite
 "-----------------------------------------------------------------------------
 "" IMPORTANT: grep will sometimes skip displaying the file name if you
@@ -80,8 +87,10 @@ let g:xptemplate_pum_tab_nav = 1
 "-----------------------------------------------------------------------------
 " ATP
 "-----------------------------------------------------------------------------
-nmap :makelatex :MakeLatex
-nmap :viewoutput :ViewOutput
+"nmap :makelatex :MakeLatex
+"nmap :viewoutput :ViewOutput
+let g:atp_Python = "/usr/bin/python2"
+let b:atp_Viewer = "evince"
 
 "-----------------------------------------------------------------------------
 " tabular
@@ -117,7 +126,6 @@ set tags+=~/.vim/tags/cpp
 " build tags of your own project with Ctrl-F12
 map <F8> :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 
-" OmniCppComplete
 let OmniCpp_NamespaceSearch = 1
 let OmniCpp_GlobalScopeSearch = 1
 let OmniCpp_ShowAccess = 1
@@ -221,6 +229,13 @@ let g:miniBufExplMapWindowNavArrows = 1
 let g:showmarks_enable = 0
 
 "-----------------------------------------------------------------------------
+" ShowPairs
+"-----------------------------------------------------------------------------
+highlight ShowPairsHLp ctermfg=black ctermbg=white
+let g:showpairs_enable = 0
+let g:showpairs_pairs = "(:),{:},[:]"
+
+"-----------------------------------------------------------------------------
 " Source Explorer Plugin Settings
 "-----------------------------------------------------------------------------
 " The switch of the Source Explorer
@@ -283,13 +298,6 @@ let Tlist_Close_On_Select = 1
 "-----------------------------------------------------------------------------
 "autocmd FileType java source $VIM/macros/jcommenter.vim
 autocmd FileType java map <M-c> :call JCommentWriter()<CR>  " Alt-C
-
-"-----------------------------------------------------------------------------
-" ShowPairs
-"-----------------------------------------------------------------------------
-highlight ShowPairsHLp ctermfg=black ctermbg=white
-let g:showpairs_enable = 1
-let g:showpairs_pairs = "(:),{:},[:]"
 
 "-----------------------------------------------------------------------------
 " XMLFolding
