@@ -26,7 +26,7 @@ nmap <F7> :call ToggleFoldByCurrentSearchPattern()<CR>
 map \\ <C-]>
 
 " don't mess up vim, when inserting with the mouse
-set pastetoggle=<F10>
+"set pastetoggle=<F10>
 
 " You are too fast and keep pressing `shift' if you type :w, try following
 ":command! -bang W w<bang>
@@ -101,19 +101,15 @@ endif
 "---------------------------------------------------------
 "---------------------------------------------------------
 
-
 "---------------------------------------------------------
 " WINDOWS
 " Maps to make handling windows a bit easier
+"
 "---------------------------------------------------------
-noremap <silent> ,h :wincmd h<CR>
-noremap <silent> ,j :wincmd j<CR>
-noremap <silent> ,k :wincmd k<CR>
-noremap <silent> ,l :wincmd l<CR>
-noremap <silent> <M-h> :wincmd h<CR>
-noremap <silent> <M-j> :wincmd j<CR>
-noremap <silent> <M-k> :wincmd k<CR>
-noremap <silent> <M-l> :wincmd l<CR>
+noremap <silent> <C-h> :wincmd h<CR>
+noremap <silent> <C-j> :wincmd j<CR>
+noremap <silent> <C-k> :wincmd k<CR>
+noremap <silent> <C-l> :wincmd l<CR>
 noremap <silent> ,= :wincmd =<CR>
 noremap <silent> ,sb :wincmd p<CR>
 noremap <silent> <C-F9>  :vertical resize -10<CR>
@@ -127,10 +123,10 @@ noremap <silent> ,ch :wincmd h<CR>:close<CR>
 noremap <silent> ,cl :wincmd l<CR>:close<CR>
 noremap <silent> ,cc :close<CR>
 noremap <silent> ,cw :cclose<CR>
-noremap <silent> ,ml <C-W>L
-noremap <silent> ,mk <C-W>K
-noremap <silent> ,mh <C-W>H
-noremap <silent> ,mj <C-W>J
+"noremap <silent> ,ml <C-W>L
+"noremap <silent> ,mk <C-W>K
+"noremap <silent> ,mh <C-W>H
+"noremap <silent> ,mj <C-W>J
 noremap <silent> <C-7> <C-W>>
 noremap <silent> <C-8> <C-W>+
 noremap <silent> <C-9> <C-W>+
@@ -144,12 +140,12 @@ nmap <silent> ,ev :e $MYVIMRC<CR>
 nmap <silent> ,sv :so $MYVIMRC<CR>
 
 " Motions"
-nmap <C-j> gj
-nmap <C-k> gk
+"nmap <C-j> gj
+"nmap <C-k> gk
 nmap <C-0> g0
 nmap <C-4> g$
-vmap <C-j> gj
-vmap <C-k> gk
+"vmap <C-j> gj
+"vmap <C-k> gk
 vmap <C-0> g0
 vmap <C-4> g$
 
@@ -262,6 +258,8 @@ nmap ,c" vi"d"+P
 nmap ,wh set fo=at
 "set softwrapping
 nmap ,ws set fo=
+" Split line(opposite to S-J joining line)
+nnoremap <M-J> gEa<CR><ESC>ew
 
 "---------------------------------------------------------
 " Python
@@ -272,4 +270,4 @@ autocmd FileType python map <F5> :w<CR>:!python "%"<CR>
 "---------------------------------------------------------
 " C/C++
 "---------------------------------------------------------
-nmap ,m :make<CR>
+nmap ,mk :make<CR>

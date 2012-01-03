@@ -1,1 +1,1 @@
-bundle/vim-protodef/pullproto.pl
+bundle/ProtoDef/pullproto.pl

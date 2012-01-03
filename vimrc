@@ -33,7 +33,10 @@ set nocompatible
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
+" set backup dir
 set backup    " keep a backup file
+"set backupdir=~/.vim/backup/
+"set directory=~/.vim/tmp
 
 set ruler   " show the cursor position all the time
 
@@ -215,11 +218,18 @@ set timeout timeoutlen=1000 ttimeoutlen=100
 set history=100
 
 " These commands open folds
-set foldopen=block,insert,jump,mark,percent,quickfix,search,tag,undo
 "set foldmethod=syntax " folding by syntax
-set foldclose=all " if curser out of fold, then close
+"set foldclose=all " if curser out of fold, then close
 set foldcolumn=2 " set the column of the left side
-set nofoldenable " folding isn't enabled
+"set nofoldenable " folding isn't enabled
+set foldenable " Turn on folding
+set foldmethod=marker " Fold on the marker
+set foldlevel=100 " Don't autofold anything (but I can still fold manually)
+
+set foldopen=block,insert,jump,mark,percent,quickfix,search,tag,undo
+set foldopen=block,hor,tag " what movements open folds
+set foldopen+=percent,mark
+set foldopen+=quickfix
 
 " When the page starts to scroll, keep the cursor 8 lines from the top and 8
 " lines from the bottom
@@ -276,6 +286,8 @@ let java_allow_cpp_keywords = 1
 " Syntax coloring lines that are too long just slows down the world
 set synmaxcol=2048
 
+set ttyfast " we have a fast tty
+
 " I don't like it when the matching parens are automatically highlighted
 let loaded_matchparen = 1
 
@@ -308,16 +320,6 @@ if has("autocmd")
   " Source the vimrc file after saving it
   autocmd bufwritepost vimrc source $MYVIMRC
 
-  " Syntax of these languages is fussy over tabs Vs spaces
-  autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
-  autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
-
-  " Customisations based on house-style (arbitrary)
-  autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
-  autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
-  autocmd FileType javascript setlocal ts=4 sts=4 sw=4 noexpandtab
-  autocmd FileType python setlocal ts=2 sts=2 sw=2 expandtab
-
   " Treat .rss files as XML
   autocmd BufNewFile,BufRead *.rss,*.atom set filetype=xml
   "autocmd BufNewFile,BufRead *.wrl,*.WRL source $VIM/syntax/vrml.vim
@@ -328,8 +330,17 @@ if has("autocmd")
 	autocmd BufNewFile,BufRead *msmtp* set filetype=msmtp
 	autocmd BufNewFile,BufRead *.ldif set filetype=ldif
 	autocmd BufWritePost *.c :make
-  "autocmd BufNewFile,BufRead *.asm,*.ASM,*.s,*.S set filetype=gasm
-  "autocmd BufNewFile,BufRead *.asm,*.ASM,*.s,*.S source $VIM/syntax/asmx86.VIM
+  autocmd BufWritePost *.snippet call ReloadAllSnippets()
+
+  " Syntax of these languages is fussy over tabs Vs spaces
+  autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
+  autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+
+  " Customisations based on house-style (arbitrary)
+  autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
+  autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
+  autocmd FileType javascript setlocal ts=4 sts=4 sw=4 noexpandtab
+  autocmd FileType python setlocal ts=2 sts=2 sw=2 expandtab
 endif
 
 "-----------------------------------------------------------------------------
@@ -354,6 +365,7 @@ endif
 "-----------------------------------------------------------------------------
 " Insert external vim sources
 "-----------------------------------------------------------------------------
+source ~/.vim/vundle.vim
 source ~/.vim/mapping.vim
 source ~/.vim/plugin.vim
 source ~/.vim/functions.vim

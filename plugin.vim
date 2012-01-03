@@ -5,8 +5,8 @@ endif
 "-----------------------------------------------------------------------------
 " pathogen
 "-----------------------------------------------------------------------------
-silent! call pathogen#runtime_append_all_bundles()
-silent! call pathogen#helptags()
+"silent! call pathogen#runtime_append_all_bundles()
+"silent! call pathogen#helptags()
 
 "-----------------------------------------------------------------------------
 " xptemplate
@@ -115,17 +115,18 @@ function! s:align()
   endif
 endfunction
 
+" CTags
+" configure tags - add additional tags here or comment out not-used ones
+set tags+=~/.vim/tags/cpp
+" build tags of your own project with Ctrl-F12
+"map <F8> :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+"map <Leader>rt :!ctags --extra=+f -R *<CR><CR>
+map <Leader>rt :!ctags -R *<CR><CR>
+map <C-\> :tnext<CR>
+
 "-----------------------------------------------------------------------------
 " OmniCppComplete
 "-----------------------------------------------------------------------------
-" configure tags - add additional tags here or comment out not-used ones
-set tags+=~/.vim/tags/cpp
-"set tags+=~/.vim/tags/gl
-"set tags+=~/.vim/tags/sdl
-"set tags+=~/.vim/tags/qt4
-" build tags of your own project with Ctrl-F12
-map <F8> :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
-
 let OmniCpp_NamespaceSearch = 1
 let OmniCpp_GlobalScopeSearch = 1
 let OmniCpp_ShowAccess = 1
@@ -187,27 +188,25 @@ nmap <silent> ,oJ :FSSplitBelow<CR>
 nmap <F7> :NERDTreeToggle<CR>
 
 " Close the NERD Tree with Shift-F7
-nmap <S-F7> :NERDTreeClose<CR>
+"nmap <S-F7> :NERDTreeClose<CR>
 
 " Store the bookmarks file in perforce
 let NERDTreeBookmarksFile="~/.vim/NERDTreeBookmarks"
 
 " Show the bookmarks table on startup
-let NERDTreeShowBookmarks=1
+"let NERDTreeShowBookmarks=1
+let NERDTreeShowBookmarks=0
+
+let NERDTreeChDirMode=2
 
 " Don't display these kinds of files
 let NERDTreeIgnore=[ '\.ncb$', '\.suo$', '\.vcproj\.RIMNET', '\.obj$',
       \ '\.ilk$', '^BuildLog.htm$', '\.pdb$', '\.idb$',
       \ '\.embed\.manifest$', '\.embed\.manifest.res$',
-      \ '\.intermediate\.manifest$', '^mt.dep$' ]
+      \ '\.intermediate\.manifest$', '^mt.dep$', '\~$', '\.swp$' ]
+let NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$', '\~$']
 
-" Allows to comment lines in different languages
-""Comment current line
-"nmap ,co ,cc
-""uncoment current line
-"nmap ,uco ,cu
-""toggle comment current line
-"nmap ,tco ,c<space>
+
 " Do not yiel about unknown filetypes.
 let NERDShutUp=1
 
