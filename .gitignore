@@ -7,4 +7,3 @@ no-git
 private.vim
 view
 bundle/*
-!bundle/vundle
