@@ -1,19 +1,10 @@
-if has("autocmd")
-  autocmd bufwritepost mapping source $MYVIMRC
-endif
+" vim: set foldmarker={,} foldlevel=0 foldmethod=marker tabstop=4 shiftwidth=4:
 
-"---------------------------------------------------------
-" Set Mapleader
-"---------------------------------------------------------
-let mapleader=","
-
-"---------------------------------------------------------
-" Deactivate the help dialoge
-"---------------------------------------------------------
+" Deactivate the help dialoge {
 inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
-
+" }
 "---------------------------------------------------------
 " Useful mappings
 "---------------------------------------------------------
@@ -62,9 +53,6 @@ nmap ,e ^wy$:r!<cword><CR>
 "map <leader>do :silent! ShowDifferences<CR>
 map <leader>do :silent! call ToggleDiffOrig()<CR>
 
-" Scroll using the visible lines
-map j gj
-map k gk
 if exists("*pumvisible")
     inoremap <expr> <Down> pumvisible() ? "\<lt>Down>" : "\<lt>C-O>gj"
     inoremap <expr> <Up> pumvisible() ? "\<lt>Up>" : "\<lt>C-O>gk"
@@ -101,11 +89,9 @@ endif
 "---------------------------------------------------------
 "---------------------------------------------------------
 
-"---------------------------------------------------------
-" WINDOWS
+" WINDOWS {
 " Maps to make handling windows a bit easier
 "
-"---------------------------------------------------------
 noremap <silent> <C-h> :wincmd h<CR>
 noremap <silent> <C-j> :wincmd j<CR>
 noremap <silent> <C-k> :wincmd k<CR>
@@ -113,8 +99,8 @@ noremap <silent> <C-l> :wincmd l<CR>
 noremap <silent> ,= :wincmd =<CR>
 noremap <silent> ,sb :wincmd p<CR>
 noremap <silent> <C-F9>  :vertical resize -10<CR>
-noremap <silent> <C-F10> :resize +10<CR>
-noremap <silent> <C-F11> :resize -10<CR>
+noremap <silent> <C-F10> :resize -10<CR>
+noremap <silent> <C-F11> :resize +10<CR>
 noremap <silent> <C-F12> :vertical resize +10<CR>
 noremap <silent> ,s8 :vertical resize 83<CR>
 noremap <silent> ,cj :wincmd j<CR>:close<CR>
@@ -131,15 +117,16 @@ noremap <silent> <C-7> <C-W>>
 noremap <silent> <C-8> <C-W>+
 noremap <silent> <C-9> <C-W>+
 noremap <silent> <C-0> <C-W>>
+" }
 
-"---------------------------------------------------------
-" VIMRC
+" VIMRC {
 " Edit the vimrc file
-"---------------------------------------------------------
-nmap <silent> ,ev :e $MYVIMRC<CR>
-nmap <silent> ,sv :so $MYVIMRC<CR>
+nnoremap <silent> ,ev :e $MYVIMRC<CR>
+nnoremap <silent> ,eb :e ~/.vim/vundle.vim<CR>
+nnoremap <silent> ,sv :so $MYVIMRC<CR>
+" }
 
-" Motions"
+" Motions {
 "nmap <C-j> gj
 "nmap <C-k> gk
 nmap <C-0> g0
@@ -148,12 +135,14 @@ nmap <C-4> g$
 "vmap <C-k> gk
 vmap <C-0> g0
 vmap <C-4> g$
+" }
 
-" Copy & Paste
+" Copy & Paste {
 "vmap <C-c> "+y
 "nmap <C-p> "+p
+" }
 
-" Disable Arrow-Keys
+" Disable Arrow-Keys {
 " noremap  <Up> ""
 " noremap! <Up> <Esc>
 " noremap  <Down> ""
@@ -162,7 +151,7 @@ vmap <C-4> g$
 " noremap! <Left> <Esc>
 " noremap  <Right> ""
 " noremap! <Right> <Esc>
-
+" }
 "---------------------------------------------------------
 " From Derek
 "---------------------------------------------------------
@@ -237,17 +226,14 @@ nmap <silent> ,ul :t.\|s/./=/g\|set nohls<cr>
 " Delete all buffers
 nmap <silent> ,da :exec "1," . bufnr('$') . "bd"<cr>
 
-"---------------------------------------------------------
-" better undo
-"---------------------------------------------------------
+" better undo {
 inoremap <C-U> <C-G>u<C-U>
 inoremap <C-W> <C-G>u<C-W>
 inoremap <BS> <C-G>u<BS>
 inoremap <Del> <C-G>u<Del>
+" }
 
-"---------------------------------------------------------
-" MY MAPPINGS
-"---------------------------------------------------------
+" MY MAPPINGS {
 " Visually select the text that was last edited/pasted
 nmap gV `[v`]
 "fold a method/function
@@ -260,14 +246,9 @@ nmap ,wh set fo=at
 nmap ,ws set fo=
 " Split line(opposite to S-J joining line)
 nnoremap <M-J> gEa<CR><ESC>ew
+" }
 
-"---------------------------------------------------------
-" Python
-"---------------------------------------------------------
+" Python {
 let g:pep8_map='<leader>8'
 autocmd FileType python map <F5> :w<CR>:!python "%"<CR>
-
-"---------------------------------------------------------
-" C/C++
-"---------------------------------------------------------
-nmap ,mk :make<CR>
+" }

@@ -1,0 +1,9 @@
+:AttachFile	CheckAttach.txt	/*:AttachFile*
+CheckAttach	CheckAttach.txt	/*CheckAttach*
+CheckAttach-Config	CheckAttach.txt	/*CheckAttach-Config*
+CheckAttach-copyright	CheckAttach.txt	/*CheckAttach-copyright*
+CheckAttach-history	CheckAttach.txt	/*CheckAttach-history*
+CheckAttach.txt	CheckAttach.txt	/*CheckAttach.txt*
+CheckAttach_Problems	CheckAttach.txt	/*CheckAttach_Problems*
+DisableCheckAttach	CheckAttach.txt	/*DisableCheckAttach*
+EnableCheckAttach	CheckAttach.txt	/*EnableCheckAttach*

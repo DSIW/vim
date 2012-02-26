@@ -58,12 +58,11 @@
         Bundle 'speeddating.vim'
         Bundle 'repeat.vim'
         Bundle 'recover.vim'
-
         Bundle 'VisIncr'
         Bundle 'AutomaticLaTexPlugin'
-        "Bundle 'csv.vim'
+        Bundle 'csv.vim'
         Bundle 'sessionman.vim'
-        Bundle 'AutoClose'
+        "Bundle 'AutoClose'
         Bundle 'majutsushi/tagbar'
         "Bundle 'minibufexpl.vim'
         Bundle 'endwise.vim'
@@ -883,7 +882,7 @@
         augroup END
 
         " Source the vimrc file after saving it
-        "au Bufwritepost vimrc source $MYVIMRC
+        au Bufwritepost vimrc source $MYVIMRC
 
         " Treat .rss files as XML
         au BufNewFile,BufRead *.rss,*.atom set filetype=xml

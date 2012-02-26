@@ -1,7 +1,3 @@
-if has("autocmd")
-  autocmd bufwritepost abbrev source $MYVIMRC
-endif
-
 "-----------------------------------------------------------------------------
 " Fix constant spelling mistakes
 "-----------------------------------------------------------------------------
@@ -36,6 +32,7 @@ iab fone      phone
 iab Fone      Phone
 
 iab Plugin    Plug-in
+iab WLAN      W-LAN
 
 "-----------------------------------------------------------------------------
 " python support
