@@ -65,8 +65,6 @@
         Bundle 'sessionman.vim'
         Bundle 'AutoClose'
         Bundle 'majutsushi/tagbar'
-        "Bundle 'minibufexpl.vim'
-        Bundle 'endwise.vim'
         "Bundle 'ShowMarks'
         "Bundle 'Buffer-Search'
         "Bundle 'ShowPairs'
@@ -131,6 +129,8 @@
         "Bundle 'checklist.vim' " ERROR
         "Bundle 'css_color.vim' " CPU raises up
         "Bundle 'vim-recovery' " NOT FOUND
+        "Bundle 'minibufexpl.vim' ERROR with plugin "fugitive in diff mode"
+        "Bundle 'endwise.vim' ERROR with "pumvisible"
     " }
 " }
 

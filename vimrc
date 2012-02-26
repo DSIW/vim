@@ -982,7 +982,9 @@
 " Sources {
     " vimspell: http://www.vim.org/scripts/script.php?script_id=465
     source /home/dsiw/.vim/abbrev.vim
-    source /home/dsiw/.vim/private.vim " Private Daten
+    if filereadable(expand("~/.vim/.private.vim"))
+        source ~/.vim/private.vim " Private Daten
+    endif
 " }
 
 " Use local vimrc if available {
