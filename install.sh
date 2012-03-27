@@ -12,15 +12,15 @@ die() {
     exit 1
 }
 
-echo "thanks for installing vim\n"
+echo -e "thanks for installing vim\n"
 
 # Backup existing .vim stuff
-echo "backing up current vim config\n"
+echo -e "backing up current vim config\n"
 today=`date +%Y%m%d`
 for i in $HOME/.vim $HOME/.vimrc $HOME/.gvimrc; do [ -e $i ] && mv $i $i.$today; done
 
 
-echo "cloning vim-config\n"
+echo -e "cloning vim-config\n"
 git clone --recursive git://github.com/DSIW/vim.git $endpath
 mkdir -p $endpath/bundle
 ln -s $endpath/.vimrc $HOME/.vimrc
