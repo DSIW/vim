@@ -33,6 +33,8 @@ iab Fone      Phone
 
 iab Plugin    Plug-in
 iab WLAN      W-LAN
+iab Repo      Repository
+iab moretag   <!--more-->
 
 "-----------------------------------------------------------------------------
 " python support

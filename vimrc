@@ -1,39 +1,39 @@
-" Modeline and Notes {
-" vim: set foldmarker={,} foldlevel=0 foldmethod=marker tabstop=4 shiftwidth=4:
+" Modeline and Notes {{{
+" vim: set foldmarker={{{,}}} foldlevel=0 foldmethod=marker tabstop=4 shiftwidth=4:
 "
 " I have the categories of this from Steve Francia (see http://spf13.com)
-" }
+" }}}
 
-" Environment {
-    " Basics {
+" Environment {{{
+    " Basics {{{
         set nocompatible    " must be first line
         set background=dark " Assume a dark background
         set ttyfast         " we have a fast tty
-    " }
+    " }}}
 
-    " Initial path seeding {
+    " Initial path seeding {{{
         set path=
         set path+=/usr/local/include/**
         set path+=/usr/include/**
-        set path+=/home/dsiw/sys/bin/**
-    " }
+        set path+=~/sys/bin/**
+    " }}}
 
-    " Windows Compatible {
+    " Windows Compatible {{{
         " On Windows, also use '.vim' instead of 'vimfiles'; this makes synchronization
         " across (heterogeneous) systems easier. 
         if has('win32') || has('win64')
           set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
         endif
-    " }
-" }
+    " }}}
+" }}}
 
-" Bundles {
-    " Setup Bundle Support {
+" Bundles {{{
+    " Setup Bundle Support {{{
         filetype off                   " required!
         " The next two lines ensure that the ~/.vim/bundle/ system works
         set rtp+=~/.vim/bundle/vundle
         call vundle#rc()
-    " }
+    " }}}
 
     "Bundle 'gmarik/vundle.git'
     Bundle 'vundle'
@@ -41,14 +41,13 @@
     Bundle 'https://github.com/gmarik/github-search.vim.git'
     "Bundle 'https://github.com/gmarik/ingretu.git'
 
-    " General {
+    " General {{{
         Bundle 'Lokaltog/vim-powerline'
-        Bundle 'unicode.vim'
+        "Bundle 'unicode.vim'
         Bundle 'unimpaired.vim'
         Bundle 'lastpos.vim'
-        Bundle 'SudoEdit.vim'
         Bundle 'sudo.vim'
-        Bundle 'vimshell-ssh'
+        "Bundle 'vimshell-ssh'
         Bundle 'Gundo'
         Bundle 'The-NERD-tree'
         Bundle 'SearchComplete'
@@ -57,84 +56,121 @@
         Bundle 'taglist.vim'
         Bundle 'speeddating.vim'
         Bundle 'repeat.vim'
-        Bundle 'recover.vim'
+        "Bundle 'recover.vim'
+        Bundle 'ack.vim'
+        Bundle 'greplace.vim'
 
         Bundle 'VisIncr'
         Bundle 'AutomaticLaTexPlugin'
         "Bundle 'csv.vim'
         Bundle 'sessionman.vim'
-        Bundle 'AutoClose'
+        "Bundle 'AutoClose'
+        Bundle 'delimitMate.vim'
         Bundle 'majutsushi/tagbar'
-        "Bundle 'ShowMarks'
+        Bundle 'YankRing.vim'
+        Bundle 'ShowMarks'
         "Bundle 'Buffer-Search'
         "Bundle 'ShowPairs'
         "Bundle 'LustyJuggler'
-    " }
+    " }}}
 
-    " UI {
+    " UI {{{
         "Bundle 'xoria256.vim'
         "Bundle 'neverland.vim--All-colorschemes-suck'
-        "Bundle 'Solarized'
-    " }
+        Bundle 'ZoomWin'
+        Bundle 'altercation/vim-colors-solarized'
+    " }}}
 
-    " Programming {
+    " Programming {{{
         "Bundle 'snipMate'
         "Bundle 'snipmate-snippets'
         "Bundle 'xptemplate'
         Bundle 'Tabular'
         Bundle 'The-NERD-Commenter'
         Bundle 'c.vim'
-        Bundle 'ProtoDef'
-        Bundle 'SuperTab'
+        "Bundle 'ProtoDef'
+        "Bundle 'SuperTab'
         Bundle 'FSwitch'
+        Bundle 'Indent-Guides'
+        Bundle 'ruby.vim'
+        Bundle 'ecomba/vim-ruby-refactoring.git'
+        "Bundle 'vim-coffee-script'
         "Bundle 'cespare/vjde.git'
         "Bundle 'javacomplete'
         "Bundle 'ervandew/eclim.git'
         "Bundle 'pep8'
         "Bundle 'mitechie/pyflakes-pathogen.git'
         "Bundle 'fs111/pydoc.vim.git'
-    " }
+        Bundle 'vim-json-bundle'
+        "Bundle 'VimDebug'
+        Bundle 'splitjoin.vim'
+        Bundle 'argtextobj.vim'
+        Bundle 'camelcasemotion'
+    " }}}
 
-    " Mail {
+    " Textobjects {{{
+        Bundle 'kana/vim-textobj-user.git'
+        Bundle 'textobj-rubyblock'
+        " r
+        Bundle 'textobj-function'
+        " f
+        Bundle 'textobj-entire'
+        " e
+        Bundle 'textobj-indent'
+        " i/I
+        Bundle 'textobj-fold'
+        " z
+        Bundle 'textobj-datetime'
+        " d...
+        Bundle 'argtextobj.vim'
+        " a
+        Bundle 'vim-textobj-quoted'
+        " `
+        Bundle 'bootleq/vim-textobj-rubysymbol'
+        " :
+    "}}}
+
+    " Mail {{{
         Bundle 'CheckAttach.vim'
-    " }
+    " }}}
 
-    " Git {
+    " Git {{{
         Bundle 'git.zip'
         Bundle 'fugitive.vim'
-    " }
+    " }}}
 
-    " Sourround {
+    " Sourround {{{
         Bundle 'surround.vim'
-        Bundle 'delete-surround-html'
-    " }
+        "Bundle 'delete-surround-html'
+    " }}}
 
-    " Web {
+    " Web {{{
         Bundle 'XML-Folding'
-        Bundle 'ragtag.vim'
-        Bundle 'vim-coffee-script'
-        Bundle 'matchit.zip'
+        "Bundle 'ragtag.vim'
+        Bundle 'mirell/vim-matchit'
         Bundle 'vim-octopress'
         "Bundle 'rails.vim'
-        "Bundle 'tpope/vim-rails.git'
+        "Bundle 'tpope/vim-rails'
         "Bundle 'Haml'
-        "Bundle 'mirell/vim-matchit.git'
-        "Bundle 'tpope/vim-markdown.git'
+        "Bundle 'mirell/vim-matchit'
+        Bundle 'tpope/vim-markdown'
         "Bundle 'Markdown-syntax'
-        "Bundle 'tsaleh/vim-align.git'
-    " }
+        "Bundle 'tsaleh/vim-align'
+    " }}}
 
-    " errors {
+    " errors {{{
         "Bundle 'Align.vim' " ERROR
         "Bundle 'checklist.vim' " ERROR
         "Bundle 'css_color.vim' " CPU raises up
         "Bundle 'vim-recovery' " NOT FOUND
         "Bundle 'minibufexpl.vim' ERROR with plugin "fugitive in diff mode"
-        "Bundle 'endwise.vim' ERROR with "pumvisible"
-    " }
-" }
+        "Bundle 'endwise.vim'
+        " ERROR with "pumvisible"
+        "Bundle 'Solarized' " ERROR with comments (background is too dark)
+    " }}}
+" }}}
 
-" General {
+" General {{{
     " Set filetype stuff to on
     filetype on
     filetype plugin on
@@ -195,7 +231,7 @@
     " get rid of the silly characters in window separators
     set fillchars=""
 
-    " Setting up the directories {
+    " Setting up the directories {{{
         set backup                      " backups are nice ...
         if has('persistent_undo')
             set undofile                "so is persistent undo ...
@@ -205,10 +241,10 @@
         " Could use * rather than *.*, but I prefer to leave .files unsaved
         au BufWinLeave *.* silent! mkview  "make vim save view (state) (folds, cursor, etc)
         au BufWinEnter *.* silent! loadview "make vim load view (state) (folds, cursor, etc)
-    " }
+    " }}}
 
-    " search {
-        set hlsearch " Enable search highlighting
+    " Search {{{
+        set nohlsearch " Enable search highlighting
 
         set incsearch " Incrementally match the search
 
@@ -218,9 +254,9 @@
         " case but recognizes uppercase if it's specified
         set ignorecase
         set smartcase
-    " }
+    " }}}
 
-    " encodings {
+    " encodings {{{
         " set Unicode if possible
         " First, check that the necessary capabilities are compiled-in
         if has("multi_byte")
@@ -243,53 +279,60 @@
           " default is 'ucs-bom,utf-8,default,latin1'
           set fileencodings=ucs-bom,utf-8,latin9
         endif
-    " }
+    " }}}
 
-    " backups {
+    " backups {{{
         " set backup dir
         set backup    " keep a backup file
-        "set backupdir=/home/dsiw/.vim/backup/
-        "set directory=/home/dsiw/.vim/tmp
-    " }
-" }
+        "set backupdir=~/.vim/backup/
+        "set directory=~/.vim/tmp
+    " }}}
+" }}}
 
-" Vim UI {
+" Vim UI {{{
     set nu " Set linenumbers
     "set relativenumber
 
-    " solarized {
-        set background=dark " or light
+    " solarized {{{
+        "set background=dark " or light
+        "hi IndentGuidesOdd  ctermbg=black
+        "hi IndentGuidesEven ctermbg=darkgrey
+        set background=light " or light
+        hi IndentGuidesOdd  ctermbg=white
+        hi IndentGuidesEven ctermbg=lightgrey
         "color xoria256
-        color solarized                 " load a colorscheme
+        colorscheme solarized                 " load a colorscheme
           let g:solarized_termtrans=0
           let g:solarized_termcolors=256
           let g:solarized_contrast="high"
-          let g:solarized_visibility="high"
+          let g:solarized_visibility="low"
+          let g:solarized_italic=1
+          let g:solarized_bold=1
         set t_Co=256
-    " }
+    " }}}
     set showmode " Show the current mode
 
-    " highlight {
+    " highlight {{{
         "Invisible character colors
         "highlight SpecialKey ctermfg=5
         "highlight NonText guifg=#4a4a59
         "highlight SpecialKey guifg=#4a4a59
         set showbreak=
-        :highlight EOLWhitespace ctermbg=darkgray
-        :match EOLWhitespace /\s\+$/
+        ":highlight EOLWhitespace ctermbg=darkgray
+        ":match EOLWhitespace /\s\+$/
 
         "match @Author oder @author   
         :highlight author ctermbg=black ctermfg=blue
         :match author /\(@[aA]uth\?or: \?\)\@<=[^ ].\+/
 
         " highlight matching parens:
-        " Default for matchpairs: (:),[:],{:},<:>
+        " Default for matchpairs: (:),[:],{{{:}}},<:>
         set matchpairs+=<:>
         highlight MatchParen term=reverse ctermbg=7 guibg=cornsilk
 
         " I don't like it when the matching parens are automatically highlighted
         let loaded_matchparen = 1
-    " }
+    " }}}
 
     " tell VIM to always put a status line in, even if there is only one window
     set laststatus=2
@@ -310,8 +353,7 @@
     set synmaxcol=2048
 
     set list
-    set listchars=tab:▸\ ,trail:.,extends:#,nbsp:. " Highlight problematic whitespace
-    "set listchars=tab:▸\  ",trail:' "eol:¬
+    set listchars=tab:▸\ ,trail:·,extends:#,nbsp:· ",eol:¬ " Highlight problematic whitespace: ﹁
 
     set scrolloff=8                 " minimum lines to keep above and below cursor
     set scrolljump=5                " lines to scroll when cursor leaves screen
@@ -325,7 +367,7 @@
 
     set showmatch " Turn on: showmatching brackets
 
-    " timeouts {
+    " timeouts {{{
         " This is the timeout used while waiting for user input on a multi-keyed macro
         " or while just sitting and waiting for another key to be pressed measured
         " in milliseconds.
@@ -338,30 +380,63 @@
         " Tweak timeouts, because the default is too conservative
         " This setting is taken from :h 'ttimeoutlen'
         set timeout timeoutlen=500 ttimeoutlen=100
-    " }
+    " }}}
 
-    " statusline {
+    " statusline {{{
         if has("statusline")
-            set statusline=
-            set statusline+=%<%f " file name
-            set statusline+=\ %h%m%r%w " flags
-            set statusline+=\ Buf:%-3.3n " buffer number
-            set statusline+=\ [%-3.b][0x%-2.B] " current character unter curser
-            set statusline+=\ %{fugitive#statusline()} " Git branch
-            set statusline+=%= " right align
-            set statusline+=%k[
-            set statusline+=%{strlen(&ft)?&ft:'none'} " filetype
-            set statusline+=\ \|
-            set statusline+=\ %{&fileformat} " file format
-            set statusline+=/
-            set statusline+=%{(&fenc\ ==\ \"\"?&enc:&fenc)} " encoding
-            set statusline+=%{(&bomb?\",BOM\":\"\")} " BOM
-            set statusline+=]
-            set statusline+=\ %-12.(%l,%c%V%)\ %p%% " offset
-        endif
-    " }
+            "set statusline=
+            "set statusline+=%<%f " file name
+            "set statusline+=\ %h%m%r%w " flags
+            "set statusline+=\ Buf:%-3.3n " buffer number
+            "set statusline+=\ [%-3.b][0x%-2.B] " current character unter curser
+            "set statusline+=\ %{{{fugitive#statusline()}}} " Git branch
+            "set statusline+=%= " right align
+            "set statusline+=%k[
+            "set statusline+=%{{{strlen(&ft)?&ft:'none'}}} " filetype
+            "set statusline+=\ \|
+            "set statusline+=\ %{{{&fileformat}}} " file format
+            "set statusline+=/
+            "set statusline+=%{{{(&fenc\ ==\ \"\"?&enc:&fenc)}}} " encoding
+            "set statusline+=%{{{(&bomb?\",BOM\":\"\")}}} " BOM
+            "set statusline+=]
+            "set statusline+=\ %-12.(%l,%c%V%)\ %p%% " offset
 
-    " folding {
+            "statusline setup (via https://github.com/skwp/dotfiles/blob/master/vim/plugin/settings/yadr-statusline.vim)
+            "set statusline=%#DiffAdd#
+            "set statusline+=%#warningmsg#
+            "set statusline+=%{SyntasticStatuslineFlag()}
+            "set statusline=%#DiffAdd#
+            "set statusline+=%f\
+            "set statusline+=%#LineNr# "switch to colors used for line number
+            "set statusline+=%{fugitive#statusline()}
+            "set statusline+=%#DiffAdd# "switch back to normal
+            "set statusline+=%= "left/right separator
+            "set statusline+=%m "modified flag
+
+            "display a warning if &paste is set
+            "set statusline+=%#DiffChange#
+            "set statusline+=%{&paste?'[paste]':''}
+            "set statusline+=%#LineNr# "switch to colors used for line number
+            "set statusline+=%{StatuslineCurrentHighlight()}\ \ "current highlight
+            "set statusline+=%#DiffAdd# "switch to colors used for line number
+            "set statusline+=%c: "cursor column
+            "set statusline+=%l/%L "cursor line/total lines
+            "set statusline+=\ %P "percent through file
+            "set laststatus=2
+
+            "return the syntax highlight group under the cursor ''
+            "function! StatuslineCurrentHighlight()
+                "let name = synIDattr(synID(line('.'),col('.'),1),'name')
+                "if name == ''
+                    "return ''
+                "else
+                    "return '[' . name . ']'
+                "endif
+            "endfunction
+        endif
+    " }}}
+
+    " folding {{{
         " These commands open folds
         "set foldmethod=syntax " folding by syntax
         "set foldclose=all " if curser out of fold, then close
@@ -371,35 +446,29 @@
         set foldenable " Turn on folding
         "set foldlevel=100 " Don't autofold anything (but I can still fold manually)
         set foldopen=block,insert,jump,mark,percent,quickfix,search,tag,undo,hor
-    " }
-" }
+    " }}}
+" }}}
 
-" Formatting {
-    set textwidth=120 " Set the textwidth to be 120 chars
+" Formatting {{{
+    set textwidth=120      " Set the textwidth to be 120 chars (if 0: screen_width)
+    set wrapmargin=5
+    set formatoptions=     " ta
 
-    set expandtab " Turn tabs into spaces
-
-    " Tabstops are 2 spaces
-    set shiftwidth=2                " use indents of 2 spaces
+    set expandtab          " Turn tabs into spaces
+    set shiftwidth=2       " use indents of 2 spaces
     set tabstop=2
-    set softtabstop=2 " for backspace in insert-mod
+    set softtabstop=2      " for backspace in insert-mod
 
-    " Format text width the external programm "par". Use "gq" for the external program; or use "gw" for internal program of vim
-    set formatprg=par\ -re
+    " Format text width the external programm "par" . Use "gq" for the external program; or use "gw" for internal program of vim
+    "set formatprg=par\ -re
 
     set linebreak
-    set nowrap                      " wrap long lines
+    set wrap               " wrap long lines
 
-    set autoindent                  " indent at the same level of the previous line
+    set autoindent         " indent at the same level of the previous line
+" }}}
 
-    " Hardwrap {
-        set textwidth=0
-        set wrapmargin=5
-        set formatoptions= "ta
-    " }
-" }
-
-" Key (re)Mappings {
+" Key (re)Mappings {{{
     let mapleader=","
 
     " Don't use Ex mode, use Q for formatting
@@ -438,16 +507,18 @@
     vnoremap < <gv
     vnoremap > >gv 
 
-    source /home/dsiw/.vim/mapping.vim
-" }
+    command MkBackup :!mkbak %<CR>
 
-" Plugins {
+    source ~/.vim/mapping.vim
+" }}}
 
-    " Ctags {
+" Plugins {{{
+
+    " Ctags {{{
         set tags=./tags;/,~/.vimtags,./tags,tags
-    " }
+    " }}}
 
-     " neocomplcache {
+     " neocomplcache {{{
         let g:neocomplcache_enable_at_startup = 1
         let g:neocomplcache_enable_camel_case_completion = 1
         let g:neocomplcache_enable_smart_case = 1
@@ -477,7 +548,7 @@
 
         " <C-h>, <BS>: close popup and delete backword char.
         inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
-        inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+        "inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
         inoremap <expr><C-y>  neocomplcache#close_popup()
         inoremap <expr><C-e>  neocomplcache#cancel_popup()
 
@@ -503,29 +574,31 @@
             set conceallevel=2 concealcursor=i
         endif
 
-     " }
+     " }}}
 
-     " Fugitive {
+     " Fugitive {{{
         nnoremap <silent> <leader>gs :Gstatus<CR>
         nnoremap <silent> <leader>gd :Gdiff<CR>
         nnoremap <silent> <leader>gc :Gcommit<CR>
         nnoremap <silent> <leader>gb :Gblame<CR>
         nnoremap <silent> <leader>gl :Glog<CR>
         nnoremap <silent> <leader>gp :Git push<CR>
-        "nmap :Gbrowser :Gbrowse | redraw!
-     "}
+        nnoremap <silent> ,dg :diffget<CR>
+        nnoremap <silent> ,dp :diffput<CR>
+        "cmap Gbrowser Gbrowse | redraw!
+     "}}}
 
-     " TagBar {
+     " TagBar {{{
         nnoremap <silent> <leader>tt :TagbarToggle<CR>
-     "}
+     "}}}
 
-     " Session List {
+     " Session List {{{
         set sessionoptions=blank,buffers,curdir,folds,tabpages,winsize
         nmap <leader>sl :SessionList<CR>
         nmap <leader>ss :SessionSave<CR>
-     " }
+     " }}}
 
-    " xptemplate {
+    " xptemplate {{{
         " let g:xptemplate_key = '<Tab>'
         let g:xptemplate_always_show_pum = 1
         ":command -range=% SendDB :<line1>,<line2>w !mysql -udb11sa23 -pz51f8f4ca p001 -t
@@ -563,9 +636,9 @@
         "
         " Reload xptemplate snippets without quitting vim.
         "nmap <A-F1> :XPTreload<CR>
-    " }
+    " }}}
 
-    " EasyGrep {
+    " EasyGrep {{{
         let g:EasyGrepFileAssociations='/home/dsiw/.vim/bundle/EasyGrep/plugin/EasyGrepFileAssociations'
         let g:EasyGrepMode=1
         let g:EasyGrepCommand=0
@@ -584,25 +657,25 @@
         let g:EasyGrepExtraWarnings=1
         let g:EasyGrepOptionPrefix='<leader>vy'
         let g:EasyGrepReplaceAllPerFile=0
-    " }
+    " }}}
 
-    " ATP {
+    " ATP {{{
         "nmap :makelatex :MakeLatex
         "nmap :viewoutput :ViewOutput
         let g:atp_Python = "/usr/bin/python2"
         let b:atp_Viewer = "evince"
-    " }
+    " }}}
 
-    " Tabular {
+    " Tabular {{{
         if exists(":Tabularize")
         nmap <Leader>a= :Tabularize /=<CR>
         vmap <Leader>a= :Tabularize /=<CR>
         nmap <Leader>a: :Tabularize /:\zs<CR>
         vmap <Leader>a: :Tabularize /:\zs<CR>
         endif
-    " }
+    " }}}
 
-    " Align {
+    " Align {{{
         inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
         function! s:align()
         let p = '^\s*|\s.*\s|\s*$'
@@ -611,12 +684,12 @@
         let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
         Tabularize/|/l1
         normal! 0
-        call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
+        call search(repeat('[^|]*|',column).'\s\{{{-\}}}'.repeat('.',position),'ce',line('.'))
         endif
         endfunction
-    " }
+    " }}}
 
-    " CTags {
+    " CTags {{{
         set tags=./tags;/,~/.vimtags
         " configure tags - add additional tags here or comment out not-used ones
         set tags+=~/.vim/tags/cpp
@@ -625,9 +698,9 @@
         "map <Leader>rt :!ctags --extra=+f -R *<CR><CR>
         map <Leader>rt :!ctags -R *<CR><CR>
         map <C-\> :tnext<CR>
-    " }
+    " }}}
 
-    " OmniComplete {
+    " OmniComplete {{{
         if has("autocmd") && exists("+omnifunc")
             autocmd Filetype *
                 \if &omnifunc == "" |
@@ -651,7 +724,7 @@
         au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
         set completeopt=menu,preview,longest
 
-        " OmniCppComplete {
+        " OmniCppComplete {{{
             let OmniCpp_NamespaceSearch = 1
             let OmniCpp_GlobalScopeSearch = 1
             let OmniCpp_ShowAccess = 1
@@ -663,34 +736,46 @@
             " automatically open and close the popup menu / preview window
             au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
             set completeopt=menuone,menu,longest,preview
-        " }
-    " }
+        " }}}
+    " }}}
 
-    " Checkist {
+    " Checkist {{{
         au BufNewFile,BufRead *.chklst setf chklst
-    " }
+    " }}}
 
-    " Gundo {
+    " Gundo {{{
         nnoremap ,g :GundoToggle<CR>
-    " }
 
-    " Ragtag {
+        " open on the right so as not to compete with the nerdtree
+        let g:gundo_right = 1
+
+        " a little wider for wider screens
+        let g:gundo_width = 50
+    " }}}
+
+    " Indent Guides {{{
+        let g:indent_guides_auto_colors = 1
+        let g:indent_guides_start_level = 2
+        let g:indent_guides_guide_size = 1
+    " }}}
+
+    " Ragtag {{{
         let g:ragtag_global_maps = 1
-    " }
+    " }}}
 
-    " Taglist {
+    " Taglist {{{
         if exists(":TlistToggle")
         noremap <silent> <F6> :TlistToggle<CR>
         inoremap <silent> <F6> <C-C>:TlistToggle<CR>
         endif
-    " }
+    " }}}
 
-    " Lusty-Juggler {
+    " Lusty-Juggler {{{
         " http://www.vim.org/scripts/script.php?script_id=2050
         "nmap <silent> <Leader>b :LustyJuggler<CR>
-    " }
+    " }}}
 
-    " FSwitch Settings {
+    " FSwitch Settings {{{
         nmap <silent> ,of :FSHere<CR>
         nmap <silent> ,ol :FSRight<CR>
         nmap <silent> ,oL :FSSplitRight<CR>
@@ -700,11 +785,11 @@
         nmap <silent> ,oK :FSSplitAbove<CR>
         nmap <silent> ,oj :FSBelow<CR>
         nmap <silent> ,oJ :FSSplitBelow<CR>
-    " }
+    " }}}
 
-    " NERD Tree  {
+    " NERD Tree  {{{
         " Toggle the NERD Tree on an off with F7
-        nmap <F7> :NERDTreeToggle<CR>
+        nmap ,T :NERDTreeToggle<CR>
 
         " Close the NERD Tree with Shift-F7
         "nmap <S-F7> :NERDTreeClose<CR>
@@ -728,38 +813,38 @@
 
         " Do not yiel about unknown filetypes.
         let NERDShutUp=1
-    " }
+    " }}}
 
-    " MiniBufExplorer Plugin Settings {
+    " MiniBufExplorer Plugin Settings {{{
         " Yup, I don't like this one either
         "let loaded_minibufexplorer = 1
         let g:miniBufExplMapWindowNavVim = 1
         let g:miniBufExplMapCTabSwitchBufs = 1
         let g:miniBufExplModSelTarget = 1 
         let g:miniBufExplMapWindowNavArrows = 1
-    " }
+    " }}}
 
-    " ShowMarks  {
+    " ShowMarks  {{{
         " I don't think I like this
         "let g:loaded_showmarks = 1
         let g:showmarks_enable = 0
-    " }
+    " }}}
 
-    " ShowPairs {
+    " ShowPairs {{{
         highlight ShowPairsHLp ctermfg=black ctermbg=white
         let g:showpairs_enable = 0
-        let g:showpairs_pairs = "(:),{:},[:]"
-    " }
+        let g:showpairs_pairs = "(:),{{{:}}},[:]"
+    " }}}
 
-    " SnipMate {
+    " SnipMate {{{
         " Setting the author var
         " If forking, please overwrite in your .vimrc.local file
         let g:snips_author = 'Steve Francia <steve.francia@gmail.com>'
         " Shortcut for reloading snippets, useful when developing
         nnoremap ,smr <esc>:exec ReloadAllSnippets()<cr>
-    " }
+    " }}}
 
-    " Source Explorer Plugin Settings {
+    " Source Explorer Plugin Settings {{{
         " The switch of the Source Explorer
         " nmap <silent> <F8> :SrcExplToggle<CR>
 
@@ -790,46 +875,120 @@
 
         " Set "<F9>" key for updating the tags file artificially
         let g:SrcExpl_updateTagsKey = "<F9>"
-    " }
+    " }}}
 
-    " FuzzyFinder Settings {
+    " FuzzyFinder Settings {{{
         "nmap ,fb :FuzzyFinderBuffer<CR>
         "nmap ,ff :FuzzyFinderFile<CR>
         "nmap ,ft :FuzzyFinderTag<CR>
-    " }
+    " }}}
 
-    " Unimpaired {
+    " Unimpaired {{{
         " Bubble single lines
         nmap <C-Up> [e
         nmap <C-Down> ]e
         " Bubble multiple lines
         vmap <C-Up> [egv
         vmap <C-Down> ]egv
-    " }
+    " }}}
 
-    " Tlist {
+    " Tlist {{{
         let Tlist_Ctags_Cmd = "/usr/bin/ctags" " The packge 'ctags' have to be installed!
         let Tlist_GainFocus_On_ToggleOpen = 1
         let Tlist_Close_On_Select = 1
-    " }
+    " }}}
 
-    " jcommenter {
+    " jcommenter {{{
         "autocmd FileType java source $VIM/macros/jcommenter.vim
         autocmd FileType java map <M-c> :call JCommentWriter()<CR>  " Alt-C
         let g:vjde_completion_key='<c-space>' 
-    " }
+    " }}}
 
-    " XMLFolding {
+    " XMLFolding {{{
         au BufNewFile,BufRead *.xml,*.htm,*.html so ~/.vim/bundle/vim-xmlfolding/plugin/XMLFolding.vim
-    " }
+    " }}}
 
-    " SuperTab {
+    " SuperTab {{{
         let g:SuperTabDefaultCompletionType = "context"
-    " }
+    " }}}
 
-" }
+    " VimDebug {{{
+        if exists(":DBGRstart")
+            map <F12>      :DBGRstart<CR>
+            map <Leader>s/ :DBGRstart 
 
-" GUI Settings {
+            map <F7>       :call DBGRstep()<CR>
+            map <F8>       :call DBGRnext()<CR>
+            map <F9>       :call DBGRcont()<CR>                   " continue
+
+            map <Leader>b  :call DBGRsetBreakPoint()<CR>
+            map <Leader>c  :call DBGRclearBreakPoint()<CR>
+            map <Leader>ca :call DBGRclearAllBreakPoints()<CR>
+
+            map <Leader>v/ :DBGRprint 
+            map <Leader>v  :DBGRprintExpand expand("<cWORD>")<CR> " print value under the cursor
+
+            map <Leader>/  :DBGRcommand 
+
+            map <F10>      :call DBGRrestart()<CR>
+            map <F11>      :call DBGRquit()<CR>
+        endif
+    " }}}
+
+    " Surround {{{
+        " via: http://whynotwiki.com/Vim
+        " via: https://github.com/skwp/dotfiles/blob/master/vim/plugin/settings/surround.vim
+        " Ruby
+        " Use v or # to get a variable interpolation (inside of a string)}
+        " ysiw# Wrap the token under the cursor in #{}
+        " v...s# Wrap the selection in #{}
+        au Filetype ruby let g:surround_113 = "#{\r}" " v
+        au Filetype ruby let g:surround_35 = "#{\r}" " #
+
+        " Select text in an ERb file with visual mode and then press s- or s=
+        " Or yss- to do entire line.
+        au Filetype erb let g:surround_45 = "<% \r %>" " -
+        au Filetype erb let g:surround_61 = "<%= \r %>" " =
+    " }}}
+
+    " Sudo Write {{{
+        " w!! to write a file as sudo
+        cmap w!! w sudo:%
+    " }}}
+
+    " SplitJoin {{{
+        nmap sj :SplitjoinSplit<cr>
+        nmap sk :SplitjoinJoin<cr>
+    " }}}
+
+    " Powerline {{{
+        let g:Powerline_symbols = 'fancy'
+        "let g:Powerline_symbols_override = { 'BRANCH': [0x2213], 'LINE': 'L', }
+        "let g:Powerline_theme='skwp'
+        "let g:Powerline_colorscheme='skwp'
+    " }}}
+
+    " DelimitMate {{{
+        let g:delimitMate_excluded_ft = "mail,txt"
+        let delimitMate_autoclose = 1
+        "let delimitMate_matchpairs = "(:),[:],{:},<:>"
+        au FileType vim,html let b:delimitMate_matchpairs = "(:),[:],{:},<:>"
+        let delimitMate_quotes = "\" ' ` *"
+        let delimitMate_expand_space = 1
+        let delimitMate_balance_matchpairs = 1
+    " }}}
+
+    " YankRing {{{
+        "let g:yankring_enabled = 0  " Disables the yankring
+        let g:yankring_max_history = 100
+        let g:yankring_window_use_horiz = 0  " Use vertical split
+        let g:yankring_window_use_right = 1
+        let g:yankring_history_dir = '~/.vim/'
+        let g:yankring_history_file = 'yankring_history'
+    " }}}
+" }}}
+
+" GUI Settings {{{
     " Set up the window colors and size
     if has("gui_running")
       set bg=dark
@@ -847,10 +1006,10 @@
       endif
     endif
     :nohls
-" }
+" }}}
 
-" Functions {
-    " Auto commands {
+" Functions {{{
+    " Auto commands {{{
         augroup Binary
             au!
             au BufReadPre   *.bin let &bin=1
@@ -860,13 +1019,6 @@
             au BufWritePre  *.bin endif
             au BufWritePost *.bin if &bin | %!xxd
             au BufWritePost *.bin set nomod | endif
-        augroup END
-
-        augroup Markdown
-            au!
-            autocmd BufNewFile,BufRead *.md set filetype=markdown | set ts=4 sts=4 sw=4 expandtab
-            autocmd BufNewFile,BufRead *.markdown set ts=4 sts=4 sw=4 expandtab
-            "autocmd BufWrite *.md :%!markdown > %.html<CR>
         augroup END
 
         augroup Mail
@@ -880,6 +1032,8 @@
             au!
             au BufNewFile,BufRead *.coffee set filetype=coffee
             au BufNewFile,BufRead *.coffee setl foldmethod=indent
+            au Filetype coffee setl foldmethod=indent nofoldenable
+            au Filetype coffee setl shiftwidth=2 expandtab
         augroup END
 
         " Source the vimrc file after saving it
@@ -895,6 +1049,35 @@
         au BufReadPost fugitive://* set bufhidden=delete
 
         " Syntax of these languages is fussy over tabs Vs spaces
+
+        " Markdown
+        "au Filetype markdown setlocal foldexpr=MarkdownLevel()  
+        "au Filetype markdown setlocal foldmethod=expr
+        autocmd BufNewFile,BufRead *.md,*.markdown setlocal filetype=markdown | set ts=4 sts=4 sw=4 expandtab
+        au FileType markdown syn region myMkdHeaderFold
+                    \ start="\v^\s*\z(\#{1,6})"
+                    \ end="\v\n(\s*\#)\@="ms=s-1,me=s-1
+                    \ skip="\v(\n\s*\z1\#)\@="
+                    \ fold contains=myMkdHeaderFold
+
+        au FileType markdown syn sync fromstart
+        au FileType markdown set foldmethod=syntax
+        au FileType markdown set fo+=t
+
+        " Octopress
+        autocmd BufNewFile,BufRead *.op,*.octopress setlocal filetype=octopress | set ts=4 sts=4 sw=4 expandtab
+        au FileType octopress syn region myMkdHeaderFold
+                    \ start="\v^\s*\z(\#{1,6})"
+                    \ end="\v\n(\s*\#)\@="ms=s-1,me=s-1
+                    \ skip="\v(\n\s*\z1\#)\@="
+                    \ fold contains=myMkdHeaderFold
+                    \ transparent fold
+
+        au FileType octopress syn sync fromstart
+        au FileType octopress set foldmethod=syntax
+        "au FileType octopress set syntax enable
+        au FileType octopress set fo+=t
+
         au FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
         au FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
@@ -903,30 +1086,16 @@
         au FileType css setlocal ts=2 sts=2 sw=2 expandtab
         au FileType javascript setlocal ts=4 sts=4 sw=4 noexpandtab
         au FileType python setlocal ts=2 sts=2 sw=2 expandtab
-    " }
+    " }}}
 
-    " Clean whitespace at EOL {
-        " Clean all end of line extra whitespace with ,S
-        " Credit: voyeg3r https://github.com/mitechie/pyvim/issues/#issue/1
-        " deletes excess space but maintains the list of jumps unchanged
-        " for more details see: h keepjumps
-        function! CleanExtraSpaces()
-        let save_cursor = getpos(".")
-        let old_query = getreg('/')
-        :%s/\s\+$//e
-        call setpos('.', save_cursor)
-        call setreg('/', old_query)
+    " Clean whitespace at EOL {{{
+        function TrimWhiteSpace()
+            %s/\s\+$//e
         endfunction
-        nmap <silent> <leader>S <esc>:keepjumps call CleanExtraSpaces()<cr>
+        nmap <silent> <leader>rtw <ESC>:call TrimWhiteSpace()<CR>
+    " }}}
 
-        function! RunSystemCall(systemcall)
-        let output = system(a:systemcall)
-        let output = substitute(output, "\n", '', 'g')
-        return output
-        endfunction
-    " }
-
-    " Set up spell function {
+    " Set up spell function {{{
         let g:myLang = 0
         let g:myLangList = [ "Off", "german", "english", "german & english" ]
         function! ChangeSpellLang()
@@ -943,9 +1112,9 @@
         hi SpellBad ctermbg=52 ctermfg=9
         "set spell suggestion to 8
         set spellsuggest=8
-    " }
+    " }}}
 
-    " Periodically save of the current buffer {
+    " Periodically save of the current buffer {{{
         "au BufRead,BufNewFile * let b:start_time=localtime()
         "au BufWrite * let b:start_time=localtime()
         "au CursorHold * call UpdateFile()
@@ -958,9 +1127,9 @@
         "echo "Only " . (localtime() - b:start_time) . " seconds have elapsed so far."
         "endif
         "endfunction
-    " }
+    " }}}
 
-    " Open URL in current line with web browser  {
+    " Open URL in current line with web browser  {{{
         "function! myopenBrowser()
         "let line0 = getline(".")
         "let line = matchstr(line0, "http[^ ]*")
@@ -969,34 +1138,57 @@
         "let line = escape(line, "#?&;|%")
         "exec '!firefox '.line
         "endfunction
-    " }
-" }
+    " }}}
 
-" Programming {
+    " Get level of markdown headers {{{
+        function! MarkdownLevel()
+            if getline(v:lnum) =~ '^# .*$'
+                return ">1"
+            endif
+            if getline(v:lnum) =~ '^## .*$'
+                return ">1"
+            endif
+            if getline(v:lnum) =~ '^### .*$'
+                return ">2"
+            endif
+            if getline(v:lnum) =~ '^#### .*$'
+                return ">3"
+            endif
+            if getline(v:lnum) =~ '^##### .*$'
+                return ">4"
+            endif
+            if getline(v:lnum) =~ '^###### .*$'
+                return ">5"
+            endif
+            return "=" 
+        endfunction
+    "}}}
+
+" }}}
+
+" Programming {{{
     set cin         " C code ident
 
     " Let the syntax highlighting for Java files allow cpp keywords
     let java_allow_cpp_keywords = 1
-" }
+" }}}
 
-" Sources {
+" Sources {{{
     " vimspell: http://www.vim.org/scripts/script.php?script_id=465
-    source /home/dsiw/.vim/abbrev.vim
-    if filereadable(expand("~/.vim/.private.vim"))
-        source ~/.vim/private.vim " Private Daten
-    endif
-" }
+    source ~/.vim/abbrev.vim
+    source ~/.vim/private.vim " Private Daten
+" }}}
 
-" Use local vimrc if available {
+" Use local vimrc if available {{{
     if filereadable(expand("~/.vimrc.local"))
         source ~/.vimrc.local
     endif
-" }
+" }}}
 
-" Use local gvimrc if available and gui is running {
+" Use local gvimrc if available and gui is running {{{
     if has('gui_running') 
         if filereadable(expand("~/.gvimrc.local")) 
             source ~/.gvimrc.local
         endif
     endif
-" }
+" }}}
