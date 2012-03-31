@@ -294,12 +294,12 @@
     "set relativenumber
 
     " solarized {{{
-        "set background=dark " or light
-        "hi IndentGuidesOdd  ctermbg=black
-        "hi IndentGuidesEven ctermbg=darkgrey
-        set background=light " or light
-        hi IndentGuidesOdd  ctermbg=white
-        hi IndentGuidesEven ctermbg=lightgrey
+        set background=dark " or light
+        hi IndentGuidesOdd  ctermbg=black
+        hi IndentGuidesEven ctermbg=darkgrey
+        "set background=light " or light
+        "hi IndentGuidesOdd  ctermbg=white
+        "hi IndentGuidesEven ctermbg=lightgrey
         "color xoria256
         colorscheme solarized                 " load a colorscheme
           let g:solarized_termtrans=0
@@ -951,9 +951,9 @@
         au Filetype erb let g:surround_61 = "<%= \r %>" " =
     " }}}
 
-    " Sudo Write {{{
-        " w!! to write a file as sudo
-        cmap w!! w sudo:%
+    " Sudo {{{
+        " Write a file as sudo
+        command Wsudo :w sudo:%
     " }}}
 
     " SplitJoin {{{
@@ -971,11 +971,10 @@
     " DelimitMate {{{
         let g:delimitMate_excluded_ft = "mail,txt"
         let delimitMate_autoclose = 1
-        "let delimitMate_matchpairs = "(:),[:],{:},<:>"
-        au FileType vim,html let b:delimitMate_matchpairs = "(:),[:],{:},<:>"
-        let delimitMate_quotes = "\" ' ` *"
         let delimitMate_expand_space = 1
         let delimitMate_balance_matchpairs = 1
+        let delimitMate_quotes = "\" ' `"
+        let b:delimitMate_matchpairs = "(:),[:],{:},<:>"
     " }}}
 
     " YankRing {{{
@@ -1010,7 +1009,7 @@
 
 " Functions {{{
     " Auto commands {{{
-        augroup Binary
+        augroup Binary "{{{
             au!
             au BufReadPre   *.bin let &bin=1
             au BufReadPost  *.bin if &bin | %!xxd
@@ -1020,21 +1019,39 @@
             au BufWritePost *.bin if &bin | %!xxd
             au BufWritePost *.bin set nomod | endif
         augroup END
-
-        augroup Mail
+        "}}}
+        augroup Mail "{{{
             au!
             autocmd BufNewFile,BufRead *.mail set filetype=mail
             autocmd BufNewFile,BufRead ~/.mutt/* set filetype=muttrc
             autocmd BufNewFile,BufRead *msmtp* set filetype=msmtp
         augroup END
-
-        augroup Coffee
+        "}}}
+        augroup Coffee "{{{
             au!
             au BufNewFile,BufRead *.coffee set filetype=coffee
             au BufNewFile,BufRead *.coffee setl foldmethod=indent
             au Filetype coffee setl foldmethod=indent nofoldenable
             au Filetype coffee setl shiftwidth=2 expandtab
         augroup END
+        "}}}
+        augroup Shebang "{{{
+            au!
+            autocmd BufNewFile *.tex 0put =\"%&plain\<nl>\"|$
+            autocmd BufNewFile *.\(cc\|hh\) 0put =\"//\<nl>// \".expand(\"<afile>:t\").\" -- \<nl>//\<nl>\"|2|start!
+        augroup END
+        "}}}
+        augroup Ruby "{{{
+            au!
+            au BufNewFile *.rb 0put =\"#!/usr/bin/env ruby\<nl># encoding: utf-8\<nl>\"|$
+        augroup END
+        "}}}
+        augroup Executable "{{{
+            " automatically give executable permissions if file begins with #! and contains '/bin/' in the path
+            au!
+            au BufWritePost * call MakeExecutable()
+        augroup END
+        "}}}
 
         " Source the vimrc file after saving it
         "au Bufwritepost vimrc source $MYVIMRC
@@ -1050,33 +1067,40 @@
 
         " Syntax of these languages is fussy over tabs Vs spaces
 
-        " Markdown
-        "au Filetype markdown setlocal foldexpr=MarkdownLevel()  
-        "au Filetype markdown setlocal foldmethod=expr
-        autocmd BufNewFile,BufRead *.md,*.markdown setlocal filetype=markdown | set ts=4 sts=4 sw=4 expandtab
-        au FileType markdown syn region myMkdHeaderFold
-                    \ start="\v^\s*\z(\#{1,6})"
-                    \ end="\v\n(\s*\#)\@="ms=s-1,me=s-1
-                    \ skip="\v(\n\s*\z1\#)\@="
-                    \ fold contains=myMkdHeaderFold
+        augroup Markdown "{{{
+            au!
+            " Markdown
+            "au Filetype markdown setlocal foldexpr=MarkdownLevel()  
+            "au Filetype markdown setlocal foldmethod=expr
+            au BufNewFile,BufRead *.md,*.markdown setlocal filetype=markdown | set ts=4 sts=4 sw=4 expandtab
+            au FileType markdown syn region myMkdHeaderFold
+                        \ start="\v^\s*\z(\#{1,6})"
+                        \ end="\v\n(\s*\#)\@="ms=s-1,me=s-1
+                        \ skip="\v(\n\s*\z1\#)\@="
+                        \ fold contains=myMkdHeaderFold
 
-        au FileType markdown syn sync fromstart
-        au FileType markdown set foldmethod=syntax
-        au FileType markdown set fo+=t
+            au FileType markdown syn sync fromstart
+            au FileType markdown set foldmethod=syntax
+            au FileType markdown set fo+=t
+        augroup END
+        "}}}
 
-        " Octopress
-        autocmd BufNewFile,BufRead *.op,*.octopress setlocal filetype=octopress | set ts=4 sts=4 sw=4 expandtab
-        au FileType octopress syn region myMkdHeaderFold
-                    \ start="\v^\s*\z(\#{1,6})"
-                    \ end="\v\n(\s*\#)\@="ms=s-1,me=s-1
-                    \ skip="\v(\n\s*\z1\#)\@="
-                    \ fold contains=myMkdHeaderFold
-                    \ transparent fold
+        augroup Octopress "{{{
+            " Octopress
+            autocmd BufNewFile,BufRead *.op,*.octopress setlocal filetype=octopress | set ts=4 sts=4 sw=4 expandtab
+            au FileType octopress syn region myMkdHeaderFold
+                        \ start="\v^\s*\z(\#{1,6})"
+                        \ end="\v\n(\s*\#)\@="ms=s-1,me=s-1
+                        \ skip="\v(\n\s*\z1\#)\@="
+                        \ fold contains=myMkdHeaderFold
+                        \ transparent fold
 
-        au FileType octopress syn sync fromstart
-        au FileType octopress set foldmethod=syntax
-        "au FileType octopress set syntax enable
-        au FileType octopress set fo+=t
+            au FileType octopress syn sync fromstart
+            au FileType octopress set foldmethod=syntax
+            "au FileType octopress set syntax enable
+            au FileType octopress set fo+=t
+        augroup END
+        "}}}
 
         au FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
         au FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
@@ -1164,7 +1188,14 @@
         endfunction
     "}}}
 
-" }}}
+    " Make executable {{{
+    " automatically give executable permissions if file begins with #! and contains '/bin/' in the path
+        function! MakeExecutable()
+            if getline(1) =~ "^#!.*/bin/"
+                silent !chmod a+x <afile>
+            endif
+        endfunction
+    " }}}
 
 " Programming {{{
     set cin         " C code ident
