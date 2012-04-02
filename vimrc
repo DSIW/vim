@@ -104,11 +104,11 @@
         Bundle 'vim-json-bundle'
         "Bundle 'VimDebug'
         Bundle 'splitjoin.vim'
-        Bundle 'argtextobj.vim'
         Bundle 'camelcasemotion'
     " }}}
 
     " Textobjects {{{
+        Bundle 'argtextobj.vim'
         Bundle 'kana/vim-textobj-user.git'
         Bundle 'textobj-rubyblock'
         " r
@@ -137,6 +137,7 @@
     " Git {{{
         Bundle 'git.zip'
         Bundle 'fugitive.vim'
+        Bundle 'Gist.vim'
     " }}}
 
     " Sourround {{{
@@ -294,7 +295,7 @@
     "set relativenumber
 
     " solarized {{{
-        set background=dark " or light
+        set background=light " or light
         hi IndentGuidesOdd  ctermbg=black
         hi IndentGuidesEven ctermbg=darkgrey
         "set background=light " or light
@@ -1038,6 +1039,7 @@
         augroup Shebang "{{{
             au!
             au BufNewFile *.rb 0put =\"#!/usr/bin/env ruby\<nl># encoding: utf-8\<nl>\"|$
+            au BufNewFile *.sh 0put =\"#!/usr/bin/bash\<nl># encoding: utf-8\<nl>\"|$
             autocmd BufNewFile *.tex 0put =\"%&plain\<nl>\"|$
             autocmd BufNewFile *.\(cc\|hh\) 0put =\"//\<nl>// \".expand(\"<afile>:t\").\" -- \<nl>//\<nl>\"|2|start!
         augroup END
