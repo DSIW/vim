@@ -55,6 +55,7 @@
         Bundle 'hexman.vim'
         Bundle 'taglist.vim'
         Bundle 'speeddating.vim'
+        Bundle 'trailing-whitespace'
         Bundle 'repeat.vim'
         "Bundle 'recover.vim'
         Bundle 'ack.vim'
@@ -319,10 +320,8 @@
         "highlight NonText guifg=#4a4a59
         "highlight SpecialKey guifg=#4a4a59
         set showbreak=
-        ":highlight EOLWhitespace ctermbg=darkgray
-        ":match EOLWhitespace /\s\+$/
 
-        "match @Author oder @author   
+        "match @Author oder @author
         :highlight author ctermbg=black ctermfg=blue
         :match author /\(@[aA]uth\?or: \?\)\@<=[^ ].\+/
 
