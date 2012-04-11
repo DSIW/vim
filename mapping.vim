@@ -240,7 +240,7 @@ endif
 au Filetype markdown,octopress nmap <leader>iuw ysw]ela(<C-R>+<ESC>
 au Filetype markdown,octopress nmap <leader>iuW ysW]Ea(<ESC>"+p
 au Filetype markdown,octopress vmap <leader>iu s]f]a(<C-R>+<ESC>
-
+au Filetype markdown,octopress nmap <leader>up O**Update vom <ESC>:r!getDateVersion -d<CR>kJA:** **<ESC>i
 
 nnoremap ze zMzo
 nnoremap zE zMzO
