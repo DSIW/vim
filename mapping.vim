@@ -75,7 +75,7 @@ endif
     noremap <silent> ,ck :wincmd k<CR>:close<CR>
     noremap <silent> ,ch :wincmd h<CR>:close<CR>
     noremap <silent> ,cl :wincmd l<CR>:close<CR>
-    noremap <silent> ,cc :close<CR>
+    noremap <silent> ,cw :close<CR>
     "noremap <silent> ,ml <C-W>L
     "noremap <silent> ,mk <C-W>K
     "noremap <silent> ,mh <C-W>H " same in ShowMarks

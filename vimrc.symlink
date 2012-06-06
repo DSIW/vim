@@ -53,7 +53,7 @@
         Bundle 'SearchComplete'
         Bundle 'EasyGrep'
         Bundle 'hexman.vim'
-        Bundle 'taglist.vim'
+        "Bundle 'taglist.vim'
         Bundle 'speeddating.vim'
         Bundle 'trailing-whitespace'
         Bundle 'repeat.vim'
@@ -73,6 +73,7 @@
         "Bundle 'Buffer-Search'
         "Bundle 'ShowPairs'
         "Bundle 'LustyJuggler'
+        Bundle 'NrrwRgn'
     " }}}
 
     " UI {{{
@@ -83,33 +84,45 @@
     " }}}
 
     " Programming {{{
-        "Bundle 'snipMate'
-        "Bundle 'snipmate-snippets'
         "Bundle 'xptemplate'
         Bundle 'Tabular'
         Bundle 'The-NERD-Commenter'
-        Bundle 'c.vim'
         "Bundle 'ProtoDef'
         "Bundle 'SuperTab'
-        Bundle 'FSwitch'
         Bundle 'Indent-Guides'
+        "Bundle 'VimDebug'
+        "Bundle 'camelcasemotion'
+        Bundle 'Syntastic'
+
+        Bundle 'c.vim'
+        Bundle 'FSwitch'
+
         Bundle 'ruby.vim'
         Bundle 'ecomba/vim-ruby-refactoring.git'
+        Bundle 'skalnik/vim-vroom'
+        Bundle 'splitjoin.vim'
+        Bundle 'skwp/vim-rspec'
+
         "Bundle 'vim-coffee-script'
+
         "Bundle 'cespare/vjde.git'
         "Bundle 'javacomplete'
         "Bundle 'ervandew/eclim.git'
+
         "Bundle 'pep8'
         "Bundle 'mitechie/pyflakes-pathogen.git'
         "Bundle 'fs111/pydoc.vim.git'
+
+        Bundle "MarcWeber/vim-addon-mw-utils"
+        Bundle "tomtom/tlib_vim"
+        Bundle "snipmate-snippets"
+        Bundle "garbas/vim-snipmate"
+
+        Bundle 'javascript.vim'
         Bundle 'vim-json-bundle'
-        "Bundle 'VimDebug'
-        Bundle 'splitjoin.vim'
-        Bundle 'camelcasemotion'
     " }}}
 
     " Textobjects {{{
-        Bundle 'argtextobj.vim'
         Bundle 'kana/vim-textobj-user.git'
         Bundle 'textobj-rubyblock'
         " r
@@ -132,7 +145,7 @@
     "}}}
 
     " Mail {{{
-        Bundle 'CheckAttach.vim'
+        "Bundle 'CheckAttach.vim'
     " }}}
 
     " Git {{{
@@ -147,7 +160,7 @@
     " }}}
 
     " Web {{{
-        Bundle 'XML-Folding'
+        "Bundle 'XML-Folding'
         "Bundle 'ragtag.vim'
         Bundle 'mirell/vim-matchit'
         Bundle 'vim-octopress'
@@ -166,8 +179,10 @@
         "Bundle 'css_color.vim' " CPU raises up
         "Bundle 'vim-recovery' " NOT FOUND
         "Bundle 'minibufexpl.vim' ERROR with plugin "fugitive in diff mode"
+
         "Bundle 'endwise.vim'
         " ERROR with "pumvisible"
+
         "Bundle 'Solarized' " ERROR with comments (background is too dark)
     " }}}
 " }}}
@@ -438,14 +453,17 @@
 
     " folding {{{
         " These commands open folds
-        "set foldmethod=syntax " folding by syntax
+        set foldmethod=syntax " folding by syntax
         "set foldclose=all " if curser out of fold, then close
         set foldcolumn=2 " set the column of the left side
         "set nofoldenable " folding isn't enabled
-        set foldmethod=marker " Fold on the marker
+        "set foldmethod=marker " Fold on the marker
         set foldenable " Turn on folding
-        "set foldlevel=100 " Don't autofold anything (but I can still fold manually)
-        set foldopen=block,insert,jump,mark,percent,quickfix,search,tag,undo,hor
+        set foldlevel=100 " Don't autofold anything (but I can still fold manually)
+        "set foldopen=block,insert,jump,mark,percent,quickfix,search,tag,undo,hor
+        set foldopen=block,jump,mark,percent,quickfix,search,tag,undo,hor
+
+        set foldtext=MyFoldLabel()
     " }}}
 " }}}
 
@@ -483,10 +501,10 @@
     nnoremap k gk
 
     " Stupid shift key fixes
-    cmap W w
-    cmap WQ wq
-    cmap wQ wq
-    cmap Q q
+    "cmap W w
+    "cmap WQ wq
+    "cmap wQ wq
+    "cmap Q q
 
     " Yank from the cursor to the end of the line, to be consistent with C and D.
     nnoremap Y y$
@@ -507,7 +525,7 @@
     vnoremap < <gv
     vnoremap > >gv 
 
-    command MkBackup :!mkbak %<CR>
+    command MkBackup :! cp % %.bak
 
     source ~/.vim/mapping.vim
 " }}}
@@ -590,6 +608,10 @@
 
      " TagBar {{{
         nnoremap <silent> <leader>tt :TagbarToggle<CR>
+        let g:tagbar_width = 30
+        let g:tagbar_sort = 0
+        let g:tagbar_compact = 1
+        let g:tagbar_autoshowtag = 1
      "}}}
 
      " Session List {{{
@@ -668,10 +690,10 @@
 
     " Tabular {{{
         if exists(":Tabularize")
-        nmap <Leader>a= :Tabularize /=<CR>
-        vmap <Leader>a= :Tabularize /=<CR>
-        nmap <Leader>a: :Tabularize /:\zs<CR>
-        vmap <Leader>a: :Tabularize /:\zs<CR>
+        nmap <Leader>t= :Tabularize /=<CR>
+        vmap <Leader>t= :Tabularize /=<CR>
+        nmap <Leader>t: :Tabularize /:\zs<CR>
+        vmap <Leader>t: :Tabularize /:\zs<CR>
         endif
     " }}}
 
@@ -839,7 +861,8 @@
     " SnipMate {{{
         " Setting the author var
         " If forking, please overwrite in your .vimrc.local file
-        let g:snips_author = 'Steve Francia <steve.francia@gmail.com>'
+        "let g:snips_author = 'Steve Francia <steve.francia@gmail.com>'
+        "let g:snips_trigger_key='<c-space>'
         " Shortcut for reloading snippets, useful when developing
         nnoremap ,smr <esc>:exec ReloadAllSnippets()<cr>
     " }}}
@@ -975,6 +998,7 @@
         let delimitMate_balance_matchpairs = 1
         let delimitMate_quotes = "\" ' `"
         let b:delimitMate_matchpairs = "(:),[:],{:},<:>"
+        au FileType ruby let b:delimitMate_matchpairs = "(:),[:],{:}"
     " }}}
 
     " YankRing {{{
@@ -984,6 +1008,16 @@
         let g:yankring_window_use_right = 1
         let g:yankring_history_dir = '~/.vim/'
         let g:yankring_history_file = 'yankring_history'
+    " }}}
+
+    " VRoom {{{
+        let g:vroom_cucumber_path = 'cucumber '
+    " }}}
+
+    " Syntastic {{{
+    let g:syntastic_mode_map = { 'mode': 'passive',
+                               \ 'active_filetypes': [],
+                               \ 'passive_filetypes': ['ruby'] }
     " }}}
 " }}}
 
@@ -1038,7 +1072,8 @@
         augroup Shebang "{{{
             au!
             au BufNewFile *.rb 0put =\"#!/usr/bin/env ruby\<nl># encoding: utf-8\<nl>\"|$
-            au BufNewFile *.sh 0put =\"#!/usr/bin/bash\<nl># encoding: utf-8\<nl>\"|$
+            au BufNewFile *.sh 0put =\"#!/bin/bash\<nl>\"|$
+            au BufNewFile *.pl 0put =\"#!/usr/bin/env perl\<nl>\"|$
             autocmd BufNewFile *.tex 0put =\"%&plain\<nl>\"|$
             autocmd BufNewFile *.\(cc\|hh\) 0put =\"//\<nl>// \".expand(\"<afile>:t\").\" -- \<nl>//\<nl>\"|2|start!
         augroup END
@@ -1103,10 +1138,18 @@
         au FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
         " Customisations based on house-style (arbitrary)
-        au FileType html setlocal ts=2 sts=2 sw=2 expandtab
-        au FileType css setlocal ts=2 sts=2 sw=2 expandtab
-        au FileType javascript setlocal ts=4 sts=4 sw=4 noexpandtab
-        au FileType python setlocal ts=2 sts=2 sw=2 expandtab
+        au FileType html       setlocal ts=2 sts=2 sw=2 expandtab
+        au FileType css        setlocal ts=2 sts=2 sw=2 expandtab
+        au FileType javascript setlocal ts=2 sts=2 sw=2 expandtab
+        au FileType python     setlocal ts=2 sts=2 sw=2 expandtab
+
+        " Omni Completion
+        autocmd FileType python set omnifunc=pythoncomplete#Complete
+        autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+        autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+        autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+
+        au BufNewFile,BufRead Guardfile set filetype=ruby
     " }}}
 
     " Clean whitespace at EOL {{{
@@ -1191,6 +1234,14 @@
             if getline(1) =~ "^#!.*/bin/"
                 silent !chmod a+x <afile>
             endif
+        endfunction
+    " }}}
+
+    " Foldtext {{{
+        function! MyFoldLabel()
+            let getcontent = substitute(getline(v:foldstart), "^[[:space:]]*", "", 'g')
+            let linestart = substitute(v:folddashes, ".", '»', 'g')
+            return linestart . " " . getcontent
         endfunction
     " }}}
 
