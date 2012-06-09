@@ -528,7 +528,7 @@
 
     command MkBackup :! cp % %.bak
 
-    source ./mapping.vim
+    source ~/.vim/mapping.vim
 " }}}
 
 " Plugins {{{
@@ -1288,7 +1288,7 @@
 
 " Sources {{{
     " vimspell: http://www.vim.org/scripts/script.php?script_id=465
-    source ./abbrev.vim
+    source ~/.vim/abbrev.vim
 " }}}
 
 " Use local vimrc if available {{{
