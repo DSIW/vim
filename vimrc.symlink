@@ -1289,7 +1289,6 @@
 " Sources {{{
     " vimspell: http://www.vim.org/scripts/script.php?script_id=465
     source ~/.vim/abbrev.vim
-    source ~/.vim/private.vim " Private Daten
 " }}}
 
 " Use local vimrc if available {{{
