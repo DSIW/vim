@@ -94,6 +94,7 @@
         "Bundle 'camelcasemotion'
         Bundle 'Syntastic'
         Bundle 'Shougo/neocomplcache'
+        Bundle "MarcWeber/vim-addon-mw-utils"
 
         Bundle 'c.vim'
         Bundle 'FSwitch'
@@ -114,8 +115,7 @@
         "Bundle 'mitechie/pyflakes-pathogen.git'
         "Bundle 'fs111/pydoc.vim.git'
 
-        Bundle "MarcWeber/vim-addon-mw-utils"
-        "Bundle "tomtom/tlib_vim"
+        Bundle "tomtom/tlib_vim"
         Bundle "DSIW/snipmate-snippets"
         Bundle "garbas/vim-snipmate"
 
