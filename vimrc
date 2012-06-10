@@ -115,8 +115,8 @@
         "Bundle 'fs111/pydoc.vim.git'
 
         Bundle "MarcWeber/vim-addon-mw-utils"
-        Bundle "tomtom/tlib_vim"
-        Bundle "snipmate-snippets"
+        "Bundle "tomtom/tlib_vim"
+        Bundle "DSIW/snipmate-snippets"
         Bundle "garbas/vim-snipmate"
 
         "Bundle 'javascript.vim'
