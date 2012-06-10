@@ -528,7 +528,9 @@
 
     command MkBackup :! cp % %.bak
 
-    source ~/.vim/mapping.vim
+    if filereadable(expand("~/.vim/mapping.vim"))
+        source ~/.vim/mapping.vim
+    endif
 " }}}
 
 " Plugins {{{
@@ -1287,7 +1289,12 @@
 
 " Sources {{{
     " vimspell: http://www.vim.org/scripts/script.php?script_id=465
-    source ~/.vim/abbrev.vim
+    if filereadable(expand("~/.vim/abbrev.vim"))
+        source ~/.vim/abbrev.vim
+    endif
+    if filereadable(expand("~/.vim/private.vim"))
+        source ~/.vim/private.vim
+    endif
 " }}}
 
 " Use local vimrc if available {{{
