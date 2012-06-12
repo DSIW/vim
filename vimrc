@@ -369,7 +369,7 @@
     set synmaxcol=2048
 
     set list
-    set listchars=tab:▸\ ,trail:·,extends:#,nbsp:· ",eol:¬ " Highlight problematic whitespace: ﹁
+    set listchars=tab:▸\ ,trail:·,extends:#,nbsp:·,eol:¬ " Highlight problematic whitespace: ﹁
 
     set scrolloff=8                 " minimum lines to keep above and below cursor
     set scrolljump=5                " lines to scroll when cursor leaves screen
