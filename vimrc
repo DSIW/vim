@@ -167,6 +167,8 @@
         Bundle 'vim-octopress'
         "Bundle 'rails.vim'
         "Bundle 'tpope/vim-rails'
+        "Bundle 'groenewege/vim-less'
+        "Bundle 'cakebaker/scss-syntax'
         "Bundle 'Haml'
         "Bundle 'mirell/vim-matchit'
         Bundle 'tpope/vim-markdown'
