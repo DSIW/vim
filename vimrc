@@ -487,6 +487,7 @@
     set wrap               " wrap long lines
 
     set autoindent         " indent at the same level of the previous line
+    set copyindent
 " }}}
 
 " Key (re)Mappings {{{
