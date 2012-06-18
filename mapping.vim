@@ -99,34 +99,35 @@ endif
 " }}}
 
 " VIMRC {{{
-" Edit the vimrc file
-nnoremap <silent> ,ev :e ~/.vimrc<CR>
-nnoremap <silent> ,sv :so ~/.vimrc<CR>
-nmap ,em :e ~/.vim/mapping.vim<CR>
+    " Edit the vimrc file
+    nnoremap <silent> ,ev :e ~/.vimrc<CR>
+    nnoremap <silent> ,sv :so ~/.vimrc<CR>
+    nmap ,em :e ~/.vim/mapping.vim<CR>
 " }}}
 
 " Motions {{{
-nmap <C-0> g0
-nmap <C-4> g$
-vmap <C-0> g0
-vmap <C-4> g$
+    nmap <C-0> g0
+    nmap <C-4> g$
+    vmap <C-0> g0
+    vmap <C-4> g$
 " }}}
 
 " Copy & Paste {{{
-"vmap <C-c> "+y
-"nmap <C-p> "+p
+    "vmap <C-c> "+y
+    "nmap <C-p> "+p
 " }}}
 
 " Disable Arrow-Keys {{{
-" noremap  <Up> ""
-" noremap! <Up> <Esc>
-" noremap  <Down> ""
-" noremap! <Down> <Esc>
-" noremap  <Left> ""
-" noremap! <Left> <Esc>
-" noremap  <Right> ""
-" noremap! <Right> <Esc>
+    " noremap  <Up> ""
+    " noremap! <Up> <Esc>
+    " noremap  <Down> ""
+    " noremap! <Down> <Esc>
+    " noremap  <Left> ""
+    " noremap! <Left> <Esc>
+    " noremap  <Right> ""
+    " noremap! <Right> <Esc>
 " }}}
+
 "---------------------------------------------------------
 " From Derek
 "---------------------------------------------------------
@@ -180,17 +181,17 @@ nmap ,l :set list!<CR>
 "nmap <silent> ^ :setl hls<CR>:let @/="<C-r><C-w>"<CR>
 
 " Search the current file for what's currently in the search {{{
-" register and display matches
-nmap <silent> ,gs
-      \ :vimgrep /<C-r>// %<CR>:ccl<CR>:cwin<CR><C-W>J:set nohls<CR>
+    " register and display matches
+    nmap <silent> ,gs
+          \ :vimgrep /<C-r>// %<CR>:ccl<CR>:cwin<CR><C-W>J:set nohls<CR>
 
-" Search the current file for the word under the cursor and display matches
-nmap <silent> ,gw
-      \ :vimgrep /<C-r><C-w>/ %<CR>:ccl<CR>:cwin<CR><C-W>J:set nohls<CR>
+    " Search the current file for the word under the cursor and display matches
+    nmap <silent> ,gw
+          \ :vimgrep /<C-r><C-w>/ %<CR>:ccl<CR>:cwin<CR><C-W>J:set nohls<CR>
 
-" Search the current file for the WORD under the cursor and display matches
-nmap <silent> ,gW
-      \ :vimgrep /<C-r><C-a>/ %<CR>:ccl<CR>:cwin<CR><C-W>J:set nohls<CR>
+    " Search the current file for the WORD under the cursor and display matches
+    nmap <silent> ,gW
+          \ :vimgrep /<C-r><C-a>/ %<CR>:ccl<CR>:cwin<CR><C-W>J:set nohls<CR>
 " }}}
 
 " Swap two words
@@ -206,10 +207,10 @@ nmap <silent> ,ul :t.\|s/./=/g\|set nohls<cr>
 nmap <silent> ,da :exec "1," . bufnr('$') . "bd"<cr>
 
 " better undo {{{
-inoremap <C-U> <C-G>u<C-U>
-inoremap <C-W> <C-G>u<C-W>
-inoremap <BS> <C-G>u<BS>
-inoremap <Del> <C-G>u<Del>
+    inoremap <C-U> <C-G>u<C-U>
+    inoremap <C-W> <C-G>u<C-W>
+    inoremap <BS> <C-G>u<BS>
+    inoremap <Del> <C-G>u<Del>
 " }}}
 
 " Visually select the text that was last edited/pasted
@@ -244,3 +245,14 @@ au Filetype markdown,octopress nmap <leader>up O**Update vom <ESC>:r!getDateVers
 
 nnoremap ze zMzo
 nnoremap zE zMzO
+
+" Stamping {{{
+    " replace the current word with the last yanked text
+    nnoremap S diw"0P
+    " replace visually selected text with the last yanked text
+    vnoremap S "_d"0P
+    " replace the current word with the last yanked or deleted text
+    "nnoremap S "_diwP
+    " replace visually selected text with the last yanked or deleted text
+    "vnoremap S "_dP
+" }}}
