@@ -105,7 +105,7 @@
         Bundle 'splitjoin.vim'
         Bundle 'skwp/vim-rspec'
 
-        "Bundle 'vim-coffee-script'
+        Bundle 'vim-coffee-script'
 
         "Bundle 'cespare/vjde.git'
         "Bundle 'javacomplete'
