@@ -20,7 +20,7 @@
 
     " Windows Compatible {{{
         " On Windows, also use '.vim' instead of 'vimfiles'; this makes synchronization
-        " across (heterogeneous) systems easier. 
+        " across (heterogeneous) systems easier.
         if has('win32') || has('win64')
           set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
         endif
@@ -94,6 +94,7 @@
         "Bundle 'camelcasemotion'
         Bundle 'Syntastic'
         Bundle 'Shougo/neocomplcache'
+        Bundle "MarcWeber/vim-addon-mw-utils"
 
         Bundle 'c.vim'
         Bundle 'FSwitch'
@@ -104,7 +105,7 @@
         Bundle 'splitjoin.vim'
         Bundle 'skwp/vim-rspec'
 
-        "Bundle 'vim-coffee-script'
+        Bundle 'vim-coffee-script'
 
         "Bundle 'cespare/vjde.git'
         "Bundle 'javacomplete'
@@ -114,9 +115,8 @@
         "Bundle 'mitechie/pyflakes-pathogen.git'
         "Bundle 'fs111/pydoc.vim.git'
 
-        Bundle "MarcWeber/vim-addon-mw-utils"
         Bundle "tomtom/tlib_vim"
-        Bundle "snipmate-snippets"
+        Bundle "DSIW/snipmate-snippets"
         Bundle "garbas/vim-snipmate"
 
         "Bundle 'javascript.vim'
@@ -167,6 +167,8 @@
         Bundle 'vim-octopress'
         "Bundle 'rails.vim'
         "Bundle 'tpope/vim-rails'
+        "Bundle 'groenewege/vim-less'
+        "Bundle 'cakebaker/scss-syntax'
         "Bundle 'Haml'
         "Bundle 'mirell/vim-matchit'
         Bundle 'tpope/vim-markdown'
@@ -485,6 +487,7 @@
     set wrap               " wrap long lines
 
     set autoindent         " indent at the same level of the previous line
+    set copyindent
 " }}}
 
 " Key (re)Mappings {{{
@@ -524,11 +527,13 @@
 
     " visual shifting (does not exit Visual mode)
     vnoremap < <gv
-    vnoremap > >gv 
+    vnoremap > >gv
 
     command MkBackup :! cp % %.bak
 
-    source ~/.vim/mapping.vim
+    if filereadable(expand("~/.vim/mapping.vim"))
+        source ~/.vim/mapping.vim
+    endif
 " }}}
 
 " Plugins {{{
@@ -590,10 +595,10 @@
         inoremap <expr><C-l>     neocomplcache#complete_common_string()
 
 
-        " <CR>: close popup 
+        " <CR>: close popup
         " <s-CR>: close popup and save indent.
         inoremap <expr><CR>  pumvisible() ? neocomplcache#close_popup() : "\<CR>"
-        inoremap <expr><s-CR> pumvisible() ? neocomplcache#close_popup() "\<CR>" : "\<CR>" 
+        inoremap <expr><s-CR> pumvisible() ? neocomplcache#close_popup() "\<CR>" : "\<CR>"
         " <TAB>: completion.
         inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
@@ -645,6 +650,9 @@
         let g:tagbar_sort = 0
         let g:tagbar_compact = 1
         let g:tagbar_autoshowtag = 1
+        let g:tagbar_type_javascript = {
+                    \ 'ctagsbin' : '/usr/bin/jsctags'
+                    \ }
      "}}}
 
      " Session List {{{
@@ -875,7 +883,7 @@
         "let loaded_minibufexplorer = 1
         let g:miniBufExplMapWindowNavVim = 1
         let g:miniBufExplMapCTabSwitchBufs = 1
-        let g:miniBufExplModSelTarget = 1 
+        let g:miniBufExplModSelTarget = 1
         let g:miniBufExplMapWindowNavArrows = 1
     " }}}
 
@@ -957,7 +965,7 @@
     " jcommenter {{{
         "autocmd FileType java source $VIM/macros/jcommenter.vim
         autocmd FileType java map <M-c> :call JCommentWriter()<CR>  " Alt-C
-        let g:vjde_completion_key='<c-space>' 
+        let g:vjde_completion_key='<c-space>'
     " }}}
 
     " XMLFolding {{{
@@ -971,7 +979,7 @@
     " VimDebug {{{
         if exists(":DBGRstart")
             map <F12>      :DBGRstart<CR>
-            map <Leader>s/ :DBGRstart 
+            map <Leader>s/ :DBGRstart
 
             map <F7>       :call DBGRstep()<CR>
             map <F8>       :call DBGRnext()<CR>
@@ -981,10 +989,10 @@
             map <Leader>c  :call DBGRclearBreakPoint()<CR>
             map <Leader>ca :call DBGRclearAllBreakPoints()<CR>
 
-            map <Leader>v/ :DBGRprint 
+            map <Leader>v/ :DBGRprint
             map <Leader>v  :DBGRprintExpand expand("<cWORD>")<CR> " print value under the cursor
 
-            map <Leader>/  :DBGRcommand 
+            map <Leader>/  :DBGRcommand
 
             map <F10>      :call DBGRrestart()<CR>
             map <F11>      :call DBGRquit()<CR>
@@ -1135,7 +1143,7 @@
         augroup Markdown "{{{
             au!
             " Markdown
-            "au Filetype markdown setlocal foldexpr=MarkdownLevel()  
+            "au Filetype markdown setlocal foldexpr=MarkdownLevel()
             "au Filetype markdown setlocal foldmethod=expr
             au BufNewFile,BufRead *.md,*.markdown setlocal filetype=markdown | set ts=4 sts=4 sw=4 expandtab
             au FileType markdown syn region myMkdHeaderFold
@@ -1257,7 +1265,7 @@
             if getline(v:lnum) =~ '^###### .*$'
                 return ">5"
             endif
-            return "=" 
+            return "="
         endfunction
     "}}}
 
@@ -1278,6 +1286,19 @@
         endfunction
     " }}}
 
+    " Open URL {{{
+        command -bar -nargs=1 OpenURL :!open <args>
+        function! OpenURL()
+            let s:uri = matchstr(getline("."), '[a-z]*:\/\/[^ >,;:]*')
+            echo s:uri
+            if s:uri != ""
+                exec "!open \"" . s:uri . "\""
+            else
+                echo "No URI found in line."
+            endif
+        endfunction
+    " }}}
+
 " Programming {{{
     set cin         " C code ident
 
@@ -1287,7 +1308,12 @@
 
 " Sources {{{
     " vimspell: http://www.vim.org/scripts/script.php?script_id=465
-    source ~/.vim/abbrev.vim
+    if filereadable(expand("~/.vim/abbrev.vim"))
+        source ~/.vim/abbrev.vim
+    endif
+    if filereadable(expand("~/.vim/private.vim"))
+        source ~/.vim/private.vim
+    endif
 " }}}
 
 " Use local vimrc if available {{{
@@ -1297,8 +1323,8 @@
 " }}}
 
 " Use local gvimrc if available and gui is running {{{
-    if has('gui_running') 
-        if filereadable(expand("~/.gvimrc.local")) 
+    if has('gui_running')
+        if filereadable(expand("~/.gvimrc.local"))
             source ~/.gvimrc.local
         endif
     endif
