@@ -371,6 +371,7 @@
 
     set wildmenu " Make the command-line completion better
     set wildmode=list:longest,full  " command <Tab> completion, list matches, then longest common part, then all.
+    set wildignore=*.o,*.obj,*~,*.swp
 
     set lazyredraw " Don't update the display while executing macros
 
