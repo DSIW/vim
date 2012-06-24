@@ -393,8 +393,6 @@
       " selected characters/lines in visual mode
     endif
 
-    set showmatch " Turn on: showmatching brackets
-
     " timeouts {{{
         " This is the timeout used while waiting for user input on a multi-keyed macro
         " or while just sitting and waiting for another key to be pressed measured
@@ -722,7 +720,7 @@
         let g:EasyGrepAllOptionsInExplorer=1
         let g:EasyGrepWindow=0
         let g:EasyGrepReplaceWindowMode=1
-        let g:EasyGrepOpenWindowOnMatch=1
+        let g:EasyGrepOpenWindowOnMatch=0
         let g:EasyGrepEveryMatch=1
         let g:EasyGrepJumpToMatch=1
         let g:EasyGrepInvertWholeWord=1
@@ -863,9 +861,6 @@
     " NERD Tree  {{{
         " Toggle the NERD Tree on an off with F7
         nmap ,T :NERDTreeToggle<CR>
-
-        " Close the NERD Tree with Shift-F7
-        "nmap <S-F7> :NERDTreeClose<CR>
 
         " Store the bookmarks file in perforce
         let NERDTreeBookmarksFile="~/.vim/NERDTreeBookmarks"
