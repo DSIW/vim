@@ -883,6 +883,17 @@
         let NERDShutUp=1
     " }}}
 
+    " Command-T  {{{
+        nnoremap <silent> <Leader>t :CommandT<CR>
+        nnoremap <silent> <Leader>b :CommandTBuffer<CR>
+
+        let g:CommandTAlwaysShowDotFiles = 0
+        "let g:CommandTNeverShowDotFiles = 1
+        let g:CommandTScanDotDirectories = 1
+        let g:CommandTMatchWindowAtTop = 1
+        let g:CommandTMatchWindowReverse = 0
+    " }}}
+
     " MiniBufExplorer Plugin Settings {{{
         " Yup, I don't like this one either
         "let loaded_minibufexplorer = 1
