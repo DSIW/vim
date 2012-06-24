@@ -134,8 +134,8 @@ endif
 nmap <silent> ,p :set invpaste<CR>:set paste?<CR>
 
 " cd to the directory containing the file in the buffer
-nmap <silent> ,cd :lcd %:h<CR>
-nmap <silent> ,md :!mkdir -p %:p:h<CR>
+nmap <silent> ,cd :lcd %:h<CR>:pwd<CR>
+nmap <silent> ,md :!mkdir -p %:p:h<CR>:pwd<CR>
 
 " Turn off that stupid highlight search
 nmap <silent> ,n :set invhls<CR>:set hls?<CR>
