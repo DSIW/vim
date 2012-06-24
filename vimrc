@@ -50,6 +50,7 @@
         "Bundle 'vimshell-ssh'
         Bundle 'Gundo'
         Bundle 'The-NERD-tree'
+        Bundle 'Command-T'
         Bundle 'SearchComplete'
         Bundle 'EasyGrep'
         Bundle 'hexman.vim'
@@ -95,6 +96,8 @@
         Bundle 'Syntastic'
         Bundle 'Shougo/neocomplcache'
         Bundle "MarcWeber/vim-addon-mw-utils"
+        Bundle "tpope/vim-abolish"
+
 
         Bundle 'c.vim'
         Bundle 'FSwitch'
@@ -150,8 +153,8 @@
     " }}}
 
     " Git {{{
-        Bundle 'git.zip'
-        Bundle 'fugitive.vim'
+        "Bundle 'git.zip'
+        Bundle 'tpope/vim-fugitive'
         Bundle 'Gist.vim'
     " }}}
 
@@ -162,15 +165,16 @@
 
     " Web {{{
         "Bundle 'XML-Folding'
+        Bundle 'xmledit'
+        Bundle 'rstacruz/sparkup'
         "Bundle 'ragtag.vim'
         Bundle 'mirell/vim-matchit'
         Bundle 'vim-octopress'
         "Bundle 'rails.vim'
-        "Bundle 'tpope/vim-rails'
+        Bundle 'tpope/vim-rails'
         "Bundle 'groenewege/vim-less'
         "Bundle 'cakebaker/scss-syntax'
         "Bundle 'Haml'
-        "Bundle 'mirell/vim-matchit'
         Bundle 'tpope/vim-markdown'
         "Bundle 'Markdown-syntax'
         "Bundle 'tsaleh/vim-align'
