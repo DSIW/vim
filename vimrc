@@ -347,13 +347,18 @@
         :highlight author ctermbg=black ctermfg=blue
         :match author /\(@[aA]uth\?or: \?\)\@<=[^ ].\+/
 
+        " Turn on: showmatching brackets
+        set showmatch
         " highlight matching parens:
         " Default for matchpairs: (:),[:],{{{:}}},<:>
         set matchpairs+=<:>
         highlight MatchParen term=reverse ctermbg=7 guibg=cornsilk
 
-        " I don't like it when the matching parens are automatically highlighted
-        let loaded_matchparen = 1
+        " I like it when the matching parens are automatically highlighted
+        let loaded_matchparen = 0
+
+        set matchtime=3
+        set sm " show matching braces, somewhat annoying...
     " }}}
 
     " tell VIM to always put a status line in, even if there is only one window
