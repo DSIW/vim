@@ -255,3 +255,6 @@ nnoremap zE zMzO
     " replace visually selected text with the last yanked or deleted text
     "vnoremap S "_dP
 " }}}
+
+nnoremap ]d ]c " next diff
+nnoremap [d [c " previous diff
