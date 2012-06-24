@@ -493,6 +493,7 @@
 
     set linebreak
     set wrap               " wrap long lines
+    set whichwrap=b,s,h,l,<,>,[,] " move freely between files
 
     set autoindent         " indent at the same level of the previous line
     set copyindent
