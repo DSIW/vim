@@ -647,8 +647,8 @@
         nnoremap <silent> <leader>gb :Gblame<CR>
         nnoremap <silent> <leader>gl :Glog<CR>
         nnoremap <silent> <leader>gp :Git push<CR>
-        nnoremap <silent> ,dg :diffget<CR>
-        nnoremap <silent> ,dp :diffput<CR>
+        "nnoremap <silent> ,dg :diffget<CR>
+        "nnoremap <silent> ,dp :diffput<CR>
         "cmap Gbrowser Gbrowse | redraw!
      "}}}
 
