@@ -13,9 +13,6 @@ vnoremap ,h :<c-u>1,'<lt>-fold<bar>'>+,$fold<CR>
 
 "nmap <F7> :call ToggleFoldByCurrentSearchPattern()<CR>
 
-" mapping of CTRL-] to ALT-\ for jumping in vim help files
-map \\ <C-]>
-
 " don't mess up vim, when inserting with the mouse
 "set pastetoggle=<F10>
 
@@ -30,7 +27,9 @@ command! -bang Q q<bang>
 noremap q: :q
 
 " In help files, map Enter to follow tags
-au BufWinEnter *.txt if(&ft =~ 'help')| nmap <buffer> <CR> <C-]> |endif
+au filetype help set nonumber      " no line numbers when viewing help
+au filetype help nnoremap <buffer><cr> <c-]>   " Enter selects subject
+au filetype help nnoremap <buffer><bs> <c-T>   " Backspace to go back
 
 " execute the command in the current line (minus the first word, which
 " is intended to be a shell prompt and needs to be $) and insert the
