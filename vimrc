@@ -103,6 +103,7 @@
         Bundle 'FSwitch'
 
         Bundle 'ruby.vim'
+        Bundle 'tpope/vim-bundler'
         Bundle 'ecomba/vim-ruby-refactoring.git'
         Bundle 'skalnik/vim-vroom'
         Bundle 'splitjoin.vim'
