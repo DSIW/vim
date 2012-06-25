@@ -256,5 +256,5 @@ nnoremap zE zMzO
     "vnoremap S "_dP
 " }}}
 
-nnoremap ]d ]c " next diff
-nnoremap [d [c " previous diff
+nnoremap ]d ]czz " next diff and set screen to center of curser
+nnoremap [d [czz " previous diff and set screen to center of curser
