@@ -109,6 +109,7 @@
         Bundle 'skalnik/vim-vroom'
         Bundle 'splitjoin.vim'
         Bundle 'skwp/vim-rspec'
+        Bundle 'skwp/vim-ruby-conque'
 
         Bundle 'vim-coffee-script'
 
