@@ -58,6 +58,7 @@
         Bundle 'tpope/vim-speeddating.git'
         Bundle 'trailing-whitespace'
         Bundle 'repeat.vim'
+        Bundle 'tpope/vim-repeat'
         "Bundle 'recover.vim'
         Bundle 'ack.vim'
         Bundle 'greplace.vim'
