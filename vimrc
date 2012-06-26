@@ -179,6 +179,8 @@
         Bundle 'tpope/vim-markdown'
         "Bundle 'Markdown-syntax'
         "Bundle 'tsaleh/vim-align'
+        Bundle 'pangloss/vim-javascript'
+        Bundle 'skammer/vim-css-color'
     " }}}
 
     " errors {{{
