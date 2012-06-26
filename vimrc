@@ -55,7 +55,7 @@
         Bundle 'EasyGrep'
         Bundle 'hexman.vim'
         "Bundle 'taglist.vim'
-        Bundle 'speeddating.vim'
+        Bundle 'tpope/vim-speeddating.git'
         Bundle 'trailing-whitespace'
         Bundle 'repeat.vim'
         "Bundle 'recover.vim'
