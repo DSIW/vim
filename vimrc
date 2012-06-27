@@ -99,34 +99,46 @@
         Bundle "MarcWeber/vim-addon-mw-utils"
         Bundle "tpope/vim-abolish"
 
+        " Snippets {{{
+            Bundle "tomtom/tlib_vim"
+            Bundle "DSIW/snipmate-snippets"
+            Bundle "garbas/vim-snipmate"
+        "}}}
 
-        Bundle 'c.vim'
-        Bundle 'FSwitch'
+        " C/C++ {{{
+            Bundle 'c.vim'
+            Bundle 'FSwitch'
+        "}}}
 
-        Bundle 'ruby.vim'
-        Bundle 'tpope/vim-bundler'
-        Bundle 'ecomba/vim-ruby-refactoring.git'
-        Bundle 'skalnik/vim-vroom'
-        Bundle 'splitjoin.vim'
-        Bundle 'skwp/vim-rspec'
-        Bundle 'skwp/vim-ruby-conque'
+        " Ruby {{{
+            Bundle 'ruby.vim'
+            Bundle 'tpope/vim-bundler'
+            Bundle 'ecomba/vim-ruby-refactoring.git'
+            Bundle 'skalnik/vim-vroom'
+            Bundle 'splitjoin.vim'
+            Bundle 'skwp/vim-rspec'
+            Bundle 'rson/vim-conque'
+            Bundle 'skwp/vim-ruby-conque'
+        "}}}
 
-        Bundle 'vim-coffee-script'
+        " Java {{{
+            "Bundle 'cespare/vjde.git'
+            "Bundle 'javacomplete'
+            "Bundle 'ervandew/eclim.git'
+        "}}}
 
-        "Bundle 'cespare/vjde.git'
-        "Bundle 'javacomplete'
-        "Bundle 'ervandew/eclim.git'
+        " Python {{{
+            "Bundle 'pep8'
+            "Bundle 'mitechie/pyflakes-pathogen.git'
+            "Bundle 'fs111/pydoc.vim.git'
+        "}}}
 
-        "Bundle 'pep8'
-        "Bundle 'mitechie/pyflakes-pathogen.git'
-        "Bundle 'fs111/pydoc.vim.git'
-
-        Bundle "tomtom/tlib_vim"
-        Bundle "DSIW/snipmate-snippets"
-        Bundle "garbas/vim-snipmate"
-
-        "Bundle 'javascript.vim'
-        Bundle 'vim-json-bundle'
+        " JavsScript {{{
+            "Bundle 'javascript.vim'
+            Bundle 'vim-json-bundle'
+            Bundle 'vim-coffee-script'
+            Bundle 'pangloss/vim-javascript'
+        "}}}
     " }}}
 
     " Textobjects {{{
@@ -169,20 +181,25 @@
     " Web {{{
         "Bundle 'XML-Folding'
         Bundle 'xmledit'
-        Bundle 'rstacruz/sparkup'
-        "Bundle 'ragtag.vim'
-        Bundle 'mirell/vim-matchit'
-        Bundle 'vim-octopress'
-        "Bundle 'rails.vim'
-        Bundle 'tpope/vim-rails'
-        "Bundle 'groenewege/vim-less'
-        "Bundle 'cakebaker/scss-syntax'
         "Bundle 'Haml'
-        Bundle 'tpope/vim-markdown'
-        "Bundle 'Markdown-syntax'
+        Bundle 'rstacruz/sparkup'
+        Bundle 'mirell/vim-matchit'
+        "Bundle 'ragtag.vim'
+
+        Bundle 'vim-octopress'
+        Bundle 'tpope/vim-rails'
         "Bundle 'tsaleh/vim-align'
-        Bundle 'pangloss/vim-javascript'
-        Bundle 'skammer/vim-css-color'
+
+        " Markdown {{{
+            Bundle 'tpope/vim-markdown'
+            "Bundle 'Markdown-syntax'
+        "}}}
+
+        " CSS {{{
+            "Bundle 'groenewege/vim-less'
+            "Bundle 'cakebaker/scss-syntax'
+            Bundle 'skammer/vim-css-color'
+        "}}}
     " }}}
 
     " errors {{{
