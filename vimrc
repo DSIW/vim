@@ -117,8 +117,8 @@
             Bundle 'skalnik/vim-vroom'
             Bundle 'splitjoin.vim'
             Bundle 'skwp/vim-rspec'
-            Bundle 'rson/vim-conque'
-            Bundle 'skwp/vim-ruby-conque'
+            "Bundle 'rson/vim-conque'
+            "Bundle 'skwp/vim-ruby-conque'
         "}}}
 
         " Java {{{
