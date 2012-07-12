@@ -57,7 +57,7 @@
         "Bundle 'taglist.vim'
         Bundle 'tpope/vim-speeddating.git'
         Bundle 'trailing-whitespace'
-        Bundle 'repeat.vim'
+        "Bundle 'repeat.vim'
         Bundle 'tpope/vim-repeat'
         "Bundle 'recover.vim'
         Bundle 'ack.vim'
@@ -70,12 +70,12 @@
         "Bundle 'AutoClose'
         Bundle 'delimitMate.vim'
         Bundle 'majutsushi/tagbar'
-        Bundle 'YankRing.vim'
+        "Bundle 'YankRing.vim'
         Bundle 'ShowMarks'
         "Bundle 'Buffer-Search'
         "Bundle 'ShowPairs'
         "Bundle 'LustyJuggler'
-        Bundle 'NrrwRgn'
+        "Bundle 'NrrwRgn'
     " }}}
 
     " UI {{{
@@ -94,13 +94,13 @@
         Bundle 'Indent-Guides'
         "Bundle 'VimDebug'
         "Bundle 'camelcasemotion'
-        Bundle 'Syntastic'
+        "Bundle 'Syntastic'
         Bundle 'Shougo/neocomplcache'
-        Bundle "MarcWeber/vim-addon-mw-utils"
         Bundle "tpope/vim-abolish"
 
         " Snippets {{{
             Bundle "tomtom/tlib_vim"
+            Bundle "MarcWeber/vim-addon-mw-utils"
             Bundle "DSIW/snipmate-snippets"
             Bundle "garbas/vim-snipmate"
         "}}}
@@ -114,7 +114,7 @@
             Bundle 'ruby.vim'
             Bundle 'tpope/vim-bundler'
             Bundle 'ecomba/vim-ruby-refactoring.git'
-            Bundle 'skalnik/vim-vroom'
+            "Bundle 'skalnik/vim-vroom'
             Bundle 'splitjoin.vim'
             Bundle 'skwp/vim-rspec'
             "Bundle 'rson/vim-conque'
@@ -198,7 +198,7 @@
         " CSS {{{
             "Bundle 'groenewege/vim-less'
             "Bundle 'cakebaker/scss-syntax'
-            Bundle 'skammer/vim-css-color'
+            "Bundle 'skammer/vim-css-color'
         "}}}
     " }}}
 
