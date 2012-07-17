@@ -170,6 +170,7 @@
     " Git {{{
         "Bundle 'git.zip'
         Bundle 'tpope/vim-fugitive'
+        Bundle 'mattn/webapi-vim'
         Bundle 'Gist.vim'
     " }}}
 
@@ -761,12 +762,12 @@
     " }}}
 
     " Tabular {{{
-        if exists(":Tabularize")
+        "if exists(":Tabularize")
         nmap <Leader>t= :Tabularize /=<CR>
         vmap <Leader>t= :Tabularize /=<CR>
         nmap <Leader>t: :Tabularize /:\zs<CR>
         vmap <Leader>t: :Tabularize /:\zs<CR>
-        endif
+        "endif
     " }}}
 
     " Align {{{
