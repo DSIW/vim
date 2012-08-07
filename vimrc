@@ -35,11 +35,10 @@
         call vundle#rc()
     " }}}
 
-    "Bundle 'gmarik/vundle.git'
-    Bundle 'vundle'
+    Bundle 'gmarik/vundle'
     "Bundle 'gmarik/github-search.vim'
-    Bundle 'https://github.com/gmarik/github-search.vim.git'
-    "Bundle 'https://github.com/gmarik/ingretu.git'
+    Bundle 'gmarik/github-search.vim'
+    "Bundle 'gmarik/ingretu'
 
     " General {{{
         Bundle 'Lokaltog/vim-powerline'
