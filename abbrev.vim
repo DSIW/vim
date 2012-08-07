@@ -35,6 +35,5 @@ iab Plugin    Plug-in
 iab WLAN      W-LAN
 iab Repo      Repository
 iab moretag   <!--more-->
-iab bashroot  if [ $(id -u) -ne 0 ]; then exec sudo $0; fi
 
 iab --        –
