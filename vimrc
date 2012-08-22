@@ -277,23 +277,6 @@
     " get rid of the silly characters in window separators
     set fillchars=""
 
-    " Setting up the directories {{{
-
-        " swpfile auslagern
-        set directory=~/.vim_swp/
-        set backupdir=~/.vim_swp/
-
-        set backup                      " backups are nice ...
-        if has('persistent_undo')
-            set undofile                "so is persistent undo ...
-            set undolevels=1000         "maximum number of changes that can be undone
-            set undoreload=10000        "maximum number lines to save for undo on a buffer reload
-        endif
-        " Could use * rather than *.*, but I prefer to leave .files unsaved
-        au BufWinLeave *.* silent! mkview  "make vim save view (state) (folds, cursor, etc)
-        au BufWinEnter *.* silent! loadview "make vim load view (state) (folds, cursor, etc)
-    " }}}
-
     " Search {{{
         set nohlsearch " Enable search highlighting
 
@@ -332,11 +315,68 @@
         endif
     " }}}
 
-    " backups {{{
-        " set backup dir
-        set backup    " keep a backup file
-        "set backupdir=~/.vim/backup/
-        "set directory=~/.vim/tmp
+    " Could use * rather than *.*, but I prefer to leave .files unsaved
+    au BufWinLeave *.* silent! mkview  "make vim save view (state) (folds, cursor, etc)
+    au BufWinEnter *.* silent! loadview "make vim load view (state) (folds, cursor, etc)
+
+    " Backup {{{
+        " Save your backups to a less annoying place than the current directory.
+        " If you have .vim-backup in the current directory, it'll use that.
+        " Otherwise it saves it to ~/.vim/backup or . if all else fails.
+        if isdirectory($HOME . '/.vim/.tmp/backup') == 0
+          :silent !mkdir -p ~/.vim/.tmp/backup >/dev/null 2>&1
+        endif
+        set backupdir=~/.vim/.tmp/backup/
+        set backupdir+=~/.vim/backup/
+        set backupdir+=~/.vim/tmp/
+        set backupdir+=.
+        set backup
+        " Prevent backups from overwriting each other. The naming is weird,
+        " since I'm using the 'backupext' variable to append the path.
+        " So the file '/home/docwhat/.vimrc' becomes '.vimrc%home%docwhat~'
+        if has("autocmd")
+          autocmd BufWritePre * let &backupext = substitute(expand('%:p:h'), '/', '%', 'g') . '~'
+        endif
+    " }}}
+
+    " Swap {{{
+        " Save your swp files to a less annoying place than the current directory.
+        " If you have .vim-swap in the current directory, it'll use that.
+        " Otherwise it saves it to ~/.vim/swap, ~/tmp or .
+        if isdirectory($HOME . '/.vim/.tmp/swap') == 0
+          :silent !mkdir -p ~/.vim/.tmp/swap >/dev/null 2>&1
+        endif
+        set directory=./.vim-swap//
+        set directory+=~/.vim/.tmp/swap//
+        set directory+=~/.vim/swap//
+        set directory+=.
+    " }}}
+
+    " Session {{{
+        " viminfo stores the the state of your previous editing session
+        set viminfo+=n~/.vim/.tmp/viminfo
+    " }}}
+
+    " Undo {{{
+        if has('persistent_undo')
+            set undofile                "so is persistent undo ...
+            set undolevels=1000         "maximum number of changes that can be undone
+            set undoreload=10000        "maximum number lines to save for undo on a buffer reload
+        endif
+
+        if exists("+undofile")
+          " undofile - This allows you to use undos after exiting and restarting
+          " This, like swap and backups, uses .vim-undo first, then ~/.vim/undo
+          " :help undo-persistence
+          " This is only present in 7.3+
+          if isdirectory($HOME . '/.vim/.tmp/undo') == 0
+            :silent !mkdir -p ~/.vim/.tmp/undo > /dev/null 2>&1
+          endif
+          set undodir=./.vim-undo//
+          set undodir+=~/.vim/.tmp/undo//
+          set undodir+=~/.vim/undo//
+          set undofile
+        endif
     " }}}
 " }}}
 

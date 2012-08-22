@@ -1,12 +1,11 @@
 .*
-.*.sw?
+tmp
+.tmp
 .VimballRecord
 .netrwhist
-*~
 no-git
 private.vim
 view
 bundle/
-sessions/
 yankring_history_v2.txt
 gist-vim.symlink
