@@ -357,6 +357,10 @@
         set viminfo+=n~/.vim/.tmp/viminfo
     " }}}
 
+    " View {{{
+        set viewdir=~/.vim/.tmp/view
+    " }}}
+
     " Undo {{{
         if has('persistent_undo')
             set undofile                "so is persistent undo ...
