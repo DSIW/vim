@@ -237,8 +237,8 @@
     set mousehide " Hide the mouse pointer while typing
 
     set autowrite    " e.g. before :make
-    set autoread
     set noautochdir  " auto change dir of file
+    set autoread
 
     set vb " set visual bell -- i hate that damned beeping
 
@@ -278,6 +278,11 @@
     set fillchars=""
 
     " Setting up the directories {{{
+
+        " swpfile auslagern
+        set directory=~/.vim_swp/
+        set backupdir=~/.vim_swp/
+
         set backup                      " backups are nice ...
         if has('persistent_undo')
             set undofile                "so is persistent undo ...
