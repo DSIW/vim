@@ -238,7 +238,7 @@
 
     set autowrite    " e.g. before :make
     set autoread
-    "set autochdir    " auto change dir of file
+    set noautochdir  " auto change dir of file
 
     set vb " set visual bell -- i hate that damned beeping
 
