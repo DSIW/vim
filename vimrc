@@ -230,7 +230,7 @@
 
     " Make the 'cw' and like commands put a $ at the end instead of just deleting
     " the text and replacing it
-    set cpoptions=ces$
+    set cpoptions+=c$
 
     set history=1000 " Keep some stuff in the history
 
