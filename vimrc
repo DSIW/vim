@@ -1172,6 +1172,13 @@
 
 " Functions {{{
     " Auto commands {{{
+        augroup Text "{{{
+            au!
+            au BufReadPre   *.txt set textwidth=72
+            au BufReadPre   *.txt set wrapmargin=5
+            au BufReadPre   *.txt set formatoptions=tal
+        augroup END
+        "}}}
         augroup Binary "{{{
             au!
             au BufReadPre   *.bin let &bin=1
