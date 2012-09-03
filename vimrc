@@ -1174,9 +1174,16 @@
     " Auto commands {{{
         augroup Text "{{{
             au!
-            au BufReadPre   *.txt set textwidth=72
-            au BufReadPre   *.txt set wrapmargin=5
-            au BufReadPre   *.txt set formatoptions=tal
+            au BufReadPre   *.txt setl textwidth=72
+            au BufReadPre   *.txt setl wrapmargin=5
+            au BufReadPre   *.txt setl formatoptions=tal
+        augroup END
+        "}}}
+        augroup gitcommit "{{{
+            au!
+            au FileType gitcommit setl textwidth=72
+            au FileType gitcommit setl wrapmargin=5
+            au FileType gitcommit setl formatoptions=tal
         augroup END
         "}}}
         augroup Binary "{{{
@@ -1199,7 +1206,7 @@
         "}}}
         augroup Coffee "{{{
             au!
-            au BufNewFile,BufRead *.coffee set filetype=coffee
+            au BufNewFile,BufRead *.coffee setl filetype=coffee
             au BufNewFile,BufRead *.coffee setl foldmethod=indent
             au Filetype coffee setl foldmethod=indent nofoldenable
             au Filetype coffee setl shiftwidth=2 expandtab
