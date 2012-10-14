@@ -202,6 +202,16 @@
         "}}}
     " }}}
 
+    " LaTeX {{{
+        Bundle 'dnebauer/AutomaticLaTeXPlugin.git'
+    "}}}
+
+    " CSS {{{
+        "Bundle 'groenewege/vim-less'
+        "Bundle 'cakebaker/scss-syntax'
+        "Bundle 'skammer/vim-css-color'
+    "}}}
+
     " errors {{{
         "Bundle 'Align.vim' " ERROR
         "Bundle 'checklist.vim' " ERROR
