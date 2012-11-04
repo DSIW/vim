@@ -1193,7 +1193,7 @@
             au!
             au FileType gitcommit setl textwidth=72
             au FileType gitcommit setl wrapmargin=5
-            au FileType gitcommit setl formatoptions=tal
+            au FileType gitcommit setl formatoptions=tl
         augroup END
         "}}}
         augroup Binary "{{{
