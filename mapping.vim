@@ -167,7 +167,8 @@ nmap <silent> ,rc :@"<cr>
 "vnoremap <c-e> ,
 
 " Buffer commands
-noremap <silent> ,bd :bd<CR>
+" Deletes buffer and leave window intact
+noremap <silent> ,bd :BD<CR>
 
 " Make horizontal scrolling easier
 nmap <silent> <C-o> 10zl
