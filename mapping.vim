@@ -65,10 +65,10 @@ endif
     noremap <silent> <C-l> :wincmd l<CR>
     noremap <silent> ,= :wincmd =<CR>
     noremap <silent> ,sb :wincmd p<CR>
-    noremap <silent> <C-F9>  :vertical resize -10<CR>
-    noremap <silent> <C-F10> :resize -10<CR>
-    noremap <silent> <C-F11> :resize +10<CR>
-    noremap <silent> <C-F12> :vertical resize +10<CR>
+    noremap <silent> <C-F9>  :vertical resize -5<CR>
+    noremap <silent> <C-F5> :resize -5<CR>
+    noremap <silent> <C-F11> :resize +5<CR>
+    noremap <silent> <C-F12> :vertical resize +5<CR>
     noremap <silent> ,s8 :vertical resize 83<CR>
     noremap <silent> ,cj :wincmd j<CR>:close<CR>
     noremap <silent> ,ck :wincmd k<CR>:close<CR>
