@@ -50,11 +50,11 @@
         Bundle 'Gundo'
         Bundle 'The-NERD-tree'
         Bundle 'Command-T'
-        Bundle 'SearchComplete'
+        "Bundle 'SearchComplete'
         Bundle 'EasyGrep'
-        Bundle 'hexman.vim'
+        "Bundle 'hexman.vim'
         "Bundle 'taglist.vim'
-        Bundle 'tpope/vim-speeddating.git'
+        "Bundle 'tpope/vim-speeddating.git'
         Bundle 'trailing-whitespace'
         "Bundle 'repeat.vim'
         Bundle 'tpope/vim-repeat'
@@ -70,7 +70,7 @@
         Bundle 'delimitMate.vim'
         Bundle 'majutsushi/tagbar'
         "Bundle 'YankRing.vim'
-        Bundle 'ShowMarks'
+        "Bundle 'ShowMarks'
         "Bundle 'Buffer-Search'
         "Bundle 'ShowPairs'
         "Bundle 'LustyJuggler'
@@ -105,13 +105,13 @@
         "}}}
 
         " C/C++ {{{
-            Bundle 'c.vim'
+            "Bundle 'c.vim'
             Bundle 'FSwitch'
         "}}}
 
         " Ruby {{{
             Bundle 'ruby.vim'
-            Bundle 'tpope/vim-bundler'
+            "Bundle 'tpope/vim-bundler'
             Bundle 'ecomba/vim-ruby-refactoring.git'
             "Bundle 'skalnik/vim-vroom'
             Bundle 'splitjoin.vim'
@@ -169,8 +169,8 @@
     " Git {{{
         "Bundle 'git.zip'
         Bundle 'tpope/vim-fugitive'
-        Bundle 'mattn/webapi-vim'
-        Bundle 'Gist.vim'
+        "Bundle 'mattn/webapi-vim'
+        "Bundle 'Gist.vim'
     " }}}
 
     " Sourround {{{
