@@ -82,6 +82,7 @@
         "Bundle 'neverland.vim--All-colorschemes-suck'
         Bundle 'ZoomWin'
         Bundle 'altercation/vim-colors-solarized'
+        Bundle 'bufkill.vim'
     " }}}
 
     " Programming {{{
