@@ -793,7 +793,7 @@
     " }}}
 
     " EasyGrep {{{
-        let g:EasyGrepFileAssociations='/home/dsiw/.vim/bundle/EasyGrep/plugin/EasyGrepFileAssociations'
+        let g:EasyGrepFileAssociations=expand("~/.vim/bundle/EasyGrep/plugin/EasyGrepFileAssociations")
         let g:EasyGrepMode=1
         let g:EasyGrepCommand=0
         let g:EasyGrepRecursive=0
