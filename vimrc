@@ -1185,9 +1185,9 @@
     " Auto commands {{{
         augroup Text "{{{
             au!
-            au BufReadPre   *.txt setl textwidth=72
-            au BufReadPre   *.txt setl wrapmargin=5
-            au BufReadPre   *.txt setl formatoptions=tal
+            au BufReadPre   *.txt,*.tex setl textwidth=72
+            au BufReadPre   *.txt,*.tex setl wrapmargin=5
+            au BufReadPre   *.txt,*.tex setl formatoptions=ta
         augroup END
         "}}}
         augroup gitcommit "{{{
