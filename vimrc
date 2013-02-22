@@ -628,6 +628,25 @@
     endif
 " }}}
 
+" Conversion {{{
+    " source: https://github.com/begriffs/dotfiles/blob/master/.vimrc
+    " Convert symbol to string
+    nnoremap <silent> <leader>2s F:r"Ea"<ESC>
+    " Convert string to symbol
+    nnoremap <silent> <leader>2y F"r:,x
+
+    " Convert name to snake_case
+    nmap <leader>2_ cr_
+    " Convert name to camelCase
+    nmap <leader>2c crc
+    " Convert name to MixedCase
+    nmap <leader>2m crm
+    " Convert name to SNAKE_UPPERCASE
+    nmap <leader>2u cru
+    " Convert name to dash-case
+    nmap <leader>2- cr-
+" }}}
+
 " Plugins {{{
 
     " Ctags {{{
