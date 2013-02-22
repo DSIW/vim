@@ -97,6 +97,7 @@
         "Bundle 'Syntastic'
         Bundle 'Shougo/neocomplcache'
         Bundle "tpope/vim-abolish"
+        Bundle 'jshint.vim'
 
         " Snippets {{{
             Bundle "tomtom/tlib_vim"
