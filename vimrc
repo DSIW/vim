@@ -275,7 +275,7 @@
     set backspace=indent,eol,start
 
     " Add ignorance of whitespace to diff
-    set diffopt+=iwhite
+    "set diffopt+=iwhite
 
     " These things start comment lines
     set comments=sl:/*,mb:\ *,ex:\ */,O://,b:#,:%,:XCOMM,n:>,fb:-
