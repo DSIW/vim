@@ -68,7 +68,7 @@
         Bundle 'sessionman.vim'
         "Bundle 'AutoClose'
         Bundle 'delimitMate.vim'
-        Bundle 'majutsushi/tagbar'
+        "Bundle 'majutsushi/tagbar'
         "Bundle 'YankRing.vim'
         "Bundle 'ShowMarks'
         "Bundle 'Buffer-Search'
@@ -741,9 +741,10 @@
         let g:tagbar_sort = 0
         let g:tagbar_compact = 1
         let g:tagbar_autoshowtag = 1
-        let g:tagbar_type_javascript = {
-                    \ 'ctagsbin' : '/usr/bin/jsctags'
-                    \ }
+        let g:tagbar_type_javascript = {}
+                    "\ 'ctagstype' : 'javascript',
+                    "\ 'ctagsbin' : '/usr/bin/jsctags'
+                    "\ }
      "}}}
 
      " Session List {{{
