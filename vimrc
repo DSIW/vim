@@ -623,6 +623,8 @@
 
     command MkBackup :! cp % %.bak
 
+    nnoremap / /\v
+
     if filereadable(expand("~/.vim/mapping.vim"))
         source ~/.vim/mapping.vim
     endif
