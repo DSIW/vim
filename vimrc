@@ -63,7 +63,6 @@
         Bundle 'greplace.vim'
 
         Bundle 'VisIncr'
-        Bundle 'AutomaticLaTexPlugin'
         "Bundle 'csv.vim'
         Bundle 'sessionman.vim'
         "Bundle 'AutoClose'
@@ -570,6 +569,7 @@
     set shiftwidth=2       " use indents of 2 spaces
     set tabstop=2
     set softtabstop=2      " for backspace in insert-mod
+    set shiftround " When at 3 spaces and I hit >>, go to 4, not 5.
 
     " Format text width the external programm "par" . Use "gq" for the external program; or use "gw" for internal program of vim
     "set formatprg=par\ -re
@@ -624,6 +624,7 @@
     command MkBackup :! cp % %.bak
 
     nnoremap / /\v
+    map K <nop> " Disable K looking stuff up
 
     if filereadable(expand("~/.vim/mapping.vim"))
         source ~/.vim/mapping.vim
