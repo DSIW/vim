@@ -1208,7 +1208,7 @@
             au!
             au BufReadPre   *.txt,*.tex setl textwidth=72
             au BufReadPre   *.txt,*.tex setl wrapmargin=5
-            au BufReadPre   *.txt,*.tex setl formatoptions=ta
+            au BufReadPre   *.txt,*.tex setl formatoptions=tl
         augroup END
         "}}}
         augroup gitcommit "{{{
