@@ -995,6 +995,7 @@
     " Command-T  {{{
         nnoremap <silent> <Leader>t :CommandT<CR>
         nnoremap <silent> <Leader>b :CommandTBuffer<CR>
+        nnoremap <silent> <Leader>tr :CommandTFlush<CR>:CommandT<CR>
 
         let g:CommandTAlwaysShowDotFiles = 0
         "let g:CommandTNeverShowDotFiles = 1
