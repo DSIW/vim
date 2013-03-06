@@ -626,6 +626,9 @@
     nnoremap / /\v
     map K <nop> " Disable K looking stuff up
 
+    noremap ,sg :%s/
+    noremap ,s :s/
+
     if filereadable(expand("~/.vim/mapping.vim"))
         source ~/.vim/mapping.vim
     endif
