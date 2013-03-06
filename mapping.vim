@@ -97,6 +97,14 @@ endif
     nnoremap <silent> ,wo :ZoomWin<CR>
 " }}}
 
+" TABS {{{
+    " Maps to make handling windows a bit easier
+    "
+    nnoremap <C-t> <esc>:tabnew<CR>
+    nnoremap ]t :tabNext<cr>
+    nnoremap [t :tabprevious<cr>
+" }}}
+
 " VIMRC {{{
     " Edit the vimrc file
     nnoremap <silent> ,ev :e ~/.vimrc<CR>
