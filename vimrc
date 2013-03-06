@@ -602,6 +602,10 @@
     "cmap wQ wq
     "cmap Q q
 
+    " Note: You have to set in your bash_profile
+    " bind -r '\C-s'
+    " stty -ixon
+    map <C-s> <esc>:w<cr>
     " Yank from the cursor to the end of the line, to be consistent with C and D.
     nnoremap Y y$
 
