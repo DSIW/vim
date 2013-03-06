@@ -629,6 +629,8 @@
     noremap ,sg :%s/
     noremap ,s :s/
 
+    map <silent> <leader>pp :set paste<cr>o<esc>"+]p:set nopaste<cr>"
+
     if filereadable(expand("~/.vim/mapping.vim"))
         source ~/.vim/mapping.vim
     endif
