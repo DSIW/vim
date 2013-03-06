@@ -203,10 +203,7 @@ nmap ,l :set list!<CR>
 " }}}
 
 " Swap two words
-"nmap <silent> gw :s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR>`'
-nmap <silent> sw "xdiwdwep"xp
-"nmap <silent> sw dawwP
-"nmap <silent> sw dawelp
+nmap <silent> sw "xdiWdwEp"xp
 
 " Underline the current line with '='
 nmap <silent> ,ul :t.\|s/./=/g\|set nohls<cr>
