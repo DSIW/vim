@@ -693,8 +693,8 @@
         nnoremap <silent> <leader>gb :Gblame<CR>
         nnoremap <silent> <leader>gl :Glog<CR>
         nnoremap <silent> <leader>gp :Git push<CR>
-        "nnoremap <silent> ,dg :diffget<CR>
-        "nnoremap <silent> ,dp :diffput<CR>
+        "nnoremap <silent> <leader>dg :diffget<CR>
+        "nnoremap <silent> <leader>dp :diffput<CR>
         "cmap Gbrowser Gbrowse | redraw!
      "}}}
 
@@ -862,7 +862,7 @@
     " }}}
 
     " Gundo {{{
-        nnoremap ,g :GundoToggle<CR>
+        nnoremap <leader>g :GundoToggle<CR>
 
         " open on the right so as not to compete with the nerdtree
         let g:gundo_right = 1
@@ -894,20 +894,20 @@
     " }}}
 
     " FSwitch Settings {{{
-        "nmap <silent> ,of :FSHere<CR>
-        "nmap <silent> ,ol :FSRight<CR>
-        "nmap <silent> ,oL :FSSplitRight<CR>
-        "nmap <silent> ,oh :FSLeft<CR>
-        "nmap <silent> ,oH :FSSplitLeft<CR>
-        "nmap <silent> ,ok :FSAbove<CR>
-        "nmap <silent> ,oK :FSSplitAbove<CR>
-        "nmap <silent> ,oj :FSBelow<CR>
-        "nmap <silent> ,oJ :FSSplitBelow<CR>
+        "nmap <silent> <leader>of :FSHere<CR>
+        "nmap <silent> <leader>ol :FSRight<CR>
+        "nmap <silent> <leader>oL :FSSplitRight<CR>
+        "nmap <silent> <leader>oh :FSLeft<CR>
+        "nmap <silent> <leader>oH :FSSplitLeft<CR>
+        "nmap <silent> <leader>ok :FSAbove<CR>
+        "nmap <silent> <leader>oK :FSSplitAbove<CR>
+        "nmap <silent> <leader>oj :FSBelow<CR>
+        "nmap <silent> <leader>oJ :FSSplitBelow<CR>
     " }}}
 
     " NERD Tree  {{{
         " Toggle the NERD Tree on an off with F7
-        nmap ,T :NERDTreeToggle<CR>
+        nmap <leader>T :NERDTreeToggle<CR>
 
         " Store the bookmarks file in perforce
         let NERDTreeBookmarksFile="~/.vim/NERDTreeBookmarks"
@@ -969,7 +969,7 @@
         "let g:snips_author = 'Steve Francia <steve.francia@gmail.com>'
         "let g:snips_trigger_key='<c-space>'
         " Shortcut for reloading snippets, useful when developing
-        nnoremap ,smr <esc>:exec ReloadAllSnippets()<cr>
+        nnoremap <leader>smr <esc>:exec ReloadAllSnippets()<cr>
     " }}}
 
     " Source Explorer Plugin Settings {{{
@@ -1006,9 +1006,9 @@
     " }}}
 
     " FuzzyFinder Settings {{{
-        "nmap ,fb :FuzzyFinderBuffer<CR>
-        "nmap ,ff :FuzzyFinderFile<CR>
-        "nmap ,ft :FuzzyFinderTag<CR>
+        "nmap <leader>fb :FuzzyFinderBuffer<CR>
+        "nmap <leader>ff :FuzzyFinderFile<CR>
+        "nmap <leader>ft :FuzzyFinderTag<CR>
     " }}}
 
     " Unimpaired {{{

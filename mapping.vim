@@ -31,11 +31,11 @@ vnoremap > >gv
 nnoremap / /\v
 map K <nop> " Disable K looking stuff up
 
-noremap ,sg :%s/
-noremap ,s :s/
+noremap <leader>sg :%s/
+noremap <leader>s :s/
 
 " Fold all regions except the visually selected one:
-vnoremap ,h :<c-u>1,'<lt>-fold<bar>'>+,$fold<CR>
+vnoremap <leader>h :<c-u>1,'<lt>-fold<bar>'>+,$fold<CR>
 
 " You are too fast and keep pressing `shift' if you type :w, try following
 ":command! -bang W w<bang>
@@ -56,12 +56,12 @@ au filetype help nnoremap <buffer><bs> <c-T>   " Backspace to go back
 " execute the command in the current line (minus the first word, which
 " is intended to be a shell prompt and needs to be $) and insert the
 " output in the buffer
-nmap ,e 0wy$:r!<cword><CR>
-nmap ,E 0wwy$:r!<cword><CR>
+nmap <leader>e 0wy$:r!<cword><CR>
+nmap <leader>E 0wwy$:r!<cword><CR>
 
 " for editing a file with other users, this will insert my name and
 " the date, when I edited
-nmap ,cb odsiw, <ESC>:r!LC_ALL='' date<CR>kJo-
+nmap <leader>cb odsiw, <ESC>:r!LC_ALL='' date<CR>kJo-
 
 if exists("*pumvisible")
     inoremap <expr> <Down> pumvisible() ? "\<lt>Down>" : "\<lt>C-O>gj"
@@ -85,33 +85,33 @@ endif
     noremap <silent> <C-j> :wincmd j<CR>
     noremap <silent> <C-k> :wincmd k<CR>
     noremap <silent> <C-l> :wincmd l<CR>
-    noremap <silent> ,= :wincmd =<CR>
+    noremap <silent> <leader>= :wincmd =<CR>
     noremap <silent> <C-F9>  :vertical resize -5<CR>
     noremap <silent> <C-F5> :resize -5<CR>
     noremap <silent> <C-F11> :resize +5<CR>
     noremap <silent> <C-F12> :vertical resize +5<CR>
-    noremap <silent> ,s8 :vertical resize 83<CR>
-    noremap <silent> ,cj :wincmd j<CR>:close<CR>
-    noremap <silent> ,ck :wincmd k<CR>:close<CR>
-    noremap <silent> ,ch :wincmd h<CR>:close<CR>
-    noremap <silent> ,cl :wincmd l<CR>:close<CR>
-    noremap <silent> ,cw :close<CR>
-    "noremap <silent> ,ml <C-W>L
-    "noremap <silent> ,mk <C-W>K
-    "noremap <silent> ,mh <C-W>H " same in ShowMarks
-    "noremap <silent> ,mj <C-W>J
+    noremap <silent> <leader>s8 :vertical resize 83<CR>
+    noremap <silent> <leader>cj :wincmd j<CR>:close<CR>
+    noremap <silent> <leader>ck :wincmd k<CR>:close<CR>
+    noremap <silent> <leader>ch :wincmd h<CR>:close<CR>
+    noremap <silent> <leader>cl :wincmd l<CR>:close<CR>
+    noremap <silent> <leader>cw :close<CR>
+    "noremap <silent> <leader>ml <C-W>L
+    "noremap <silent> <leader>mk <C-W>K
+    "noremap <silent> <leader>mh <C-W>H " same in ShowMarks
+    "noremap <silent> <leader>mj <C-W>J
 
     " ,q to toggle quickfix window (where you have stuff like GitGrep)
     " ,oq to open it back up (rare)
-    nmap <silent> ,qc :cclose<CR>
-    nmap <silent> ,qo :copen<CR>
+    nmap <silent> <leader>qc :cclose<CR>
+    nmap <silent> <leader>qo :copen<CR>
 
     " Create window splits easier. The default
     " way is Ctrl-w,v and Ctrl-w,s. I remap
     " this to vv and ss
     nnoremap <silent> vv <C-w>v
     nnoremap <silent> ss <C-w>s
-    nnoremap <silent> ,wo :ZoomWin<CR>
+    nnoremap <silent> <leader>wo :ZoomWin<CR>
 " }}}
 
 " TABS {{{
@@ -124,15 +124,15 @@ endif
 
 " VIMRC {{{
     " Edit the vimrc file
-    nnoremap <silent> ,ev :vsp ~/.vim/vimrc<CR>
-    nnoremap <silent> ,sv :so ~/.vim/vimrc<CR>
-    nmap ,em :e ~/.vim/mapping.vim<CR>
+    nnoremap <silent> <leader>ev :vsp ~/.vim/vimrc<CR>
+    nnoremap <silent> <leader>sv :so ~/.vim/vimrc<CR>
+    nmap <leader>em :e ~/.vim/mapping.vim<CR>
 " }}}
 
 " Copy & Paste {{{
     vnoremap <C-c> "+y
     " Toggle paste mode
-    nnoremap <silent> ,p :set invpaste<CR>:set paste?<CR>
+    nnoremap <silent> <leader>p :set invpaste<CR>:set paste?<CR>
     nnoremap <silent> <C-p> :set paste<cr>o<esc>"+]P:set nopaste<cr>"
 " }}}
 
@@ -167,43 +167,43 @@ endif
 " From Derek
 "---------------------------------------------------------
 " cd to the directory containing the file in the buffer
-nmap <silent> ,cd :lcd %:h<CR>:pwd<CR>
-nmap <silent> ,md :!mkdir -p %:p:h<CR>:pwd<CR>
+nmap <silent> <leader>cd :lcd %:h<CR>:pwd<CR>
+nmap <silent> <leader>md :!mkdir -p %:p:h<CR>:pwd<CR>
 
 " Turn off that stupid highlight search
-nmap <silent> ,n :set invhls<CR>:set hls?<CR>
+nmap <silent> <leader>n :set invhls<CR>:set hls?<CR>
 
 " set text wrapping toggles
-nmap <silent> ,w :set invwrap<CR>:set wrap?<CR>
+nmap <silent> <leader>w :set invwrap<CR>:set wrap?<CR>
 
 " Run the command that was just yanked
-nmap <silent> ,rc :@"<cr>
+nmap <silent> <leader>rc :@"<cr>
 
 " Buffer commands
 " Deletes buffer and leave window intact
-noremap <silent> ,bd :BD<CR>
+noremap <silent> <leader>bd :BD<CR>
 
 " Make horizontal scrolling easier
 nmap <silent> <C-o> 10zl
 nmap <silent> <C-i> 10zh
 
 " Shortcut to rapidly toggle `set list`
-nmap ,l :set list!<CR>
+nmap <leader>l :set list!<CR>
 
 " Highlight all instances of the current word under the cursor
 "nmap <silent> ^ :setl hls<CR>:let @/="<C-r><C-w>"<CR>
 
 " Search the current file for what's currently in the search {{{
     " register and display matches
-    nmap <silent> ,gs
+    nmap <silent> <leader>gs
           \ :vimgrep /<C-r>// %<CR>:ccl<CR>:cwin<CR><C-W>J:set nohls<CR>
 
     " Search the current file for the word under the cursor and display matches
-    nmap <silent> ,gw
+    nmap <silent> <leader>gw
           \ :vimgrep /<C-r><C-w>/ %<CR>:ccl<CR>:cwin<CR><C-W>J:set nohls<CR>
 
     " Search the current file for the WORD under the cursor and display matches
-    nmap <silent> ,gW
+    nmap <silent> <leader>gW
           \ :vimgrep /<C-r><C-a>/ %<CR>:ccl<CR>:cwin<CR><C-W>J:set nohls<CR>
 " }}}
 
@@ -211,7 +211,7 @@ nmap ,l :set list!<CR>
 nmap <silent> sw "xdiWdwEp"xp
 
 " Delete all buffers
-nmap <silent> ,da :exec "1," . bufnr('$') . "bd"<cr>
+nmap <silent> <leader>da :exec "1," . bufnr('$') . "bd"<cr>
 
 " better undo {{{
     inoremap <C-U> <C-G>u<C-U>
@@ -223,7 +223,7 @@ nmap <silent> ,da :exec "1," . bufnr('$') . "bd"<cr>
 " Visually select the text that was last edited/pasted
 nmap gV `[v`]
 "fold a method/function
-nmap ,zm /}<CR>zf%<ESC>:nohlsearch<CR>
+nmap <leader>zm /}<CR>zf%<ESC>:nohlsearch<CR>
 "change text in "" to the copied text
 nmap <leader>c" vi"d"+P
 "set hardwrapping
