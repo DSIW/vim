@@ -403,7 +403,6 @@
         set background=light " or light
         hi IndentGuidesOdd  ctermbg=black
         hi IndentGuidesEven ctermbg=darkgrey
-        "set background=light " or light
         "hi IndentGuidesOdd  ctermbg=white
         "hi IndentGuidesEven ctermbg=lightgrey
         "color xoria256
