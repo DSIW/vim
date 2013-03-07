@@ -161,6 +161,8 @@ endif
     nmap <leader>f2 :set foldlevel=2<CR>
     nmap <leader>f3 :set foldlevel=3<CR>
     nmap <leader>f4 :set foldlevel=4<CR>
+
+    nnoremap <space> za
 " }}}
 
 "---------------------------------------------------------
