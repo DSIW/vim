@@ -101,7 +101,7 @@ endif
     " Maps to make handling windows a bit easier
     "
     nnoremap <C-t> <esc>:tabnew<CR>
-    nnoremap ]t :tabNext<cr>
+    nnoremap ]t :tabnext<cr>
     nnoremap [t :tabprevious<cr>
 " }}}
 
