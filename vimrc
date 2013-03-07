@@ -64,6 +64,7 @@
         "Bundle 'ShowPairs'
         "Bundle 'LustyJuggler'
         "Bundle 'NrrwRgn'
+        Bundle 'EasyMotion'
     " }}}
 
     " UI {{{
