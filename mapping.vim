@@ -1,26 +1,48 @@
 " vim: set foldmarker={{{,}}} foldlevel=0 foldmethod=marker tabstop=4 shiftwidth=4:
 
 " Deactivate the help dialoge {{{
-imap <F1> <ESC>
-nmap <F1> <ESC>
-vmap <F1> <ESC>
+    imap <F1> <ESC>
+    nmap <F1> <ESC>
+    vmap <F1> <ESC>
 " }}}
 "---------------------------------------------------------
 " Useful mappings
 "---------------------------------------------------------
+" Don't use Ex mode, use Q for formatting
+map Q gq
+
+" CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
+" so that you can undo CTRL-U after inserting a line break.
+inoremap <C-U> <C-G>u<C-U>
+
+" Wrapped lines goes down/up to next row, rather than next line in file.
+nnoremap j gj
+nnoremap k gk
+
+" Note: You have to set in your bash_profile
+" bind -r '\C-s'
+" stty -ixon
+map <C-s> <esc>:w<cr>
+
+" visual shifting (does not exit Visual mode)
+vnoremap < <gv
+vnoremap > >gv
+
+nnoremap / /\v
+map K <nop> " Disable K looking stuff up
+
+noremap ,sg :%s/
+noremap ,s :s/
+
 " Fold all regions except the visually selected one:
 vnoremap ,h :<c-u>1,'<lt>-fold<bar>'>+,$fold<CR>
-
-"nmap <F7> :call ToggleFoldByCurrentSearchPattern()<CR>
-
-" don't mess up vim, when inserting with the mouse
-"set pastetoggle=<F10>
 
 " You are too fast and keep pressing `shift' if you type :w, try following
 ":command! -bang W w<bang>
 command! -bang -bar -nargs=? -complete=file -range=% W <line1>,<line2>w<bang> <args>
 command! -bang Wq wq<bang>
 command! -bang Q q<bang>
+
 " disallow opening the commandline window which by default is bound to
 " q: (I tend to usually mean :q)
 " The commandline window is still accessible using q/ or q?
@@ -64,7 +86,6 @@ endif
     noremap <silent> <C-k> :wincmd k<CR>
     noremap <silent> <C-l> :wincmd l<CR>
     noremap <silent> ,= :wincmd =<CR>
-    noremap <silent> ,sb :wincmd p<CR>
     noremap <silent> <C-F9>  :vertical resize -5<CR>
     noremap <silent> <C-F5> :resize -5<CR>
     noremap <silent> <C-F11> :resize +5<CR>
@@ -79,10 +100,6 @@ endif
     "noremap <silent> ,mk <C-W>K
     "noremap <silent> ,mh <C-W>H " same in ShowMarks
     "noremap <silent> ,mj <C-W>J
-    noremap <silent> <C-7> <C-W>>
-    noremap <silent> <C-8> <C-W>+
-    noremap <silent> <C-9> <C-W>+
-    noremap <silent> <C-0> <C-W>>
 
     " ,q to toggle quickfix window (where you have stuff like GitGrep)
     " ,oq to open it back up (rare)
@@ -102,7 +119,7 @@ endif
     "
     nnoremap <C-t> <esc>:tabnew<CR>
     nnoremap ]t :tabnext<cr>
-    nnoremap [t :tabprevious<cr>
+    nnoremap [t :tabprev<cr>
 " }}}
 
 " VIMRC {{{
@@ -112,35 +129,43 @@ endif
     nmap ,em :e ~/.vim/mapping.vim<CR>
 " }}}
 
-" Motions {{{
-    nmap <C-0> g0
-    nmap <C-4> g$
-    vmap <C-0> g0
-    vmap <C-4> g$
-" }}}
-
 " Copy & Paste {{{
-    "vmap <C-c> "+y
-    "nmap <C-p> "+p
+    vnoremap <C-c> "+y
+    " Toggle paste mode
+    nnoremap <silent> ,p :set invpaste<CR>:set paste?<CR>
+    nnoremap <silent> <C-p> :set paste<cr>o<esc>"+]P:set nopaste<cr>"
 " }}}
 
-" Disable Arrow-Keys {{{
-    " noremap  <Up> ""
-    " noremap! <Up> <Esc>
-    " noremap  <Down> ""
-    " noremap! <Down> <Esc>
-    " noremap  <Left> ""
-    " noremap! <Left> <Esc>
-    " noremap  <Right> ""
-    " noremap! <Right> <Esc>
+" Conversion {{{
+    " source: https://github.com/begriffs/dotfiles/blob/master/.vimrc
+    " Convert symbol to string
+    nnoremap <silent> <leader>2s F:r"Ea"<ESC>
+    " Convert string to symbol
+    nnoremap <silent> <leader>2y F"r:,x
+
+    " Convert name to snake_case
+    nmap <leader>2_ cr_
+    " Convert name to camelCase
+    nmap <leader>2c crc
+    " Convert name to MixedCase
+    nmap <leader>2m crm
+    " Convert name to SNAKE_UPPERCASE
+    nmap <leader>2u cru
+    " Convert name to dash-case
+    nmap <leader>2- cr-
+" }}}
+
+" Folding {{{
+    nmap <leader>f0 :set foldlevel=0<CR>
+    nmap <leader>f1 :set foldlevel=1<CR>
+    nmap <leader>f2 :set foldlevel=2<CR>
+    nmap <leader>f3 :set foldlevel=3<CR>
+    nmap <leader>f4 :set foldlevel=4<CR>
 " }}}
 
 "---------------------------------------------------------
 " From Derek
 "---------------------------------------------------------
-" Toggle paste mode
-nmap <silent> ,p :set invpaste<CR>:set paste?<CR>
-
 " cd to the directory containing the file in the buffer
 nmap <silent> ,cd :lcd %:h<CR>:pwd<CR>
 nmap <silent> ,md :!mkdir -p %:p:h<CR>:pwd<CR>
@@ -148,31 +173,11 @@ nmap <silent> ,md :!mkdir -p %:p:h<CR>:pwd<CR>
 " Turn off that stupid highlight search
 nmap <silent> ,n :set invhls<CR>:set hls?<CR>
 
-" put the vim directives for my file editing settings in
-nmap <silent> ,vi
-      \ ovim:set ts=4 sts=4 sw=4:<CR>vim600:fdm=marker fdl=1 fdc=0:<ESC>
-
-" Show all available VIM servers
-"nmap <silent> ,ss :echo serverlist()<CR>
-
-" The following beast is something i didn't write... it will return the
-" syntax highlighting group that the current "thing" under the cursor
-" belongs to -- very useful for figuring out what to change as far as
-" syntax highlighting goes.
-nmap <silent> <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name")
-      \ . '> trans<' . synIDattr(synID(line("."),col("."),0),"name")
-      \ . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name")
-      \ . ">"<CR>
-
 " set text wrapping toggles
 nmap <silent> ,w :set invwrap<CR>:set wrap?<CR>
 
 " Run the command that was just yanked
 nmap <silent> ,rc :@"<cr>
-
-" Map CTRL-E to do what ',' used to do
-"nnoremap <c-e> ,
-"vnoremap <c-e> ,
 
 " Buffer commands
 " Deletes buffer and leave window intact
@@ -204,9 +209,6 @@ nmap ,l :set list!<CR>
 
 " Swap two words
 nmap <silent> sw "xdiWdwEp"xp
-
-" Underline the current line with '='
-nmap <silent> ,ul :t.\|s/./=/g\|set nohls<cr>
 
 " Delete all buffers
 nmap <silent> ,da :exec "1," . bufnr('$') . "bd"<cr>
@@ -266,3 +268,5 @@ nnoremap ]d ]czz " next diff and set screen to center of curser
 nnoremap [d [czz " previous diff and set screen to center of curser
 
 command! Diffall windo diffthis
+
+nnoremap <c-x> :exec getline(".")<CR>

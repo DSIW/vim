@@ -583,76 +583,9 @@
     " Use Caps-Lock as ESC key
     exec "silent !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'"
 
-    " Don't use Ex mode, use Q for formatting
-    map Q gq
-
-    " CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
-    " so that you can undo CTRL-U after inserting a line break.
-    inoremap <C-U> <C-G>u<C-U>
-
-    " Wrapped lines goes down/up to next row, rather than next line in file.
-    nnoremap j gj
-    nnoremap k gk
-
-    " Stupid shift key fixes
-    "cmap W w
-    "cmap WQ wq
-    "cmap wQ wq
-    "cmap Q q
-
-    " Note: You have to set in your bash_profile
-    " bind -r '\C-s'
-    " stty -ixon
-    map <C-s> <esc>:w<cr>
-    " Yank from the cursor to the end of the line, to be consistent with C and D.
-    nnoremap Y y$
-
-    " Code folding options
-    nmap <leader>f0 :set foldlevel=0<CR>
-    nmap <leader>f1 :set foldlevel=1<CR>
-    nmap <leader>f2 :set foldlevel=2<CR>
-    nmap <leader>f3 :set foldlevel=3<CR>
-    nmap <leader>f4 :set foldlevel=4<CR>
-    nmap <leader>f5 :set foldlevel=5<CR>
-    nmap <leader>f6 :set foldlevel=6<CR>
-    nmap <leader>f7 :set foldlevel=7<CR>
-    nmap <leader>f8 :set foldlevel=8<CR>
-    nmap <leader>f9 :set foldlevel=9<CR>
-
-    " visual shifting (does not exit Visual mode)
-    vnoremap < <gv
-    vnoremap > >gv
-
-    nnoremap / /\v
-    map K <nop> " Disable K looking stuff up
-
-    noremap ,sg :%s/
-    noremap ,s :s/
-
-    map <silent> <leader>pp :set paste<cr>o<esc>"+]P:set nopaste<cr>"
-
     if filereadable(expand("~/.vim/mapping.vim"))
         source ~/.vim/mapping.vim
     endif
-" }}}
-
-" Conversion {{{
-    " source: https://github.com/begriffs/dotfiles/blob/master/.vimrc
-    " Convert symbol to string
-    nnoremap <silent> <leader>2s F:r"Ea"<ESC>
-    " Convert string to symbol
-    nnoremap <silent> <leader>2y F"r:,x
-
-    " Convert name to snake_case
-    nmap <leader>2_ cr_
-    " Convert name to camelCase
-    nmap <leader>2c crc
-    " Convert name to MixedCase
-    nmap <leader>2m crm
-    " Convert name to SNAKE_UPPERCASE
-    nmap <leader>2u cru
-    " Convert name to dash-case
-    nmap <leader>2- cr-
 " }}}
 
 " Plugins {{{
@@ -1509,11 +1442,11 @@
             let g:bjo_test_file_line=line(".")
         endfunction
 
-        function! MakeBackup()
-            silent exec "!cp % %.bak"
-            redraw!
-        endfunction
-        command! MkBackup call MakeBackup()
+      function! MakeBackup()
+          silent exec "!cp % %.bak"
+          redraw!
+      endfunction
+      command! MkBackup call MakeBackup()
     " }}}
 
 " Programming {{{
