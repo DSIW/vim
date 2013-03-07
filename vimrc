@@ -423,7 +423,7 @@
         "highlight SpecialKey ctermfg=5
         "highlight NonText guifg=#4a4a59
         "highlight SpecialKey guifg=#4a4a59
-        set showbreak=
+        set showbreak=↪
 
         "match @Author oder @author
         :highlight author ctermbg=black ctermfg=blue
