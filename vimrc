@@ -424,10 +424,6 @@
         "highlight SpecialKey guifg=#4a4a59
         set showbreak=↪
 
-        "match @Author oder @author
-        :highlight author ctermbg=black ctermfg=blue
-        :match author /\(@[aA]uth\?or: \?\)\@<=[^ ].\+/
-
         " Turn on: showmatching brackets
         set showmatch
         " highlight matching parens:
