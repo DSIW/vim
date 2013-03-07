@@ -455,7 +455,7 @@
     set winminheight=0              " windows can be 0 line high
 
     " Syntax coloring lines that are too long just slows down the world
-    set synmaxcol=2048
+    set synmaxcol=800
 
     set list
     set listchars=tab:▸\ ,trail:·,extends:#,nbsp:· ",eol:¬ " Highlight problematic whitespace: ﹁
