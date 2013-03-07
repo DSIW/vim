@@ -623,8 +623,6 @@
     vnoremap < <gv
     vnoremap > >gv
 
-    command! MkBackup :! cp % %.bak
-
     nnoremap / /\v
     map K <nop> " Disable K looking stuff up
 
@@ -1510,6 +1508,12 @@
             let g:bjo_test_file=@%
             let g:bjo_test_file_line=line(".")
         endfunction
+
+        function! MakeBackup()
+            silent exec "!cp % %.bak"
+            redraw!
+        endfunction
+        command! MkBackup call MakeBackup()
     " }}}
 
 " Programming {{{
