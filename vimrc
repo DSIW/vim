@@ -1343,6 +1343,9 @@
         autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 
         au BufNewFile,BufRead Guardfile set filetype=ruby
+
+        " Resize splits when the window is resized
+        au VimResized * :wincmd ="
     " }}}
 
     " Clean whitespace at EOL {{{
