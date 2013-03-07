@@ -37,7 +37,7 @@
 
     Bundle 'gmarik/vundle'
     "Bundle 'gmarik/github-search.vim'
-    Bundle 'gmarik/github-search.vim'
+    "Bundle 'gmarik/github-search.vim'
     "Bundle 'gmarik/ingretu'
 
     " General {{{
@@ -60,7 +60,7 @@
         Bundle 'tpope/vim-repeat'
         "Bundle 'recover.vim'
         Bundle 'ack.vim'
-        Bundle 'greplace.vim'
+        "Bundle 'greplace.vim'
 
         Bundle 'VisIncr'
         "Bundle 'csv.vim'
@@ -90,13 +90,13 @@
         Bundle 'The-NERD-Commenter'
         "Bundle 'ProtoDef'
         "Bundle 'SuperTab'
-        Bundle 'Indent-Guides'
+        "Bundle 'Indent-Guides'
         "Bundle 'VimDebug'
         "Bundle 'camelcasemotion'
         "Bundle 'Syntastic'
-        Bundle 'Shougo/neocomplcache'
-        Bundle "tpope/vim-abolish"
-        Bundle 'jshint.vim'
+        "Bundle 'Shougo/neocomplcache'
+        "Bundle "tpope/vim-abolish"
+        "Bundle 'jshint.vim'
 
         " Snippets {{{
             Bundle "tomtom/tlib_vim"
@@ -107,7 +107,7 @@
 
         " C/C++ {{{
             "Bundle 'c.vim'
-            Bundle 'FSwitch'
+            "Bundle 'FSwitch'
         "}}}
 
         " Ruby {{{
@@ -136,7 +136,7 @@
         " JavsScript {{{
             "Bundle 'javascript.vim'
             Bundle 'vim-json-bundle'
-            Bundle 'vim-coffee-script'
+            "Bundle 'vim-coffee-script'
             Bundle 'pangloss/vim-javascript'
         "}}}
     " }}}
@@ -153,7 +153,7 @@
         " i/I
         Bundle 'textobj-fold'
         " z
-        Bundle 'textobj-datetime'
+        "Bundle 'textobj-datetime'
         " d...
         Bundle 'argtextobj.vim'
         " a
@@ -181,13 +181,13 @@
 
     " Web {{{
         "Bundle 'XML-Folding'
-        Bundle 'xmledit'
+        "Bundle 'xmledit'
         "Bundle 'Haml'
-        Bundle 'rstacruz/sparkup'
+        "Bundle 'rstacruz/sparkup'
         Bundle 'mirell/vim-matchit'
         "Bundle 'ragtag.vim'
 
-        Bundle 'vim-octopress'
+        "Bundle 'vim-octopress'
         Bundle 'tpope/vim-rails'
         "Bundle 'tsaleh/vim-align'
 
