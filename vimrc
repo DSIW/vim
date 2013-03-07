@@ -625,7 +625,7 @@
     vnoremap < <gv
     vnoremap > >gv
 
-    command MkBackup :! cp % %.bak
+    command! MkBackup :! cp % %.bak
 
     nnoremap / /\v
     map K <nop> " Disable K looking stuff up
@@ -1152,7 +1152,7 @@
 
     " Sudo {{{
         " Write a file as sudo
-        command Wsudo :w sudo:%
+        command! Wsudo :w sudo:%
     " }}}
 
     " SplitJoin {{{
@@ -1343,10 +1343,10 @@
     " }}}
 
     " Clean whitespace at EOL {{{
-        function TrimWhiteSpace()
-            %s/\s\+$//e
-        endfunction
-        nmap <silent> <leader>rtw <ESC>:call TrimWhiteSpace()<CR>
+        "function! TrimWhiteSpace()
+            "%s/\s\+$//e
+        "endfunction
+        "nmap <silent> <leader>rtw <ESC>:call TrimWhiteSpace()<CR>
     " }}}
 
     " Set up spell function {{{
@@ -1436,7 +1436,7 @@
     " }}}
 
     " Open URL {{{
-        command -bar -nargs=1 OpenURL :!open <args>
+        command! -bar -nargs=1 OpenURL :!open <args>
         function! OpenURL()
             let s:uri = matchstr(getline("."), '[a-z]*:\/\/[^ >,;:]*')
             echo s:uri
@@ -1481,47 +1481,46 @@
 
     " Test-running stuff {{{
         function! RunCurrentTest()
-        let in_test_file = match(expand("%"), '\(.feature\|_spec.rb\|_test.rb\)$') != -1
-        if in_test_file
-            call SetTestFile()
+            let in_test_file = match(expand("%"), '\(.feature\|_spec.rb\|_test.rb\)$') != -1
+            if in_test_file
+                call SetTestFile()
 
-            if match(expand('%'), '\.feature$') != -1
-            call SetTestRunner("!cucumber")
-            exec g:bjo_test_runner g:bjo_test_file
-            elseif match(expand('%'), '_spec\.rb$') != -1
-            call SetTestRunner("!rspec")
-            exec g:bjo_test_runner g:bjo_test_file
+                if match(expand('%'), '\.feature$') != -1
+                    call SetTestRunner("!cucumber")
+                    exec g:bjo_test_runner g:bjo_test_file
+                elseif match(expand('%'), '_spec\.rb$') != -1
+                    call SetTestRunner("!rspec")
+                    exec g:bjo_test_runner g:bjo_test_file
+                else
+                    call SetTestRunner("!ruby -Itest")
+                    exec g:bjo_test_runner g:bjo_test_file
+                endif
             else
-            call SetTestRunner("!ruby -Itest")
-            exec g:bjo_test_runner g:bjo_test_file
+                exec g:bjo_test_runner g:bjo_test_file
             endif
-        else
-            exec g:bjo_test_runner g:bjo_test_file
-        endif
         endfunction
-        nnoremap <leader>rs :call RunCurrentTest()<CR>
+        nnoremap <leader>ra :call RunCurrentTest()<CR>
 
         function! SetTestRunner(runner)
-        let g:bjo_test_runner=a:runner
+            let g:bjo_test_runner=a:runner
         endfunction
 
         function! RunCurrentLineInTest()
-        let in_test_file = match(expand("%"), '\(.feature\|_spec.rb\|_test.rb\)$') != -1
-        if in_test_file
-            call SetTestFileWithLine()
-        end
-        nnoremap <leader>rcs :call RunCurrentLineInTest()<CR>
-
-        exec "!rspec" g:bjo_test_file . ":" . g:bjo_test_file_line
+            let in_test_file = match(expand("%"), '\(.feature\|_spec.rb\|_test.rb\)$') != -1
+            if in_test_file
+                call SetTestFileWithLine()
+            end
+            exec "!rspec" g:bjo_test_file . ":" . g:bjo_test_file_line
         endfunction
+        nnoremap <leader>rs :call RunCurrentLineInTest()<CR>
 
         function! SetTestFile()
-        let g:bjo_test_file=@%
+            let g:bjo_test_file=@%
         endfunction
 
         function! SetTestFileWithLine()
-        let g:bjo_test_file=@%
-        let g:bjo_test_file_line=line(".")
+            let g:bjo_test_file=@%
+            let g:bjo_test_file_line=line(".")
         endfunction
     " }}}
 
