@@ -57,7 +57,7 @@
         Bundle 'sessionman.vim'
         "Bundle 'AutoClose'
         Bundle 'delimitMate.vim'
-        "Bundle 'majutsushi/tagbar'
+        Bundle 'majutsushi/tagbar'
         "Bundle 'YankRing.vim'
         "Bundle 'ShowMarks'
         "Bundle 'Buffer-Search'
