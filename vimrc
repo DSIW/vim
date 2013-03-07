@@ -585,6 +585,9 @@
 " Key (re)Mappings {{{
     let mapleader=","
 
+    " Use Caps-Lock as ESC key
+    exec "silent !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'"
+
     " Don't use Ex mode, use Q for formatting
     map Q gq
 
