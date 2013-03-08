@@ -67,6 +67,7 @@
         "Bundle 'NrrwRgn'
         Bundle 'EasyMotion'
         Bundle 'AndrewRadev/sideways.vim'
+        Bundle 'AndrewRadev/switch.vim'
     " }}}
 
     " UI {{{
@@ -800,6 +801,10 @@
     " Sideways {{{
         nnoremap <leader>> :SidewaysRight<CR>
         nnoremap <leader>< :SidewaysLeft<CR>
+    " }}}
+
+    " Switch {{{
+        nnoremap - :Switch<CR>
     " }}}
 " }}}
 
