@@ -68,6 +68,7 @@
         Bundle 'EasyMotion'
         Bundle 'AndrewRadev/sideways.vim'
         Bundle 'AndrewRadev/switch.vim'
+        Bundle 'tpope/vim-eunuch'
     " }}}
 
     " UI {{{
