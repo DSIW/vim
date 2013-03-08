@@ -66,6 +66,7 @@
         "Bundle 'LustyJuggler'
         "Bundle 'NrrwRgn'
         Bundle 'EasyMotion'
+        Bundle 'AndrewRadev/sideways.vim'
     " }}}
 
     " UI {{{
@@ -794,6 +795,11 @@
         "let g:yankring_window_use_right = 1
         "let g:yankring_history_dir = '~/.vim/'
         "let g:yankring_history_file = 'yankring_history'
+    " }}}
+
+    " Sideways {{{
+        nnoremap <leader>< :SidewaysRight<CR>
+        nnoremap <leader>> :SidewaysLeft<CR>
     " }}}
 " }}}
 
