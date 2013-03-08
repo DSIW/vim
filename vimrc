@@ -35,7 +35,7 @@
         "Bundle 'unicode.vim'
         Bundle 'unimpaired.vim'
         Bundle 'lastpos.vim'
-        Bundle 'sudo.vim'
+        "Bundle 'sudo.vim' " eunuch has same function
         "Bundle 'vimshell-ssh'
         Bundle 'Gundo'
         Bundle 'The-NERD-tree'
@@ -753,11 +753,6 @@
         au Filetype erb let g:surround_61 = "<%= \r %>" " =
     " }}}
 
-    " Sudo {{{
-        " Write a file as sudo
-        command! Wsudo :w sudo:%
-    " }}}
-
     " SplitJoin {{{
         nmap sj :SplitjoinSplit<cr>
         nmap sk :SplitjoinJoin<cr>
@@ -1048,19 +1043,6 @@
             let linestart = substitute(v:folddashes, ".", '»', 'g')
             return linestart . " " . getcontent
         endfunction
-    " }}}
-
-    " Rename current file {{{
-        function! RenameFile()
-            let old_name = expand('%')
-            let new_name = input('New file name: ', expand('%'), 'file')
-            if new_name != '' && new_name != old_name
-                exec ':saveas ' . new_name
-                exec ':silent !rm ' . old_name
-                redraw!
-            endif
-        endfunction
-        map <leader>mv :call RenameFile()<cr>
     " }}}
 
     " Merge a tab into a split in the previous window {{{
