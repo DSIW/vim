@@ -798,8 +798,8 @@
     " }}}
 
     " Sideways {{{
-        nnoremap <leader>< :SidewaysRight<CR>
-        nnoremap <leader>> :SidewaysLeft<CR>
+        nnoremap <leader>> :SidewaysRight<CR>
+        nnoremap <leader>< :SidewaysLeft<CR>
     " }}}
 " }}}
 
