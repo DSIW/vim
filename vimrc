@@ -39,7 +39,8 @@
         "Bundle 'vimshell-ssh'
         Bundle 'Gundo'
         Bundle 'The-NERD-tree'
-        Bundle 'Command-T'
+        "Bundle 'Command-T'
+        Bundle 'ctrlp.vim'
         "Bundle 'SearchComplete'
         Bundle 'EasyGrep'
         "Bundle 'hexman.vim'
@@ -684,15 +685,9 @@
     " }}}
 
     " Command-T  {{{
-        nnoremap <silent> <Leader>t :CommandT<CR>
-        nnoremap <silent> <Leader>b :CommandTBuffer<CR>
-        nnoremap <silent> <Leader>tr :CommandTFlush<CR>:CommandT<CR>
-
-        let g:CommandTAlwaysShowDotFiles = 0
-        "let g:CommandTNeverShowDotFiles = 1
-        let g:CommandTScanDotDirectories = 1
-        let g:CommandTMatchWindowAtTop = 1
-        let g:CommandTMatchWindowReverse = 0
+        nnoremap <silent> <Leader>t :CtrlP<CR>
+        nnoremap <silent> <Leader>b :CtrlPBuffer<CR>
+        nnoremap <silent> <Leader>a :CtrlPMixed<CR>
     " }}}
 
     " ShowMarks  {{{
