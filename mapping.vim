@@ -139,9 +139,9 @@ endif
 " Conversion {{{
     " source: https://github.com/begriffs/dotfiles/blob/master/.vimrc
     " Convert symbol to string
-    nnoremap <silent> <leader>2s F:r"Ea"<ESC>
+    "nnoremap <silent> <leader>2s F:r"Ea"<ESC>
     " Convert string to symbol
-    nnoremap <silent> <leader>2y F"r:,x
+    "nnoremap <silent> <leader>2y F"r:,x
 
     " Convert name to snake_case
     nmap <leader>2_ cr_
