@@ -755,6 +755,16 @@
         "let g:Powerline_symbols_override = { 'BRANCH': [0x2213], 'LINE': 'L', }
         "let g:Powerline_theme='skwp'
         "let g:Powerline_colorscheme='skwp'
+        " Abbreviate All of the Mode Names
+        let g:Powerline_mode_n = 'N'
+        let g:Powerline_mode_i = 'I'
+        let g:Powerline_mode_R = 'R'
+        let g:Powerline_mode_v = 'V'
+        let g:Powerline_mode_V = 'VL'
+        let g:Powerline_mode_cv = 'VB'
+        let g:Powerline_mode_s = 'S'
+        let g:Powerline_mode_S = 'SL'
+        let g:Powerline_mode_cs = 'SB'
     " }}}
 
     " DelimitMate {{{
