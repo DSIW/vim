@@ -127,8 +127,9 @@ endif
     " Maps to make handling windows a bit easier
     "
     nnoremap <C-t> <esc>:tabnew<CR>
-    nnoremap ]t :tabnext<cr>
-    nnoremap [t :tabprev<cr>
+    nmap ]t :tabnext<cr>
+    nmap [t :tabprev<cr>
+    nmap ,tc :tabclose<cr>
 " }}}
 
 " VIMRC {{{
