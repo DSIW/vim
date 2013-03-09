@@ -73,6 +73,9 @@
         Bundle 'AndrewRadev/switch.vim'
         Bundle 'tpope/vim-eunuch'
         Bundle 'mutewinter/UnconditionalPaste'
+        "Bundle 'paradigm/vim-multicursor'
+        "Bundle 'sjl/splice.vim'
+        "Bundle 'christoomey/vim-space'
     " }}}
 
     " UI {{{
