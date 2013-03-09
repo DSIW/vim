@@ -50,7 +50,9 @@
         "Bundle 'repeat.vim'
         Bundle 'tpope/vim-repeat'
         "Bundle 'recover.vim'
-        Bundle 'ack.vim'
+        "Bundle 'ack.vim'
+        " Better than ack
+        Bundle 'rking/ag.vim'
         "Bundle 'greplace.vim'
 
         Bundle 'VisIncr'
