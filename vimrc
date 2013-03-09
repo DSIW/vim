@@ -284,7 +284,8 @@
     set comments=sl:/*,mb:\ *,ex:\ */,O://,b:#,:%,:XCOMM,n:>,fb:-
 
     " Same as default except that I remove the 'u' option
-    set complete=.,w,b,t
+    set complete=.,w,b,t,i
+    set completeopt=longest,menu,preview
 
     " When completing by tag, show the whole tag, not just the function name
     set showfulltag
