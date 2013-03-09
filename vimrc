@@ -46,7 +46,7 @@
         "Bundle 'hexman.vim'
         "Bundle 'taglist.vim'
         "Bundle 'tpope/vim-speeddating.git'
-        Bundle 'trailing-whitespace'
+        "Bundle 'trailing-whitespace'
         "Bundle 'repeat.vim'
         Bundle 'tpope/vim-repeat'
         "Bundle 'recover.vim'
@@ -413,7 +413,7 @@
           let g:solarized_termcolors=256
           let g:solarized_contrast="high"
           let g:solarized_visibility="low"
-          let g:solarized_italic=1
+          let g:solarized_italic=1  asd 
           let g:solarized_bold=1
         set t_Co=256
     " }}}
@@ -997,10 +997,20 @@
     " }}}
 
     " Clean whitespace at EOL {{{
-        "function! TrimWhiteSpace()
-            "%s/\s\+$//e
-        "endfunction
-        "nmap <silent> <leader>rtw <ESC>:call TrimWhiteSpace()<CR>
+        " source: https://github.com/bronson/vim-trailing-whitespace/blob/master/plugin/trailing-whitespace.vim
+        highlight ExtraWhitespace ctermbg=darkred guibg=#DC322F
+        autocmd ColorScheme * highlight ExtraWhitespace ctermbg=darkred guibg=#DC322F
+        autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+        " the above flashes annoyingly while typing, be calmer in insert mode
+        autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+        autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+        function! s:FixWhitespace(line1,line2)
+          let l:save_cursor = getpos(".")
+          silent! execute ':' . a:line1 . ',' . a:line2 . 's/\s\+$//'
+          call setpos('.', l:save_cursor)
+        endfunction
+        " Run :FixWhitespace to remove end of line white space.
+        command! -range=% FixWhitespace call <SID>FixWhitespace(<line1>,<line2>)
     " }}}
 
     " Set up spell function {{{
