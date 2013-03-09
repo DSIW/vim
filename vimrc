@@ -1146,11 +1146,3 @@
         source ~/.vimrc.local
     endif
 " }}}
-
-" Use local gvimrc if available and gui is running {{{
-    if has('gui_running')
-        if filereadable(expand("~/.gvimrc.local"))
-            source ~/.gvimrc.local
-        endif
-    endif
-" }}}

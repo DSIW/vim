@@ -26,3 +26,7 @@ set guioptions+=m
 set guioptions-=T
 
 set guifont=Monospace\ 11
+
+if filereadable(expand("~/.gvimrc.local"))
+    source ~/.gvimrc.local
+endif
