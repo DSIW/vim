@@ -289,6 +289,9 @@
     " When completing by tag, show the whole tag, not just the function name
     set showfulltag
 
+    set splitright
+    set splitbelow
+
     " get rid of the silly characters in window separators
     set fillchars=""
 
