@@ -110,7 +110,7 @@
             Bundle 'ruby.vim'
             "Bundle 'tpope/vim-bundler'
             Bundle 'ecomba/vim-ruby-refactoring.git'
-            "Bundle 'skalnik/vim-vroom'
+            Bundle 'skalnik/vim-vroom'
             Bundle 'splitjoin.vim'
             Bundle 'skwp/vim-rspec'
             "Bundle 'rson/vim-conque'
@@ -1064,55 +1064,12 @@
         nmap <C-W>m :call MergeTabs()<CR>
     " }}}
 
-    " Test-running stuff {{{
-        function! RunCurrentTest()
-            let in_test_file = match(expand("%"), '\(.feature\|_spec.rb\|_test.rb\)$') != -1
-            if in_test_file
-                call SetTestFile()
-
-                if match(expand('%'), '\.feature$') != -1
-                    call SetTestRunner("!cucumber")
-                    exec g:bjo_test_runner g:bjo_test_file
-                elseif match(expand('%'), '_spec\.rb$') != -1
-                    call SetTestRunner("!rspec")
-                    exec g:bjo_test_runner g:bjo_test_file
-                else
-                    call SetTestRunner("!ruby -Itest")
-                    exec g:bjo_test_runner g:bjo_test_file
-                endif
-            else
-                exec g:bjo_test_runner g:bjo_test_file
-            endif
+    " Make backup {{{
+        function! MakeBackup()
+            silent exec "!cp % %.bak"
+            redraw!
         endfunction
-        nnoremap <leader>ra :call RunCurrentTest()<CR>
-
-        function! SetTestRunner(runner)
-            let g:bjo_test_runner=a:runner
-        endfunction
-
-        function! RunCurrentLineInTest()
-            let in_test_file = match(expand("%"), '\(.feature\|_spec.rb\|_test.rb\)$') != -1
-            if in_test_file
-                call SetTestFileWithLine()
-            end
-            exec "!rspec" g:bjo_test_file . ":" . g:bjo_test_file_line
-        endfunction
-        nnoremap <leader>rs :call RunCurrentLineInTest()<CR>
-
-        function! SetTestFile()
-            let g:bjo_test_file=@%
-        endfunction
-
-        function! SetTestFileWithLine()
-            let g:bjo_test_file=@%
-            let g:bjo_test_file_line=line(".")
-        endfunction
-
-      function! MakeBackup()
-          silent exec "!cp % %.bak"
-          redraw!
-      endfunction
-      command! MkBackup call MakeBackup()
+        command! MkBackup call MakeBackup()
     " }}}
 " }}}
 
