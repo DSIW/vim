@@ -55,7 +55,7 @@
 
         Bundle 'VisIncr'
         "Bundle 'csv.vim'
-        Bundle 'sessionman.vim'
+        Bundle 'xolox/vim-session'
         "Bundle 'AutoClose'
         Bundle 'delimitMate.vim'
         Bundle 'majutsushi/tagbar'
