@@ -34,6 +34,15 @@ map K <nop> " Disable K looking stuff up
 noremap <leader>sg :%s/
 noremap <leader>s :s/
 
+" Keep search matches in the middle of the window.
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
+" Same when jumping around
+nnoremap g; g;zz
+nnoremap g, g,zz
+nnoremap <c-o> <c-o>zz
+
 " Fold all regions except the visually selected one:
 vnoremap <leader>h :<c-u>1,'<lt>-fold<bar>'>+,$fold<CR>
 
