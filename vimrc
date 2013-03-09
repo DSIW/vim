@@ -413,9 +413,10 @@
           let g:solarized_termcolors=256
           let g:solarized_contrast="high"
           let g:solarized_visibility="low"
-          let g:solarized_italic=1  asd 
+          let g:solarized_italic=1
           let g:solarized_bold=1
-        set t_Co=256
+          let g:solarized_diffmode="high"
+       set t_Co=256
     " }}}
     set showmode " Show the current mode
     set showbreak=↪
