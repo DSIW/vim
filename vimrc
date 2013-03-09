@@ -72,6 +72,7 @@
         "Bundle 'mhinz/vim-signify'
         Bundle 'AndrewRadev/switch.vim'
         Bundle 'tpope/vim-eunuch'
+        Bundle 'mutewinter/UnconditionalPaste'
     " }}}
 
     " UI {{{
@@ -811,6 +812,32 @@
         nmap <leader>gv :Gitv --all<cr>
         nmap <leader>gV :Gitv! --all<cr>
         vmap <leader>gV :Gitv! --all<cr>
+    " }}}
+
+    " UnconditionalPaste {{{
+        nmap <Leader>Pc <Plug>UnconditionalPasteCharBefore
+        nmap <Leader>pc <Plug>UnconditionalPasteCharAfter
+        nmap <Leader>Pl <Plug>UnconditionalPasteLineBefore
+        nmap <Leader>pl <Plug>UnconditionalPasteLineAfter
+        nmap <Leader>Pb <Plug>UnconditionalPasteBlockBefore
+        nmap <Leader>pb <Plug>UnconditionalPasteBlockAfter
+        nmap <Leader>P, <Plug>UnconditionalPasteCommaBefore
+        nmap <Leader>p, <Plug>UnconditionalPasteCommaAfter
+        nmap <Leader>Pq <Plug>UnconditionalPasteQueriedBefore
+        nmap <Leader>pq <Plug>UnconditionalPasteQueriedAfter
+        nmap <Leader>PQ <Plug>UnconditionalPasteRecallQueriedBefore
+        nmap <Leader>pQ <Plug>UnconditionalPasteRecallQueriedAfter
+        nmap <Leader>Pu <Plug>UnconditionalPasteUnjoinBefore
+        nmap <Leader>pu <Plug>UnconditionalPasteUnjoinAfter
+        nmap <Leader>PU <Plug>UnconditionalPasteRecallUnjoinBefore
+        nmap <Leader>pU <Plug>UnconditionalPasteRecallUnjoinAfter
+
+        imap <C-G>c <Plug>UnconditionalPasteChar
+        imap <C-G>, <Plug>UnconditionalPasteComma
+        imap <C-G>q <Plug>UnconditionalPasteQueried
+        imap <C-G>Q <Plug>UnconditionalPasteRecallQueried
+        imap <C-G>u <Plug>UnconditionalPasteUnjoin
+        imap <C-G>U <Plug>UnconditionalPasteRecallUnjoin
     " }}}
 " }}}
 
