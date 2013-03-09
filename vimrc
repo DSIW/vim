@@ -168,6 +168,7 @@
         Bundle 'tpope/vim-fugitive'
         "Bundle 'mattn/webapi-vim'
         "Bundle 'Gist.vim'
+        Bundle 'gregsexton/gitv'
     " }}}
 
     " Sourround {{{
@@ -802,6 +803,12 @@
 
     " Switch {{{
         nnoremap - :Switch<CR>
+    " }}}
+
+    " Gitv {{{
+        nmap <leader>gv :Gitv --all<cr>
+        nmap <leader>gV :Gitv! --all<cr>
+        vmap <leader>gV :Gitv! --all<cr>
     " }}}
 " }}}
 
