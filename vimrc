@@ -67,6 +67,7 @@
         "Bundle 'NrrwRgn'
         Bundle 'EasyMotion'
         Bundle 'AndrewRadev/sideways.vim'
+        "Bundle 'mhinz/vim-signify'
         Bundle 'AndrewRadev/switch.vim'
         Bundle 'tpope/vim-eunuch'
     " }}}
