@@ -76,6 +76,7 @@
         "Bundle 'paradigm/vim-multicursor'
         "Bundle 'sjl/splice.vim'
         "Bundle 'christoomey/vim-space'
+        "Bundle 'vim-scripts/LineJuggler'
     " }}}
 
     " UI {{{
