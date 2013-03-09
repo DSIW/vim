@@ -1,14 +1,11 @@
-"colo xoria256
-"set background=light
-"colorscheme solarized
 " solarized {
-  set background=dark " or light
+  set background=light " or light
   "color xoria256
   color solarized                 " load a colorscheme
   let g:solarized_termtrans=0
   let g:solarized_termcolors=256
   let g:solarized_contrast="high"
-  let g:solarized_visibility="high"
+  let g:solarized_visibility="low"
   set t_Co=256
 " }
 
@@ -22,7 +19,7 @@
 
 " set the gui options the way I like
 set guioptions=ac
-set guioptions+=m
+set guioptions-=m
 set guioptions-=T
 
 set guifont=Monospace\ 11
