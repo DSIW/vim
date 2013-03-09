@@ -814,7 +814,7 @@
     " }}}
 
     " Switch {{{
-        nnoremap - :Switch<CR>
+        nnoremap <silent> - :Switch<CR>
     " }}}
 
     " Gitv {{{
