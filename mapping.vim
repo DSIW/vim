@@ -96,7 +96,7 @@ endif
     noremap <silent> <C-l> :wincmd l<CR>
     noremap <silent> <leader>= :wincmd =<CR>
     noremap <silent> <C-F9>  :vertical resize -5<CR>
-    noremap <silent> <C-F5> :resize -5<CR>
+    noremap <silent> <C-F10> :resize -5<CR>
     noremap <silent> <C-F11> :resize +5<CR>
     noremap <silent> <C-F12> :vertical resize +5<CR>
     noremap <silent> <leader>s8 :vertical resize 83<CR>
