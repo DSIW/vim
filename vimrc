@@ -610,7 +610,7 @@
         nnoremap <silent> <leader>gb :Gblame<CR>
         nnoremap <silent> <leader>gl :Glog<CR>
         nnoremap <silent> <leader>gp :Git push<CR>:sleep 1<CR>
-        nnoremap <silent> <leader>gp:Git push<CR>
+        nnoremap <silent> <leader>gu :Git pull<CR>
         "nnoremap <silent> <leader>dg :diffget<CR>
         "nnoremap <silent> <leader>dp :diffput<CR>
         "cmap Gbrowser Gbrowse | redraw!
