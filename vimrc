@@ -115,6 +115,7 @@
 
         " Ruby {{{
             Bundle 'ruby.vim'
+            "Bundle 'rake.vim'
             "Bundle 'tpope/vim-bundler'
             Bundle 'ecomba/vim-ruby-refactoring.git'
             Bundle 'skalnik/vim-vroom'
