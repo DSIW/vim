@@ -597,7 +597,7 @@
 
         nnoremap <silent> <leader>gd :Gdiff<CR>
         fun! GdiffCached()
-            split | wincmd K
+            split | wincmd K | resize 15
             Git! diff --cached
         endf
         command! GdiffCached call GdiffCached()
