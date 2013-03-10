@@ -594,13 +594,23 @@
 
      " Fugitive {{{
         nnoremap <silent> <leader>gs :Gstatus<CR>
+
         nnoremap <silent> <leader>gd :Gdiff<CR>
+        fun! GdiffCached()
+            split | wincmd K
+            Git! diff --cached
+        endf
+        command! GdiffCached call GdiffCached()
+        nnoremap <silent> <leader>gdc :call GdiffCached()<CR>
+
         nnoremap <silent> <leader>gic :Gcommit<CR>
         nnoremap <leader>gac :update<cr>:Gcommit -am ""<left>
         nnoremap <leader>gc :update<cr>:Gcommit -m ""<left>
+
         nnoremap <silent> <leader>gb :Gblame<CR>
         nnoremap <silent> <leader>gl :Glog<CR>
-        nnoremap <silent> <leader>gp :Git push<CR>
+        nnoremap <silent> <leader>gp :Git push<CR>:sleep 1<CR>
+        nnoremap <silent> <leader>gp:Git push<CR>
         "nnoremap <silent> <leader>dg :diffget<CR>
         "nnoremap <silent> <leader>dp :diffput<CR>
         "cmap Gbrowser Gbrowse | redraw!
