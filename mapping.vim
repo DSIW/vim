@@ -43,6 +43,8 @@ nnoremap g; g;zz
 nnoremap g, g,zz
 nnoremap <c-o> <c-o>zz
 
+nnoremap <leader>i mzgg=G'z
+
 " Fold all regions except the visually selected one:
 vnoremap <leader>h :<c-u>1,'<lt>-fold<bar>'>+,$fold<CR>
 
