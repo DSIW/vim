@@ -604,6 +604,14 @@
         command! GdiffCached call GdiffCached()
         nnoremap <silent> <leader>gdc :call GdiffCached()<CR>
 
+        fun! Gadd()
+            silent Git add %
+            redraw!
+            echo "Added to Git"
+        endf
+        command! Gadd call Gadd()
+        nnoremap <leader>ga :call Gadd()<CR>
+
         nnoremap <silent> <leader>gic :Gcommit<CR>
         nnoremap <leader>gac :update<cr>:Gcommit -am ""<left>
         nnoremap <leader>gc :update<cr>:Gcommit -m ""<left>
