@@ -24,6 +24,8 @@ nnoremap k gk
 " stty -ixon
 map <C-s> <esc>:w<cr>
 
+nnoremap Y y$
+
 " visual shifting (does not exit Visual mode)
 vnoremap < <gv
 vnoremap > >gv
