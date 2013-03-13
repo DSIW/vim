@@ -224,7 +224,8 @@ nmap <leader>l :set list!<CR>
 " }}}
 
 " Swap two words
-nmap <silent> sw "xdiWdwEp"xp
+nmap <silent> sw "xdiwdwep"xp
+nmap <silent> sW "xdiWdwEp"xp
 
 " Delete all buffers
 nmap <silent> <leader>da :exec "1," . bufnr('$') . "bd"<cr>
@@ -271,9 +272,9 @@ nnoremap zE zMzO
 
 " Stamping {{{
     " replace the current word with the last yanked text
-    nnoremap S diw"0P
+    "nnoremap S diw"0P
     " replace visually selected text with the last yanked text
-    vnoremap S "_d"0P
+    "vnoremap S "_d"0P
     " replace the current word with the last yanked or deleted text
     "nnoremap S "_diwP
     " replace visually selected text with the last yanked or deleted text
