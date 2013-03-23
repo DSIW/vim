@@ -1145,6 +1145,22 @@
         endfunction
         command! MkBackup call MakeBackup()
     " }}}
+
+    " Toogle diffmode {{{
+        command! Diffall windo diffthis
+        let g:diffmodeon = 0
+        function! ToggleDiffMode()
+            if g:diffmodeon
+                diffoff!
+                let g:diffmodeon = 0
+            else
+                windo diffthis
+                let g:diffmodeon = 1
+            endif
+        endfunc
+        command! ToggleDiffMode call ToggleDiffMode()
+        nnoremap <leader>D :ToggleDiffMode<CR>
+    " }}}
 " }}}
 
 " Programming {{{

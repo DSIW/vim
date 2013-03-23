@@ -285,6 +285,4 @@ nnoremap ]d ]czz " next diff and set screen to center of curser
 nnoremap [d [czz " previous diff and set screen to center of curser
 nnoremap <leader>d :diffthis<CR>
 
-command! Diffall windo diffthis
-
 nnoremap <c-x> :exec getline(".")<CR>
