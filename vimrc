@@ -730,7 +730,7 @@
         let g:ctrlp_max_height = 20 " height of file list
         let g:ctrlp_match_window_bottom = 0 " Show list on top
         let g:ctrlp_match_window_reversed = 0 " Go to bottom
-        let g:ctrlp_by_filename = 1 " Search only by filename
+        let g:ctrlp_by_filename = 0 " Search only by filename
         let g:ctrlp_max_files = 1000 " Max files to scan
         let g:ctrlp_max_depth = 20 " Max directory tree depth
         "let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files']
