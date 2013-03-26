@@ -157,6 +157,9 @@ endif
     " Toggle paste mode
     nnoremap <silent> <leader>p :set invpaste<CR>:set paste?<CR>
     nnoremap <silent> <C-p> :set paste<cr>o<esc>"+]P:set nopaste<cr>"
+
+    " Copy line and comment out copied line
+    nnoremap <leader>yd yypkk:put =b:NERDCommenterDelims['left']<CR>==Jj
 " }}}
 
 " Conversion {{{
