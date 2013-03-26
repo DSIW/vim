@@ -1113,11 +1113,28 @@
     " }}}
 
     " Foldtext {{{
-        function! MyFoldLabel()
-            let getcontent = substitute(getline(v:foldstart), "^[[:space:]]*", "", 'g')
-            let linestart = substitute(v:folddashes, ".", '»', 'g')
-            return linestart . " " . getcontent
-        endfunction
+        function! MyFoldLabel() " {{{
+            let line = getline(v:foldstart)
+
+            let nucolwidth = &fdc + &number * &numberwidth
+            let windowwidth = winwidth(0) - nucolwidth - 3
+            let foldedlinecount = v:foldend - v:foldstart
+
+            " Remove foldmarkers
+            let opening_foldmarker = split(&foldmarker, ",")[0]
+            let line = substitute(line, opening_foldmarker, "", 'g')
+
+            " expand tabs into spaces
+            let onetab = strpart('          ', 0, &tabstop)
+            let line = substitute(line, '\t', onetab, 'g')
+
+            "let linestart = substitute(v:folddashes, ".", '»', 'g')
+            "let line = linestart . line
+
+            let line = strpart(line, 0, windowwidth - 2 -len(foldedlinecount))
+            let fillcharcount = windowwidth - len(line) - len(foldedlinecount)
+            return line . ' ' . repeat(" ",fillcharcount) . foldedlinecount . '…' . ' '
+        endfunction " }}}
     " }}}
 
     " Merge a tab into a split in the previous window {{{
