@@ -47,6 +47,15 @@ nnoremap <c-o> <c-o>zz
 
 nnoremap <leader>i mzgg=G'z
 
+" Easier to type, and I never use the default behavior.
+noremap H ^
+noremap L $
+vnoremap L g_
+
+" gi already moves to "last place you exited insert mode", so we'll map gI to
+" something similar: move to last change
+nnoremap gI `.
+
 " Fold all regions except the visually selected one:
 vnoremap <leader>h :<c-u>1,'<lt>-fold<bar>'>+,$fold<CR>
 
@@ -288,3 +297,6 @@ nnoremap <leader>d :diffthis<CR>
 " Source
 vnoremap <c-x> y:execute @@<cr>:echo 'Sourced selection.'<cr>
 nnoremap <c-x> ^vg_y:execute @@<cr>:echo 'Sourced line.'<cr>
+
+" Don't move on *
+nnoremap * *<c-o>:set hlsearch<cr>
