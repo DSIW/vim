@@ -593,7 +593,7 @@
         set tags=./tags;/,~/.vimtags,./tags,tags
     " }}}
 
-     " Fugitive {{{
+    " Fugitive {{{
         nnoremap <silent> <leader>gs :Gstatus<CR>
 
         nnoremap <silent> <leader>gd :Gdiff<CR>
@@ -623,9 +623,9 @@
         "nnoremap <silent> <leader>dg :diffget<CR>
         "nnoremap <silent> <leader>dp :diffput<CR>
         "cmap Gbrowser Gbrowse | redraw!
-     "}}}
+    "}}}
 
-     " TagBar {{{
+    " TagBar {{{
         nnoremap <silent> <leader>tt :TagbarToggle<CR>
         let g:tagbar_width = 30
         let g:tagbar_sort = 0
@@ -635,7 +635,7 @@
                     "\ 'ctagstype' : 'javascript',
                     "\ 'ctagsbin' : '/usr/bin/jsctags'
                     "\ }
-     "}}}
+    "}}}
 
     " EasyGrep {{{
         let g:EasyGrepFileAssociations=expand("~/.vim/bundle/EasyGrep/plugin/EasyGrepFileAssociations")
