@@ -285,4 +285,6 @@ nnoremap ]d ]czz " next diff and set screen to center of curser
 nnoremap [d [czz " previous diff and set screen to center of curser
 nnoremap <leader>d :diffthis<CR>
 
-nnoremap <c-x> :exec getline(".")<CR>
+" Source
+vnoremap <c-x> y:execute @@<cr>:echo 'Sourced selection.'<cr>
+nnoremap <c-x> ^vg_y:execute @@<cr>:echo 'Sourced line.'<cr>
