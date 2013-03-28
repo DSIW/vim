@@ -159,7 +159,7 @@ endif
     nnoremap <silent> <C-p> :set paste<cr>o<esc>"+]P:set nopaste<cr>"
 
     " Copy line and comment out copied line
-    nnoremap <leader>yd yypkk:put =b:NERDCommenterDelims['left']<CR>==Jj
+    nnoremap yd yypkk:put =b:NERDCommenterDelims['left']<CR>==Jjb
 " }}}
 
 " Conversion {{{
