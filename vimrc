@@ -98,7 +98,7 @@
         "Bundle 'camelcasemotion'
         "Bundle 'Syntastic'
         "Bundle 'Shougo/neocomplcache'
-        "Bundle "tpope/vim-abolish"
+        Bundle 'tpope/vim-abolish'
         "Bundle 'jshint.vim'
 
         " Snippets {{{
@@ -115,14 +115,17 @@
 
         " Ruby {{{
             Bundle 'ruby.vim'
-            "Bundle 'rake.vim'
-            "Bundle 'tpope/vim-bundler'
             Bundle 'ecomba/vim-ruby-refactoring.git'
             Bundle 'skalnik/vim-vroom'
             Bundle 'splitjoin.vim'
             Bundle 'skwp/vim-rspec'
             "Bundle 'rson/vim-conque'
             "Bundle 'skwp/vim-ruby-conque'
+            Bundle 'tpope/vim-rails'
+            Bundle 'kchmck/vim-coffee-script'
+            Bundle 'tpope/vim-haml'
+            Bundle 'tpope/vim-bundler'
+            Bundle 'tpope/vim-rake'
         "}}}
 
         " Java {{{
@@ -193,7 +196,6 @@
         "Bundle 'ragtag.vim'
 
         "Bundle 'vim-octopress'
-        Bundle 'tpope/vim-rails'
         "Bundle 'tsaleh/vim-align'
 
         " Markdown {{{
@@ -866,6 +868,14 @@
         imap <C-G>Q <Plug>UnconditionalPasteRecallQueried
         imap <C-G>u <Plug>UnconditionalPasteUnjoin
         imap <C-G>U <Plug>UnconditionalPasteRecallUnjoin
+    " }}}
+
+    " Rails {{{
+        " autocmd User Rails cmap Rroutes edit config/routes.rb
+        autocmd User Rails command! Rroutes edit config/routes.rb
+        autocmd User Rails command! RVroutes :vsplit config/routes.rb
+        autocmd User Rails command! RSroutes :split config/routes.rb
+        autocmd User Rails command! RTroutes :tabedit config/routes.rb
     " }}}
 " }}}
 
