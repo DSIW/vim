@@ -150,6 +150,7 @@ endif
     nnoremap <silent> <leader>ev :vsp ~/.vim/vimrc<CR>
     nnoremap <silent> <leader>sv :so ~/.vim/vimrc<CR>
     nmap <leader>em :e ~/.vim/mapping.vim<CR>
+    nnoremap <leader>ek :tabnew ~/.vim/memories<CR>
 " }}}
 
 " Copy & Paste {{{
