@@ -588,6 +588,10 @@
     if filereadable(expand("~/.vim/mapping.vim"))
         source ~/.vim/mapping.vim
     endif
+
+    " Training {{{
+        nmap :w<CR> :echo "Use Ctrl-S!"<CR>
+    " }}}
 " }}}
 
 " Plugins {{{
