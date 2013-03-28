@@ -577,6 +577,9 @@
 
     set autoindent         " indent at the same level of the previous line
     set copyindent
+
+    " Highlight VCS conflict markers
+    match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 " }}}
 
 " Key (re)Mappings {{{
