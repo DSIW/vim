@@ -22,7 +22,7 @@ nnoremap k gk
 " Note: You have to set in your bash_profile
 " bind -r '\C-s'
 " stty -ixon
-map <C-s> <esc>:w<cr>
+map <C-s> <esc>:update<cr>
 
 nnoremap Y y$
 
