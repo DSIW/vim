@@ -45,6 +45,7 @@ nnoremap g; g;zz
 nnoremap g, g,zz
 nnoremap <c-o> <c-o>zz
 
+" Indent without cursor position change
 nnoremap <leader>i mzgg=G'z
 
 " Easier to type, and I never use the default behavior.
