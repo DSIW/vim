@@ -74,6 +74,7 @@
         Bundle 'tpope/vim-eunuch'
         Bundle 'mutewinter/UnconditionalPaste'
         "Bundle 'paradigm/vim-multicursor'
+        Bundle 'hlissner/vim-multiedit'
         "Bundle 'sjl/splice.vim'
         "Bundle 'christoomey/vim-space'
         "Bundle 'vim-scripts/LineJuggler'
@@ -868,6 +869,15 @@
         imap <C-G>Q <Plug>UnconditionalPasteRecallQueried
         imap <C-G>u <Plug>UnconditionalPasteUnjoin
         imap <C-G>U <Plug>UnconditionalPasteRecallUnjoin
+    " }}}
+
+    " Multiedit {{{
+        hi Multiedit ctermbg=LightBlue guibg=LightBlue
+        hi default link MultieditRegions Multiedit
+        hi default link MultieditFirstRegion Multiedit
+
+        nmap <silent> <leader>mn <leader>mm/<C-r>=expand("<cword>")<CR><CR>
+        nmap <silent> <leader>mp <leader>mm?<C-r>=expand("<cword>")<CR><CR>
     " }}}
 
     " Rails {{{
