@@ -305,3 +305,5 @@ nnoremap <c-x> ^vg_y:execute @@<cr>:echo 'Sourced line.'<cr>
 
 " Don't move on *
 nnoremap * *<c-o>:set hlsearch<cr>
+
+nmap <Leader>r) ds)i <esc>:w<cr>
