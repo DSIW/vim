@@ -78,6 +78,7 @@
         "Bundle 'sjl/splice.vim'
         "Bundle 'christoomey/vim-space'
         "Bundle 'vim-scripts/LineJuggler'
+        "Bundle 'rainerborene/vim-timetap'
     " }}}
 
     " UI {{{
@@ -123,7 +124,7 @@
             "Bundle 'rson/vim-conque'
             "Bundle 'skwp/vim-ruby-conque'
             Bundle 'tpope/vim-rails'
-            Bundle 'kchmck/vim-coffee-script'
+            "Bundle 'kchmck/vim-coffee-script'
             Bundle 'tpope/vim-haml'
             Bundle 'tpope/vim-bundler'
             Bundle 'tpope/vim-rake'
@@ -193,14 +194,15 @@
         "Bundle 'xmledit'
         "Bundle 'Haml'
         "Bundle 'rstacruz/sparkup'
-        Bundle 'mirell/vim-matchit'
+        "Bundle 'mirell/vim-matchit'
         "Bundle 'ragtag.vim'
 
         "Bundle 'vim-octopress'
         "Bundle 'tsaleh/vim-align'
 
         " Markdown {{{
-            Bundle 'tpope/vim-markdown'
+            "Bundle 'tpope/vim-markdown'
+            Bundle 'plasticboy/vim-markdown'
             "Bundle 'Markdown-syntax'
         "}}}
 
@@ -212,7 +214,7 @@
     " }}}
 
     " LaTeX {{{
-        Bundle 'dnebauer/AutomaticLaTeXPlugin.git'
+        "Bundle 'dnebauer/AutomaticLaTeXPlugin.git'
     "}}}
 
     " CSS {{{
