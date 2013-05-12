@@ -642,7 +642,7 @@
         let g:tagbar_width = 30
         let g:tagbar_sort = 0
         let g:tagbar_compact = 1
-        let g:tagbar_autoshowtag = 1
+        "let g:tagbar_autoshowtag = 1
         let g:tagbar_type_javascript = {}
                     "\ 'ctagstype' : 'javascript',
                     "\ 'ctagsbin' : '/usr/bin/jsctags'
@@ -880,6 +880,18 @@
         imap <C-G>U <Plug>UnconditionalPasteRecallUnjoin
     " }}}
 
+    " UltiSnips {{{
+        "nmap <C-Tab> :call UltiSnips_ListSnippets()<CR>
+        "let g:UltiSnips = {}
+        "let g:UltiSnips.InterfaceFlavour = "SnipMate"
+        "let g:UltiSnips.JumpForwardTrigger = "<c-j>"
+        "let g:UltiSnips.snipmate_ft_filter = {
+                    "\ 'default' : {'filetypes': ["FILETYPE", "_"] },
+                    "\ 'html'    : {'filetypes': ["html", "javascript", "_"] },
+                    "\ 'cpp'    : {'filetypes': [] },
+                    "\ }
+    "" }}}
+
     " Multiedit {{{
         hi Multiedit ctermbg=LightBlue guibg=LightBlue
         hi default link MultieditRegions Multiedit
@@ -996,16 +1008,16 @@
             " Markdown
             "au Filetype markdown setlocal foldexpr=MarkdownLevel()
             "au Filetype markdown setlocal foldmethod=expr
-            au BufNewFile,BufRead *.md,*.markdown setlocal filetype=markdown | set ts=4 sts=4 sw=4 expandtab
-            au FileType markdown syn region myMkdHeaderFold
-                        \ start="\v^\s*\z(\#{1,6})"
-                        \ end="\v\n(\s*\#)\@="ms=s-1,me=s-1
-                        \ skip="\v(\n\s*\z1\#)\@="
-                        \ fold contains=myMkdHeaderFold
+            "au BufNewFile,BufRead *.md,*.markdown setlocal filetype=markdown | set ts=4 sts=4 sw=4 expandtab
+            "au FileType markdown syn region myMkdHeaderFold
+                        "\ start="\v^\s*\z(\#{1,6})"
+                        "\ end="\v\n(\s*\#)\@="ms=s-1,me=s-1
+                        "\ skip="\v(\n\s*\z1\#)\@="
+                        "\ fold contains=myMkdHeaderFold
 
-            au FileType markdown syn sync fromstart
-            au FileType markdown set foldmethod=syntax
-            au FileType markdown set fo+=t
+            "au FileType markdown syn sync fromstart
+            "au FileType markdown set foldmethod=syntax
+            "au FileType markdown set fo+=t
         augroup END
         "}}}
 
