@@ -892,9 +892,10 @@
     " Rails {{{
         " autocmd User Rails cmap Rroutes edit config/routes.rb
         autocmd User Rails command! Rroutes edit config/routes.rb
-        autocmd User Rails command! RVroutes :vsplit config/routes.rb
-        autocmd User Rails command! RSroutes :split config/routes.rb
-        autocmd User Rails command! RTroutes :tabedit config/routes.rb
+        autocmd User Rails command! RVroutes vsplit config/routes.rb
+        autocmd User Rails command! RSroutes split config/routes.rb
+        autocmd User Rails command! RTroutes tabedit config/routes.rb
+        autocmd User Rails command! Rstop call RailsServerStop()<CR>
     " }}}
 " }}}
 
@@ -1206,6 +1207,14 @@
         endfunc
         command! ToggleDiffMode call ToggleDiffMode()
         nnoremap <leader>D :ToggleDiffMode<CR>
+    " }}}
+
+    " Stop Rails server {{{
+        function! RailsServerStop()
+            silent exec "!kill -9 $(cat tmp/pids/server.pid)"
+            echo "Server stopped."
+            redraw!
+        endfunction
     " }}}
 " }}}
 
