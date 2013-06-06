@@ -988,6 +988,13 @@
             au BufWritePost * call MakeExecutable()
         augroup END
         "}}}
+        augroup Latex "{{{
+            au!
+            au FileType tex vmap ,it c\textit{<C-R>*}<esc>
+            au FileType tex vmap ,bf c\textbf{<C-R>*}<esc>
+            au FileType tex nmap ds\ f}F\deds}
+        augroup END
+        "}}}
 
         " Source the vimrc file after saving it
         "au Bufwritepost vimrc source $MYVIMRC
