@@ -153,6 +153,8 @@
 
     " Textobjects {{{
         Bundle 'kana/vim-textobj-user.git'
+        " Dependency of rubyblock
+        Bundle 'textobj-user'
         Bundle 'textobj-rubyblock'
         " r
         Bundle 'textobj-function'
@@ -195,8 +197,10 @@
         "Bundle 'xmledit'
         "Bundle 'Haml'
         "Bundle 'rstacruz/sparkup'
-        "Bundle 'mirell/vim-matchit'
         "Bundle 'ragtag.vim'
+
+        " Dependency for rubyblock text object
+        Bundle 'edsono/vim-matchit'
 
         "Bundle 'vim-octopress'
         "Bundle 'tsaleh/vim-align'
