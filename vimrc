@@ -576,6 +576,9 @@
             au InsertLeave * set timeoutlen=1000
         augroup END
     endif
+
+    " Don't show the intro message when starting vim.
+    set shortmess=atI
 " }}}
 
 " Formatting {{{
