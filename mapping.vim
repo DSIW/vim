@@ -269,7 +269,6 @@ if (&ma)
     nnoremap <leader><CR> gEa<CR><ESC>ew
 endif
 
-
 " AutoClose
 "au Filetype markdown,octopress nmap <leader>iuw i[xepa("+P
 "au Filetype markdown,octopress nmap <leader>iuW i[xEpa("+P
