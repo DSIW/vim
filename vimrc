@@ -1283,6 +1283,14 @@
         command! CleanRegisters call CleanRegisters()
     " }}}
 
+    " Clean double empty lines {{{
+        function! CleanEmptyLines()
+          silent! execute '%s/\v^\s*\n^\s*\n/\r/g'
+        endfunction
+        command! CleanEmptyLines call CleanEmptyLines()
+        nnoremap <leader>el :CleanEmptyLines<CR>
+    " }}}
+
     " Convert Win2Dos {{{
         function! Win2Dos()
           silent! execute ':e ++ff=dos'
