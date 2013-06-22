@@ -200,7 +200,7 @@ endif
 "---------------------------------------------------------
 " cd to the directory containing the file in the buffer
 nmap <silent> <leader>cd :lcd %:h<CR>:pwd<CR>
-nmap <silent> <leader>md :!mkdir -p %:p:h<CR>:pwd<CR>
+nmap <silent> <leader>mkd :!mkdir -p %:p:h<CR>:pwd<CR>
 
 " Turn off that stupid highlight search
 nmap <silent> <leader>n :set invhls<CR>:set hls?<CR>
