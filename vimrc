@@ -248,7 +248,7 @@
     filetype plugin on
     filetype indent on
 
-    set ff=unix " ff=dos " sets line end to UNIX
+    set ffs=unix,dos " ff=dos " sets line end to UNIX
 
     set sh=zsh " Set shell
 
