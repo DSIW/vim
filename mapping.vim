@@ -207,9 +207,10 @@ nmap <silent> <leader>n :set invhls<CR>:set hls?<CR>
 
 " set text wrapping toggles
 nmap <silent> <leader>w :set invwrap<CR>:set wrap?<CR>
-
-" Run the command that was just yanked
-nmap <silent> <leader>rc :@"<cr>
+"set hardwrapping
+nmap <leader>wh set fo=at
+"set softwrapping
+nmap <leader>ws set fo=
 
 " Buffer commands
 " Deletes buffer and leave window intact
@@ -259,10 +260,6 @@ nmap gV `[v`]
 nmap <leader>zm /}<CR>zf%<ESC>:nohlsearch<CR>
 "change text in "" to the copied text
 nmap <leader>c" vi"d"+P
-"set hardwrapping
-nmap <leader>wh set fo=at
-"set softwrapping
-nmap <leader>ws set fo=
 
 " Split line (opposite to S-J joining line)
 " Pressing `Enter' inserts a new line
@@ -304,6 +301,9 @@ nnoremap <leader>d :diffthis<CR>
 " Source
 vnoremap <c-x> y:execute @@<cr>:echo 'Sourced selection.'<cr>
 nnoremap <c-x> ^vg_y:execute @@<cr>:echo 'Sourced line.'<cr>
+
+" Run the command that was just yanked
+nmap <silent> <leader>rc :@"<cr>
 
 " Don't move on *
 nnoremap * *<c-o>:set hlsearch<cr>
