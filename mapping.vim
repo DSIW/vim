@@ -292,9 +292,9 @@ nnoremap zE zMzO
     " replace visually selected text with the last yanked text
     "vnoremap S "_d"0P
     " replace the current word with the last yanked or deleted text
-    "nnoremap S "_diwP
+    nnoremap S "_diwP
     " replace visually selected text with the last yanked or deleted text
-    "vnoremap S "_dP
+    vnoremap S "_dP
 " }}}
 
 nnoremap ]d ]czz " next diff and set screen to center of curser
