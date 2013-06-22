@@ -79,6 +79,7 @@
         "Bundle 'christoomey/vim-space'
         "Bundle 'vim-scripts/LineJuggler'
         "Bundle 'rainerborene/vim-timetap'
+        "Bundle 'mhinz/vim-startify'
     " }}}
 
     " UI {{{
