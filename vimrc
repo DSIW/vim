@@ -1007,6 +1007,7 @@
             au FileType tex vmap ,it c\textit{<C-R>*}<esc>
             au FileType tex vmap ,bf c\textbf{<C-R>*}<esc>
             au FileType tex nmap ds\ f}F\deds}
+            au FileType tex vmap ,ia c„<C-R>*“<esc>
         augroup END
         "}}}
 
