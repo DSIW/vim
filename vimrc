@@ -1282,6 +1282,24 @@
         endfunction
         command! CleanRegisters call CleanRegisters()
     " }}}
+
+    " Convert Win2Dos {{{
+        function! Win2Dos()
+          silent! execute ':e ++ff=dos'
+          echo "CRLF > LF"
+        endfunction
+        command! Win2Dos call Win2Dos()
+    " }}}
+
+    " Convert Dos2Win {{{
+        function! Dos2Win()
+          normal mz
+          silent! execute ':%s/\r$/\r/g'
+          echo "LF > CRLF"
+          normal 'z
+        endfunction
+        command! Dos2Win call Dos2Win()
+    " }}}
 " }}}
 
 " Programming {{{
