@@ -755,6 +755,7 @@
         let g:ctrlp_max_files = 1000 " Max files to scan
         let g:ctrlp_max_depth = 20 " Max directory tree depth
         "let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files']
+        let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
     " }}}
 
     " ShowMarks  {{{
