@@ -307,6 +307,9 @@
     " get rid of the silly characters in window separators
     set fillchars=""
 
+    " Don't reset cursor to start of line when moving around.
+    set nostartofline
+
     " Search {{{
         set nohlsearch " Enable search highlighting
 
