@@ -495,7 +495,7 @@
         "set timeoutlen=500
         " Tweak timeouts, because the default is too conservative
         " This setting is taken from :h 'ttimeoutlen'
-        set timeout timeoutlen=500 ttimeoutlen=100
+        "set timeout timeoutlen=500 ttimeoutlen=100
     " }}}
 
     " statusline {{{
@@ -566,6 +566,16 @@
 
         set foldtext=MyFoldLabel()
     " }}}
+
+    " Improve the speed for updating the status line when leaving insert mode.
+    if ! has('gui_running')
+        set ttimeoutlen=10
+        augroup FastEscape
+            autocmd!
+            au InsertEnter * set timeoutlen=0
+            au InsertLeave * set timeoutlen=1000
+        augroup END
+    endif
 " }}}
 
 " Formatting {{{
