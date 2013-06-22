@@ -19,8 +19,8 @@
 
 " set the gui options the way I like
 set guioptions=ac
-set guioptions-=m
-set guioptions-=T
+"set guioptions-=m
+"set guioptions-=T
 
 set guifont=Monospace\ 10
 
