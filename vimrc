@@ -382,6 +382,7 @@
 
     " Session {{{
         " viminfo stores the the state of your previous editing session
+        set sessionoptions=blank,curdir,folds,help,tabpages,winpos
         set viminfo+=n~/.vim/.tmp/viminfo
     " }}}
 
