@@ -308,4 +308,5 @@ nmap <silent> <leader>rc :@"<cr>
 " Don't move on *
 nnoremap * *<c-o>:set hlsearch<cr>
 
-nmap <Leader>r) ds)i <esc>:w<cr>
+nmap <Leader>r) ds)i <esc>
+nmap <Leader>r( eF r(ea)<esc>
