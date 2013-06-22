@@ -784,6 +784,11 @@
         " Bubble multiple lines
         vmap <C-Up> [egv
         vmap <C-Down> ]egv
+        " Overwrite useless mapping for next/prev method
+        nmap [f [m
+        nmap 8f [m
+        nmap ]f ]m
+        nmap 9f ]m
     " }}}
 
     " XMLFolding {{{
