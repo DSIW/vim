@@ -937,6 +937,14 @@
         autocmd User Rails command! RSroutes split config/routes.rb
         autocmd User Rails command! RTroutes tabedit config/routes.rb
         autocmd User Rails command! Rstop call RailsServerStop()<CR>
+        let g:rails_projections = {
+              \ "config/projections.json": {
+              \   "command": "projections"
+              \ },
+              \ "spec/features/*_spec.rb": {
+              \   "command": "feature",
+              \   "template": "require 'spec_helper'\n\nfeature '%h' do\n\nend",
+              \ }}
     " }}}
 " }}}
 
