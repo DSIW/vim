@@ -932,6 +932,7 @@
 
     " Rails {{{
         " autocmd User Rails cmap Rroutes edit config/routes.rb
+        autocmd User Rails silent! Lcd
         autocmd User Rails command! Rroutes edit config/routes.rb
         autocmd User Rails command! RVroutes vsplit config/routes.rb
         autocmd User Rails command! RSroutes split config/routes.rb
