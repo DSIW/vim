@@ -1332,6 +1332,10 @@
         endfunction
         command! Dos2Win call Dos2Win()
     " }}}
+
+    " Extract visual selection to separate file {{{
+        command! -bang -range -nargs=1 -complete=file Extract set noshowcmd | <line2>,<line2>write<bang> <args> | <line1>,<line2>delete _ | vsplit <args> | set showcmd
+    " }}}
 " }}}
 
 " Programming {{{
