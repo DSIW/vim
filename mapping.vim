@@ -308,4 +308,4 @@ nmap <silent> <leader>rc :@"<cr>
 nnoremap * *<c-o>:set hlsearch<cr>
 
 nmap <Leader>r) ds)i <esc>
-nmap <Leader>r( eF r(ea)<esc>
+nmap <Leader>r( eF r(A)<esc>
