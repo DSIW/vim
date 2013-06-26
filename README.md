@@ -6,5 +6,4 @@
 
 ## Requirements
 
-* ctags for bundle TagBar
 * patched font for bundling PowerLine in ~/.fonts
