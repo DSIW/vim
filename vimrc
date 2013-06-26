@@ -1341,6 +1341,10 @@
         command! Dos2Win call Dos2Win()
     " }}}
 
+    " Calculate visual selection {{{
+        command! -range Calc <line1>,<line2>!bc <<< $(cat -)
+    " }}}
+
     " Extract visual selection to separate file {{{
         command! -bang -range -nargs=1 -complete=file Extract set noshowcmd | <line2>,<line2>write<bang> <args> | <line1>,<line2>delete _ | vsplit <args> | set showcmd
     " }}}
