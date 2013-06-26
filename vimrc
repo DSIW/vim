@@ -80,6 +80,7 @@
         "Bundle 'vim-scripts/LineJuggler'
         "Bundle 'rainerborene/vim-timetap'
         "Bundle 'mhinz/vim-startify'
+        Bundle 'aklt/vim-substitute'
     " }}}
 
     " UI {{{
@@ -690,6 +691,13 @@
         let g:EasyGrepExtraWarnings=1
         let g:EasyGrepOptionPrefix='<leader>vy'
         let g:EasyGrepReplaceAllPerFile=0
+    " }}}
+
+    " Substitute {{{
+        let g:substitute_PromptMap = "<leader>sw"
+        let g:substitute_NoPromptMap = "<leader>Sw"
+        let g:substitute_GlobalMap = "<leader>sg"
+        "let g:substitute_SingleWordSize = 3
     " }}}
 
     " ATP {{{
