@@ -108,7 +108,7 @@
         " Snippets {{{
             Bundle "tomtom/tlib_vim"
             Bundle "MarcWeber/vim-addon-mw-utils"
-            Bundle "DSIW/snipmate-snippets"
+            Bundle "DSIW/vim-snippets"
             Bundle "garbas/vim-snipmate"
         "}}}
 
