@@ -81,10 +81,14 @@
         "Bundle 'rainerborene/vim-timetap'
         "Bundle 'mhinz/vim-startify'
         Bundle 'aklt/vim-substitute'
+        "Bundle 'myusuf3/numbers.vim'
         Bundle 'mbbill/undotree'
     " }}}
 
     " UI {{{
+        "Bundle 'spf13/vim-colors'
+        "Bundle 'flazz/vim-colorschemes'
+        "Bundle 'tomasr/molokai'
         "Bundle 'xoria256.vim'
         "Bundle 'neverland.vim--All-colorschemes-suck'
         Bundle 'ZoomWin'
@@ -187,6 +191,7 @@
         "Bundle 'mattn/webapi-vim'
         "Bundle 'Gist.vim'
         Bundle 'gregsexton/gitv'
+        "Bundle 'airblade/vim-gitgutter'
     " }}}
 
     " Sourround {{{
@@ -217,6 +222,7 @@
             "Bundle 'groenewege/vim-less'
             "Bundle 'cakebaker/scss-syntax'
             "Bundle 'skammer/vim-css-color'
+            "Bundle 'hail2u/vim-css3-syntax'
         "}}}
     " }}}
 
