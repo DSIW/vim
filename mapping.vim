@@ -309,3 +309,6 @@ nnoremap * *<c-o>:set hlsearch<cr>
 
 nmap <Leader>r) ds)i <esc>
 nmap <Leader>r( eF r(A)<esc>
+
+" http://vimcasts.org/e/14
+cnoremap %% <C-R>=expand('%:h').'/'<cr>
