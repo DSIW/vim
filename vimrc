@@ -705,7 +705,7 @@
     " Substitute {{{
         let g:substitute_PromptMap = "<leader>sw"
         let g:substitute_NoPromptMap = "<leader>Sw"
-        let g:substitute_GlobalMap = "<leader>sg"
+        "let g:substitute_GlobalMap = "<leader>sg"
         "let g:substitute_SingleWordSize = 3
     " }}}
 
