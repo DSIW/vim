@@ -1282,6 +1282,10 @@
         command! MkBackup call MakeBackup()
     " }}}
 
+    " Edit backup {{{
+        command! EditBackup exec "e %.bak"
+    " }}}
+
     " Toogle diffmode {{{
         command! Diffall windo diffthis
         let g:diffmodeon = 0
