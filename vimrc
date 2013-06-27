@@ -974,6 +974,10 @@
               \   "template": "require 'spec_helper'\n\nfeature '%h' do\n\nend",
               \ }}
     " }}}
+
+    " Git Gutter {{{
+        "highlight clear SignColumn
+    " }}}
 " }}}
 
 " GUI Settings {{{
