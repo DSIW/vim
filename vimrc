@@ -37,7 +37,7 @@
         Bundle 'lastpos.vim'
         "Bundle 'sudo.vim' " eunuch has same function
         "Bundle 'vimshell-ssh'
-        Bundle 'Gundo'
+        "Bundle 'Gundo'
         Bundle 'The-NERD-tree'
         "Bundle 'Command-T'
         Bundle 'ctrlp.vim'
@@ -81,6 +81,7 @@
         "Bundle 'rainerborene/vim-timetap'
         "Bundle 'mhinz/vim-startify'
         Bundle 'aklt/vim-substitute'
+        Bundle 'mbbill/undotree'
     " }}}
 
     " UI {{{
@@ -717,13 +718,22 @@
     " }}}
 
     " Gundo {{{
-        nnoremap <leader>g :GundoToggle<CR>
+        "nnoremap <leader>g :GundoToggle<CR>
 
         " open on the right so as not to compete with the nerdtree
-        let g:gundo_right = 1
+        "let g:gundo_right = 1
 
         " a little wider for wider screens
-        let g:gundo_width = 50
+        "let g:gundo_width = 50
+    " }}}
+
+    " UndoTree {{{
+        nnoremap <silent> <Leader>u :UndotreeToggle<CR>
+        " If undotree is opened, it is likely one wants to interact with it.
+        let g:undotree_SetFocusWhenToggle=0
+        let g:undotree_DiffAutoOpen=0
+        let g:undotree_SplitLocation="botright"
+        let g:undotree_SplitWidth=35
     " }}}
 
     " Taglist {{{
