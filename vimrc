@@ -433,13 +433,13 @@
         "hi IndentGuidesEven ctermbg=lightgrey
         "color xoria256
         colorscheme solarized                 " load a colorscheme
-          let g:solarized_termtrans=0
-          let g:solarized_termcolors=256
-          let g:solarized_contrast="high"
-          let g:solarized_visibility="low"
-          let g:solarized_italic=1
-          let g:solarized_bold=1
-          let g:solarized_diffmode="high"
+        let g:solarized_termtrans=0
+        let g:solarized_termcolors=256
+        let g:solarized_contrast="high"
+        let g:solarized_visibility="low"
+        let g:solarized_italic=1
+        let g:solarized_bold=1
+        let g:solarized_diffmode="high"
         let g:solarized_hitrail=1
         let g:solarized_underline=0
         set t_Co=256
