@@ -853,6 +853,9 @@
     " Powerline {{{
         let g:Powerline_symbols = 'fancy'
         "let g:Powerline_symbols_override = { 'BRANCH': [0x2213], 'LINE': 'L', }
+        let g:Powerline_theme = 'solarized256'
+        let g:Powerline_colorscheme = 'solarized256'
+        let g:Powerline_stl_path_style = 'short'
         "let g:Powerline_theme='skwp'
         "let g:Powerline_colorscheme='skwp'
         " Abbreviate All of the Mode Names
