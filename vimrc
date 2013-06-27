@@ -440,7 +440,9 @@
           let g:solarized_italic=1
           let g:solarized_bold=1
           let g:solarized_diffmode="high"
-       set t_Co=256
+        let g:solarized_hitrail=1
+        let g:solarized_underline=0
+        set t_Co=256
     " }}}
     set showmode " Show the current mode
     set showbreak=↪
