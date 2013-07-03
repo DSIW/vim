@@ -1389,6 +1389,10 @@
     " Diff with current file {{{
         command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis
     " }}}
+
+    " Scratch {{{
+        command VScratch vert new | set bt=nofile
+        command Scratch new | set bt=nofile
     " }}}
 " }}}
 
