@@ -819,7 +819,6 @@
         "let g:snips_author = 'Steve Francia <steve.francia@gmail.com>'
         "let g:snips_trigger_key='<c-space>'
         " Shortcut for reloading snippets, useful when developing
-        nnoremap <leader>smr <esc>:exec ReloadAllSnippets()<cr>
         au BufWritePost *.snippet call ReloadAllSnippets()
     " }}}
 
