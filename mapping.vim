@@ -47,6 +47,10 @@ nnoremap g; g;zz
 nnoremap g, g,zz
 nnoremap <c-o> <c-o>zz
 
+" Same when jumping between empty lines
+nnoremap } }zz
+nnoremap { {zz
+
 " Indent without cursor position change
 nnoremap <leader>i mzgg=G'z
 
