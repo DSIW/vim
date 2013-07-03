@@ -109,6 +109,7 @@
         "Bundle 'Shougo/neocomplcache'
         Bundle 'tpope/vim-abolish'
         "Bundle 'jshint.vim'
+        Bundle 'tpope/vim-dispatch'
 
         " Snippets {{{
             Bundle "tomtom/tlib_vim"
@@ -123,7 +124,7 @@
         "}}}
 
         " Ruby {{{
-            Bundle 'ruby.vim'
+            Bundle 'vim-ruby/vim-ruby'
             Bundle 'ecomba/vim-ruby-refactoring.git'
             Bundle 'skalnik/vim-vroom'
             Bundle 'splitjoin.vim'
