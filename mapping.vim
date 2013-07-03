@@ -315,4 +315,5 @@ nmap <Leader>r) ds)i <esc>
 nmap <Leader>r( eF r(A)<esc>
 
 " http://vimcasts.org/e/14
-cnoremap %% <C-R>=expand('%:h').'/'<cr>
+cnoremap %p <C-R>=expand('%:h').'/'<cr>
+cnoremap %f <C-R>=expand('%:p:t:h')<cr>
