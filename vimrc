@@ -820,6 +820,7 @@
         "let g:snips_trigger_key='<c-space>'
         " Shortcut for reloading snippets, useful when developing
         nnoremap <leader>smr <esc>:exec ReloadAllSnippets()<cr>
+        au BufWritePost *.snippet call ReloadAllSnippets()
     " }}}
 
     " Unimpaired {{{
@@ -1085,7 +1086,6 @@
         au BufNewFile,BufRead *.ldif set filetype=ldif
 
         au BufWritePost *.c :make
-        au BufWritePost *.snippet call ReloadAllSnippets()
         au BufReadPost fugitive://* set bufhidden=delete
 
         " Syntax of these languages is fussy over tabs Vs spaces
