@@ -507,6 +507,17 @@
         " Tweak timeouts, because the default is too conservative
         " This setting is taken from :h 'ttimeoutlen'
         "set timeout timeoutlen=500 ttimeoutlen=100
+
+        " Improve the speed for updating the status line when leaving insert mode.
+        set timeout
+        set ttimeoutlen=10
+        augroup FastEscape
+            autocmd!
+            set timeoutlen=400 ttimeoutlen=100
+            au InsertEnter * set timeoutlen=0
+            au InsertLeave * set timeoutlen=4000
+            au InsertLeave * set timeout timeoutlen=400 ttimeoutlen=100
+        augroup END
     " }}}
 
     " statusline {{{
@@ -577,16 +588,6 @@
 
         set foldtext=MyFoldLabel()
     " }}}
-
-    " Improve the speed for updating the status line when leaving insert mode.
-    if ! has('gui_running')
-        set ttimeoutlen=10
-        augroup FastEscape
-            autocmd!
-            au InsertEnter * set timeoutlen=0
-            au InsertLeave * set timeoutlen=1000
-        augroup END
-    endif
 
     " Don't show the intro message when starting vim.
     set shortmess=atI
