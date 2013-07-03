@@ -963,14 +963,13 @@
     " Rails {{{
         " autocmd User Rails cmap Rroutes edit config/routes.rb
         autocmd User Rails silent! Lcd
-        autocmd User Rails command! Rroutes edit config/routes.rb
-        autocmd User Rails command! RVroutes vsplit config/routes.rb
-        autocmd User Rails command! RSroutes split config/routes.rb
-        autocmd User Rails command! RTroutes tabedit config/routes.rb
         autocmd User Rails command! Rstop call RailsServerStop()<CR>
         let g:rails_projections = {
               \ "config/projections.json": {
               \   "command": "projections"
+              \ },
+              \ "config/routes.rb": {
+              \   "command": "routes"
               \ },
               \ "spec/features/*_spec.rb": {
               \   "command": "feature",
