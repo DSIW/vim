@@ -640,7 +640,10 @@
     " }}}
 
     " Fugitive {{{
-        nnoremap <silent> <leader>gs :Gstatus<CR>
+        fun! MyGstatus()
+            Gstatus | wincmd K | resize 15
+        endf
+        nnoremap <silent> <leader>gs :call MyGstatus()<CR>
 
         nnoremap <silent> <leader>gd :Gdiff<CR>
         fun! GdiffCached()
@@ -651,23 +654,20 @@
         nnoremap <silent> <leader>gdc :call GdiffCached()<CR>
 
         fun! Gadd()
-            silent Git add %
-            redraw!
+            silent !git add %
             echo "Added to Git"
         endf
         command! Gadd call Gadd()
-        nnoremap <leader>ga :call Gadd()<CR>
+        nnoremap <silent> <leader>ga :call Gadd()<CR>
 
-        nnoremap <silent> <leader>gic :Gcommit<CR>
-        nnoremap <leader>gac :update<cr>:Gcommit -am ""<left>
+        nnoremap <silent> <leader>gi :Gcommit<CR>
+        nnoremap <leader>gC :update<cr>:Gcommit -am ""<left>
         nnoremap <leader>gc :update<cr>:Gcommit -m ""<left>
 
         nnoremap <silent> <leader>gb :Gblame<CR>
         nnoremap <silent> <leader>gl :Glog<CR>
         nnoremap <silent> <leader>gp :Git push<CR>:sleep 1<CR>
         nnoremap <silent> <leader>gu :Git pull<CR>
-        "nnoremap <silent> <leader>dg :diffget<CR>
-        "nnoremap <silent> <leader>dp :diffput<CR>
         "cmap Gbrowser Gbrowse | redraw!
     "}}}
 
