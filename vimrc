@@ -760,6 +760,7 @@
     " NERD Tree  {{{
         " Toggle the NERD Tree on an off with F7
         nmap <leader>T :NERDTreeToggle<CR>
+        nmap <leader>Tc :NERDTree %:p:h<CR>
 
         " Store the bookmarks file in perforce
         let NERDTreeBookmarksFile="~/.vim/NERDTreeBookmarks"
