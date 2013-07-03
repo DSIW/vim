@@ -1385,6 +1385,11 @@
     " Extract visual selection to separate file {{{
         command! -bang -range -nargs=1 -complete=file Extract set noshowcmd | <line1>,<line2>write<bang> <args> | <line1>,<line2>delete _ | vsplit <args> | set showcmd
     " }}}
+
+    " Diff with current file {{{
+        command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis
+    " }}}
+    " }}}
 " }}}
 
 " Programming {{{
