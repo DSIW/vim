@@ -971,6 +971,12 @@
               \ "config/routes.rb": {
               \   "command": "routes"
               \ },
+              \ "config/locales/*.yml": {
+              \   "command": "locale"
+              \ },
+              \ "db/seeds/*.rb": {
+              \   "command": "seeds"
+              \ },
               \ "spec/features/*_spec.rb": {
               \   "command": "feature",
               \   "template": "require 'spec_helper'\n\nfeature '%h' do\n\nend",
