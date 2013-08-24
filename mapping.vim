@@ -239,8 +239,9 @@ nmap <leader>l :set list!<CR>:set list?<CR>
           \ :vimgrep /<C-r>// %<CR>:ccl<CR>:cwin<CR><C-W>J:set nohls<CR>
 
     " Search the current file for the word under the cursor and display matches
-    nmap <silent> <leader>gw
-          \ :vimgrep /<C-r><C-w>/ %<CR>:ccl<CR>:cwin<CR><C-W>J:set nohls<CR>
+    "nmap <silent> <leader>gw
+          "\ :vimgrep /<C-r><C-w>/ %<CR>:ccl<CR>:cwin<CR><C-W>J:set nohls<CR>
+    nmap <silent> <leader>gw :Ag! <C-r><C-w><CR>
 
     " Search the current file for the WORD under the cursor and display matches
     nmap <silent> <leader>gW
