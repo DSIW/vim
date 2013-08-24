@@ -317,6 +317,7 @@ nnoremap * *<c-o>:set hlsearch<cr>
 
 nmap <Leader>r) ds)i <esc>
 nmap <Leader>r( eF r(A)<esc>
+vmap <Leader>r" S"vi"S#
 
 " http://vimcasts.org/e/14
 cnoremap %p <C-R>=expand('%:h').'/'<cr>
