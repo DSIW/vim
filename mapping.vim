@@ -21,6 +21,9 @@ inoremap <C-U> <C-G>u<C-U>
 nnoremap j gj
 nnoremap k gk
 
+" Better mark jumping (line + col)
+nnoremap ' `
+
 " Note: You have to set in your bash_profile
 " bind -r '\C-s'
 " stty -ixon
