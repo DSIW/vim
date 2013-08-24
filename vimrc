@@ -993,6 +993,12 @@
     " Ruby {{{
         command! VA vsplit | A
     " }}}
+
+    " Dispatch {{{
+        autocmd FileType ruby let b:dispatch = 'rspec %'
+        nnoremap <F9> :Dispatch<CR>
+        nnoremap ,t :Dispatch<CR>
+    " }}}
 " }}}
 
 " GUI Settings {{{
