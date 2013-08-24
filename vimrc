@@ -989,6 +989,10 @@
     " Git Gutter {{{
         "highlight clear SignColumn
     " }}}
+
+    " Ruby {{{
+        command! VA vsplit | A
+    " }}}
 " }}}
 
 " GUI Settings {{{
