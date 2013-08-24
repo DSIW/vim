@@ -784,11 +784,10 @@
     " }}}
 
     " CtrlP  {{{
-        "nnoremap <silent> <Leader>t :CtrlP<CR>
         nnoremap <silent> <Leader>b :CtrlPBuffer<CR>
         nnoremap <silent> <Leader>a :CtrlPMixed<CR>
 
-        let g:ctrlp_map = '<leader>t'
+        let g:ctrlp_map = '<leader>f'
         let g:ctrlp_show_hidden = 1 " show hidden files
         let g:ctrlp_max_height = 20 " height of file list
         let g:ctrlp_match_window_bottom = 0 " Show list on top
