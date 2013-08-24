@@ -78,7 +78,7 @@ command! -bang Q q<bang>
 " disallow opening the commandline window which by default is bound to
 " q: (I tend to usually mean :q)
 " The commandline window is still accessible using q/ or q?
-noremap q: :q
+"noremap q: :q
 
 " In help files, map Enter to follow tags
 au filetype help set nonumber      " no line numbers when viewing help
@@ -267,7 +267,7 @@ nmap gV `[v`]
 "fold a method/function
 nmap <leader>zm /}<CR>zf%<ESC>:nohlsearch<CR>
 "change text in "" to the copied text
-nmap <leader>c" vi"d"+P
+"nmap <leader>c" vi"d"+P
 
 " Split line (opposite to S-J joining line)
 " Pressing `Enter' inserts a new line
