@@ -228,7 +228,7 @@ nmap <silent> <C-o> 10zl
 nmap <silent> <C-i> 10zh
 
 " Shortcut to rapidly toggle `set list`
-nmap <leader>l :set list!<CR>
+nmap <leader>l :set list!<CR>:set list?<CR>
 
 " Highlight all instances of the current word under the cursor
 "nmap <silent> ^ :setl hls<CR>:let @/="<C-r><C-w>"<CR>
