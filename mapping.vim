@@ -202,6 +202,12 @@ endif
     nnoremap <space> za
 " }}}
 
+" Fix page up and down
+map <PageUp> <C-U>
+map <PageDown> <C-D>
+imap <PageUp> <C-O><C-U>
+imap <PageDown> <C-O><C-D>
+
 "---------------------------------------------------------
 " From Derek
 "---------------------------------------------------------
