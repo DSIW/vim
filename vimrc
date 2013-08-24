@@ -965,6 +965,8 @@
         " autocmd User Rails cmap Rroutes edit config/routes.rb
         autocmd User Rails silent! Lcd
         autocmd User Rails command! Rstop call RailsServerStop()<CR>
+        nmap <f6> :Rrefresh<CR>
+
         let g:rails_projections = {
               \ "config/projections.json": {
               \   "command": "projections"
