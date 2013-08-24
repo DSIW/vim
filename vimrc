@@ -1404,6 +1404,17 @@
         command VScratch vert new | set bt=nofile
         command Scratch new | set bt=nofile
     " }}}
+
+    " Markdown to LaTeX {{{
+        function! MarkdownToLaTeX()
+          let basename = expand('%:p:r')
+          let source = basename.'.md'
+          let destination = basename.'.tex'
+          silent! execute '! pandoc -t latex -f markdown -o '.destination.' '.source
+          echo 'LaTeX erstellt unter '.destination
+        endfunction
+        command! Md2Tex call MarkdownToLaTeX()
+    " }}}
 " }}}
 
 " Programming {{{
