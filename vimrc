@@ -31,7 +31,8 @@
     "Bundle 'gmarik/ingretu'
 
     " General {{{
-        Bundle 'Lokaltog/vim-powerline'
+        "Bundle 'Lokaltog/vim-powerline'
+        Bundle 'bling/vim-airline'
         "Bundle 'unicode.vim'
         Bundle 'unimpaired.vim'
         Bundle 'lastpos.vim'
@@ -54,6 +55,9 @@
         " Better than ack
         Bundle 'rking/ag.vim'
         "Bundle 'greplace.vim'
+        Bundle 'Rykka/lastbuf.vim'
+        Bundle 'bogado/file-line'
+        Bundle 'arecarn/crunch'
 
         Bundle 'VisIncr'
         "Bundle 'csv.vim'
@@ -83,6 +87,10 @@
         Bundle 'aklt/vim-substitute'
         "Bundle 'myusuf3/numbers.vim'
         Bundle 'mbbill/undotree'
+        Bundle 'osyo-manga/vim-over'
+        Bundle 'tpope/vim-characterize'
+        Bundle 'tpope/vim-flatfoot'
+        Bundle 'tommcdo/vim-exchange'
     " }}}
 
     " UI {{{
@@ -94,12 +102,14 @@
         Bundle 'ZoomWin'
         Bundle 'altercation/vim-colors-solarized'
         Bundle 'bufkill.vim'
+        Bundle 'croaky/vim-colors-github'
     " }}}
 
     " Programming {{{
         "Bundle 'xptemplate'
         Bundle 'Tabular'
-        Bundle 'The-NERD-Commenter'
+        "Bundle 'The-NERD-Commenter'
+        Bundle 'tpope/vim-commentary'
         "Bundle 'ProtoDef'
         "Bundle 'SuperTab'
         "Bundle 'Indent-Guides'
@@ -110,12 +120,18 @@
         Bundle 'tpope/vim-abolish'
         "Bundle 'jshint.vim'
         Bundle 'tpope/vim-dispatch'
+        Bundle 'derekwyatt/vim-scala'
+        " Bundle 'airblade/vim-rooter'
+        Bundle 'Keithbsmiley/investigate.vim'
+
+        " Bundle 'Valloric/YouCompleteMe'
 
         " Snippets {{{
             Bundle "tomtom/tlib_vim"
             Bundle "MarcWeber/vim-addon-mw-utils"
             Bundle "DSIW/vim-snippets"
-            Bundle "garbas/vim-snipmate"
+            "Bundle "garbas/vim-snipmate"
+            Bundle 'MarcWeber/ultisnips'
         "}}}
 
         " C/C++ {{{
@@ -128,7 +144,8 @@
             Bundle 'ecomba/vim-ruby-refactoring.git'
             Bundle 'skalnik/vim-vroom'
             Bundle 'splitjoin.vim'
-            Bundle 'skwp/vim-rspec'
+            " Bundle 'skwp/vim-rspec'
+            Bundle 'thoughtbot/vim-rspec'
             "Bundle 'rson/vim-conque'
             "Bundle 'skwp/vim-ruby-conque'
             Bundle 'tpope/vim-rails'
@@ -150,9 +167,10 @@
             "Bundle 'fs111/pydoc.vim.git'
         "}}}
 
-        " JavsScript {{{
+        " JavaScript {{{
             "Bundle 'javascript.vim'
             Bundle 'vim-json-bundle'
+            Bundle 'tpope/vim-jdaddy'
             "Bundle 'vim-coffee-script'
             Bundle 'pangloss/vim-javascript'
         "}}}
@@ -180,6 +198,8 @@
         " `
         Bundle 'bootleq/vim-textobj-rubysymbol'
         " :
+        Bundle 'Julian/vim-textobj-variable-segment'
+        " v
     "}}}
 
     " Mail {{{
@@ -208,7 +228,7 @@
         "Bundle 'ragtag.vim'
 
         " Dependency for rubyblock text object
-        Bundle 'edsono/vim-matchit'
+        Bundle 'tsaleh/vim-matchit'
 
         "Bundle 'vim-octopress'
         "Bundle 'tsaleh/vim-align'
@@ -742,7 +762,7 @@
         " If undotree is opened, it is likely one wants to interact with it.
         let g:undotree_SetFocusWhenToggle=0
         let g:undotree_DiffAutoOpen=0
-        let g:undotree_SplitLocation="botright"
+        let g:undotree_WindowLayout="4" " right
         let g:undotree_SplitWidth=35
     " }}}
 
@@ -792,12 +812,23 @@
         let g:ctrlp_max_height = 20 " height of file list
         let g:ctrlp_match_window_bottom = 0 " Show list on top
         let g:ctrlp_match_window_reversed = 0 " Go to bottom
+        let g:ctrlp_mruf_default_order = 1
         let g:ctrlp_by_filename = 0 " Search only by filename
-        let g:ctrlp_max_files = 1000 " Max files to scan
-        let g:ctrlp_max_depth = 20 " Max directory tree depth
+        let g:ctrlp_max_files = 300 " Max files to scan
+        let g:ctrlp_max_depth = 50 " Max directory tree depth
+        let g:ctrlp_switch_buffer = 0 " Allow opening mutlipe splits with same file via CtrlP
         let g:ctrlp_jump_to_buffer = 0
         "let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files']
         let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+        let g:ctrlp_use_caching = 0
+        "TODO
+        let g:ctrlp_custom_ignore = {
+            \ 'dir':  '\v[\/]\.(git|vendor)$',
+            \ }
+        " Don't let ctrlp change the working directory. Instead it now uses
+        " the directory where vim was started. This fixes issues with some
+        " projects that have nested git directories.
+        let g:ctrlp_working_path_mode = 'r'
     " }}}
 
     " ShowMarks  {{{
@@ -860,24 +891,66 @@
         nmap sk :SplitjoinJoin<cr>
     " }}}
 
+    " Airline {{{
+        " let g:bufferline_echo = 0
+        let g:airline#extensions#bufferline#enabled = 0
+        let g:airline#extensions#tabline#show_buffers = 0
+        let g:airline#extensions#tabline#enabled = 1
+        let g:airline#extensions#tabline#show_tab_nr = 0
+        let g:airline#extensions#quickfix#quickfix_text = 'Quickfix'
+        let g:airline#extensions#quickfix#location_text = 'Location'
+        let g:airline_powerline_fonts = 1
+        " let g:airline_left_sep = ''
+        let g:airline_left_sep = "\u2b80"
+        " let g:airline_left_alt_sep = ''
+        let g:airline_left_alt_sep = "\u2b81"
+        " let g:airline_right_sep = ''
+        let g:airline_right_sep = "\u2b82"
+        " let g:airline_right_alt_sep = ''
+        let g:airline_right_alt_sep = "\u2b83"
+        if !exists('g:airline_symbols')
+            let g:airline_symbols = {}
+        endif
+        " let g:airline_symbols.branch = ''
+        let g:airline_symbols.branch = "\u2b60"
+        " let g:airline_symbols.readonly = ''
+        let g:airline_symbols.readonly = "\u2b64"
+        let g:airline_symbols.linenr = ''
+        " let g:airline_symbols.linenr = "\u2b61"
+        let g:airline_symbols.space = "\ua0"
+        let g:airline_mode_map = {
+            \ '__' : '-',
+            \ 'n'  : 'N',
+            \ 'i'  : 'I',
+            \ 'R'  : 'R',
+            \ 'c'  : 'C',
+            \ 'v'  : 'V',
+            \ 'V'  : 'VL',
+            \ '' : 'VB',
+            \ 's'  : 'S',
+            \ 'S'  : 'SL',
+            \ '' : 'SB',
+            \ }
+
+    " }}}
+
     " Powerline {{{
-        let g:Powerline_symbols = 'fancy'
-        "let g:Powerline_symbols_override = { 'BRANCH': [0x2213], 'LINE': 'L', }
-        let g:Powerline_theme = 'solarized256'
-        let g:Powerline_colorscheme = 'solarized256'
-        let g:Powerline_stl_path_style = 'short'
-        "let g:Powerline_theme='skwp'
-        "let g:Powerline_colorscheme='skwp'
-        " Abbreviate All of the Mode Names
-        let g:Powerline_mode_n = 'N'
-        let g:Powerline_mode_i = 'I'
-        let g:Powerline_mode_R = 'R'
-        let g:Powerline_mode_v = 'V'
-        let g:Powerline_mode_V = 'VL'
-        let g:Powerline_mode_cv = 'VB'
-        let g:Powerline_mode_s = 'S'
-        let g:Powerline_mode_S = 'SL'
-        let g:Powerline_mode_cs = 'SB'
+        " let g:Powerline_symbols = 'fancy'
+        " "let g:Powerline_symbols_override = { 'BRANCH': [0x2213], 'LINE': 'L', }
+        " let g:Powerline_theme = 'solarized256'
+        " let g:Powerline_colorscheme = 'solarized256'
+        " "let g:Powerline_colorscheme = 'solarized256light'
+        " "let g:Powerline_stl_path_style = 'short'
+        " " Abbreviate All of the Mode Names
+        " let g:Powerline_mode_n = 'N'
+        " let g:Powerline_mode_i = 'I'
+        " let g:Powerline_mode_R = 'R'
+        " let g:Powerline_mode_v = 'V'
+        " let g:Powerline_mode_V = 'VL'
+        " let g:Powerline_mode_cv = 'VB'
+        " let g:Powerline_mode_s = 'S'
+        " let g:Powerline_mode_S = 'SL'
+        " let g:Powerline_mode_cs = 'SB'
     " }}}
 
     " DelimitMate {{{
@@ -941,16 +1014,31 @@
     " }}}
 
     " UltiSnips {{{
-        "nmap <C-Tab> :call UltiSnips_ListSnippets()<CR>
-        "let g:UltiSnips = {}
-        "let g:UltiSnips.InterfaceFlavour = "SnipMate"
-        "let g:UltiSnips.JumpForwardTrigger = "<c-j>"
-        "let g:UltiSnips.snipmate_ft_filter = {
-                    "\ 'default' : {'filetypes': ["FILETYPE", "_"] },
-                    "\ 'html'    : {'filetypes': ["html", "javascript", "_"] },
-                    "\ 'cpp'    : {'filetypes': [] },
-                    "\ }
+        " Filename function, taken from snipMate.vim
+        let did_UltiSnips_snipmate_compatibility = 1
+        fun! Filename(...)
+            let filename = expand('%:t:r')
+            if filename == '' | return a:0 == 2 ? a:2 : '' | endif
+            return !a:0 || a:1 == '' ? filename : substitute(a:1, '$1', filename, 'g')
+        endf
+
+        let g:UltiSnips = {}
+        "let g:UltiSnips.always_use_first_snippet = 1
+        let g:UltiSnips.snipmate_ft_filter = {
+                    \ 'default' : {'filetypes': ["FILETYPE", "_"] },
+                    \ 'html'    : {'filetypes': ["html", "javascript", "_"] },
+                    \ 'cpp'    : {'filetypes': [] },
+                    \ }
+        let g:UltiSnips.UltiSnips_ft_filter = {
+            \ 'default' : {'filetypes': [] },
+            \ }
     "" }}}
+
+    " Rooter {{{
+        let g:rooter_patterns = ['Gemfile', 'Rakefile', '.git/']
+        let g:rooter_use_lcd = 1
+        "autocmd BufEnter * :Rooter
+    " }}}
 
     " Multiedit {{{
         hi Multiedit ctermbg=LightBlue guibg=LightBlue
@@ -992,42 +1080,51 @@
 
     " Ruby {{{
         command! VA vsplit | A
+        let ruby_operators = 1
     " }}}
 
     " Dispatch {{{
-        autocmd FileType ruby let b:dispatch = 'rspec %'
+        " autocmd FileType ruby let b:dispatch = 'rspec %'
         nnoremap <F9> :Dispatch<CR>
-        nnoremap ,t :Dispatch<CR>
+        " nnoremap ,t :Dispatch<CR>
     " }}}
-" }}}
 
-" GUI Settings {{{
-    " Set up the window colors and size
-    if has("gui_running")
-      set bg=dark
-      "set guifont=Monaco:h12
-      set guioptions-=T
-      "colorscheme xoria256
-      if !exists("g:vimrcloaded")
-        winpos 0 0
-        if ! &diff
-          winsize 130 90
-        else
-          winsize 227 90
-        endif
-        let g:vimrcloaded = 1
-      endif
-    endif
-    :nohls
+    " LastBuf {{{
+        " this option decides to reopen which level of hided buffer.
+        " :hid   bufhidden  (will always be reopened)
+        " :bun   bufunload  (will be reopened if level >= 1)
+        " :bd    bufdelete  (will be reopened if level >= 2)
+        " :bw    bufwipeout (will never be reopened!CAUTION!!)
+        " default is 1 , means :bd and :bw not be reopened.
+        " if you want the same effect of 'nohidden'. 
+        " set it to 0 and  set 'nohidden'
+        let g:lastbuf_level=3
+    " }}}
+
+    " vim-rspec {{{
+        let g:rspec_command = "Dispatch bin/rspec {spec}"
+        nnoremap <Leader>t :call RunCurrentSpecFile()<CR>
+        nnoremap <Leader>ts :call RunNearestSpec()<CR>
+        nnoremap <Leader>tl :call RunLastSpec()<CR>
+    " }}}
+
+    " Crunch {{{
+        map <silent> <plug>NoCrunchEvalLine <plug>CrunchEvalLine
+    " }}}
+
+    " Investigate {{{
+        " unmap gK
+        nnoremap <silent> K :call investigate#Investigate()<CR>
+    " }}}
 " }}}
 
 " Functions {{{
     " Auto commands {{{
         augroup Text "{{{
             au!
-            au BufReadPre   *.txt,*.tex setl textwidth=72
-            au BufReadPre   *.txt,*.tex setl wrapmargin=5
-            au BufReadPre   *.txt,*.tex setl formatoptions=tl
+            au BufReadPre   *.txt setl textwidth=72
+            au BufReadPre   *.txt setl wrapmargin=5
+            au BufReadPre   *.txt setl formatoptions=tl
         augroup END
         "}}}
         augroup gitcommit "{{{
@@ -1068,7 +1165,6 @@
             au BufNewFile *.rb 0put =\"#!/usr/bin/env ruby\<nl># encoding: utf-8\<nl>\"|$
             au BufNewFile *.sh 0put =\"#!/bin/bash\<nl>\"|$
             au BufNewFile *.pl 0put =\"#!/usr/bin/env perl\<nl>\"|$
-            autocmd BufNewFile *.tex 0put =\"%&plain\<nl>\"|$
             autocmd BufNewFile *.\(cc\|hh\) 0put =\"//\<nl>// \".expand(\"<afile>:t\").\" -- \<nl>//\<nl>\"|2|start!
         augroup END
         "}}}
@@ -1080,8 +1176,16 @@
         "}}}
         augroup Latex "{{{
             au!
+            au BufNewFile,BufRead *.tex set filetype=tex
+            au BufNewFile,BufRead *.lco set filetype=tex
+            au FileType tex setl textwidth=120
+            au FileType tex setl wrapmargin=5
+            au FileType tex setl formatoptions=tl
+            au FileType tex setl spell spelllang=de,de_DE_frami,en_us | let g:myLang = 4
             au FileType tex vmap ,it c\textit{<C-R>*}<esc>
+            au FileType tex vmap ,tt c\texttt{<C-R>*}<esc>
             au FileType tex vmap ,bf c\textbf{<C-R>*}<esc>
+            au FileType tex vmap ,td c\todo{<C-R>*}<esc>
             au FileType tex nmap ds\ f}F\deds}
             au FileType tex vmap ,ia c„<C-R>*“<esc>
         augroup END
@@ -1154,6 +1258,11 @@
 
         " Resize splits when the window is resized
         au VimResized * :wincmd ="
+
+        au FocusLost,InsertEnter   * set norelativenumber
+        au FocusGained,InsertLeave * set relativenumber
+
+        au FocusLost * silent! update
     " }}}
 
     " Clean whitespace at EOL {{{
@@ -1162,8 +1271,8 @@
         autocmd ColorScheme * highlight ExtraWhitespace ctermbg=darkred guibg=#DC322F
         autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
         " the above flashes annoyingly while typing, be calmer in insert mode
-        autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-        autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+        "autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+        "autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
         function! s:FixWhitespace(line1,line2)
           let l:save_cursor = getpos(".")
           silent! execute ':' . a:line1 . ',' . a:line2 . 's/\s\+$//'
@@ -1177,13 +1286,13 @@
         let g:myLang = 0
         let g:myLangList = [ "Off", "german", "english", "german & english" ]
         function! ChangeSpellLang()
-        if g:myLang == 0 | set nospell | endif
-        if g:myLang == 1 | setlocal spell spelllang=de | endif
-        if g:myLang == 2 | setlocal spell spelllang=en_us | endif
-        if g:myLang == 3 | setlocal spell spelllang=de,en_us | endif
-        echo "language:" g:myLangList[g:myLang]
-        let g:myLang = g:myLang + 1
-        if g:myLang >= len(g:myLangList) | let g:myLang = 0 | endif
+            if g:myLang >= len(g:myLangList) | let g:myLang = 0 | endif
+            if g:myLang == 0 | set nospell | endif
+            if g:myLang == 1 | setlocal spell spelllang=de,de_DE_frami | endif
+            if g:myLang == 2 | setlocal spell spelllang=en_us | endif
+            if g:myLang == 3 | setlocal spell spelllang=de,de_DE_frami,en_us | endif
+            echo "language:" g:myLangList[g:myLang]
+            let g:myLang = g:myLang + 1
         endfunction
         map <F12> :call ChangeSpellLang()<CR>
         "format the bad spelled words
@@ -1378,6 +1487,14 @@
         command! Win2Dos call Win2Dos()
     " }}}
 
+    " Convert to UTF-8 {{{
+        function! WriteUTF8()
+          silent! execute ':w ++enc=utf-8'
+          echo "Convert to UTF-8"
+        endfunction
+        command! WriteUTF8 call WriteUTF8()
+    " }}}
+
     " Convert Dos2Win {{{
         function! Dos2Win()
           normal mz
@@ -1389,7 +1506,7 @@
     " }}}
 
     " Calculate visual selection {{{
-        command! -range Calc <line1>,<line2>!bc <<< $(cat -)
+        command Calc Crunchline
     " }}}
 
     " Extract visual selection to separate file {{{
