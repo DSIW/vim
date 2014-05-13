@@ -1,0 +1,7 @@
+1. Download files from http://extensions.openoffice.org/en/project/german-de-de-frami-dictionaries
+2. Move de_DE_frami.aff und de_DE_frami.dic to ~/.vim/spell/
+3. In vim:
+   :cd ~/.vim/spell
+   :mkspell de_DE_frami de_DE_frami
+   :spellang+=de_DE_frami
+   :spellinfo
