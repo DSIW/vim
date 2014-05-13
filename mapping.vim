@@ -243,6 +243,9 @@ nmap <leader>l :set list!<CR>:set list?<CR>
     " Search the current file for the WORD under the cursor and display matches
     nmap <silent> <leader>gW
           \ :vimgrep /<C-r><C-a>/ %<CR>:ccl<CR>:cwin<CR><C-W>J:set nohls<CR>
+
+    " Search the current file for ruby method
+    au FileType ruby nmap m/ /^\s*\(def \\| def self\.\)
 " }}}
 
 " Swap two words
@@ -322,3 +325,9 @@ vmap <Leader>r" S"vi"S#
 " http://vimcasts.org/e/14
 cnoremap %p <C-R>=expand('%:h').'/'<cr>
 cnoremap %f <C-R>=expand('%:p:t:h')<cr>
+
+"vnoremap <leader>rh :s/></>\r</g | gv | =
+
+" Add space before and after character
+nmap g<space> i <esc>la <esc>h
+

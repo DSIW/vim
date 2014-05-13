@@ -325,7 +325,7 @@
 
     " Same as default except that I remove the 'u' option
     set complete=.,w,b,t,i
-    set completeopt=longest,menu,preview
+    set completeopt=menu,preview
 
     " When completing by tag, show the whole tag, not just the function name
     set showfulltag
@@ -350,7 +350,17 @@
         " case but recognizes uppercase if it's specified
         set ignorecase
         set smartcase
+
+        " Use ag over grep
+        set grepprg=ag\ --nogroup\ --nocolor
     " }}}
+
+    " Insert only one space when joining lines that contain sentence-terminating
+    " punctuation like `.`.
+    set nojoinspaces
+
+    " For regular expressions turn magic on
+    set magic
 
     " encodings {{{
         " set Unicode if possible
@@ -444,7 +454,7 @@
 
 " Vim UI {{{
     set nu " Set linenumbers
-    "set relativenumber
+    " set relativenumber
 
     " solarized {{{
         set background=light " or light
@@ -491,8 +501,10 @@
     set hidden  " allow buffer switching without saving
 
     set wildmenu " Make the command-line completion better
-    set wildmode=list:longest,full  " command <Tab> completion, list matches, then longest common part, then all.
+    set wildmode=longest,list:longest  " command <Tab> completion, list matches, then longest common part, then all.
     set wildignore=*.o,*.obj,*~,*.swp
+    " Ignore case on insert completion
+    set infercase
 
     set lazyredraw " Don't update the display while executing macros
 
@@ -506,6 +518,10 @@
 
     set scrolloff=8                 " minimum lines to keep above and below cursor
     set scrolljump=5                " lines to scroll when cursor leaves screen
+
+    " Prevent Vim from clobbering the scrollback buffer. See
+    " http://www.shallowsky.com/linux/noaltscreen.html
+    set t_ti= t_te=
 
     if has('cmdline_info')
       "set ruler                   " show the ruler
@@ -601,7 +617,7 @@
         set foldcolumn=2 " set the column of the left side
         "set nofoldenable " folding isn't enabled
         "set foldmethod=marker " Fold on the marker
-        set foldenable " Turn on folding
+        set nofoldenable " Turn folding off
         set foldlevel=30 " Don't autofold anything (but I can still fold manually)
         "set foldopen=block,insert,jump,mark,percent,quickfix,search,tag,undo,hor
         set foldopen=block,jump,mark,percent,quickfix,search,tag,undo,hor
