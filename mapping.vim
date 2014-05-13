@@ -36,7 +36,6 @@ vnoremap < <gv
 vnoremap > >gv
 
 nnoremap / /\v
-map K <nop> " Disable K looking stuff up
 
 noremap <leader>sg :%s/
 noremap <leader>s :s/
@@ -90,18 +89,6 @@ au filetype help nnoremap <buffer><bs> <c-T>   " Backspace to go back
 " output in the buffer
 nmap <leader>e 0wy$:r!<cword><CR>
 nmap <leader>E 0wwy$:r!<cword><CR>
-
-" for editing a file with other users, this will insert my name and
-" the date, when I edited
-nmap <leader>cb odsiw, <ESC>:r!LC_ALL='' date<CR>kJo-
-
-if exists("*pumvisible")
-    inoremap <expr> <Down> pumvisible() ? "\<lt>Down>" : "\<lt>C-O>gj"
-    inoremap <expr> <Up> pumvisible() ? "\<lt>Up>" : "\<lt>C-O>gk"
-else
-   inoremap <Down> <C-O>gj
-   inoremap <Up> <C-O>gk
-endif
 
 if version > 700
 " turn spelling on by default:
@@ -208,12 +195,16 @@ map <PageDown> <C-D>
 imap <PageUp> <C-O><C-U>
 imap <PageDown> <C-O><C-D>
 
+" Duplicate a selection
+" Visual mode: D
+vmap D y'>p
+
 "---------------------------------------------------------
 " From Derek
 "---------------------------------------------------------
 " cd to the directory containing the file in the buffer
-nmap <silent> <leader>cd :lcd %:h<CR>:pwd<CR>
-nmap <silent> <leader>mkd :!mkdir -p %:p:h<CR>:pwd<CR>
+" nnoremap <silent> <leader>cd :lcd %:h<CR>:pwd<CR>
+" nnoremap <silent> <leader>mkd :!mkdir -p %:p:h<CR>:pwd<CR>
 
 " Turn off that stupid highlight search
 nmap <silent> <leader>n :set invhls<CR>:set hls?<CR>
@@ -282,6 +273,9 @@ if (&ma)
     " nmap <buffer> <CR> i<CR><ESC>
     nnoremap <leader><CR> gEa<CR><ESC>ew
 endif
+
+" Join lines and restore cursor location (J)
+"nnoremap J mjJ`j
 
 " AutoClose
 "au Filetype markdown,octopress nmap <leader>iuw i[xepa("+P
