@@ -1258,8 +1258,8 @@
         " Resize splits when the window is resized
         au VimResized * :wincmd ="
 
-        au FocusLost,InsertEnter   * set norelativenumber
-        au FocusGained,InsertLeave * set relativenumber
+        " au FocusLost,InsertEnter   * set norelativenumber
+        " au FocusGained,InsertLeave * set relativenumber
 
         au FocusLost * silent! update
     " }}}
