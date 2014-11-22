@@ -1300,56 +1300,6 @@
         set spellsuggest=8
     " }}}
 
-    " Periodically save of the current buffer {{{
-        "au BufRead,BufNewFile * let b:start_time=localtime()
-        "au BufWrite * let b:start_time=localtime()
-        "au CursorHold * call UpdateFile()
-        "" only write if needed and update the start time after the save
-        "function! UpdateFile()
-        "if ((localtime() - b:start_time) >= 60)
-        "update
-        "let b:start_time=localtime()
-        "else
-        "echo "Only " . (localtime() - b:start_time) . " seconds have elapsed so far."
-        "endif
-        "endfunction
-    " }}}
-
-    " Open URL in current line with web browser  {{{
-        "function! myopenBrowser()
-        "let line0 = getline(".")
-        "let line = matchstr(line0, "http[^ ]*")
-        "if line=="" | let line = matchstr(line0, "ftp[^ ]*")  | endif
-        "if line=="" | let line = matchstr(line0, "file[^ ]*") | endif
-        "let line = escape(line, "#?&;|%")
-        "exec '!firefox '.line
-        "endfunction
-    " }}}
-
-    " Get level of markdown headers {{{
-        function! MarkdownLevel()
-            if getline(v:lnum) =~ '^# .*$'
-                return ">1"
-            endif
-            if getline(v:lnum) =~ '^## .*$'
-                return ">1"
-            endif
-            if getline(v:lnum) =~ '^### .*$'
-                return ">2"
-            endif
-            if getline(v:lnum) =~ '^#### .*$'
-                return ">3"
-            endif
-            if getline(v:lnum) =~ '^##### .*$'
-                return ">4"
-            endif
-            if getline(v:lnum) =~ '^###### .*$'
-                return ">5"
-            endif
-            return "="
-        endfunction
-    "}}}
-
     " Make executable {{{
     " automatically give executable permissions if file begins with #! and contains '/bin/' in the path
         function! MakeExecutable()
@@ -1428,14 +1378,6 @@
         endfunc
         command! ToggleDiffMode call ToggleDiffMode()
         nnoremap <leader>D :ToggleDiffMode<CR>
-    " }}}
-
-    " Stop Rails server {{{
-        function! RailsServerStop()
-            silent exec "!kill -9 $(cat tmp/pids/server.pid)"
-            echo "Server stopped."
-            redraw!
-        endfunction
     " }}}
 
     " Clean registers {{{
