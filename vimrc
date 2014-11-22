@@ -228,7 +228,7 @@
         "Bundle 'ragtag.vim'
 
         " Dependency for rubyblock text object
-        Bundle 'tsaleh/vim-matchit'
+        Bundle 'edsono/vim-matchit'
 
         "Bundle 'vim-octopress'
         "Bundle 'tsaleh/vim-align'
