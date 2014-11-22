@@ -331,3 +331,4 @@ cnoremap %f <C-R>=expand('%:p:t:h')<cr>
 " Add space before and after character
 nmap g<space> i <esc>la <esc>h
 
+cmap Bd bd
