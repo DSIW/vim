@@ -1446,6 +1446,36 @@
         command! Dos2Win call Dos2Win()
     " }}}
 
+    " Decode Bas64 {{{
+        function! Base64DecodeLine()
+          normal mz
+          silent! execute ':ruby require "base64"'
+          silent! execute ':.rubydo $_=Base64.decode64 $_'
+          silent! execute ':%s//\r/g'
+          normal 'z
+        endfunction
+        command! Base64DecodeLine call Base64DecodeLine()
+    " }}}
+
+    " Encode Bas64 {{{
+        function! Base64EncodeLine()
+          normal mz
+          silent! execute ':ruby require "base64"'
+          silent! execute ':%rubydo $_=Base64.encode64 $_'
+          normal 'z
+        endfunction
+        command! Base64EncodeLine call Base64EncodeLine()
+    " }}}
+
+    " Reformat JSON {{{
+        function! s:ReformatJSON(line1,line2)
+          let l:save_cursor = getpos(".")
+          silent! execute ':' . a:line1 . ',' . a:line2 . '!python -m json.tool'
+          call setpos('.', l:save_cursor)
+        endfunction
+        command! -range=% ReformatJSON call <SID>ReformatJSON(<line1>,<line2>)
+    " }}}
+
     " Calculate visual selection {{{
         command Calc Crunchline
     " }}}
