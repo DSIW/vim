@@ -24,7 +24,7 @@ set guioptions=ac
 "set guioptions-=T
 
 " set guifont=Monospace\ 10
-"set guifont=Monaco:h12
+set guifont=Input\ Mono\ 10
 " set guifont=Monospace\ for\ Powerline\ 10
 " set guifont=Droid\ Sans\ for\ Powerline\ 10
 set guioptions-=T
