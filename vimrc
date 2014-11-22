@@ -1221,24 +1221,6 @@
 
         " Syntax of these languages is fussy over tabs Vs spaces
 
-        augroup Markdown "{{{
-            au!
-            " Markdown
-            "au Filetype markdown setlocal foldexpr=MarkdownLevel()
-            "au Filetype markdown setlocal foldmethod=expr
-            "au BufNewFile,BufRead *.md,*.markdown setlocal filetype=markdown | set ts=4 sts=4 sw=4 expandtab
-            "au FileType markdown syn region myMkdHeaderFold
-                        "\ start="\v^\s*\z(\#{1,6})"
-                        "\ end="\v\n(\s*\#)\@="ms=s-1,me=s-1
-                        "\ skip="\v(\n\s*\z1\#)\@="
-                        "\ fold contains=myMkdHeaderFold
-
-            "au FileType markdown syn sync fromstart
-            "au FileType markdown set foldmethod=syntax
-            "au FileType markdown set fo+=t
-        augroup END
-        "}}}
-
         augroup Octopress "{{{
             " Octopress
             autocmd BufNewFile,BufRead *.op,*.octopress setlocal filetype=octopress | set ts=4 sts=4 sw=4 expandtab
