@@ -170,6 +170,7 @@
         " JavaScript {{{
             "Bundle 'javascript.vim'
             Bundle 'vim-json-bundle'
+            " JSON manipulation
             Bundle 'tpope/vim-jdaddy'
             "Bundle 'vim-coffee-script'
             Bundle 'pangloss/vim-javascript'
@@ -180,26 +181,26 @@
         Bundle 'kana/vim-textobj-user.git'
         " Dependency of rubyblock
         Bundle 'textobj-user'
-        Bundle 'textobj-rubyblock'
         " r
-        Bundle 'textobj-function'
+        Bundle 'textobj-rubyblock'
         " f
-        Bundle 'textobj-entire'
+        " ERROR: Bundle 'textobj-function'
         " e
-        Bundle 'textobj-indent'
+        " Bundle 'textobj-entire'
         " i/I
-        Bundle 'textobj-fold'
+        " Bundle 'textobj-indent'
         " z
-        "Bundle 'textobj-datetime'
+        Bundle 'textobj-fold'
         " d...
-        Bundle 'argtextobj.vim'
+        "Bundle 'textobj-datetime'
         " a
-        Bundle 'vim-textobj-quoted'
+        Bundle 'argtextobj.vim'
         " `
-        Bundle 'bootleq/vim-textobj-rubysymbol'
+        " Bundle 'vim-textobj-quoted'
         " :
-        Bundle 'Julian/vim-textobj-variable-segment'
+        " Bundle 'bootleq/vim-textobj-rubysymbol'
         " v
+        " Bundle 'Julian/vim-textobj-variable-segment'
     "}}}
 
     " Mail {{{
@@ -476,7 +477,7 @@
         set t_Co=256
     " }}}
     set showmode " Show the current mode
-    set showbreak=↪
+    " set showbreak=↪
 
     " highlight {{{
         " highlight matching parens:
