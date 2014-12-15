@@ -1205,6 +1205,7 @@
             au FileType tex vmap ,td c\todo{<C-R>*}<esc>
             au FileType tex nmap ds\ f}F\deds}
             au FileType tex vmap ,ia c„<C-R>*“<esc>
+            au FileType tex nmap <F11> :silent !make<CR>
         augroup END
         "}}}
 
