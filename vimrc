@@ -9,13 +9,6 @@
         set nocompatible    " must be first line
         set ttyfast         " we have a fast tty
     " }}}
-
-    "" Initial path seeding {{{
-        "set path=
-        "set path+=/usr/local/include/**
-        "set path+=/usr/include/**
-        "set path+=~/sys/bin/**
-    "" }}}
 " }}}
 
 " Bundles {{{
@@ -31,7 +24,6 @@
     "Bundle 'gmarik/ingretu'
 
     " General {{{
-        "Bundle 'Lokaltog/vim-powerline'
         Bundle 'bling/vim-airline'
         "Bundle 'unicode.vim'
         Bundle 'unimpaired.vim'
@@ -56,6 +48,8 @@
         "Bundle 'greplace.vim'
         Bundle 'Rykka/lastbuf.vim'
         Bundle 'bogado/file-line'
+        " Dependency from crunch
+        Bundle 'arecarn/selection.vim'
         Bundle 'arecarn/crunch'
 
         Bundle 'VisIncr'
@@ -64,10 +58,7 @@
         "Bundle 'AutoClose'
         " Bundle 'delimitMate.vim'
         Bundle 'majutsushi/tagbar'
-        "Bundle 'YankRing.vim'
-        "Bundle 'ShowMarks'
         "Bundle 'Buffer-Search'
-        "Bundle 'ShowPairs'
         "Bundle 'LustyJuggler'
         "Bundle 'NrrwRgn'
         Bundle 'EasyMotion'
@@ -75,9 +66,9 @@
         "Bundle 'mhinz/vim-signify'
         Bundle 'AndrewRadev/switch.vim'
         Bundle 'tpope/vim-eunuch'
-        Bundle 'mutewinter/UnconditionalPaste'
+        " Bundle 'mutewinter/UnconditionalPaste'
         "Bundle 'paradigm/vim-multicursor'
-        Bundle 'hlissner/vim-multiedit'
+        " Bundle 'hlissner/vim-multiedit'
         "Bundle 'sjl/splice.vim'
         "Bundle 'christoomey/vim-space'
         "Bundle 'vim-scripts/LineJuggler'
@@ -210,7 +201,7 @@
         Bundle 'tpope/vim-fugitive'
         "Bundle 'mattn/webapi-vim'
         "Bundle 'Gist.vim'
-        Bundle 'gregsexton/gitv'
+        " Bundle 'gregsexton/gitv'
         "Bundle 'airblade/vim-gitgutter'
     " }}}
 
@@ -778,32 +769,6 @@
         endif
     " }}}
 
-    " NERD Tree  {{{
-        " Toggle the NERD Tree on an off with F7
-        nmap <leader>T :NERDTreeToggle<CR>
-        nmap <leader>Tc :NERDTree %:p:h<CR>
-
-        " Store the bookmarks file in perforce
-        let NERDTreeBookmarksFile="~/.vim/NERDTreeBookmarks"
-
-        " Show the bookmarks table on startup
-        "let NERDTreeShowBookmarks=1
-        let NERDTreeShowBookmarks=0
-
-        let NERDTreeChDirMode=2
-
-        " Don't display these kinds of files
-        let NERDTreeIgnore=[ '\.ncb$', '\.suo$', '\.vcproj\.RIMNET', '\.obj$',
-        \ '\.ilk$', '^BuildLog.htm$', '\.pdb$', '\.idb$',
-        \ '\.embed\.manifest$', '\.embed\.manifest.res$',
-        \ '\.intermediate\.manifest$', '^mt.dep$', '\~$', '\.swp$' ]
-        let NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$', '\~$']
-
-
-        " Do not yiel about unknown filetypes.
-        let NERDShutUp=1
-    " }}}
-
     " CtrlP  {{{
         nnoremap <silent> <Leader>b :CtrlPBuffer<CR>
         nnoremap <silent> <Leader>a :CtrlPMixed<CR>
@@ -832,23 +797,7 @@
         let g:ctrlp_working_path_mode = 'r'
     " }}}
 
-    " ShowMarks  {{{
-        " I don't think I like this
-        "let g:loaded_showmarks = 1
-        let g:showmarks_enable = 0
-    " }}}
-
-    " ShowPairs {{{
-        highlight ShowPairsHLp ctermfg=black ctermbg=white
-        let g:showpairs_enable = 0
-        let g:showpairs_pairs = "(:),{{{:}}},[:]"
-    " }}}
-
     " SnipMate {{{
-        " Setting the author var
-        " If forking, please overwrite in your .vimrc.local file
-        "let g:snips_author = 'Steve Francia <steve.francia@gmail.com>'
-        "let g:snips_trigger_key='<c-space>'
         " Shortcut for reloading snippets, useful when developing
         au BufWritePost *.snippet call ReloadAllSnippets()
     " }}}
@@ -935,25 +884,6 @@
 
     " }}}
 
-    " Powerline {{{
-        " let g:Powerline_symbols = 'fancy'
-        " "let g:Powerline_symbols_override = { 'BRANCH': [0x2213], 'LINE': 'L', }
-        " let g:Powerline_theme = 'solarized256'
-        " let g:Powerline_colorscheme = 'solarized256'
-        " "let g:Powerline_colorscheme = 'solarized256light'
-        " "let g:Powerline_stl_path_style = 'short'
-        " " Abbreviate All of the Mode Names
-        " let g:Powerline_mode_n = 'N'
-        " let g:Powerline_mode_i = 'I'
-        " let g:Powerline_mode_R = 'R'
-        " let g:Powerline_mode_v = 'V'
-        " let g:Powerline_mode_V = 'VL'
-        " let g:Powerline_mode_cv = 'VB'
-        " let g:Powerline_mode_s = 'S'
-        " let g:Powerline_mode_S = 'SL'
-        " let g:Powerline_mode_cs = 'SB'
-    " }}}
-
     " DelimitMate {{{
         let g:delimitMate_excluded_ft = "mail,txt"
         let delimitMate_autoclose = 1
@@ -962,15 +892,6 @@
         let delimitMate_quotes = "\" ' `"
         let b:delimitMate_matchpairs = "(:),[:],{:},<:>"
         au FileType ruby let b:delimitMate_matchpairs = "(:),[:],{:}"
-    " }}}
-
-    " YankRing {{{
-        "let g:yankring_enabled = 0  " Disables the yankring
-        "let g:yankring_max_history = 100
-        "let g:yankring_window_use_horiz = 0  " Use vertical split
-        "let g:yankring_window_use_right = 1
-        "let g:yankring_history_dir = '~/.vim/'
-        "let g:yankring_history_file = 'yankring_history'
     " }}}
 
     " Sideways {{{
@@ -983,35 +904,35 @@
     " }}}
 
     " Gitv {{{
-        nmap <leader>gv :Gitv --all<cr>
-        nmap <leader>gV :Gitv! --all<cr>
-        vmap <leader>gV :Gitv! --all<cr>
+        " nmap <leader>gv :Gitv --all<cr>
+        " nmap <leader>gV :Gitv! --all<cr>
+        " vmap <leader>gV :Gitv! --all<cr>
     " }}}
 
     " UnconditionalPaste {{{
-        nmap <Leader>Pc <Plug>UnconditionalPasteCharBefore
-        nmap <Leader>pc <Plug>UnconditionalPasteCharAfter
-        nmap <Leader>Pl <Plug>UnconditionalPasteLineBefore
-        nmap <Leader>pl <Plug>UnconditionalPasteLineAfter
-        nmap <Leader>Pb <Plug>UnconditionalPasteBlockBefore
-        nmap <Leader>pb <Plug>UnconditionalPasteBlockAfter
-        nmap <Leader>P, <Plug>UnconditionalPasteCommaBefore
-        nmap <Leader>p, <Plug>UnconditionalPasteCommaAfter
-        nmap <Leader>Pq <Plug>UnconditionalPasteQueriedBefore
-        nmap <Leader>pq <Plug>UnconditionalPasteQueriedAfter
-        nmap <Leader>PQ <Plug>UnconditionalPasteRecallQueriedBefore
-        nmap <Leader>pQ <Plug>UnconditionalPasteRecallQueriedAfter
-        nmap <Leader>Pu <Plug>UnconditionalPasteUnjoinBefore
-        nmap <Leader>pu <Plug>UnconditionalPasteUnjoinAfter
-        nmap <Leader>PU <Plug>UnconditionalPasteRecallUnjoinBefore
-        nmap <Leader>pU <Plug>UnconditionalPasteRecallUnjoinAfter
+        " nmap <Leader>Pc <Plug>UnconditionalPasteCharBefore
+        " nmap <Leader>pc <Plug>UnconditionalPasteCharAfter
+        " nmap <Leader>Pl <Plug>UnconditionalPasteLineBefore
+        " nmap <Leader>pl <Plug>UnconditionalPasteLineAfter
+        " nmap <Leader>Pb <Plug>UnconditionalPasteBlockBefore
+        " nmap <Leader>pb <Plug>UnconditionalPasteBlockAfter
+        " nmap <Leader>P, <Plug>UnconditionalPasteCommaBefore
+        " nmap <Leader>p, <Plug>UnconditionalPasteCommaAfter
+        " nmap <Leader>Pq <Plug>UnconditionalPasteQueriedBefore
+        " nmap <Leader>pq <Plug>UnconditionalPasteQueriedAfter
+        " nmap <Leader>PQ <Plug>UnconditionalPasteRecallQueriedBefore
+        " nmap <Leader>pQ <Plug>UnconditionalPasteRecallQueriedAfter
+        " nmap <Leader>Pu <Plug>UnconditionalPasteUnjoinBefore
+        " nmap <Leader>pu <Plug>UnconditionalPasteUnjoinAfter
+        " nmap <Leader>PU <Plug>UnconditionalPasteRecallUnjoinBefore
+        " nmap <Leader>pU <Plug>UnconditionalPasteRecallUnjoinAfter
 
-        imap <C-G>c <Plug>UnconditionalPasteChar
-        imap <C-G>, <Plug>UnconditionalPasteComma
-        imap <C-G>q <Plug>UnconditionalPasteQueried
-        imap <C-G>Q <Plug>UnconditionalPasteRecallQueried
-        imap <C-G>u <Plug>UnconditionalPasteUnjoin
-        imap <C-G>U <Plug>UnconditionalPasteRecallUnjoin
+        " imap <C-G>c <Plug>UnconditionalPasteChar
+        " imap <C-G>, <Plug>UnconditionalPasteComma
+        " imap <C-G>q <Plug>UnconditionalPasteQueried
+        " imap <C-G>Q <Plug>UnconditionalPasteRecallQueried
+        " imap <C-G>u <Plug>UnconditionalPasteUnjoin
+        " imap <C-G>U <Plug>UnconditionalPasteRecallUnjoin
     " }}}
 
     " UltiSnips {{{
@@ -1111,6 +1032,7 @@
 
     " Crunch {{{
         map <silent> <plug>NoCrunchEvalLine <plug>CrunchEvalLine
+        command Calc Crunch
     " }}}
 
     " Investigate {{{
@@ -1478,10 +1400,6 @@
           call setpos('.', l:save_cursor)
         endfunction
         command! -range=% ReformatJSON call <SID>ReformatJSON(<line1>,<line2>)
-    " }}}
-
-    " Calculate visual selection {{{
-        command Calc Crunchline
     " }}}
 
     " Extract visual selection to separate file {{{
