@@ -63,7 +63,7 @@
         "Bundle 'csv.vim'
         "Bundle 'xolox/vim-session'
         "Bundle 'AutoClose'
-        Bundle 'delimitMate.vim'
+        " Bundle 'delimitMate.vim'
         Bundle 'majutsushi/tagbar'
         "Bundle 'YankRing.vim'
         "Bundle 'ShowMarks'
@@ -107,7 +107,7 @@
 
     " Programming {{{
         "Bundle 'xptemplate'
-        Bundle 'Tabular'
+        Bundle 'godlygeek/tabular'
         "Bundle 'The-NERD-Commenter'
         Bundle 'tpope/vim-commentary'
         "Bundle 'ProtoDef'
@@ -129,9 +129,8 @@
         " Snippets {{{
             Bundle "tomtom/tlib_vim"
             Bundle "MarcWeber/vim-addon-mw-utils"
+            Bundle 'sirver/UltiSnips'
             Bundle "DSIW/vim-snippets"
-            "Bundle "garbas/vim-snipmate"
-            Bundle 'MarcWeber/ultisnips'
         "}}}
 
         " C/C++ {{{
@@ -302,7 +301,7 @@
     set virtualedit=all
 
     " Disable encryption (:X)
-    set key=
+    " set key=
 
     " set the forward slash to be the slash of note. No backslashes
     set shellslash
@@ -458,7 +457,6 @@
     " set relativenumber
 
     " solarized {{{
-        set background=light " or light
         hi IndentGuidesOdd  ctermbg=black
         hi IndentGuidesEven ctermbg=darkgrey
         "hi IndentGuidesOdd  ctermbg=white
@@ -475,6 +473,7 @@
         let g:solarized_hitrail=1
         let g:solarized_underline=0
         set t_Co=256
+        set bg=light
     " }}}
     set showmode " Show the current mode
     " set showbreak=↪
@@ -664,10 +663,6 @@
     if filereadable(expand("~/.vim/mapping.vim"))
         source ~/.vim/mapping.vim
     endif
-
-    " Training {{{
-        nmap :w<CR> :echo "Use Ctrl-S!"<CR>
-    " }}}
 " }}}
 
 " Plugins {{{
@@ -1191,6 +1186,12 @@
             au BufWritePost * call MakeExecutable()
         augroup END
         "}}}
+        augroup MakeNonExistingDirectory "{{{
+            " automatically create missing directories
+            au!
+            au BufWritePre * call MakeNonExistingDir()
+        augroup END
+        "}}}
         augroup Latex "{{{
             au!
             au BufNewFile,BufRead *.tex set filetype=tex
@@ -1198,6 +1199,7 @@
             au FileType tex setl textwidth=120
             au FileType tex setl wrapmargin=5
             au FileType tex setl formatoptions=tl
+            au FileType tex setl noexpandtab
             au FileType tex setl spell spelllang=de,de_DE_frami,en_us | let g:myLang = 4
             au FileType tex vmap ,it c\textit{<C-R>*}<esc>
             au FileType tex vmap ,tt c\texttt{<C-R>*}<esc>
@@ -1205,7 +1207,7 @@
             au FileType tex vmap ,td c\todo{<C-R>*}<esc>
             au FileType tex nmap ds\ f}F\deds}
             au FileType tex vmap ,ia c„<C-R>*“<esc>
-            au FileType tex nmap <F11> :silent !make<CR>
+            au FileType tex nmap <F11> :silent !make -B<CR>
         augroup END
         "}}}
 
@@ -1217,7 +1219,8 @@
         au BufNewFile,BufRead *.asm,*.ASM,*.s,*.S source $VIM/syntax/gasm.vim
         au BufNewFile,BufRead *.ldif set filetype=ldif
 
-        au BufWritePost *.c :make
+        au BufNewFile,BufRead TODO.txt nnoremap <leader>x 0f]hrx
+        " au BufWritePost *.c :make
         au BufReadPost fugitive://* set bufhidden=delete
 
         " Syntax of these languages is fussy over tabs Vs spaces
@@ -1379,6 +1382,17 @@
         endfunc
         command! ToggleDiffMode call ToggleDiffMode()
         nnoremap <leader>D :ToggleDiffMode<CR>
+    " }}}
+
+    " Clean registers {{{
+        function MakeNonExistingDir()
+            let dir = expand('%:p:h')
+
+            if !isdirectory(dir)
+                call mkdir(dir, 'p')
+                echo 'Created non-existing directory: '.dir
+            endif
+        endfunction
     " }}}
 
     " Clean registers {{{

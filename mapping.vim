@@ -150,8 +150,15 @@ endif
     nnoremap <leader>ek :tabnew ~/.vim/memories<CR>
 " }}}
 
+
+
 " Copy & Paste {{{
-    vnoremap <C-c> "+y
+    fun! Copy()
+        "+y
+        "*y
+        echo "Copied."
+    endf
+    vnoremap <C-c> :call Copy()<CR>
     " Toggle paste mode
     nnoremap <silent> <leader>p :set invpaste<CR>:set paste?<CR>
     nnoremap <silent> <C-p> :set paste<cr>o<esc>"+]P:set nopaste<cr>"
