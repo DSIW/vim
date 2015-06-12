@@ -38,7 +38,6 @@
         Bundle 'lastpos.vim'
         "Bundle 'sudo.vim' " eunuch has same function
         "Bundle 'vimshell-ssh'
-        "Bundle 'Gundo'
         Bundle 'The-NERD-tree'
         "Bundle 'Command-T'
         Bundle 'ctrlp.vim'
@@ -757,16 +756,6 @@
         nmap <Leader>a: :Tabularize /:\zs<CR>
         vmap <Leader>a: :Tabularize /:\zs<CR>
         "endif
-    " }}}
-
-    " Gundo {{{
-        "nnoremap <leader>g :GundoToggle<CR>
-
-        " open on the right so as not to compete with the nerdtree
-        "let g:gundo_right = 1
-
-        " a little wider for wider screens
-        "let g:gundo_width = 50
     " }}}
 
     " UndoTree {{{
