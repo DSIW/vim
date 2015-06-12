@@ -933,6 +933,18 @@
               \ "config/locales/*.yml": {
               \   "command": "locale"
               \ },
+              \ "app/delayed_jobs/*_job.rb": {
+              \   "command": "job"
+              \ },
+              \ "app/forms/*_form.rb": {
+              \   "command": "form"
+              \ },
+              \ "app/serializers/*_serializer.rb": {
+              \   "command": "serializer"
+              \ },
+              \ "app/decorators/*_decorator.rb": {
+              \   "command": "decorator"
+              \ },
               \ "db/seeds/*.rb": {
               \   "command": "seeds"
               \ },
