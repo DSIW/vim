@@ -267,7 +267,7 @@
     filetype plugin on
     filetype indent on
 
-    set ffs=unix,dos " ff=dos " sets line end to UNIX
+    set ffs=unix,dos " sets line end to UNIX
 
     set sh=zsh " Set shell
 
@@ -544,60 +544,6 @@
             au InsertLeave * set timeoutlen=4000
             au InsertLeave * set timeout timeoutlen=400 ttimeoutlen=100
         augroup END
-    " }}}
-
-    " statusline {{{
-        if has("statusline")
-            "set statusline=
-            "set statusline+=%<%f " file name
-            "set statusline+=\ %h%m%r%w " flags
-            "set statusline+=\ Buf:%-3.3n " buffer number
-            "set statusline+=\ [%-3.b][0x%-2.B] " current character unter curser
-            "set statusline+=\ %{{{fugitive#statusline()}}} " Git branch
-            "set statusline+=%= " right align
-            "set statusline+=%k[
-            "set statusline+=%{{{strlen(&ft)?&ft:'none'}}} " filetype
-            "set statusline+=\ \|
-            "set statusline+=\ %{{{&fileformat}}} " file format
-            "set statusline+=/
-            "set statusline+=%{{{(&fenc\ ==\ \"\"?&enc:&fenc)}}} " encoding
-            "set statusline+=%{{{(&bomb?\",BOM\":\"\")}}} " BOM
-            "set statusline+=]
-            "set statusline+=\ %-12.(%l,%c%V%)\ %p%% " offset
-
-            "statusline setup (via https://github.com/skwp/dotfiles/blob/master/vim/plugin/settings/yadr-statusline.vim)
-            "set statusline=%#DiffAdd#
-            "set statusline+=%#warningmsg#
-            "set statusline+=%{SyntasticStatuslineFlag()}
-            "set statusline=%#DiffAdd#
-            "set statusline+=%f\
-            "set statusline+=%#LineNr# "switch to colors used for line number
-            "set statusline+=%{fugitive#statusline()}
-            "set statusline+=%#DiffAdd# "switch back to normal
-            "set statusline+=%= "left/right separator
-            "set statusline+=%m "modified flag
-
-            "display a warning if &paste is set
-            "set statusline+=%#DiffChange#
-            "set statusline+=%{&paste?'[paste]':''}
-            "set statusline+=%#LineNr# "switch to colors used for line number
-            "set statusline+=%{StatuslineCurrentHighlight()}\ \ "current highlight
-            "set statusline+=%#DiffAdd# "switch to colors used for line number
-            "set statusline+=%c: "cursor column
-            "set statusline+=%l/%L "cursor line/total lines
-            "set statusline+=\ %P "percent through file
-            "set laststatus=2
-
-            "return the syntax highlight group under the cursor ''
-            "function! StatuslineCurrentHighlight()
-                "let name = synIDattr(synID(line('.'),col('.'),1),'name')
-                "if name == ''
-                    "return ''
-                "else
-                    "return '[' . name . ']'
-                "endif
-            "endfunction
-        endif
     " }}}
 
     " folding {{{
