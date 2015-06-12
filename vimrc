@@ -452,6 +452,7 @@
         "hi IndentGuidesOdd  ctermbg=white
         "hi IndentGuidesEven ctermbg=lightgrey
         "color xoria256
+        set background=light
         colorscheme solarized                 " load a colorscheme
         let g:solarized_termtrans=0
         let g:solarized_termcolors=256
@@ -463,7 +464,6 @@
         let g:solarized_hitrail=1
         let g:solarized_underline=0
         set t_Co=256
-        set bg=light
     " }}}
     set showmode " Show the current mode
     " set showbreak=↪
