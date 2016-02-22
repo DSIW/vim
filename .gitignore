@@ -12,3 +12,6 @@ sessions/
 yankring_history_v2.txt
 gist-vim.symlink
 memories
+spell/de.utf-8.add
+spell/de.utf-8.add.spl
+abbrev.vim
