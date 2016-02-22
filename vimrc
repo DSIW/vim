@@ -11,254 +11,255 @@
     " }}}
 " }}}
 
-" Bundles {{{
-    " Setup Bundle Support {{{
-        filetype off                   " required!
-        " The next two lines ensure that the ~/.vim/bundle/ system works
-        set rtp+=~/.vim/bundle/vundle
-        call vundle#rc()
-    " }}}
-
-    Bundle 'gmarik/vundle'
-    "Bundle 'gmarik/github-search.vim'
-    "Bundle 'gmarik/ingretu'
+" Plugins {{{
+    call plug#begin('~/.vim/plugged')
 
     " General {{{
-        Bundle 'bling/vim-airline'
-        "Bundle 'unicode.vim'
-        Bundle 'unimpaired.vim'
-        Bundle 'lastpos.vim'
-        "Bundle 'sudo.vim' " eunuch has same function
-        "Bundle 'vimshell-ssh'
-        Bundle 'The-NERD-tree'
-        "Bundle 'Command-T'
-        Bundle 'ctrlp.vim'
-        "Bundle 'SearchComplete'
-        Bundle 'EasyGrep'
-        "Bundle 'hexman.vim'
-        "Bundle 'taglist.vim'
-        "Bundle 'tpope/vim-speeddating.git'
-        "Bundle 'trailing-whitespace'
-        "Bundle 'repeat.vim'
-        Bundle 'tpope/vim-repeat'
-        "Bundle 'recover.vim'
-        "Bundle 'ack.vim'
-        " Better than ack
-        Bundle 'rking/ag.vim'
-        "Bundle 'greplace.vim'
-        Bundle 'Rykka/lastbuf.vim'
-        Bundle 'bogado/file-line'
-        " Dependency from crunch
-        Bundle 'arecarn/selection.vim'
-        Bundle 'arecarn/crunch'
+        Plug 'vim-airline/vim-airline'
+        Plug 'vim-airline/vim-airline-themes'
+        "Plug 'unicode.vim'
+        Plug 'unimpaired.vim'
+        Plug 'lastpos.vim'
+        "Plug 'sudo.vim' " eunuch has same function
+        "Plug 'vimshell-ssh'
+        " Plug 'The-NERD-tree'
+        Plug 'ctrlp.vim'
+        "Plug 'SearchComplete'
+        " Plug 'EasyGrep'
+        "Plug 'hexman.vim'
+        "Plug 'taglist.vim'
+        "Plug 'tpope/vim-speeddating.git'
+        "Plug 'trailing-whitespace'
+        Plug 'tpope/vim-repeat'
+        "Plug 'recover.vim'
+        Plug 'rking/ag.vim'
+        "Plug 'greplace.vim'
+        Plug 'Rykka/lastbuf.vim'
+        " open vim with file:42 to open at line 42
+        Plug 'bogado/file-line'
+        Plug 'arecarn/crunch' | Plug 'arecarn/selection.vim'
+        Plug 'gioele/vim-autoswap'
+        Plug 'DavidGamba/vim-vmath'
+        " Plug 'Yggdroot/hiPairs'
+        Plug 'zirrostig/vim-schlepp'
+        " Plug 'atweiden/vim-betterdigraphs'
 
-        Bundle 'VisIncr'
-        "Bundle 'csv.vim'
-        "Bundle 'xolox/vim-session'
-        "Bundle 'AutoClose'
-        " Bundle 'delimitMate.vim'
-        Bundle 'majutsushi/tagbar'
-        "Bundle 'Buffer-Search'
-        "Bundle 'LustyJuggler'
-        "Bundle 'NrrwRgn'
-        Bundle 'EasyMotion'
-        Bundle 'AndrewRadev/sideways.vim'
-        "Bundle 'mhinz/vim-signify'
-        Bundle 'AndrewRadev/switch.vim'
-        Bundle 'tpope/vim-eunuch'
-        " Bundle 'mutewinter/UnconditionalPaste'
-        "Bundle 'paradigm/vim-multicursor'
-        " Bundle 'hlissner/vim-multiedit'
-        "Bundle 'sjl/splice.vim'
-        "Bundle 'christoomey/vim-space'
-        "Bundle 'vim-scripts/LineJuggler'
-        "Bundle 'rainerborene/vim-timetap'
-        "Bundle 'mhinz/vim-startify'
-        Bundle 'aklt/vim-substitute'
-        "Bundle 'myusuf3/numbers.vim'
-        Bundle 'mbbill/undotree'
-        Bundle 'osyo-manga/vim-over'
-        Bundle 'tpope/vim-characterize'
-        Bundle 'tpope/vim-flatfoot'
-        Bundle 'tommcdo/vim-exchange'
+        Plug 'VisIncr'
+        "Plug 'csv.vim'
+        "Plug 'xolox/vim-session'
+        " Plug 'delimitMate.vim'
+        Plug 'majutsushi/tagbar'
+        " Plug 'mndrix/prolog.vim'
+        " Plug 'EasyMotion'
+        Plug 'AndrewRadev/sideways.vim'
+        "Plug 'mhinz/vim-signify'
+        Plug 'AndrewRadev/switch.vim'
+        Plug 'tpope/vim-eunuch'
+        " Plug 'mutewinter/UnconditionalPaste'
+        "Plug 'paradigm/vim-multicursor'
+        " Plug 'hlissner/vim-multiedit'
+        "Plug 'sjl/splice.vim'
+        "Plug 'christoomey/vim-space'
+        "Plug 'vim-scripts/LineJuggler'
+        "Plug 'rainerborene/vim-timetap'
+        "Plug 'mhinz/vim-startify'
+        Plug 'aklt/vim-substitute'
+        "Plug 'myusuf3/numbers.vim'
+        Plug 'mbbill/undotree', { 'on': 'UndoTreeToggle' }
+        " Plug 'osyo-manga/vim-over'
+        " Plug 'tpope/vim-characterize'
+        " Plug 'tpope/vim-flatfoot'
+        " Plug 'tommcdo/vim-exchange'
+        " Plug 'ledger/vim-ledger'
+        Plug 'vim-scripts/LanguageTool', { 'for': 'txt' }
     " }}}
 
     " UI {{{
-        "Bundle 'spf13/vim-colors'
-        "Bundle 'flazz/vim-colorschemes'
-        "Bundle 'tomasr/molokai'
-        "Bundle 'xoria256.vim'
-        "Bundle 'neverland.vim--All-colorschemes-suck'
-        Bundle 'ZoomWin'
-        Bundle 'altercation/vim-colors-solarized'
-        Bundle 'bufkill.vim'
-        Bundle 'croaky/vim-colors-github'
+        "Plug 'spf13/vim-colors'
+        "Plug 'flazz/vim-colorschemes'
+        "Plug 'tomasr/molokai'
+        "Plug 'xoria256.vim'
+        "Plug 'neverland.vim--All-colorschemes-suck'
+        " Plug 'ZoomWin'
+        Plug 'altercation/vim-colors-solarized'
+        " Plug 'chriskempson/base16-vim'
+        Plug 'bufkill.vim'
+        " Plug 'croaky/vim-colors-github'
+        Plug 'junegunn/limelight.vim', { 'for': 'txt' }
     " }}}
 
     " Programming {{{
-        "Bundle 'xptemplate'
-        Bundle 'godlygeek/tabular'
-        "Bundle 'The-NERD-Commenter'
-        Bundle 'tpope/vim-commentary'
-        "Bundle 'ProtoDef'
-        "Bundle 'SuperTab'
-        "Bundle 'Indent-Guides'
-        "Bundle 'VimDebug'
-        "Bundle 'camelcasemotion'
-        "Bundle 'Syntastic'
-        "Bundle 'Shougo/neocomplcache'
-        Bundle 'tpope/vim-abolish'
-        "Bundle 'jshint.vim'
-        Bundle 'tpope/vim-dispatch'
-        Bundle 'derekwyatt/vim-scala'
-        " Bundle 'airblade/vim-rooter'
-        Bundle 'Keithbsmiley/investigate.vim'
+        "Plug 'xptemplate'
+        Plug 'godlygeek/tabular'
+        Plug 'tpope/vim-commentary'
+        Plug 'tpope/vim-dispatch'
+        Plug 'Keithbsmiley/investigate.vim'
+        "Plug 'ProtoDef'
+        "Plug 'SuperTab'
+        "Plug 'Indent-Guides'
+        "Plug 'VimDebug'
+        Plug 'camelcasemotion'
+        "Plug 'Syntastic'
+        "Plug 'Shougo/neocomplcache'
+        " Plug 'tpope/vim-abolish'
+        "Plug 'jshint.vim'
+        " Plug 'derekwyatt/vim-scala'
+        " Plug 'airblade/vim-rooter'
 
-        " Bundle 'Valloric/YouCompleteMe'
+
+        " Plug 'Valloric/YouCompleteMe'
 
         " Snippets {{{
-            Bundle "tomtom/tlib_vim"
-            Bundle "MarcWeber/vim-addon-mw-utils"
-            Bundle 'sirver/UltiSnips'
-            Bundle "DSIW/vim-snippets"
+            Plug 'tomtom/tlib_vim'
+            Plug 'MarcWeber/vim-addon-mw-utils'
+            Plug 'sirver/UltiSnips' | Plug 'honza/vim-snippets'
         "}}}
 
         " C/C++ {{{
-            "Bundle 'c.vim'
-            "Bundle 'FSwitch'
+            "Plug 'c.vim'
+            "Plug 'FSwitch'
         "}}}
 
+        " Crystal {{{
+            Plug 'rhysd/vim-crystal', { 'for': 'crystal' }
+        " }}}
+
         " Ruby {{{
-            Bundle 'vim-ruby/vim-ruby'
-            Bundle 'ecomba/vim-ruby-refactoring.git'
-            Bundle 'skalnik/vim-vroom'
-            Bundle 'splitjoin.vim'
-            " Bundle 'skwp/vim-rspec'
-            Bundle 'thoughtbot/vim-rspec'
-            "Bundle 'rson/vim-conque'
-            "Bundle 'skwp/vim-ruby-conque'
-            Bundle 'tpope/vim-rails'
-            "Bundle 'kchmck/vim-coffee-script'
-            Bundle 'tpope/vim-haml'
-            Bundle 'tpope/vim-bundler'
-            Bundle 'tpope/vim-rake'
+            Plug 'vim-ruby/vim-ruby', { 'for': ['ruby','jruby'] }
+            Plug 'ecomba/vim-ruby-refactoring'
+            " Plug 'skalnik/vim-vroom'
+            Plug 'splitjoin.vim', { 'for': ['ruby','jruby'] }
+            " Plug 'skwp/vim-rspec'
+            " Plug 'thoughtbot/vim-rspec'
+            "Plug 'rson/vim-conque'
+            "Plug 'skwp/vim-ruby-conque'
+            Plug 'tpope/vim-rails'
+            "Plug 'kchmck/vim-coffee-script'
+            Plug 'tpope/vim-haml', { 'for': 'haml' }
+            Plug 'tpope/vim-bundler'
+            Plug 'tpope/vim-rake'
+            Plug 'henrik/vim-ruby-runner', { 'for': 'ruby' }
         "}}}
 
         " Java {{{
-            "Bundle 'cespare/vjde.git'
-            "Bundle 'javacomplete'
-            "Bundle 'ervandew/eclim.git'
+            "Plug 'cespare/vjde.git'
+            "Plug 'javacomplete'
+            "Plug 'ervandew/eclim.git'
         "}}}
 
         " Python {{{
-            "Bundle 'pep8'
-            "Bundle 'mitechie/pyflakes-pathogen.git'
-            "Bundle 'fs111/pydoc.vim.git'
+            "Plug 'pep8'
+            "Plug 'mitechie/pyflakes-pathogen.git'
+            "Plug 'fs111/pydoc.vim.git'
+            " Plug 'cwood/vim-django'
+            " Plug 'jmcomets/vim-pony'
+            " Plug 'jmcantrell/vim-virtualenv'
         "}}}
 
         " JavaScript {{{
-            "Bundle 'javascript.vim'
-            Bundle 'vim-json-bundle'
+            "Plug 'javascript.vim'
+            Plug 'vim-json-bundle', { 'for': ['json','js'] }
             " JSON manipulation
-            Bundle 'tpope/vim-jdaddy'
-            "Bundle 'vim-coffee-script'
-            Bundle 'pangloss/vim-javascript'
+            " Plug 'tpope/vim-jdaddy'
+            "Plug 'vim-coffee-script'
+            Plug 'pangloss/vim-javascript', { 'for': 'js' }
         "}}}
     " }}}
 
     " Textobjects {{{
-        Bundle 'kana/vim-textobj-user.git'
-        " Dependency of rubyblock
-        Bundle 'textobj-user'
+        " Plug 'kana/vim-textobj-user.git'
         " r
-        Bundle 'textobj-rubyblock'
+        " Plug 'textobj-rubyblock' | Plug 'textobj-user'
         " f
-        " ERROR: Bundle 'textobj-function'
+        " ERROR: Plug 'textobj-function'
         " e
-        " Bundle 'textobj-entire'
+        " Plug 'textobj-entire'
         " i/I
-        " Bundle 'textobj-indent'
+        " Plug 'textobj-indent'
         " z
-        Bundle 'textobj-fold'
+        " Plug 'textobj-fold'
         " d...
-        "Bundle 'textobj-datetime'
+        "Plug 'textobj-datetime'
         " a
-        Bundle 'argtextobj.vim'
+        Plug 'argtextobj.vim'
         " `
-        " Bundle 'vim-textobj-quoted'
+        " Plug 'vim-textobj-quoted'
         " :
-        " Bundle 'bootleq/vim-textobj-rubysymbol'
+        " Plug 'bootleq/vim-textobj-rubysymbol'
         " v
-        " Bundle 'Julian/vim-textobj-variable-segment'
+        " Plug 'Julian/vim-textobj-variable-segment'
     "}}}
 
     " Mail {{{
-        "Bundle 'CheckAttach.vim'
+        "Plug 'CheckAttach.vim'
     " }}}
 
     " Git {{{
-        "Bundle 'git.zip'
-        Bundle 'tpope/vim-fugitive'
-        "Bundle 'mattn/webapi-vim'
-        "Bundle 'Gist.vim'
-        " Bundle 'gregsexton/gitv'
-        "Bundle 'airblade/vim-gitgutter'
+        "Plug 'git.zip'
+        Plug 'tpope/vim-fugitive'
+        "Plug 'mattn/webapi-vim'
+        "Plug 'Gist.vim'
+        " Plug 'gregsexton/gitv'
+        "Plug 'airblade/vim-gitgutter'
     " }}}
 
     " Sourround {{{
-        Bundle 'surround.vim'
-        "Bundle 'delete-surround-html'
+        Plug 'surround.vim'
+        "Plug 'delete-surround-html'
     " }}}
 
     " Web {{{
-        "Bundle 'XML-Folding'
-        "Bundle 'xmledit'
-        "Bundle 'Haml'
-        "Bundle 'rstacruz/sparkup'
-        "Bundle 'ragtag.vim'
+        "Plug 'XML-Folding'
+        "Plug 'xmledit'
+        "Plug 'Haml'
+        "Plug 'rstacruz/sparkup'
+        "Plug 'ragtag.vim'
 
         " Dependency for rubyblock text object
-        Bundle 'edsono/vim-matchit'
+        " Plug 'edsono/vim-matchit'
 
-        "Bundle 'vim-octopress'
-        "Bundle 'tsaleh/vim-align'
+        "Plug 'vim-octopress'
+        "Plug 'tsaleh/vim-align'
 
         " Markdown {{{
-            "Bundle 'tpope/vim-markdown'
-            Bundle 'plasticboy/vim-markdown'
-            "Bundle 'Markdown-syntax'
+            "Plug 'tpope/vim-markdown'
+            Plug 'plasticboy/vim-markdown'
+            "Plug 'Markdown-syntax'
         "}}}
 
         " CSS {{{
-            "Bundle 'groenewege/vim-less'
-            "Bundle 'cakebaker/scss-syntax'
-            "Bundle 'skammer/vim-css-color'
-            "Bundle 'hail2u/vim-css3-syntax'
+            "Plug 'groenewege/vim-less'
+            "Plug 'cakebaker/scss-syntax'
+            "Plug 'skammer/vim-css-color'
+            "Plug 'hail2u/vim-css3-syntax'
         "}}}
     " }}}
 
     " LaTeX {{{
-        "Bundle 'dnebauer/AutomaticLaTeXPlugin.git'
+        "Plug 'dnebauer/AutomaticLaTeXPlugin.git'
     "}}}
 
     " CSS {{{
-        "Bundle 'groenewege/vim-less'
-        "Bundle 'cakebaker/scss-syntax'
-        "Bundle 'skammer/vim-css-color'
+        "Plug 'groenewege/vim-less'
+        "Plug 'cakebaker/scss-syntax'
+        "Plug 'skammer/vim-css-color'
     "}}}
 
     " errors {{{
-        "Bundle 'Align.vim' " ERROR
-        "Bundle 'checklist.vim' " ERROR
-        "Bundle 'css_color.vim' " CPU raises up
-        "Bundle 'vim-recovery' " NOT FOUND
-        "Bundle 'minibufexpl.vim' ERROR with plugin "fugitive in diff mode"
+        "Plug 'Align.vim' " ERROR
+        "Plug 'checklist.vim' " ERROR
+        "Plug 'css_color.vim' " CPU raises up
+        "Plug 'vim-recovery' " NOT FOUND
+        "Plug 'minibufexpl.vim' ERROR with plugin "fugitive in diff mode"
 
-        "Bundle 'endwise.vim'
+        "Plug 'endwise.vim'
         " ERROR with "pumvisible"
 
-        "Bundle 'Solarized' " ERROR with comments (background is too dark)
+        "Plug 'Solarized' " ERROR with comments (background is too dark)
     " }}}
+
+    " Add plugins to &runtimepath
+    call plug#end()
 " }}}
 
 " General {{{
