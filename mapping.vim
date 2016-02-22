@@ -37,12 +37,17 @@ vnoremap > >gv
 
 nnoremap / /\v
 
-noremap <leader>sg :%s/
+noremap S :%s//g<left><left>
+nmap <expr>  M  ':%s/' . @/ . '//g<LEFT><LEFT>'
 noremap <leader>s :s/
 
 " Keep search matches in the middle of the window.
 nnoremap n nzzzv
 nnoremap N Nzzzv
+
+" Switch normal visual with visual-block mode
+" nnoremap    v    <C-V>
+" nnoremap  <C-V>    v
 
 " Same when jumping around
 nnoremap g; g;zz
@@ -84,18 +89,8 @@ au filetype help set nonumber      " no line numbers when viewing help
 au filetype help nnoremap <buffer><cr> <c-]>   " Enter selects subject
 au filetype help nnoremap <buffer><bs> <c-T>   " Backspace to go back
 
-" execute the command in the current line (minus the first word, which
-" is intended to be a shell prompt and needs to be $) and insert the
-" output in the buffer
-nmap <leader>e 0wy$:r!<cword><CR>
-nmap <leader>E 0wwy$:r!<cword><CR>
-
-if version > 700
-" turn spelling on by default:
-" set spell
 " toggle spelling with F12 key:
-    map <F12> :set spell!<CR><Bar>:echo "Spell Check: " . strpart("OffOn", 3 * &spell, 3)<CR>
-endif
+map <F12> :set spell!<CR><Bar>:echo "Spell Check: " . strpart("OffOn", 3 * &spell, 3)<CR>
 
 " WINDOWS {{{
     " Maps to make handling windows a bit easier
@@ -154,9 +149,7 @@ endif
 
 " Copy & Paste {{{
     fun! Copy()
-        "+y
-        "*y
-        echo "Copied."
+        normal "+ygv"*y
     endf
     vnoremap <C-c> :call Copy()<CR>
     " Toggle paste mode
@@ -219,9 +212,9 @@ nmap <silent> <leader>n :set invhls<CR>:set hls?<CR>
 " set text wrapping toggles
 nmap <silent> <leader>w :set invwrap<CR>:set wrap?<CR>
 "set hardwrapping
-nmap <leader>wh set fo=at
+" nmap <leader>wh set fo=at
 "set softwrapping
-nmap <leader>ws set fo=
+" nmap <leader>ws set fo=
 
 " Buffer commands
 " Deletes buffer and leave window intact
@@ -306,9 +299,9 @@ nnoremap zE zMzO
     " replace visually selected text with the last yanked text
     "vnoremap S "_d"0P
     " replace the current word with the last yanked or deleted text
-    nnoremap S "_diwP
+    " nnoremap S "_diwP
     " replace visually selected text with the last yanked or deleted text
-    vnoremap S "_dP
+    " vnoremap S "_dP
 " }}}
 
 nnoremap ]d ]czz " next diff and set screen to center of curser

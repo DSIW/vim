@@ -268,7 +268,7 @@
     filetype plugin on
     filetype indent on
 
-    set ffs=unix,dos " sets line end to UNIX
+    set ffs=unix ",dos " sets line end to UNIX
 
     set sh=zsh " Set shell
 
@@ -310,6 +310,7 @@
 
     " Add ignorance of whitespace to diff
     "set diffopt+=iwhite
+    set diffopt+=vertical
 
     " These things start comment lines
     set comments=sl:/*,mb:\ *,ex:\ */,O://,b:#,:%,:XCOMM,n:>,fb:-
@@ -320,6 +321,8 @@
 
     " When completing by tag, show the whole tag, not just the function name
     set showfulltag
+
+    " set clipboard=unnamed
 
     set splitright
     set splitbelow
@@ -374,8 +377,8 @@
     " }}}
 
     " Could use * rather than *.*, but I prefer to leave .files unsaved
-    au BufWinLeave *.* silent! mkview  "make vim save view (state) (folds, cursor, etc)
-    au BufWinEnter *.* silent! loadview "make vim load view (state) (folds, cursor, etc)
+    " au BufWinLeave *.* silent! mkview  "make vim save view (state) (folds, cursor, etc)
+    " au BufWinEnter *.* silent! loadview "make vim load view (state) (folds, cursor, etc)
 
     " Backup {{{
         " Save your backups to a less annoying place than the current directory.
@@ -411,9 +414,18 @@
     " }}}
 
     " Session {{{
-        " viminfo stores the the state of your previous editing session
+        " viminfo stores the state of your previous editing session
         set sessionoptions=blank,curdir,folds,help,tabpages,winpos
-        set viminfo+=n~/.vim/.tmp/viminfo
+        "           +--Disable hlsearch while loading viminfo
+        "           | +--Remember marks for last 500 files
+        "           | |    +--Remember up to 10000 lines in each register
+        "           | |    |      +--Remember up to 1MB in each register
+        "           | |    |      |     +--Remember last 1000 search patterns
+        "           | |    |      |     |     +---Remember last 1000 commands
+        "           | |    |      |     |     |
+        "           v v    v      v     v     v
+        " set viminfo=h,'500,<10000,s1000,/1000,:1000
+        " set viminfo+=n~/.vim/.tmp/viminfo
     " }}}
 
     " View {{{
@@ -499,7 +511,9 @@
 
     set lazyredraw " Don't update the display while executing macros
 
-    set winminheight=0              " windows can be 0 line high
+    set updatecount=10 "Save buffer every 10 chars typed
+
+    set winminheight=0 " windows can be 0 line high
 
     " Syntax coloring lines that are too long just slows down the world
     set synmaxcol=300
@@ -542,7 +556,7 @@
             autocmd!
             set timeoutlen=400 ttimeoutlen=100
             au InsertEnter * set timeoutlen=0
-            au InsertLeave * set timeoutlen=4000
+            au InsertLeave * set timeoutlen=1000
             au InsertLeave * set timeout timeoutlen=400 ttimeoutlen=100
         augroup END
     " }}}
@@ -641,6 +655,7 @@
     "}}}
 
     " TagBar {{{
+        nnoremap <silent> <leader>T :TagbarToggle<CR>
         nnoremap <silent> <leader>tt :TagbarToggle<CR>
         let g:tagbar_width = 30
         let g:tagbar_sort = 0
@@ -653,24 +668,24 @@
     "}}}
 
     " EasyGrep {{{
-        let g:EasyGrepFileAssociations=expand("~/.vim/bundle/EasyGrep/plugin/EasyGrepFileAssociations")
-        let g:EasyGrepMode=1
-        let g:EasyGrepCommand=0
-        let g:EasyGrepRecursive=0
-        let g:EasyGrepIgnoreCase=1
-        let g:EasyGrepHidden=0
-        let g:EasyGrepSearchCurrentBufferDir=1
-        let g:EasyGrepAllOptionsInExplorer=1
-        let g:EasyGrepWindow=0
-        let g:EasyGrepReplaceWindowMode=1
-        let g:EasyGrepOpenWindowOnMatch=0
-        let g:EasyGrepEveryMatch=1
-        let g:EasyGrepJumpToMatch=1
-        let g:EasyGrepInvertWholeWord=1
-        let g:EasyGrepFileAssociationsInExplorer=1
-        let g:EasyGrepExtraWarnings=1
-        let g:EasyGrepOptionPrefix='<leader>vy'
-        let g:EasyGrepReplaceAllPerFile=0
+        " let g:EasyGrepFileAssociations=expand("~/.vim/bundle/EasyGrep/plugin/EasyGrepFileAssociations")
+        " let g:EasyGrepMode=1
+        " let g:EasyGrepCommand=0
+        " let g:EasyGrepRecursive=0
+        " let g:EasyGrepIgnoreCase=1
+        " let g:EasyGrepHidden=0
+        " let g:EasyGrepSearchCurrentBufferDir=1
+        " let g:EasyGrepAllOptionsInExplorer=1
+        " let g:EasyGrepWindow=0
+        " let g:EasyGrepReplaceWindowMode=1
+        " let g:EasyGrepOpenWindowOnMatch=0
+        " let g:EasyGrepEveryMatch=1
+        " let g:EasyGrepJumpToMatch=1
+        " let g:EasyGrepInvertWholeWord=1
+        " let g:EasyGrepFileAssociationsInExplorer=1
+        " let g:EasyGrepExtraWarnings=1
+        " let g:EasyGrepOptionPrefix='<leader>vy'
+        " let g:EasyGrepReplaceAllPerFile=0
     " }}}
 
     " Substitute {{{
@@ -706,19 +721,20 @@
     " }}}
 
     " Taglist {{{
-        if exists(":TlistToggle")
-            let Tlist_Ctags_Cmd = "/usr/bin/ctags" " The packge 'ctags' have to be installed!
-            let Tlist_GainFocus_On_ToggleOpen = 1
-            let Tlist_Close_On_Select = 1
+        " if exists(":TlistToggle")
+        "     let Tlist_Ctags_Cmd = "/usr/bin/ctags" " The packge 'ctags' have to be installed!
+        "     let Tlist_GainFocus_On_ToggleOpen = 1
+        "     let Tlist_Close_On_Select = 1
 
-            noremap <silent> <F6> :TlistToggle<CR>
-            inoremap <silent> <F6> <C-C>:TlistToggle<CR>
-        endif
+        "     noremap <silent> <F6> :TlistToggle<CR>
+        "     inoremap <silent> <F6> <C-C>:TlistToggle<CR>
+        " endif
     " }}}
 
     " CtrlP  {{{
         nnoremap <silent> <Leader>b :CtrlPBuffer<CR>
         nnoremap <silent> <Leader>a :CtrlPMixed<CR>
+        nnoremap <silent> <Leader>m :CtrlPMRUFiles<CR>
 
         let g:ctrlp_map = '<leader>f'
         let g:ctrlp_show_hidden = 1 " show hidden files
@@ -751,11 +767,11 @@
 
     " Unimpaired {{{
         " Bubble single lines
-        nmap <C-Up> [e
-        nmap <C-Down> ]e
+        " nmap <C-Up> [e
+        " nmap <C-Down> ]e
         " Bubble multiple lines
-        vmap <C-Up> [egv
-        vmap <C-Down> ]egv
+        " vmap <C-Up> [egv
+        " vmap <C-Down> ]egv
         " Overwrite useless mapping for next/prev method
         nmap [f [m
         nmap 8f [m
@@ -764,7 +780,7 @@
     " }}}
 
     " XMLFolding {{{
-        au BufNewFile,BufRead *.xml,*.htm,*.html so ~/.vim/bundle/vim-xmlfolding/plugin/XMLFolding.vim
+        " au BufNewFile,BufRead *.xml,*.htm,*.html so ~/.vim/bundle/vim-xmlfolding/plugin/XMLFolding.vim
     " }}}
 
     " Surround {{{
@@ -789,6 +805,7 @@
     " }}}
 
     " Airline {{{
+        let g:airline_theme='solarized'
         " let g:bufferline_echo = 0
         let g:airline#extensions#bufferline#enabled = 0
         let g:airline#extensions#tabline#show_buffers = 0
@@ -832,13 +849,13 @@
     " }}}
 
     " DelimitMate {{{
-        let g:delimitMate_excluded_ft = "mail,txt"
-        let delimitMate_autoclose = 1
-        let delimitMate_expand_space = 1
-        let delimitMate_balance_matchpairs = 1
-        let delimitMate_quotes = "\" ' `"
-        let b:delimitMate_matchpairs = "(:),[:],{:},<:>"
-        au FileType ruby let b:delimitMate_matchpairs = "(:),[:],{:}"
+        " let g:delimitMate_excluded_ft = "mail,txt"
+        " let delimitMate_autoclose = 1
+        " let delimitMate_expand_space = 1
+        " let delimitMate_balance_matchpairs = 1
+        " let delimitMate_quotes = "\" ' `"
+        " let b:delimitMate_matchpairs = "(:),[:],{:},<:>"
+        " au FileType ruby let b:delimitMate_matchpairs = "(:),[:],{:}"
     " }}}
 
     " Sideways {{{
@@ -907,15 +924,6 @@
         let g:rooter_patterns = ['Gemfile', 'Rakefile', '.git/']
         let g:rooter_use_lcd = 1
         "autocmd BufEnter * :Rooter
-    " }}}
-
-    " Multiedit {{{
-        hi Multiedit ctermbg=LightBlue guibg=LightBlue
-        hi default link MultieditRegions Multiedit
-        hi default link MultieditFirstRegion Multiedit
-
-        nmap <silent> <leader>mn <leader>mm/<C-r>=expand("<cword>")<CR><CR>
-        nmap <silent> <leader>mp <leader>mm?<C-r>=expand("<cword>")<CR><CR>
     " }}}
 
     " Rails {{{
@@ -998,6 +1006,41 @@
         " unmap gK
         nnoremap <silent> K :call investigate#Investigate()<CR>
     " }}}
+
+    " Django {{{
+        " let g:django_projects = '~/.module/sdf/projekt/code' "Sets all projects under project
+        " let g:django_activate_virtualenv = 1 "Try to activate the associated virtualenv
+        " let g:django_activate_nerdtree = 1 "Try to open nerdtree at the project root.
+    " }}}
+
+    " Commentary {{{
+        autocmd FileType apache setlocal commentstring=#\ %s
+        autocmd FileType crontab setlocal commentstring=#\ %s
+        autocmd FileType gnuplot setlocal commentstring=#\ %s
+        autocmd FileType xdefaults setlocal commentstring=!\ %s
+        autocmd FileType conkyrc setlocal commentstring=--\ %s
+    " }}}
+
+    " VMath {{{
+        vmap <expr>  ++  VMATH_YankAndAnalyse()
+        nmap         ++  vip++
+    " }}}
+
+    " Schlepp {{{
+        vmap <unique> <up>    <Plug>SchleppUp
+        vmap <unique> <down>  <Plug>SchleppDown
+        vmap <unique> <left>  <Plug>SchleppLeft
+        vmap <unique> <right> <Plug>SchleppRight
+    " }}}
+
+    " Languagetool {{{
+        let g:languagetool_lang='de'
+        let g:languagetool_jar='$HOME/sys/lib/LanguageTool-3.2/languagetool-commandline.jar'
+    " }}}
+
+    " Limelight {{{
+        let g:limelight_default_coefficient = 0.8
+    " }}}
 " }}}
 
 " Functions {{{
@@ -1015,6 +1058,10 @@
             au FileType gitcommit setl wrapmargin=5
             au FileType gitcommit setl formatoptions=tl
         augroup END
+        "}}}
+        augroup Python "{{{
+            au!
+            au FileType python setl ts=4 sts=4 sw=4 expandtab
         "}}}
         augroup Binary "{{{
             au!
@@ -1050,7 +1097,7 @@
         augroup Shebang "{{{
             au!
             au BufNewFile *.rb 0put =\"#!/usr/bin/env ruby\<nl># encoding: utf-8\<nl>\"|$
-            au BufNewFile *.sh 0put =\"#!/bin/bash\<nl>\"|$
+            au BufNewFile *.sh 0put =\"#!/usr/bin/env bash\<nl>\"|$
             au BufNewFile *.pl 0put =\"#!/usr/bin/env perl\<nl>\"|$
             autocmd BufNewFile *.\(cc\|hh\) 0put =\"//\<nl>// \".expand(\"<afile>:t\").\" -- \<nl>//\<nl>\"|2|start!
         augroup END
@@ -1061,11 +1108,11 @@
             au BufWritePost * call MakeExecutable()
         augroup END
         "}}}
-        augroup MakeNonExistingDirectory "{{{
+        " augroup MakeNonExistingDirectory "{{{
             " automatically create missing directories
-            au!
-            au BufWritePre * call MakeNonExistingDir()
-        augroup END
+            " au!
+            " au BufWritePre * call MakeNonExistingDir()
+        " augroup END
         "}}}
         augroup Latex "{{{
             au!
@@ -1082,8 +1129,9 @@
             au FileType tex vmap ,td c\todo{<C-R>*}<esc>
             au FileType tex nmap ds\ f}F\deds}
             au FileType tex vmap ,ia c„<C-R>*“<esc>
-            au FileType tex nmap <F11> :silent !make -B<CR>
+            au FileType tex nmap <F11> :silent !make -B<CR> | echo 'Compilation done.'<CR>
         augroup END
+
         "}}}
 
         " Source the vimrc file after saving it
@@ -1093,46 +1141,25 @@
         au BufNewFile,BufRead *.rss,*.atom set filetype=xml
         au BufNewFile,BufRead *.asm,*.ASM,*.s,*.S source $VIM/syntax/gasm.vim
         au BufNewFile,BufRead *.ldif set filetype=ldif
+        au BufNewFile,BufRead *.gnuplot set filetype=gnuplot
+        au BufNewFile,BufRead *.pl set filetype=prolog
+        au BufNewFile,BufRead Guardfile set filetype=ruby
 
         au BufNewFile,BufRead TODO.txt nnoremap <leader>x 0f]hrx
         " au BufWritePost *.c :make
         au BufReadPost fugitive://* set bufhidden=delete
 
-        " Syntax of these languages is fussy over tabs Vs spaces
-
-        augroup Octopress "{{{
-            " Octopress
-            autocmd BufNewFile,BufRead *.op,*.octopress setlocal filetype=octopress | set ts=4 sts=4 sw=4 expandtab
-            au FileType octopress syn region myMkdHeaderFold
-                        \ start="\v^\s*\z(\#{1,6})"
-                        \ end="\v\n(\s*\#)\@="ms=s-1,me=s-1
-                        \ skip="\v(\n\s*\z1\#)\@="
-                        \ fold contains=myMkdHeaderFold
-                        \ transparent fold
-
-            au FileType octopress syn sync fromstart
-            au FileType octopress set foldmethod=syntax
-            "au FileType octopress set syntax enable
-            au FileType octopress set fo+=t
-        augroup END
-        "}}}
-
-        au FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
-        au FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
-
-        " Customisations based on house-style (arbitrary)
-        au FileType html       setlocal ts=2 sts=2 sw=2 expandtab
+        au FileType make       setlocal ts=8 sts=8 sw=8 noexpandtab
+        au FileType yaml       setlocal ts=2 sts=2 sw=2 expandtab
+        au FileType html       setlocal ts=4 sts=4 sw=4 expandtab
         au FileType css        setlocal ts=2 sts=2 sw=2 expandtab
         au FileType javascript setlocal ts=2 sts=2 sw=2 expandtab
-        au FileType python     setlocal ts=2 sts=2 sw=2 expandtab
 
         " Omni Completion
         autocmd FileType python set omnifunc=pythoncomplete#Complete
         autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
         autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
         autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-
-        au BufNewFile,BufRead Guardfile set filetype=ruby
 
         " Resize splits when the window is resized
         au VimResized * :wincmd ="
@@ -1231,6 +1258,10 @@
         nmap <C-W>m :call MergeTabs()<CR>
     " }}}
 
+    " Extract a buffer to a new tab {{{
+        command! ExtractToTab tabedit % | tabprev | close
+    " }}}
+
     " Make backup {{{
         function! MakeBackup()
             silent exec "!cp % %.bak"
@@ -1239,35 +1270,44 @@
         command! MkBackup call MakeBackup()
     " }}}
 
-    " Edit backup {{{
-        command! EditBackup exec "e %.bak"
-    " }}}
-
-    " Toogle diffmode {{{
+    " Diff {{{
         command! Diffall windo diffthis
-        let g:diffmodeon = 0
-        function! ToggleDiffMode()
-            if g:diffmodeon
-                diffoff!
-                let g:diffmodeon = 0
-            else
-                windo diffthis
-                let g:diffmodeon = 1
-            endif
-        endfunc
-        command! ToggleDiffMode call ToggleDiffMode()
-        nnoremap <leader>D :ToggleDiffMode<CR>
     " }}}
 
-    " Clean registers {{{
-        function MakeNonExistingDir()
-            let dir = expand('%:p:h')
+    " Create non-existing directory {{{
+        " function MakeNonExistingDir()
+        "     let dir = expand('%:p:h')
 
-            if !isdirectory(dir)
-                call mkdir(dir, 'p')
-                echo 'Created non-existing directory: '.dir
+        "     if !isdirectory(dir)
+        "         call mkdir(dir, 'p')
+        "         echo 'Created non-existing directory: '.dir
+        "     endif
+        " endfunction
+        function! AskQuit (msg, options, quit_option)
+            if confirm(a:msg, a:options) == a:quit_option
+                exit
             endif
         endfunction
+
+        function! EnsureDirExists ()
+            let required_dir = expand("%:h")
+            if !isdirectory(required_dir)
+                call AskQuit("Parent directory '" . required_dir . "' doesn't exist.",
+                            \       "&Create it\nor &Quit?", 2)
+
+                try
+                    call mkdir( required_dir, 'p' )
+                catch
+                    call AskQuit("Can't create '" . required_dir . "'",
+                                \            "&Quit\nor &Continue anyway?", 1)
+                endtry
+            endif
+        endfunction
+
+        augroup AutoMkdir
+            autocmd!
+            autocmd  BufNewFile  *  :call EnsureDirExists()
+        augroup END
     " }}}
 
     " Clean registers {{{
@@ -1303,19 +1343,18 @@
     " }}}
 
     " Clean double empty lines {{{
-        function! CleanEmptyLines()
+        function! CleanDoubleEmptyLines()
           silent! execute '%s/\v^\s*\n^\s*\n/\r/g'
         endfunction
-        command! CleanEmptyLines call CleanEmptyLines()
-        nnoremap <leader>el :CleanEmptyLines<CR>
+        command! CleanDoubleEmptyLines call CleanDoubleEmptyLines()
     " }}}
 
-    " Convert Win2Dos {{{
-        function! Win2Dos()
-          silent! execute ':e ++ff=dos'
+    " Convert Win2Unix {{{
+        function! Win2Unix()
+          silent! execute ':e ++ff=unix'
           echo "CRLF > LF"
         endfunction
-        command! Win2Dos call Win2Dos()
+        command! Win2Unix call Win2Unix()
     " }}}
 
     " Convert to UTF-8 {{{
@@ -1326,14 +1365,14 @@
         command! WriteUTF8 call WriteUTF8()
     " }}}
 
-    " Convert Dos2Win {{{
-        function! Dos2Win()
+    " Convert Unix2Win {{{
+        function! Unix2Win()
           normal mz
           silent! execute ':%s/\r$/\r/g'
           echo "LF > CRLF"
           normal 'z
         endfunction
-        command! Dos2Win call Dos2Win()
+        command! Unix2Win call Unix2Win()
     " }}}
 
     " Decode Bas64 {{{
@@ -1374,7 +1413,7 @@
         command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis
     " }}}
 
-    " Scratch {{{
+    " Scratch window {{{
         command VScratch vert new | set bt=nofile
         command Scratch new | set bt=nofile
     " }}}
@@ -1411,13 +1450,18 @@
     let java_allow_cpp_keywords = 1
 " }}}
 
+" Neovim settings {{{
+    if has('nvim')
+        tnoremap <Esc> <C-\><C-n>
+
+        let viminfopath='~/.config/nvim/shada/main.shada'
+    endif
+" }}}
+
 " Sources {{{
     " vimspell: http://www.vim.org/scripts/script.php?script_id=465
     if filereadable(expand("~/.vim/abbrev.vim"))
         source ~/.vim/abbrev.vim
-    endif
-    if filereadable(expand("~/.vim/private.vim"))
-        source ~/.vim/private.vim
     endif
     if filereadable(expand("~/.vimrc.local"))
         source ~/.vimrc.local
