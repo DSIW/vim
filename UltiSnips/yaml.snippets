@@ -1,0 +1,11 @@
+snippet pass "pass password entry" b
+${1:`pwgen --secure 20 1`}
+---
+username: $2
+url: $3
+window: ${4:`!v substitute(expand('%:t:r'), '.*-', '', '')`}
+creation: `date +%Y-%m-%d %H:%M`
+otp_secret: $5
+comment: |
+  $6
+endsnippet

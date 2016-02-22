@@ -1034,6 +1034,11 @@
             autocmd BufNewFile,BufRead *msmtp* set filetype=msmtp
         augroup END
         "}}}
+        augroup Pass "{{{
+            au!
+            au BufNewFile,BufRead /dev/shm/pass.* setlocal noswapfile nobackup noundofile ft=yaml
+        augroup END
+        "}}}
         augroup Coffee "{{{
             au!
             au BufNewFile,BufRead *.coffee setl filetype=coffee
