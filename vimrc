@@ -238,6 +238,7 @@
 
     " LaTeX {{{
         "Plug 'dnebauer/AutomaticLaTeXPlugin.git'
+        Plug 'lervag/vimtex'
     "}}}
 
     " CSS {{{
@@ -1207,7 +1208,7 @@
             au!
             au BufNewFile,BufRead *.tex set filetype=tex
             au BufNewFile,BufRead *.lco set filetype=tex
-            au FileType tex setl textwidth=120
+            au FileType tex setl textwidth=80
             au FileType tex setl wrapmargin=5
             au FileType tex setl formatoptions=tl
             au FileType tex setl noexpandtab
@@ -1219,6 +1220,11 @@
             au FileType tex nmap ds\ f}F\deds}
             au FileType tex vmap ,ia c„<C-R>*“<esc>
             au FileType tex nmap <F11> :silent !make -B<CR> | echo 'Compilation done.'<CR>
+
+            function! Synctex()
+                execute "silent !zathura --synctex-forward " . line('.') . ":" . col('.') . ":" . bufname('%') . " " . g:syncpdf
+            endfunction
+            au FileType tex nmap <C-Return> :call Synctex()<cr>
         augroup END
 
         "}}}
