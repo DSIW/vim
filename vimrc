@@ -1105,6 +1105,7 @@
         autocmd FileType apache setlocal commentstring=#\ %s
         autocmd FileType crontab setlocal commentstring=#\ %s
         autocmd FileType gnuplot setlocal commentstring=#\ %s
+        autocmd FileType coffee setlocal commentstring=#\ %s
         autocmd FileType xdefaults setlocal commentstring=!\ %s
         autocmd FileType conkyrc setlocal commentstring=--\ %s
     " }}}
