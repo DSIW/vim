@@ -15,8 +15,9 @@
     call plug#begin('~/.vim/plugged')
 
     " General {{{
-        Plug 'vim-airline/vim-airline'
-        Plug 'vim-airline/vim-airline-themes'
+        " Plug 'vim-airline/vim-airline'
+        " Plug 'vim-airline/vim-airline-themes'
+        Plug 'itchyny/lightline.vim'
         "Plug 'unicode.vim'
         Plug 'unimpaired.vim'
         Plug 'lastpos.vim'
@@ -477,6 +478,8 @@
         let g:solarized_hitrail=1
         let g:solarized_underline=0
         set t_Co=256
+        " alternatives: #5f5faf #0087ff
+        highlight Search guibg='NONE' guifg='#d75f00'
     " }}}
     set showmode " Show the current mode
     " set showbreak=↪
@@ -846,6 +849,91 @@
             \ '' : 'SB',
             \ }
 
+    " }}}
+
+    " LightLine {{{
+        let g:lightline = {
+            \ 'colorscheme': 'solarized',
+            \ 'mode_map': {
+            \   'n': 'N ', 'i': 'I ', 'R': 'R ', 'v': 'V ',
+            \   'V': 'VL', 'c': 'C ', "\<C-v>": 'VB', 's': 'S ',
+            \   'S': 'SL', "\<C-s>": 'SB', 't': 'T ', '?': '  '
+            \ },
+            \ 'active': {
+            \   'left': [ [ 'mode', 'paste' ],
+            \             [ 'fugitive', 'readonly', 'modified' ], [ 'filename' ] ],
+            \   'right': [ [ 'percent', 'lineinfo' ], [ 'fileencoding' ], [ 'sep', 'filetype' ] ]
+            \ },
+            \ 'tabline': {
+            \   'left': [ [ 'tabs' ] ],
+            \   'right': [ [ ] ]
+            \ },
+            \ 'component_function': {
+            \   'sep': 'LightLineSeparator',
+            \   'modified': 'LightLineModified',
+            \   'readonly': 'LightLineReadonly',
+            \   'fugitive': 'LightLineFugitive',
+            \   'filename': 'LightLineFilename',
+            \   'fileformat': 'LightLineFileformat',
+            \   'filetype': 'LightLineFiletype',
+            \   'fileencoding': 'LightLineFileencoding',
+            \   'mode': 'LightLineMode',
+            \ },
+            \ 'separator': { 'left': "\u2b80", 'right': "\u2b82" },
+            \ 'subseparator': { 'left': "\u2b81", 'right': "\u2b83" }
+            \ }
+
+        function! LightLineSeparator()
+            return " "
+        endfunction
+
+        function! LightLineModified()
+            return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+        endfunction
+
+        function! LightLineReadonly()
+            return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? '⭤' : ''
+        endfunction
+
+        function! LightLineFilename()
+            return (&ft == 'vimfiler' ? vimfiler#get_status_string() :
+                        \  &ft == 'unite' ? unite#get_status_string() :
+                        \  &ft == 'vimshell' ? vimshell#get_status_string() :
+                        \ LightLinePath()) .
+                        \ ('' != LightLineModified() ? ' ' . LightLineModified() : '')
+        endfunction
+
+        function! LightLinePath()
+            if '' != expand('%:p:.')
+                return winwidth(0) > 90 ? expand('%:p:.') : pathshorten(expand('%:p:.'))
+            else
+                return '[No Name]'
+            endif
+        endfunction
+
+        function! LightLineFugitive()
+            if &ft !~? 'vimfiler\|gundo' && exists("*fugitive#head")
+                let _ = fugitive#head()
+                return strlen(_) ? '⭠ '._ : ''
+            endif
+            return ''
+        endfunction
+
+        function! LightLineFileformat()
+            return winwidth(0) > 70 ? &fileformat : ''
+        endfunction
+
+        function! LightLineFiletype()
+            return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
+        endfunction
+
+        function! LightLineFileencoding()
+            return winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) . '[' . &fileformat . ']' : ''
+        endfunction
+
+        function! LightLineMode()
+            return winwidth(0) > 60 ? lightline#mode() : ''
+        endfunction
     " }}}
 
     " DelimitMate {{{
