@@ -86,12 +86,12 @@
         " Plug 'chriskempson/base16-vim'
         Plug 'bufkill.vim'
         " Plug 'croaky/vim-colors-github'
-        Plug 'junegunn/limelight.vim', { 'for': 'txt' }
+        Plug 'junegunn/limelight.vim', { 'for': ['txt', 'tex'] }
     " }}}
 
     " Programming {{{
         "Plug 'xptemplate'
-        Plug 'godlygeek/tabular'
+        Plug 'godlygeek/tabular', { 'on': 'Tabularize' }
         Plug 'tpope/vim-commentary'
         Plug 'tpope/vim-dispatch'
         Plug 'Keithbsmiley/investigate.vim'
@@ -99,7 +99,7 @@
         "Plug 'SuperTab'
         "Plug 'Indent-Guides'
         "Plug 'VimDebug'
-        Plug 'camelcasemotion'
+        " Plug 'camelcasemotion'
         "Plug 'Syntastic'
         "Plug 'Shougo/neocomplcache'
         " Plug 'tpope/vim-abolish'
@@ -126,10 +126,10 @@
         " }}}
 
         " Ruby {{{
-            Plug 'vim-ruby/vim-ruby', { 'for': ['ruby','jruby'] }
+            Plug 'vim-ruby/vim-ruby'
             Plug 'ecomba/vim-ruby-refactoring'
             " Plug 'skalnik/vim-vroom'
-            Plug 'splitjoin.vim', { 'for': ['ruby','jruby'] }
+            Plug 'splitjoin.vim'
             " Plug 'skwp/vim-rspec'
             " Plug 'thoughtbot/vim-rspec'
             "Plug 'rson/vim-conque'
@@ -137,9 +137,9 @@
             Plug 'tpope/vim-rails'
             "Plug 'kchmck/vim-coffee-script'
             Plug 'tpope/vim-haml', { 'for': 'haml' }
-            Plug 'tpope/vim-bundler'
+            " Plug 'tpope/vim-bundler'
             Plug 'tpope/vim-rake'
-            Plug 'henrik/vim-ruby-runner', { 'for': 'ruby' }
+            Plug 'henrik/vim-ruby-runner'
         "}}}
 
         " Java {{{
