@@ -1446,8 +1446,10 @@
 
     " Convert Win2Unix {{{
         function! Win2Unix()
-          silent! execute ':e ++ff=unix'
+          normal mz
+          silent! execute ':%s/$//g'
           echo "CRLF > LF"
+          normal 'z
         endfunction
         command! Win2Unix call Win2Unix()
     " }}}
