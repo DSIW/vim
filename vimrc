@@ -863,7 +863,7 @@
             \ },
             \ 'active': {
             \   'left': [ [ 'mode', 'paste' ],
-            \             [ 'fugitive', 'readonly', 'modified' ], [ 'filename' ] ],
+            \             [ 'fugitive', 'readonly' ], [ 'filename' ] ],
             \   'right': [ [ 'percent', 'lineinfo' ], [ 'fileencoding' ], [ 'sep', 'filetype' ] ]
             \ },
             \ 'tabline': {
@@ -872,7 +872,6 @@
             \ },
             \ 'component_function': {
             \   'sep': 'LightLineSeparator',
-            \   'modified': 'LightLineModified',
             \   'readonly': 'LightLineReadonly',
             \   'fugitive': 'LightLineFugitive',
             \   'filename': 'LightLineFilename',
