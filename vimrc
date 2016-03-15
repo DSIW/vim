@@ -198,8 +198,7 @@
     " Git {{{
         "Plug 'git.zip'
         Plug 'tpope/vim-fugitive'
-        "Plug 'mattn/webapi-vim'
-        "Plug 'Gist.vim'
+
         " Plug 'gregsexton/gitv'
         "Plug 'airblade/vim-gitgutter'
     " }}}
@@ -210,6 +209,8 @@
     " }}}
 
     " Web {{{
+        " Plug 'Gist.vim' | Plug 'mattn/webapi-vim
+
         "Plug 'XML-Folding'
         "Plug 'xmledit'
         "Plug 'Haml'
