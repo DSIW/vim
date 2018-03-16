@@ -11,22 +11,33 @@
 
 " Set up the gui cursor to look nice
 set guicursor=n-v:block-Cursor-blinkwait1000-blinkoff150-blinkon1000
-set guicursor+=c:block-Cursor
+set guicursor+=c:ver25-Cursor
 set guicursor+=ve:ver35-Cursor
 set guicursor+=o:hor50-Cursor
 set guicursor+=i-ci:ver25-Cursor
-set guicursor+=r-cr:hor20-Cursor
+set guicursor+=r-cr:hor10-Cursor
 set guicursor+=sm:block-Cursor-blinkwait175-blinkoff150-blinkon175
+" highlight Cursor guifg=NONE guibg=NONE
+" highlight Visual guifg='white' guibg='#b58900'
+highlight Visual guifg='white' guibg='#DE1D5C'
+
+highlight Search guibg=NONE guifg='#cb4b16'
+highlight CursorLineNr guifg='#af8700' guibg=NONE
 
 " set the gui options the way I like
 set guioptions=ac
 "set guioptions-=m
 "set guioptions-=T
 
-set guifont=Monospace\ 9
-" set guifont=Input\ Mono\ 9
-" set guifont=Monospace\ for\ Powerline\ 10
-" set guifont=Droid\ Sans\ for\ Powerline\ 10
+
+" set guifont=Monospace\ 9
+" set guifont=Monaco\ for\ Powerline\ 9
+" set guifont=Inconsolata\ for\ Powerline\ Medium\ 10
+" set guifont=Mensch\ for\ Powerline\ Medium\ 9
+" set guifont=Source\ Code\ Pro\ for\ Powerline\ 9
+" set guifont=RobotoMono\ 10
+set guifont=GohuGohuFont\ 10
+" set guifont=GohuGohuFont\ 8
 set guioptions-=T
 "colorscheme xoria256
 if has("gui_running")

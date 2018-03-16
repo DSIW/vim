@@ -1,267 +1,104 @@
-" Modeline and Notes {{{
 " vim: set foldmarker={{{,}}} foldlevel=0 foldmethod=marker tabstop=4 shiftwidth=4:
-"
-" I have the categories of this from Steve Francia (see http://spf13.com)
-" }}}
 
 " Environment {{{
-    " Basics {{{
-        set nocompatible    " must be first line
-        set ttyfast         " we have a fast tty
-    " }}}
+    set nocompatible    " must be first line
+    set ttyfast         " we have a fast tty
 " }}}
 
 " Plugins {{{
     call plug#begin('~/.vim/plugged')
 
     " General {{{
-        " Plug 'vim-airline/vim-airline'
-        " Plug 'vim-airline/vim-airline-themes'
         Plug 'itchyny/lightline.vim'
-        "Plug 'unicode.vim'
         Plug 'unimpaired.vim'
         Plug 'lastpos.vim'
-        "Plug 'sudo.vim' " eunuch has same function
+        "Plug 'sudo.vim' " eunuch has same functionality
         "Plug 'vimshell-ssh'
-        " Plug 'The-NERD-tree'
-        Plug 'ctrlp.vim'
-        "Plug 'SearchComplete'
+        " Plug 'ctrlpvim/ctrlp.vim' | Plug 'FelikZ/ctrlp-py-matcher'
         " Plug 'EasyGrep'
         "Plug 'hexman.vim'
         "Plug 'taglist.vim'
-        "Plug 'tpope/vim-speeddating.git'
-        "Plug 'trailing-whitespace'
         Plug 'tpope/vim-repeat'
-        "Plug 'recover.vim'
-        Plug 'rking/ag.vim'
-        "Plug 'greplace.vim'
+        " Plug 'mileszs/ack.vim'
         Plug 'Rykka/lastbuf.vim'
-        " open vim with file:42 to open at line 42
         Plug 'bogado/file-line'
         Plug 'arecarn/crunch' | Plug 'arecarn/selection.vim'
         Plug 'gioele/vim-autoswap'
-        Plug 'DavidGamba/vim-vmath'
-        " Plug 'Yggdroot/hiPairs'
-        Plug 'zirrostig/vim-schlepp'
-        " Plug 'atweiden/vim-betterdigraphs'
 
         Plug 'VisIncr'
-        "Plug 'csv.vim'
-        "Plug 'xolox/vim-session'
-        " Plug 'delimitMate.vim'
         Plug 'majutsushi/tagbar'
-        " Plug 'mndrix/prolog.vim'
         " Plug 'EasyMotion'
         Plug 'AndrewRadev/sideways.vim'
-        "Plug 'mhinz/vim-signify'
         Plug 'AndrewRadev/switch.vim'
         Plug 'tpope/vim-eunuch'
-        " Plug 'mutewinter/UnconditionalPaste'
-        "Plug 'paradigm/vim-multicursor'
-        " Plug 'hlissner/vim-multiedit'
-        "Plug 'sjl/splice.vim'
-        "Plug 'christoomey/vim-space'
-        "Plug 'vim-scripts/LineJuggler'
-        "Plug 'rainerborene/vim-timetap'
-        "Plug 'mhinz/vim-startify'
         Plug 'aklt/vim-substitute'
         "Plug 'myusuf3/numbers.vim'
-        Plug 'mbbill/undotree', { 'on': 'UndoTreeToggle' }
-        " Plug 'osyo-manga/vim-over'
-        " Plug 'tpope/vim-characterize'
-        " Plug 'tpope/vim-flatfoot'
-        " Plug 'tommcdo/vim-exchange'
+        Plug 'mbbill/undotree'
         " Plug 'ledger/vim-ledger'
         Plug 'vim-scripts/LanguageTool', { 'for': 'txt' }
+        Plug 'tpope/vim-fugitive'
+        Plug 'tpope/vim-surround'
+        Plug 'plasticboy/vim-markdown'
+        Plug 'lervag/vimtex'
+        Plug 'neomake/neomake'
+
+        " Plug 'ctrlpvim/ctrlp.vim' | Plug 'FelikZ/ctrlp-py-matcher'
+        Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+        Plug 'Shougo/unite.vim' | Plug 'Shougo/neomru.vim'
+        Plug 'Shougo/vimfiler.vim'
     " }}}
 
     " UI {{{
-        "Plug 'spf13/vim-colors'
-        "Plug 'flazz/vim-colorschemes'
-        "Plug 'tomasr/molokai'
-        "Plug 'xoria256.vim'
-        "Plug 'neverland.vim--All-colorschemes-suck'
-        " Plug 'ZoomWin'
         Plug 'altercation/vim-colors-solarized'
-        " Plug 'chriskempson/base16-vim'
         Plug 'bufkill.vim'
-        " Plug 'croaky/vim-colors-github'
-        Plug 'junegunn/limelight.vim', { 'for': ['txt', 'tex'] }
+        " Plug 'junegunn/limelight.vim', { 'for': ['txt', 'tex'] }
     " }}}
 
     " Programming {{{
-        "Plug 'xptemplate'
         Plug 'godlygeek/tabular', { 'on': 'Tabularize' }
         Plug 'tpope/vim-commentary'
         Plug 'tpope/vim-dispatch'
+        " Plug 'skywind3000/asyncrun.vim'
         Plug 'Keithbsmiley/investigate.vim'
-        "Plug 'ProtoDef'
-        "Plug 'SuperTab'
-        "Plug 'Indent-Guides'
-        "Plug 'VimDebug'
-        " Plug 'camelcasemotion'
-        "Plug 'Syntastic'
-        "Plug 'Shougo/neocomplcache'
-        " Plug 'tpope/vim-abolish'
-        "Plug 'jshint.vim'
-        " Plug 'derekwyatt/vim-scala'
-        " Plug 'airblade/vim-rooter'
+        Plug 'vim-json-bundle', { 'for': ['json','js'] }
+        Plug 'pangloss/vim-javascript', { 'for': 'js' }
+        Plug 'rhysd/vim-crystal', { 'for': 'crystal' }
 
+        " Snippets
+        Plug 'tomtom/tlib_vim'
+        Plug 'MarcWeber/vim-addon-mw-utils'
+        Plug 'sirver/UltiSnips' | Plug 'honza/vim-snippets'
 
-        " Plug 'Valloric/YouCompleteMe'
+        " Ruby
+        Plug 'vim-ruby/vim-ruby'
+        Plug 'ecomba/vim-ruby-refactoring'
+        Plug 'splitjoin.vim'
+        Plug 'tpope/vim-rails'
+        Plug 'tpope/vim-haml', { 'for': 'haml' }
+        Plug 'tpope/vim-rake'
+        Plug 'thoughtbot/vim-rspec'
+        Plug 'henrik/vim-ruby-runner'
 
-        " Snippets {{{
-            Plug 'tomtom/tlib_vim'
-            Plug 'MarcWeber/vim-addon-mw-utils'
-            Plug 'sirver/UltiSnips' | Plug 'honza/vim-snippets'
-        "}}}
+        " Plug 'cwood/vim-django'
 
-        " C/C++ {{{
-            "Plug 'c.vim'
-            "Plug 'FSwitch'
-        "}}}
+        " Elixir
+        Plug 'elixir-editors/vim-elixir'
 
-        " Crystal {{{
-            Plug 'rhysd/vim-crystal', { 'for': 'crystal' }
-        " }}}
-
-        " Ruby {{{
-            Plug 'vim-ruby/vim-ruby'
-            Plug 'ecomba/vim-ruby-refactoring'
-            " Plug 'skalnik/vim-vroom'
-            Plug 'splitjoin.vim'
-            " Plug 'skwp/vim-rspec'
-            " Plug 'thoughtbot/vim-rspec'
-            "Plug 'rson/vim-conque'
-            "Plug 'skwp/vim-ruby-conque'
-            Plug 'tpope/vim-rails'
-            "Plug 'kchmck/vim-coffee-script'
-            Plug 'tpope/vim-haml', { 'for': 'haml' }
-            " Plug 'tpope/vim-bundler'
-            Plug 'tpope/vim-rake'
-            Plug 'henrik/vim-ruby-runner'
-        "}}}
-
-        " Java {{{
-            "Plug 'cespare/vjde.git'
-            "Plug 'javacomplete'
-            "Plug 'ervandew/eclim.git'
-        "}}}
-
-        " Python {{{
-            "Plug 'pep8'
-            "Plug 'mitechie/pyflakes-pathogen.git'
-            "Plug 'fs111/pydoc.vim.git'
-            " Plug 'cwood/vim-django'
-            " Plug 'jmcomets/vim-pony'
-            " Plug 'jmcantrell/vim-virtualenv'
-        "}}}
-
-        " JavaScript {{{
-            "Plug 'javascript.vim'
-            Plug 'vim-json-bundle', { 'for': ['json','js'] }
-            " JSON manipulation
-            " Plug 'tpope/vim-jdaddy'
-            "Plug 'vim-coffee-script'
-            Plug 'pangloss/vim-javascript', { 'for': 'js' }
-        "}}}
+        " ES6
+        Plug 'isRuslan/vim-es6'
     " }}}
 
     " Textobjects {{{
-        " Plug 'kana/vim-textobj-user.git'
+        Plug 'wellle/targets.vim'
         " r
         " Plug 'textobj-rubyblock' | Plug 'textobj-user'
         " f
-        " ERROR: Plug 'textobj-function'
-        " e
-        " Plug 'textobj-entire'
         " i/I
         " Plug 'textobj-indent'
         " z
         " Plug 'textobj-fold'
-        " d...
-        "Plug 'textobj-datetime'
-        " a
-        Plug 'argtextobj.vim'
-        " `
-        " Plug 'vim-textobj-quoted'
-        " :
-        " Plug 'bootleq/vim-textobj-rubysymbol'
-        " v
-        " Plug 'Julian/vim-textobj-variable-segment'
     "}}}
 
-    " Mail {{{
-        "Plug 'CheckAttach.vim'
-    " }}}
-
-    " Git {{{
-        "Plug 'git.zip'
-        Plug 'tpope/vim-fugitive'
-
-        " Plug 'gregsexton/gitv'
-        "Plug 'airblade/vim-gitgutter'
-    " }}}
-
-    " Sourround {{{
-        Plug 'surround.vim'
-        "Plug 'delete-surround-html'
-    " }}}
-
-    " Web {{{
-        " Plug 'Gist.vim' | Plug 'mattn/webapi-vim
-
-        "Plug 'XML-Folding'
-        "Plug 'xmledit'
-        "Plug 'Haml'
-        "Plug 'rstacruz/sparkup'
-        "Plug 'ragtag.vim'
-
-        " Dependency for rubyblock text object
-        " Plug 'edsono/vim-matchit'
-
-        "Plug 'vim-octopress'
-        "Plug 'tsaleh/vim-align'
-
-        " Markdown {{{
-            "Plug 'tpope/vim-markdown'
-            Plug 'plasticboy/vim-markdown'
-            "Plug 'Markdown-syntax'
-        "}}}
-
-        " CSS {{{
-            "Plug 'groenewege/vim-less'
-            "Plug 'cakebaker/scss-syntax'
-            "Plug 'skammer/vim-css-color'
-            "Plug 'hail2u/vim-css3-syntax'
-        "}}}
-    " }}}
-
-    " LaTeX {{{
-        "Plug 'dnebauer/AutomaticLaTeXPlugin.git'
-        Plug 'lervag/vimtex'
-    "}}}
-
-    " CSS {{{
-        "Plug 'groenewege/vim-less'
-        "Plug 'cakebaker/scss-syntax'
-        "Plug 'skammer/vim-css-color'
-    "}}}
-
-    " errors {{{
-        "Plug 'Align.vim' " ERROR
-        "Plug 'checklist.vim' " ERROR
-        "Plug 'css_color.vim' " CPU raises up
-        "Plug 'vim-recovery' " NOT FOUND
-        "Plug 'minibufexpl.vim' ERROR with plugin "fugitive in diff mode"
-
-        "Plug 'endwise.vim'
-        " ERROR with "pumvisible"
-
-        "Plug 'Solarized' " ERROR with comments (background is too dark)
-    " }}}
-
-    " Add plugins to &runtimepath
     call plug#end()
 " }}}
 
@@ -319,7 +156,7 @@
     set comments=sl:/*,mb:\ *,ex:\ */,O://,b:#,:%,:XCOMM,n:>,fb:-
 
     " Same as default except that I remove the 'u' option
-    set complete=.,w,b,t,i
+    set complete=.,w,b,t,i,kspell
     set completeopt=menu,preview
 
     " When completing by tag, show the whole tag, not just the function name
@@ -338,18 +175,12 @@
 
     " Search {{{
         set nohlsearch " Enable search highlighting
-
         set incsearch " Incrementally match the search
-
         set wrapscan " set the search scan to wrap lines
-
-        " set the search scan so that it ignores case when the search is all lower
-        " case but recognizes uppercase if it's specified
         set ignorecase
-        set smartcase
-
-        " Use ag over grep
-        set grepprg=ag\ --nogroup\ --nocolor
+        if executable("rg")
+            set grepprg=rg\ -S
+        endif
     " }}}
 
     " Insert only one space when joining lines that contain sentence-terminating
@@ -459,7 +290,8 @@
 " }}}
 
 " Vim UI {{{
-    set nu " Set linenumbers
+    set nu
+    set rnu
     " set relativenumber
 
     " solarized {{{
@@ -468,20 +300,19 @@
         "hi IndentGuidesOdd  ctermbg=white
         "hi IndentGuidesEven ctermbg=lightgrey
         "color xoria256
-        set background=light
-        colorscheme solarized                 " load a colorscheme
+        set background=dark
+        " colorscheme railscasts
         let g:solarized_termtrans=0
         let g:solarized_termcolors=256
         let g:solarized_contrast="high"
-        let g:solarized_visibility="low"
+        let g:solarized_visibility="normal"
         let g:solarized_italic=1
         let g:solarized_bold=1
         let g:solarized_diffmode="high"
         let g:solarized_hitrail=1
         let g:solarized_underline=0
         set t_Co=256
-        " alternatives: #5f5faf #0087ff
-        highlight Search guibg='NONE' guifg='#d75f00'
+        colorscheme solarized
     " }}}
     set showmode " Show the current mode
     " set showbreak=↪
@@ -490,14 +321,16 @@
         " highlight matching parens:
         " Default for matchpairs: (:),[:],{{{:}}},<:>
         set matchpairs+=<:>
+        set matchpairs+={:}
         highlight MatchParen term=reverse ctermbg=7 guibg=cornsilk
+        hi MatchParen    cterm=NONE ctermfg=black ctermbg=white
 
         " I like it when the matching parens are automatically highlighted
         let loaded_matchparen = 0
 
-        set matchtime=3
-        " Turn on: showmatching brackets
-        set showmatch
+        set matchtime=1
+        " Turn on: showmatching brackets in insert mode only!!
+        set noshowmatch
     " }}}
 
     " tell VIM to always put a status line in, even if there is only one window
@@ -506,6 +339,7 @@
     set ch=2 " Make command line two lines high
 
     set cursorline
+    set colorcolumn=80
     set hidden  " allow buffer switching without saving
 
     set wildmenu " Make the command-line completion better
@@ -586,7 +420,7 @@
 " }}}
 
 " Formatting {{{
-    set textwidth=120      " Set the textwidth to be 120 chars (if 0: screen_width)
+    set textwidth=80      " Set the textwidth to be 80 chars (if 0: screen_width)
     set wrapmargin=5
     set formatoptions=     " ta
 
@@ -672,27 +506,6 @@
                     "\ }
     "}}}
 
-    " EasyGrep {{{
-        " let g:EasyGrepFileAssociations=expand("~/.vim/bundle/EasyGrep/plugin/EasyGrepFileAssociations")
-        " let g:EasyGrepMode=1
-        " let g:EasyGrepCommand=0
-        " let g:EasyGrepRecursive=0
-        " let g:EasyGrepIgnoreCase=1
-        " let g:EasyGrepHidden=0
-        " let g:EasyGrepSearchCurrentBufferDir=1
-        " let g:EasyGrepAllOptionsInExplorer=1
-        " let g:EasyGrepWindow=0
-        " let g:EasyGrepReplaceWindowMode=1
-        " let g:EasyGrepOpenWindowOnMatch=0
-        " let g:EasyGrepEveryMatch=1
-        " let g:EasyGrepJumpToMatch=1
-        " let g:EasyGrepInvertWholeWord=1
-        " let g:EasyGrepFileAssociationsInExplorer=1
-        " let g:EasyGrepExtraWarnings=1
-        " let g:EasyGrepOptionPrefix='<leader>vy'
-        " let g:EasyGrepReplaceAllPerFile=0
-    " }}}
-
     " Substitute {{{
         let g:substitute_PromptMap = "<leader>sw"
         let g:substitute_NoPromptMap = "<leader>Sw"
@@ -725,44 +538,82 @@
         let g:undotree_SplitWidth=35
     " }}}
 
-    " Taglist {{{
-        " if exists(":TlistToggle")
-        "     let Tlist_Ctags_Cmd = "/usr/bin/ctags" " The packge 'ctags' have to be installed!
-        "     let Tlist_GainFocus_On_ToggleOpen = 1
-        "     let Tlist_Close_On_Select = 1
+    " CtrlP  {{{
+        "nnoremap <silent> <Leader>b :CtrlPBuffer<CR>
+        "nnoremap <silent> <Leader>m :CtrlPMRUFiles<CR>
 
-        "     noremap <silent> <F6> :TlistToggle<CR>
-        "     inoremap <silent> <F6> <C-C>:TlistToggle<CR>
-        " endif
+        "let g:ctrlp_map = '<leader>f'
+        "let g:ctrlp_show_hidden = 1 " show hidden files
+        "let g:ctrlp_max_height = 20 " height of file list
+        "let g:ctrlp_match_window_bottom = 0 " Show list on top
+        "let g:ctrlp_match_window_reversed = 0 " Go to bottom
+        "let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+        "let g:ctrlp_mruf_default_order = 1
+        "let g:ctrlp_by_filename = 0 " Search only by filename
+        "let g:ctrlp_max_files = 0 " unlimited files
+        "let g:ctrlp_max_depth = 20 " Max directory tree depth
+        "let g:ctrlp_switch_buffer = 0 " Allow opening multiple splits with same file via CtrlP
+        "let g:ctrlp_jump_to_buffer = 0
+        ""for caching
+        "let g:ctrlp_use_caching = 0
+        "let g:ctrlp_clear_cache_on_exit = 0
+        "let g:ctrlp_cache_dir = $HOME.'/.cache/ctrlp'
+        "let g:ctrlp_lazy_update = 350 " Set delay to prevent extra search
+        "let g:ctrlp_custom_ignore = {
+        "    \ 'dir':  '\v[\/]\.(git|hg|svn|vendor)$',
+        "    \ 'file': '\v\.(exe|so|dll)$',
+        "    \ 'link': 'some_bad_symbolic_links',
+        "    \ }
+        "let g:ctrlp_user_command = {
+        "    \ 'fallback': 'ag %s -i --nocolor --nogroup --hidden
+        "    \ --ignore out
+        "    \ --ignore .git
+        "    \ --ignore .svn
+        "    \ --ignore .hg
+        "    \ --ignore .DS_Store
+        "    \ --ignore node_modules
+        "    \ --ignore "**/*.pyc"
+        "    \ --ignore .gitkeep
+        "    \ -g ""'
+        "    \ }
+        "" Don't let ctrlp change the working directory. Instead it now uses
+        "" the directory where vim was started. This fixes issues with some
+        "" projects that have nested git directories.
+        "let g:ctrlp_working_path_mode = 'r'
+        "let g:ctrlp_root_markers = ['README.md', 'README.txt']
     " }}}
 
-    " CtrlP  {{{
-        nnoremap <silent> <Leader>b :CtrlPBuffer<CR>
-        nnoremap <silent> <Leader>a :CtrlPMixed<CR>
-        nnoremap <silent> <Leader>m :CtrlPMRUFiles<CR>
+    " Unite {{{
+        call unite#filters#matcher_default#use(['matcher_fuzzy'])
+        call unite#filters#sorter_default#use(['sorter_rank'])
+        " call unite#custom#profile('files', 'filters', ['sorter_rank'])
 
-        let g:ctrlp_map = '<leader>f'
-        let g:ctrlp_show_hidden = 1 " show hidden files
-        let g:ctrlp_max_height = 20 " height of file list
-        let g:ctrlp_match_window_bottom = 0 " Show list on top
-        let g:ctrlp_match_window_reversed = 0 " Go to bottom
-        let g:ctrlp_mruf_default_order = 1
-        let g:ctrlp_by_filename = 0 " Search only by filename
-        let g:ctrlp_max_files = 300 " Max files to scan
-        let g:ctrlp_max_depth = 50 " Max directory tree depth
-        let g:ctrlp_switch_buffer = 0 " Allow opening mutlipe splits with same file via CtrlP
-        let g:ctrlp_jump_to_buffer = 0
-        "let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files']
-        let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-        let g:ctrlp_use_caching = 0
-        "TODO
-        let g:ctrlp_custom_ignore = {
-            \ 'dir':  '\v[\/]\.(git|vendor)$',
-            \ }
-        " Don't let ctrlp change the working directory. Instead it now uses
-        " the directory where vim was started. This fixes issues with some
-        " projects that have nested git directories.
-        let g:ctrlp_working_path_mode = 'r'
+        nnoremap <leader>a :<C-u>Unite grep -auto-preview -no-split -no-empty<CR>
+        nnoremap <leader>f :<C-u>Unite file_mru file/async file_rec/async -start-insert<CR>
+        nnoremap <leader>g :<C-u>Unite file_mru file/async file_rec/git -start-insert<CR>
+        nnoremap <leader>b :<C-u>Unite buffer -start-insert -no-split<CR>
+        nnoremap <leader>r :<C-u>UniteResume -start-insert -force-redraw<CR>
+        autocmd FileType unite nnoremap <silent> <buffer> <esc> :bd<CR>
+        let g:unite_redraw_hold_candidates = 50000
+        if executable('rg')
+            let g:unite_source_grep_command = 'rg'
+            let g:unite_source_grep_recursive_opt = ''
+            let g:unite_source_grep_default_opts = '-S --hidden --vimgrep --iglob .gitkeep --iglob *.orig'
+        elseif executable('ag')
+            let g:unite_source_grep_command = 'ag'
+            let g:unite_source_grep_default_opts = '--vimgrep'
+            let g:unite_source_grep_recursive_opt = ''
+        endif
+    " }}}
+
+    " VimFiler {{{
+        nnoremap <silent> <Leader>v :VimFilerExplorer<CR>
+        let g:vimfiler_safe_mode_by_default = 0
+        let g:vimfiler_as_default_explorer = 1
+        let g:vimfiler_tree_leaf_icon = ''
+        let g:vimfiler_tree_opened_icon = '▼'
+        let g:vimfiler_tree_closed_icon = '▻'
+        autocmd FileType vimfiler nmap <buffer> <C-l> :wincmd l<CR>
     " }}}
 
     " SnipMate {{{
@@ -784,10 +635,6 @@
         nmap 9f ]m
     " }}}
 
-    " XMLFolding {{{
-        " au BufNewFile,BufRead *.xml,*.htm,*.html so ~/.vim/bundle/vim-xmlfolding/plugin/XMLFolding.vim
-    " }}}
-
     " Surround {{{
         " via: http://whynotwiki.com/Vim
         " via: https://github.com/skwp/dotfiles/blob/master/vim/plugin/settings/surround.vim
@@ -807,50 +654,6 @@
     " SplitJoin {{{
         nmap sj :SplitjoinSplit<cr>
         nmap sk :SplitjoinJoin<cr>
-    " }}}
-
-    " Airline {{{
-        let g:airline_theme='solarized'
-        " let g:bufferline_echo = 0
-        let g:airline#extensions#bufferline#enabled = 0
-        let g:airline#extensions#tabline#show_buffers = 0
-        let g:airline#extensions#tabline#enabled = 1
-        let g:airline#extensions#tabline#show_tab_nr = 0
-        let g:airline#extensions#quickfix#quickfix_text = 'Quickfix'
-        let g:airline#extensions#quickfix#location_text = 'Location'
-        let g:airline_powerline_fonts = 1
-        " let g:airline_left_sep = ''
-        let g:airline_left_sep = "\u2b80"
-        " let g:airline_left_alt_sep = ''
-        let g:airline_left_alt_sep = "\u2b81"
-        " let g:airline_right_sep = ''
-        let g:airline_right_sep = "\u2b82"
-        " let g:airline_right_alt_sep = ''
-        let g:airline_right_alt_sep = "\u2b83"
-        if !exists('g:airline_symbols')
-            let g:airline_symbols = {}
-        endif
-        " let g:airline_symbols.branch = ''
-        let g:airline_symbols.branch = "\u2b60"
-        " let g:airline_symbols.readonly = ''
-        let g:airline_symbols.readonly = "\u2b64"
-        let g:airline_symbols.linenr = ''
-        " let g:airline_symbols.linenr = "\u2b61"
-        let g:airline_symbols.space = "\ua0"
-        let g:airline_mode_map = {
-            \ '__' : '-',
-            \ 'n'  : 'N',
-            \ 'i'  : 'I',
-            \ 'R'  : 'R',
-            \ 'c'  : 'C',
-            \ 'v'  : 'V',
-            \ 'V'  : 'VL',
-            \ '' : 'VB',
-            \ 's'  : 'S',
-            \ 'S'  : 'SL',
-            \ '' : 'SB',
-            \ }
-
     " }}}
 
     " LightLine {{{
@@ -937,16 +740,6 @@
         endfunction
     " }}}
 
-    " DelimitMate {{{
-        " let g:delimitMate_excluded_ft = "mail,txt"
-        " let delimitMate_autoclose = 1
-        " let delimitMate_expand_space = 1
-        " let delimitMate_balance_matchpairs = 1
-        " let delimitMate_quotes = "\" ' `"
-        " let b:delimitMate_matchpairs = "(:),[:],{:},<:>"
-        " au FileType ruby let b:delimitMate_matchpairs = "(:),[:],{:}"
-    " }}}
-
     " Sideways {{{
         nnoremap <leader>> :SidewaysRight<CR>
         nnoremap <leader>< :SidewaysLeft<CR>
@@ -954,38 +747,6 @@
 
     " Switch {{{
         nnoremap <silent> - :Switch<CR>
-    " }}}
-
-    " Gitv {{{
-        " nmap <leader>gv :Gitv --all<cr>
-        " nmap <leader>gV :Gitv! --all<cr>
-        " vmap <leader>gV :Gitv! --all<cr>
-    " }}}
-
-    " UnconditionalPaste {{{
-        " nmap <Leader>Pc <Plug>UnconditionalPasteCharBefore
-        " nmap <Leader>pc <Plug>UnconditionalPasteCharAfter
-        " nmap <Leader>Pl <Plug>UnconditionalPasteLineBefore
-        " nmap <Leader>pl <Plug>UnconditionalPasteLineAfter
-        " nmap <Leader>Pb <Plug>UnconditionalPasteBlockBefore
-        " nmap <Leader>pb <Plug>UnconditionalPasteBlockAfter
-        " nmap <Leader>P, <Plug>UnconditionalPasteCommaBefore
-        " nmap <Leader>p, <Plug>UnconditionalPasteCommaAfter
-        " nmap <Leader>Pq <Plug>UnconditionalPasteQueriedBefore
-        " nmap <Leader>pq <Plug>UnconditionalPasteQueriedAfter
-        " nmap <Leader>PQ <Plug>UnconditionalPasteRecallQueriedBefore
-        " nmap <Leader>pQ <Plug>UnconditionalPasteRecallQueriedAfter
-        " nmap <Leader>Pu <Plug>UnconditionalPasteUnjoinBefore
-        " nmap <Leader>pu <Plug>UnconditionalPasteUnjoinAfter
-        " nmap <Leader>PU <Plug>UnconditionalPasteRecallUnjoinBefore
-        " nmap <Leader>pU <Plug>UnconditionalPasteRecallUnjoinAfter
-
-        " imap <C-G>c <Plug>UnconditionalPasteChar
-        " imap <C-G>, <Plug>UnconditionalPasteComma
-        " imap <C-G>q <Plug>UnconditionalPasteQueried
-        " imap <C-G>Q <Plug>UnconditionalPasteRecallQueried
-        " imap <C-G>u <Plug>UnconditionalPasteUnjoin
-        " imap <C-G>U <Plug>UnconditionalPasteRecallUnjoin
     " }}}
 
     " UltiSnips {{{
@@ -997,12 +758,15 @@
             return !a:0 || a:1 == '' ? filename : substitute(a:1, '$1', filename, 'g')
         endf
 
+        " let g:UltiSnipsSnippetDirectories=["UltiSnips"]
+
         let g:UltiSnips = {}
         "let g:UltiSnips.always_use_first_snippet = 1
         let g:UltiSnips.snipmate_ft_filter = {
-                    \ 'default' : {'filetypes': ["FILETYPE", "_"] },
-                    \ 'html'    : {'filetypes': ["html", "javascript", "_"] },
-                    \ 'cpp'    : {'filetypes': [] },
+                    \ 'default'    : {'filetypes': ["FILETYPE", "_"] },
+                    \ 'html'       : {'filetypes': ["html", "javascript", "_"] },
+                    \ 'javascript' : {'filetypes': ["javascript", "javascript.es6", "javascript-mocha"] },
+                    \ 'cpp'        : {'filetypes': [] },
                     \ }
         let g:UltiSnips.UltiSnips_ft_filter = {
             \ 'default' : {'filetypes': [] },
@@ -1052,10 +816,6 @@
               \ }}
     " }}}
 
-    " Git Gutter {{{
-        "highlight clear SignColumn
-    " }}}
-
     " Ruby {{{
         command! VA vsplit | A
         let ruby_operators = 1
@@ -1064,7 +824,6 @@
     " Dispatch {{{
         " autocmd FileType ruby let b:dispatch = 'rspec %'
         nnoremap <F9> :Dispatch<CR>
-        " nnoremap ,t :Dispatch<CR>
     " }}}
 
     " LastBuf {{{
@@ -1074,13 +833,13 @@
         " :bd    bufdelete  (will be reopened if level >= 2)
         " :bw    bufwipeout (will never be reopened!CAUTION!!)
         " default is 1 , means :bd and :bw not be reopened.
-        " if you want the same effect of 'nohidden'. 
+        " if you want the same effect of 'nohidden'.
         " set it to 0 and  set 'nohidden'
         let g:lastbuf_level=3
     " }}}
 
     " vim-rspec {{{
-        let g:rspec_command = "Dispatch bin/rspec {spec}"
+        let g:rspec_command = "Dispatch rspec {spec}"
         nnoremap <Leader>t :call RunCurrentSpecFile()<CR>
         nnoremap <Leader>ts :call RunNearestSpec()<CR>
         nnoremap <Leader>tl :call RunLastSpec()<CR>
@@ -1096,19 +855,15 @@
         nnoremap <silent> K :call investigate#Investigate()<CR>
     " }}}
 
-    " Django {{{
-        " let g:django_projects = '~/.module/sdf/projekt/code' "Sets all projects under project
-        " let g:django_activate_virtualenv = 1 "Try to activate the associated virtualenv
-        " let g:django_activate_nerdtree = 1 "Try to open nerdtree at the project root.
-    " }}}
-
     " Commentary {{{
         autocmd FileType apache setlocal commentstring=#\ %s
         autocmd FileType crontab setlocal commentstring=#\ %s
         autocmd FileType gnuplot setlocal commentstring=#\ %s
         autocmd FileType coffee setlocal commentstring=#\ %s
+        autocmd FileType nginx setlocal commentstring=#\ %s
         autocmd FileType xdefaults setlocal commentstring=!\ %s
         autocmd FileType conkyrc setlocal commentstring=--\ %s
+        " autocmd FileType php setlocal commentstring=//\ %s
     " }}}
 
     " VMath {{{
@@ -1129,11 +884,44 @@
     " }}}
 
     " Limelight {{{
-        let g:limelight_default_coefficient = 0.8
+        let g:limelight_default_coefficient = 0.5
+    " }}}
+
+    " Ack/Ag {{{
+        let g:ackprg = 'ag --vimgrep --smart-case'
+        cnoreabbrev ag Ack
+        cnoreabbrev aG Ack
+        cnoreabbrev Ag Ack
+        cnoreabbrev AG Ack
     " }}}
 " }}}
 
 " Functions {{{
+    " Foldtext {{{
+        function! MyFoldLabel() " {{{
+            let line = getline(v:foldstart)
+
+            let nucolwidth = &fdc + &number * &numberwidth
+            let windowwidth = winwidth(0) - nucolwidth - 3
+            let foldedlinecount = v:foldend - v:foldstart
+
+            " Remove foldmarkers
+            let opening_foldmarker = split(&foldmarker, ",")[0]
+            let line = substitute(line, opening_foldmarker, "", 'g')
+
+            " expand tabs into spaces
+            let onetab = strpart('          ', 0, &tabstop)
+            let line = substitute(line, '\t', onetab, 'g')
+
+            "let linestart = substitute(v:folddashes, ".", '»', 'g')
+            "let line = linestart . line
+
+            let line = strpart(line, 0, windowwidth - 2 -len(foldedlinecount))
+            let fillcharcount = windowwidth - len(line) - len(foldedlinecount)
+            return line . ' ' . repeat(" ",fillcharcount) . foldedlinecount . '…' . ' '
+        endfunction " }}}
+    " }}}
+
     " Auto commands {{{
         augroup Text "{{{
             au!
@@ -1148,6 +936,10 @@
             au FileType gitcommit setl wrapmargin=5
             au FileType gitcommit setl formatoptions=tl
         augroup END
+        "}}}
+        augroup ruby "{{{
+            au!
+            au FileType ruby setl ts=2 sts=2 sw=2 expandtab
         "}}}
         augroup Python "{{{
             au!
@@ -1208,7 +1000,7 @@
             au!
             au BufNewFile,BufRead *.tex set filetype=tex
             au BufNewFile,BufRead *.lco set filetype=tex
-            au FileType tex setl textwidth=80
+            au FileType tex setl textwidth=72
             au FileType tex setl wrapmargin=5
             au FileType tex setl formatoptions=tl
             au FileType tex setl noexpandtab
@@ -1219,12 +1011,18 @@
             au FileType tex vmap ,td c\todo{<C-R>*}<esc>
             au FileType tex nmap ds\ f}F\deds}
             au FileType tex vmap ,ia c„<C-R>*“<esc>
-            au FileType tex nmap <F11> :silent !make -B<CR> | echo 'Compilation done.'<CR>
+            au FileType tex nmap <F11> :silent !make<CR>
 
             function! Synctex()
                 execute "silent !zathura --synctex-forward " . line('.') . ":" . col('.') . ":" . bufname('%') . " " . g:syncpdf
             endfunction
             au FileType tex nmap <C-Return> :call Synctex()<cr>
+
+            function! FixBibTex()
+                execute "%s/ = /=/g"
+                execute "%s/title={\(^[{}]*\)}/title={{\1}}/g"
+            endfunction
+            command! FixBibTex call FixBibTex()
         augroup END
 
         "}}}
@@ -1238,6 +1036,7 @@
         au BufNewFile,BufRead *.ldif set filetype=ldif
         au BufNewFile,BufRead *.gnuplot set filetype=gnuplot
         au BufNewFile,BufRead *.pl set filetype=prolog
+        au BufNewFile,BufRead *.es set filetype=javascript.es6
         au BufNewFile,BufRead Guardfile set filetype=ruby
 
         au BufNewFile,BufRead TODO.txt nnoremap <leader>x 0f]hrx
@@ -1267,19 +1066,19 @@
 
     " Clean whitespace at EOL {{{
         " source: https://github.com/bronson/vim-trailing-whitespace/blob/master/plugin/trailing-whitespace.vim
-        highlight ExtraWhitespace ctermbg=darkred guibg=#DC322F
-        autocmd ColorScheme * highlight ExtraWhitespace ctermbg=darkred guibg=#DC322F
-        autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+        " highlight ExtraWhitespace ctermbg=darkred guibg=#DC322F
+        " autocmd ColorScheme * highlight ExtraWhitespace ctermbg=darkred guibg=#DC322F
+        " autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
         " the above flashes annoyingly while typing, be calmer in insert mode
         "autocmd InsertLeave * match ExtraWhitespace /\s\+$/
         "autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-        function! s:FixWhitespace(line1,line2)
+        function! FixWhitespace() range
           let l:save_cursor = getpos(".")
-          silent! execute ':' . a:line1 . ',' . a:line2 . 's/\s\+$//'
+          silent! execute ':' . a:firstline . ',' . a:lastline . 's/\s\+$//'
           call setpos('.', l:save_cursor)
         endfunction
         " Run :FixWhitespace to remove end of line white space.
-        command! -range=% FixWhitespace call <SID>FixWhitespace(<line1>,<line2>)
+        command! -range=% FixWhitespace <line1>,<line2>call FixWhitespace()
     " }}}
 
     " Set up spell function {{{
@@ -1308,31 +1107,6 @@
                 silent !chmod a+x <afile>
             endif
         endfunction
-    " }}}
-
-    " Foldtext {{{
-        function! MyFoldLabel() " {{{
-            let line = getline(v:foldstart)
-
-            let nucolwidth = &fdc + &number * &numberwidth
-            let windowwidth = winwidth(0) - nucolwidth - 3
-            let foldedlinecount = v:foldend - v:foldstart
-
-            " Remove foldmarkers
-            let opening_foldmarker = split(&foldmarker, ",")[0]
-            let line = substitute(line, opening_foldmarker, "", 'g')
-
-            " expand tabs into spaces
-            let onetab = strpart('          ', 0, &tabstop)
-            let line = substitute(line, '\t', onetab, 'g')
-
-            "let linestart = substitute(v:folddashes, ".", '»', 'g')
-            "let line = linestart . line
-
-            let line = strpart(line, 0, windowwidth - 2 -len(foldedlinecount))
-            let fillcharcount = windowwidth - len(line) - len(foldedlinecount)
-            return line . ' ' . repeat(" ",fillcharcount) . foldedlinecount . '…' . ' '
-        endfunction " }}}
     " }}}
 
     " Merge a tab into a split in the previous window {{{
@@ -1494,12 +1268,31 @@
     " }}}
 
     " Reformat JSON {{{
-        function! s:ReformatJSON(line1,line2)
+        function! ReformatJSON() range
           let l:save_cursor = getpos(".")
-          silent! execute ':' . a:line1 . ',' . a:line2 . '!python -m json.tool'
+          silent! execute ':' . a:firstline . ',' . a:lastline . '!python -m json.tool'
           call setpos('.', l:save_cursor)
         endfunction
-        command! -range=% ReformatJSON call <SID>ReformatJSON(<line1>,<line2>)
+        command! -range=% ReformatJSON <line1>,<line2>call ReformatJSON()
+    " }}}
+
+    " Reformat CSS {{{
+        function! ReformatCSS() range
+          let l:save_cursor = getpos(".")
+          silent! execute ':' . a:firstline . ',' . a:lastline . 's/[{;}]/&\r/g | norm! =gg'
+          call setpos('.', l:save_cursor)
+        endfunction
+        command! -range=% ReformatCSS <line1>,<line2>call ReformatCSS()
+    " }}}
+
+    " Reformat XML {{{
+        function! ReformatXML() range
+          let l:save_cursor = getpos(".")
+          silent! execute ':' . a:firstline . ',' . a:lastline . '!xmllint --encode UTF-8 --recover --format -'
+          call setpos('.', l:save_cursor)
+        endfunction
+        command! -range=% ReformatXML <line1>,<line2>call ReformatXML()
+        " au FileType xml setlocal equalprg=xmllint\ --format\ --recover\ -\ 2>/dev/null
     " }}}
 
     " Extract visual selection to separate file {{{
@@ -1515,17 +1308,6 @@
         command Scratch new | set bt=nofile
     " }}}
 
-    " Markdown to LaTeX {{{
-        function! MarkdownToLaTeX()
-          let basename = expand('%:p:r')
-          let source = basename.'.md'
-          let destination = basename.'.tex'
-          silent! execute '! pandoc -t latex -f markdown -o '.destination.' '.source
-          echo 'LaTeX erstellt unter '.destination
-        endfunction
-        command! Md2Tex call MarkdownToLaTeX()
-    " }}}
-
     " Open a split for each dirty file in git {{{
         function! OpenChangedFiles()
         only " Close all windows, unless they're modified
@@ -1537,6 +1319,106 @@
         endfor
         endfunction
         command! OpenChangedFiles :call OpenChangedFiles()
+    " }}}
+
+    " Upload current marked section to FileBin {{{
+        function! Filebin(start, end)
+            let range = a:start . "," . a:end
+            let name = expand("%:t")
+            if (name == "")
+                let name = "scratch"
+            endif
+            let extension = expand(&ft)
+            if (extension == "")
+                let extension = "text"
+            endif
+            let command = "w !fb -n '" . name . "' -e '" . extension . "'"
+            silent exe expand(range) . command
+            redraw!
+        endfunction
+        com! -nargs=0 -range=% Fb :call Filebin(<line1>, <line2>)
+    " }}}
+
+    " Write buffer to temp file {{{
+        command! Wtemp :exec "w! ".system('mktemp')
+    " }}}
+
+    " Add gem in current version to Gemfile or gemspec {{{
+        fun! Gem(name, ...)
+            let json = system('curl -s https://rubygems.org/api/v1/versions/' . a:name . '/latest.json')
+            let version_dict = json_decode(json)
+            let latest_version = version_dict['version']
+
+            if latest_version == 'unknown'
+                throw 'unknown gem "' . a:name . '"'
+            endif
+
+            let latest_minor_version = substitute(latest_version, '\(\d\+\.\d\+\).*', '\1', '')
+
+            let suffix = ''
+            if expand('%') =~ '\.gemspec'
+                let line = '  spec.add_'
+                if exists('a:1') && a:1 =~ '^dev'
+                    let line .= 'development_'
+                endif
+                let line .= 'dependency '
+            else
+                let line = 'gem '
+                if exists('a:1') && a:1 =~ '^dev'
+                    let suffix = ', group: :development'
+                elseif exists('a:1')
+                    let suffix = ', group: :' . a:1
+                endif
+            endif
+
+            let line .= "'" . a:name . "', '~> " . latest_minor_version . "'" . suffix
+
+            call append(line('.'), line)
+        endfun
+        com! -nargs=* Gem :call Gem(<f-args>)
+    " }}}
+
+    " Copy remote (e.g. GitHub) URL of marked lines {{{
+        fun! Gitlink(start, end)
+            let file = expand('%:p')
+            if (!exists('b:git_dir'))
+                throw 'b:git_dir is not set, cannot continue'
+            endif
+
+            let relative_file = strpart(file, strlen(b:git_dir) - 4)
+            let origin = substitute(system('git remote get-url origin'), "\n", '', '')
+            if (origin =~ '^git@')
+                let origin = substitute(origin, ':', '/', '')
+                let origin = substitute(origin, '^git@', 'https://', '')
+                let origin = substitute(origin, '\.git$', '', '')
+            endif
+            let branch = substitute(system('git rev-parse --abbrev-ref HEAD'), "\n", '', '')
+
+            let url = origin . '/blob/' . branch . '/' . relative_file . '#L' . a:start . '-' . a:end
+            call system("echo '" . url . "' | xclip")
+            echo url
+        endfun
+        com! -range -nargs=0 Gitlink :call Gitlink(<line1>, <line2>)
+    " }}}
+
+    " Switch to spaces {{{
+        fun! Softtab()
+            set expandtab
+            set shiftwidth=2
+            set tabstop=2
+            set softtabstop=2
+        endfun
+        com! Softtab :call Softtab()
+    " }}}
+
+    " Switch to tabs {{{
+        fun! Hardtab()
+            set noexpandtab
+            set shiftwidth=2
+            set tabstop=2
+            set softtabstop=2
+        endfun
+        com! Hardtab :call Hardtab()
     " }}}
 " }}}
 
@@ -1563,9 +1445,6 @@
     if filereadable(expand("~/.vimrc.local"))
         source ~/.vimrc.local
     endif
-" }}}
-
-" Use local gvimrc if available and gui is running {{{
     if has('gui_running')
         if filereadable(expand("~/.gvimrc"))
             source ~/.gvimrc

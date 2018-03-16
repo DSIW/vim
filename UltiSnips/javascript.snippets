@@ -1,0 +1,27 @@
+snippet desc
+describe('${1:#method}', () => {
+	$2
+})
+endsnippet
+
+snippet it
+it('${1:returns...}', async () => {
+	$2
+})
+endsnippet
+
+snippet exp
+expect($1).to.$2
+endsnippet
+
+snippet bef
+before(() => {
+	$1
+})
+endsnippet
+
+snippet aft
+after(() => {
+	$1
+})
+endsnippet

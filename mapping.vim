@@ -134,6 +134,8 @@ map <F12> :set spell!<CR><Bar>:echo "Spell Check: " . strpart("OffOn", 3 * &spel
     nnoremap <C-t> <esc>:tabnew<CR>
     nmap ]w :tabnext<cr>
     nmap [w :tabprev<cr>
+    nmap ]b :bn<cr>
+    nmap [b :bp<cr>
     nmap ,tc :tabclose<cr>
 " }}}
 

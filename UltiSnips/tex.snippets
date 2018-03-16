@@ -1,3 +1,21 @@
 snippet todo "todo note" b
 \todo{${1:...}}$2
 endsnippet
+
+snippet minipage2 "Minipage with 2 columns" b
+\begin{figure}[${1:htbp}]
+	\centering
+	\begin{minipage}[${2:b}]{${3:0.48}\textwidth}
+		\includegraphics[width=1.0\textwidth]{$4}
+		\subcaption{$5}
+		\label{fig:$6}
+	\end{minipage}
+	\begin{minipage}[${2:b}]{${3:0.48}\textwidth}
+		\includegraphics[width=1.0\textwidth]{$7}
+		\subcaption{$8}
+		\label{fig:$9}
+	\end{minipage}
+	\caption{$10}
+	\label{fig:$11}
+\end{figure}
+endsnippet
